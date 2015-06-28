@@ -1,7 +1,8 @@
 /**
-  \file Meditech_ChipKitControlPanel.cpp
+  \file Meditech_ChipKitControlPanel.pde
   \brief meditech ChipKit control panel main application
 
+  \mainpage
   This application will run on the ChipKit PI module of the Meditech device. The module is
   connected to the Raspberry PI Mod B2. The software includes two parts: one independent series
   of features, related to the Meditech general health status that can override the user controlled
