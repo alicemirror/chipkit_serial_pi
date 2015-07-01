@@ -200,12 +200,13 @@ uint32_t fanSpeedRegulation(uint32_t currentTime) {
   float temp;
   int pwmSpeed;
 
-  temp = internalTemp.CalcTemp(analogRead(TEMP_SENSOR));
+//  temp = internalTemp.CalcTemp(analogRead(TEMP_SENSOR));
+  temp = (((analogRead(TEMP_SENSOR) / 1024) * 5) * 100) - TEMP_OFFSET;
   pwmSpeed = map(temp, MIN_TEMP, MAX_TEMP, MIN_FANSPEED, MAX_FANSPEED);
   SoftPWMServoPWMWrite(FAN_SPEED, pwmSpeed);
 
-    // Restart the timer
-    return (currentTime + CORE_TICK_RATE * UPDATE_FAN_SPEED_TIMEOUT);
+  // Restart the timer
+  return (currentTime + CORE_TICK_RATE * UPDATE_FAN_SPEED_TIMEOUT);
 }
 
 /**
