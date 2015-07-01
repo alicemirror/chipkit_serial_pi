@@ -47,8 +47,11 @@
 //! condition
 #define MAX_TEMP  60.00
 
-//! Lid open check status frequency (25 KHz)
-#define LID_OPEN_TIMEOUT  4
+//! Lid open check status frequency (1 sec.)
+#define LID_OPEN_TIMEOUT  1
+
+//! Fan cooler interrupt timer update frequency (5 secs.)
+#define UPDATE_FAN_SPEED_TIMEOUT 5
 
 //! The serial communication speed with the RPI master
 #define SERIAL_SPEED 38400

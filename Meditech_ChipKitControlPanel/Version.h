@@ -9,7 +9,7 @@
 #define __VERSION_H__
 
 //! Incremental build number
-#define build() "0015"
+#define build() "0016"
 //! Firmware version
 #define version() "1.0"
 //! Project name

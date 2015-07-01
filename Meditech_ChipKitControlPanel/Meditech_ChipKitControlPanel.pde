@@ -20,13 +20,13 @@
   
   \license This code is distributed under the Apache license
   These sources has been developed under the mpide application, adapted for the
-  ChipKit PI board.
+  ChipKit PI board.\n
   This application is part of the Meditech project, created by Enrico Miglino for
   Balearic Dynamics - Balearic Islands - Spain\n
   For the last updated application version and subversion, see the version.h include file.
   
   \author Enrico Miglino <enrico.miglino@gmail.com>
-  \author Balearic Dynamics - Spain <balearicdynamics@gmail.com>
+  \copyright Balearic Dynamics - Spain <balearicdynamics@gmail.com>
   \version 1.0b
   \date First version on July 2015
 */
@@ -58,7 +58,7 @@ int pValue = 0;
 //! IRQ callback function too.
 volatile boolean lidStatus;
 
-//! The update display task id (assigned during setup)
+//! The update display task id (assigned on setup)
 int updateDispalyTaskID;
 
 /** 
@@ -104,13 +104,15 @@ void setup() {
   // Test the fan variable speed
   testFanSpeed();
   
-  // Set and start the timer
+  // Set and start the timer for lid status
   attachCoreTimerService(isLidStatusChanged);
+  // Set and start the timer for fan cooler speed regulation
+  attachCoreTimerService(fanSpeedRegulation);
   
   // Create the display update task.
   // This task updates automatically only the reserved display
   // areas, i.e. the temperature monitor and other information.
-  updateDispalyTaskID = createTask(updateDisplay, TASK_UPDATEDISPLAY, TASK_DISABLE, NULL);
+  updateDispalyTaskID = createTask(updateDisplay, TASK_UPDATEDISPLAY, TASK_ENABLE, NULL);
   
 }
 
@@ -175,7 +177,7 @@ void showTemp() {
 /**
   \brief Callback function from the list status change hardware interrupt
   
-  Then the lid status switch changes (pinned to the LIDSTATUS pin) the attached
+  When the lid status switch changes (pinned to the LIDSTATUS pin) the attached
   interrupt calls this callback that simply invert the lidStatus state of the
   boolean variable. After the function has been exectued the timer is restarted.
   */
@@ -184,7 +186,26 @@ uint32_t isLidStatusChanged(uint32_t currentTime) {
     lidStatus = digitalRead(LIDSTATUS);
     
     // Restart the timer
-    return (currentTime + CORE_TICK_RATE/LID_OPEN_TIMEOUT);
+    return (currentTime + CORE_TICK_RATE * LID_OPEN_TIMEOUT);
+}
+
+/**
+  \brief Callback function from the fan cooler speed regulation interrupt
+  
+  As the interrupt triggers periodically a new temperature reading is done and the
+  PWM fan cooler speed is set accordingly.
+  */
+uint32_t fanSpeedRegulation(uint32_t currentTime) {
+  
+  float temp;
+  int pwmSpeed;
+
+  temp = internalTemp.CalcTemp(analogRead(TEMP_SENSOR));
+  pwmSpeed = map(temp, MIN_TEMP, MAX_TEMP, MIN_FANSPEED, MAX_FANSPEED);
+  SoftPWMServoPWMWrite(FAN_SPEED, pwmSpeed);
+
+    // Restart the timer
+    return (currentTime + CORE_TICK_RATE * UPDATE_FAN_SPEED_TIMEOUT);
 }
 
 /**
@@ -355,6 +376,10 @@ void testFanSpeed() {
   The fan speed is mapped on the current temperature scaled to the
   PWM range values. Note that any PWM frequency under MIN_FAN_SPEED should
   not used at is has no effect (the motor don't start)
+  
+  \note This function sets manually the fan speed based on the internal temperature
+  sensor. To use this function the interrupt timer fanSpeedRegulationTaskID should be
+  disabled before.
   */
 void setFanSpeed(float temp) {
   
