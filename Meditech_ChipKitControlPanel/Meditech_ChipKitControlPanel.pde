@@ -58,6 +58,9 @@ int pValue = 0;
 //! IRQ callback function too.
 volatile boolean lidStatus;
 
+//! The update display task id (assigned during setup)
+int updateDispalyTaskID;
+
 /** 
   \brief Initialisation method
   
@@ -66,7 +69,7 @@ volatile boolean lidStatus;
   is closed. If not, after a couple of seconds the alarm starts immediately.
   */
 void setup() {
-  Serial1.begin(9600);
+  Serial1.begin(SERIAL_SPEED);
 
   // Initializes the Lid status switch pin
   pinMode(LIDSTATUS, INPUT);
@@ -92,15 +95,23 @@ void setup() {
   // Read the actual temperature
   internalTemp.CalcTemp(analogRead(TEMP_SENSOR));
   // Shows the actual internal temperature
-  temperature();
+  showTemp();
   
   // Start the fan to stopped state
   setFanSpeed(STOP_FAN);
   // Test LEDs on startup
   testStatusLED();
+  // Test the fan variable speed
+  testFanSpeed();
   
   // Set and start the timer
   attachCoreTimerService(isLidStatusChanged);
+  
+  // Create the display update task.
+  // This task updates automatically only the reserved display
+  // areas, i.e. the temperature monitor and other information.
+  updateDispalyTaskID = createTask(updateDisplay, TASK_UPDATEDISPLAY, TASK_DISABLE, NULL);
+  
 }
 
 /** 
@@ -116,46 +127,49 @@ void loop(void) {
 
   // Check if the lid is open
   if(lidStatus == LIDCLOSED) {
+/*
     pValue = analogRead(CALIBRATION_POT);  // Read the pot value
     int gainValue = map(pValue, 0, ANALOGDIVIDER, MINGAIN, MAXGAIN);
     // Update the display
     stethoscopeGainLevel(gainValue);
+*/
   }
   else {
-      // Show the error message
-      lcd.clear();
-      message(_LID_OPEN, 5, LCDTOPROW);
-      // Temperature monitoring
-      tempMonitor();
+    // Show the error message
+    lcd.clear();
+    message(_LID_OPEN, 5, LCDTOPROW);
   }
 }
 
 // -------- Control functions
 
 /**
- * \brief Continuously monitor the internal temperature
+  \brief Periodically update the display. This is a task callback function
+  */
+void updateDisplay(int id, void * tptr) {
+ tempMonitor(); 
+}
+
+
+/**
+ * \brief Update the internal temperature from the sensor and update the display.
  */
 void tempMonitor() {
 
   // Read the actual temperature
   internalTemp.CalcTemp(analogRead(TEMP_SENSOR));
-
-  lcd.setCursor(0, 1);
-  lcd << _INTERNAL_TEMP << " " << internalTemp.Celsius() << _CELSIUS;
-  delay(50);
+  showTemp();
 
 }
 
 /**
- * \brief shows the actual internal temperature
+ \brief shows the actual internal temperature on the top right corner. 
+ This is a display-only method.
  */
-void temperature() {
+void showTemp() {
 
-  lcd.setCursor(0, 0);
-  lcd.print(_INTERNAL_TEMP);
-  lcd.setCursor(0, 1);
-  lcd  << _EMPTY_NUMBER4 << internalTemp.Celsius() << _CELSIUS;
-
+  lcd.setCursor(14, LCDTOPROW);
+  lcd << internalTemp.Celsius() << _CELSIUS;
 }
 
 /**
@@ -320,6 +334,22 @@ void testStatusLED() {
 }
 
 /**
+  \brief Variable fan speed test cycle
+  */
+void testFanSpeed() {
+ 
+ for(int j = MIN_FANSPEED; j <= MAX_FANSPEED; j += 10) {
+   setFanSpeed(j);
+   delay(500);
+ } 
+
+ for(int j = MAX_FANSPEED; j <= MIN_FANSPEED; j -= 10) {
+   setFanSpeed(j);
+   delay(500);
+ } 
+}
+
+/**
   \brief Set the fan speed based on the actual temperature
   
   The fan speed is mapped on the current temperature scaled to the
@@ -327,8 +357,22 @@ void testStatusLED() {
   not used at is has no effect (the motor don't start)
   */
 void setFanSpeed(float temp) {
-    
-    SoftPWMServoPWMWrite(FAN_SPEED, temp);
+  
+  //! The filtered temperature to control the out-of-range values
+  float filteredTemp;
+  
+  // Check the temperature range
+  if (temp < MIN_TEMP)
+    filteredTemp = MIN_TEMP;
+  else
+    if (temp > MAX_TEMP)
+      filteredTemp = MAX_TEMP;
+      else
+        filteredTemp = temp;
+  
+  int pwmSpeed = map(temp, MIN_TEMP, MAX_TEMP, MIN_FANSPEED, MAX_FANSPEED);
+  
+  SoftPWMServoPWMWrite(FAN_SPEED, pwmSpeed);
 }
 
 /**

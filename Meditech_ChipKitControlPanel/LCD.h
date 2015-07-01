@@ -23,14 +23,6 @@
 #define LCDTOPROW 0
 //! The bottom row number of the LCD
 #define LCDBOTTOMROW 1
-//! Top Left display sector column
-#define LCD_SECTOR1 0
-//! Top Right display sector column (usually are always pair numbers)
-#define LCD_SECTOR2 LCDCHARS / 2
-//! Bottom Left display sector column
-#define LCD_SECTOR3 0
-//! Bottom Right display sector column
-#define LCD_SECTOR4 LCDCHARS / 2
 
 //! Delay after showing an error
 #define LCDERROR_DELAY 5000
@@ -68,7 +60,6 @@ public:
 	void bin(int n);							///< shows an integer in binary format
 	void oct(int n);							///< shows an integer in octal format
 	void welcome();								///< shows the program welcome message
-	void menu(String sect1, String sect2, String sect3, String sect4);
 protected:
 private:
 	LCD( const LCD &c );

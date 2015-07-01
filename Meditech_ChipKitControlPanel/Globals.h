@@ -37,7 +37,7 @@
 //! Maximum PWM frequency for fan running
 #define MAX_FANSPEED  255
 //! PWM frequency for fan stopped (lower values has no effect)
-#define STOP_FAN  25
+#define STOP_FAN  5
 
 //! Minimum temperature (Celsius) to start the fan (min speed)
 //! Lower temperature values does not need the fan starting
@@ -48,7 +48,14 @@
 #define MAX_TEMP  60.00
 
 //! Lid open check status frequency (25 KHz)
-#define LID_OPEN_TIMEOUT  5
+#define LID_OPEN_TIMEOUT  4
+
+//! The serial communication speed with the RPI master
+#define SERIAL_SPEED 38400
+
+
+//! Update the display task every second (in ms)
+#define TASK_UPDATEDISPLAY  1000 
 
 #endif
 
