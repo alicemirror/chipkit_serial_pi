@@ -1,6 +1,6 @@
 /**
- *	\file Globals.h
- *  \brief Global constants
+  \file Globals.h
+  \brief Global constants
 */
 
 #ifndef __GLOBALS_H__
@@ -31,6 +31,24 @@
 //! LCD Shift control pin - Latch signal
 //! Define this value accordingly with the available I2C board pins
 #define LCDlatchPin 13
+
+//! Minimum PWM frequency for fan stopped
+#define MIN_FANSPEED  35
+//! Maximum PWM frequency for fan running
+#define MAX_FANSPEED  255
+//! PWM frequency for fan stopped (lower values has no effect)
+#define STOP_FAN  25
+
+//! Minimum temperature (Celsius) to start the fan (min speed)
+//! Lower temperature values does not need the fan starting
+#define MIN_TEMP  38.00
+//! Maximum temperature (Celsius) to reach the higher fan speed.
+//! Higher temperature values should generate an overheating alarm
+//! condition
+#define MAX_TEMP  60.00
+
+//! Lid open check status frequency (25 KHz)
+#define LID_OPEN_TIMEOUT  5
 
 #endif
 

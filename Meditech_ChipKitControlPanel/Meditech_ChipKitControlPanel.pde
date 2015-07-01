@@ -5,15 +5,20 @@
   \mainpage
   This application will run on the ChipKit PI module of the Meditech device. The module is
   connected to the Raspberry PI Mod B2. The software includes two parts: one independent series
-  of features, related to the Meditech general health status that can override the user controlled
+  of features, related to the Meditech general health status overriding the user controlled
   parameters. The board also control che alphanumeric LCD display for status messages, warnings and alarms. \n
-  The user-controlled part is managed by the Raspberry PI "PI master" that control the active probes
+  The user-controlled part instead is managed by the Raspberry PI "PI master" controlling the active probes
   and other functions. The counterpart of this application is a C++ command set running on the PI linux
-  machine and communicates with the board through a simple serial protocol.
-  To reduce the weight of this microcontroller application most of the informational strings shown by
-  the control panel display are send by the linux machine.
+  machine communicating with the board through a custom serial protocol.
+  To reduce the weight of the microcontroller application most of the strings shown by
+  the control panel display are sent by the linux machine.
   
-  \note This code is distributed under the Apache license
+  \note Most of the control panel functions should follow specific priorities, e.g. the lid open status while
+  other functions should be exectued periodically byt the board. The high frequency check methods are managed
+  by timer interrupts while the other functions will run in background via the board Task Manager. The use of
+  these two strategies makes the loop() method more simple and the entire system is more efficient.
+  
+  \license This code is distributed under the Apache license
   These sources has been developed under the mpide application, adapted for the
   ChipKit PI board.
   This application is part of the Meditech project, created by Enrico Miglino for
@@ -25,6 +30,7 @@
   \version 1.0b
   \date First version on July 2015
 */
+
 #include <AlphaLCD.h>
 #include <Streaming.h>
 
@@ -36,7 +42,7 @@
 #include "Temperature.h"
 #include <SoftPWMServo.h>
 
-#undef _DEBUG
+#include "DebugStrings.h"
 
 //! Display class instance
 AlphaLCD lcd(LCDdataPin, LCDclockPin, LCDlatchPin);
@@ -47,18 +53,22 @@ Temperature internalTemp;
 //! Initial potentiometer value
 int pValue = 0;
 
-//! Current lid status
-boolean lidStatus;
+//! Current lid status.
+//! The variable is declared volatile as it is used by the
+//! IRQ callback function too.
+volatile boolean lidStatus;
 
-//! Initialisation method
-void setup() 
-{
+/** 
+  \brief Initialisation method
   
-  #ifdef _DEBUG
+  Loaded once at power-on the setup() method presets the parameters of the application and initializes
+  the ChipKit board to its initial conditions. The startup conditions assumes that the Meditech lid
+  is closed. If not, after a couple of seconds the alarm starts immediately.
+  */
+void setup() {
   Serial1.begin(9600);
-  #endif
 
-  // Initializes the Lid status swith pin
+  // Initializes the Lid status switch pin
   pinMode(LIDSTATUS, INPUT);
   lidStatus = LIDCLOSED;
   
@@ -72,68 +82,51 @@ void setup()
 
   // Initializes the LCD library
   lcd.begin(LCDCHARS, LCDROWS);
-  
   // Turn LCD On
   lcd.display();
 
   // Initialisation string
   welcome();
-  
+  // Test the LEDs
+  testStatusLED();
   // Read the actual temperature
   internalTemp.CalcTemp(analogRead(TEMP_SENSOR));
-  
   // Shows the actual internal temperature
   temperature();
-
-  // Digital stethoscope calibration 
-  stethoscopeMsg();
+  
+  // Start the fan to stopped state
+  setFanSpeed(STOP_FAN);
+  // Test LEDs on startup
+  testStatusLED();
+  
+  // Set and start the timer
+  attachCoreTimerService(isLidStatusChanged);
 }
 
-//! Main loop application
-void loop(void)
-{
-  #ifdef _DEBUG
-  Serial1 << "=== DEBUG ON ==" << endl;
-  testFan();
-  // Read the actual temperature
-  internalTemp.CalcTemp(analogRead(TEMP_SENSOR));
-  Serial1 << "Temperature read: " << internalTemp.Celsius() << endl;
-  Serial1 << "=== DEBUG OFF ==" << endl;
-  #endif
-  // Check if the lid is open
-  if(isLidClose() == LIDCLOSED) {
-    // If the lid was open before, reset the display status
-    if(lidStatus == LIDOPEN) {
-      // Reset the status
-      lidStatus = LIDCLOSED;
-      
-      // Digital stethoscope calibration 
-      stethoscopeMsg();
-    }
-      
-    pValue = analogRead(CALIBRATION_POT);  // Read the pot value
+/** 
+  \brief Main loop method
   
+  The main application loop is interrupted by the lid open status generating
+  a high priority alarm. Also the internal temperature is checked periodically
+  to set the fan speed to the correct value.\n
+  When serial data are present (a command waiting from the PI main) the data are
+  parsed as needed.
+  */
+void loop(void) {
+
+  // Check if the lid is open
+  if(lidStatus == LIDCLOSED) {
+    pValue = analogRead(CALIBRATION_POT);  // Read the pot value
     int gainValue = map(pValue, 0, ANALOGDIVIDER, MINGAIN, MAXGAIN);
-    
     // Update the display
     stethoscopeGainLevel(gainValue);
-
   }
   else {
-      // Set the status flag
-      lidStatus = LIDOPEN;
-
       // Show the error message
       lcd.clear();
       message(_LID_OPEN, 5, LCDTOPROW);
-
       // Temperature monitoring
       tempMonitor();
-
-      delay(50);
-
-      testStatusLED();
-            
   }
 }
 
@@ -162,17 +155,23 @@ void temperature() {
   lcd.print(_INTERNAL_TEMP);
   lcd.setCursor(0, 1);
   lcd  << _EMPTY_NUMBER4 << internalTemp.Celsius() << _CELSIUS;
-  delay(2500);
-  lcd.clear();
 
 }
 
 /**
- * \brief Check for lid status
- */
- boolean isLidClose() {
-   return digitalRead(LIDSTATUS);
- }
+  \brief Callback function from the list status change hardware interrupt
+  
+  Then the lid status switch changes (pinned to the LIDSTATUS pin) the attached
+  interrupt calls this callback that simply invert the lidStatus state of the
+  boolean variable. After the function has been exectued the timer is restarted.
+  */
+uint32_t isLidStatusChanged(uint32_t currentTime) {
+  
+    lidStatus = digitalRead(LIDSTATUS);
+    
+    // Restart the timer
+    return (currentTime + CORE_TICK_RATE/LID_OPEN_TIMEOUT);
+}
 
 /**
  * \brief Stethoscope title
@@ -181,9 +180,9 @@ void stethoscopeMsg() {
 
   lcd.clear();
   lcd.setCursor(0, LCDTOPROW);
-  lcd << _STET;
+//  lcd << _STET;
   lcd.setCursor(0, LCDBOTTOMROW);
-  lcd << _STET_CAL;
+//  lcd << _STET_CAL;
 
 }
 
@@ -300,27 +299,8 @@ void clean() {
 }
 
 /**
- * \brief Creates a menu screen.
- *
- * The 2-lines LCD screen is divided in four sectors, that can be used or not. The LCD
- * sectors length and position are defined and based on the LCD size.
- * Every sector is filled with one of the four parameters string.
- * Sectors 1 & 2 are in the top row, sectors 3 & 4 in the bottom row
- *
- * \param sect1 The Upper Left display sector
- * \param sect2 The Upper Right display sector
- * \param sect3 The Lower Left display sector
- * \param sect4 The Lower Right display sector
- */
-void menu(String sect1, String sect2, String sect3, String sect4) {
-  clean();
-  message(sect1, LCD_SECTOR1, LCDTOPROW);
-  message(sect2, LCD_SECTOR2, LCDTOPROW);
-  message(sect3, LCD_SECTOR3, LCDBOTTOMROW);
-  message(sect4, LCD_SECTOR4, LCDBOTTOMROW);
-}
-
-/////////////
+  \brief Show the status led blinking for a cycle to test that all are working
+  */
 void testStatusLED() {
 
   digitalWrite(ECG_STATUS, LOW);
@@ -339,18 +319,47 @@ void testStatusLED() {
 
 }
 
-#ifdef _DEBUG
-void testFan() {
-
-    SoftPWMServoPWMWrite(FAN_SPEED, 0);
-    Serial1 << "FanTest speed=0" << endl;
-    delay(5000);
-    SoftPWMServoPWMWrite(FAN_SPEED, 255);
-    Serial1 << "FanTest speed=255" << endl;
-    delay(5000);
-
+/**
+  \brief Set the fan speed based on the actual temperature
+  
+  The fan speed is mapped on the current temperature scaled to the
+  PWM range values. Note that any PWM frequency under MIN_FAN_SPEED should
+  not used at is has no effect (the motor don't start)
+  */
+void setFanSpeed(float temp) {
+    
+    SoftPWMServoPWMWrite(FAN_SPEED, temp);
 }
-#endif
 
+/**
+  \brief Set the fan speed at the desired PWM frequency
+  
+  The PWM frequency should be included between the min and max fan speed
+  values. If these values are outside the limits the fan is set to off
+  */
+int setFanSpeed(int freq) {
+  //! Fan speed PWM frequency, initialised to the stop status 
+  int pwmFreq = STOP_FAN;
+  
+  // Check if the freq is a correct value
+  if( (freq >= STOP_FAN) && (freq <= MAX_FANSPEED) ) {
+    pwmFreq = freq;
+  }
+  // Set the current fan speed
+  SoftPWMServoPWMWrite(FAN_SPEED, pwmFreq);
+  
+  return pwmFreq;
+  
+}
+
+/**
+  \brief Serial debugging function
+*/
+void debug(String msg) {
+#ifdef __DEBUG
+  Serial1 << DEBG_PREFIX << "> " << msg << endl;
+#endif
+}
+  
 
 

@@ -24,6 +24,7 @@
 
 #define _INTERNAL_TEMP          "Int.temp. "
 #define _CELSIUS                "C"
+#define _OVERHEATING            "Overheating alert !!!"
 
 #define _LID_OPEN               "Lid Open !!!"
 
