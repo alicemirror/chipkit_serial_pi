@@ -116,7 +116,7 @@ void setup() {
   // This task updates automatically only the reserved display
   // areas, i.e. the temperature monitor and other information.
   updateDispalyTaskID = createTask(updateDisplay, TASK_UPDATEDISPLAY, TASK_ENABLE, NULL);
-  
+  // Test only !!!
   steth.createDisplay();
 }
 
@@ -133,8 +133,10 @@ void loop(void) {
 
   // Check if the lid is open
   if(lidStatus == LIDCLOSED) {
-
-  checkSerial();
+    // Test only !!!
+    int pValue = analogRead(CALIBRATION_POT);  // Read the pot value
+    steth.updateDisplay(map(pValue, 0, ANALOGDIVIDER, MINGAIN, MAXGAIN));
+    checkSerial();
   }
   else {
     // Show the error message
@@ -253,25 +255,6 @@ void message(String m) {
 }
 
 /**
- * \brief Display an integer value in decimal format at the cursor position
- *
- * \param n the integer to show in decimal format
- */
-void dec(int n) {
-  lcd.print(n, DEC);
-}
-
-/**
- * \brief Display an integer value in hex format at the cursor position
- *
- * \param n the integer to show in hexadecimal format
- */
-void hex(int n) {
-  lcd.print("0x");
-  lcd.print(n, HEX);
-}
-
-/**
  * \brief Display an error message at the specified cursor coordinates
  *
  * The error message is shown for a LCDERROR_DELAY milliseconds.
@@ -313,17 +296,6 @@ void error(String m) {
 void message(String m, int x, int y) {
   lcd.setCursor(x, y);
   message(m);
-}
-
-/**
- * \brief Clean the display
- *
- * A delay of 100 ms is added after the hardware clear() call to give the display the time
- * to complete the operation.
- */
-void clean() {
-  lcd.clear();
-  delay(LCDCLEAR_DELAY);
 }
 
 /**

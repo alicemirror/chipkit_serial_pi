@@ -36,8 +36,6 @@ typedef struct LCDTemplateField {
   String val;    ///< Field content
 } field;
 
-//! Blood pressure template
-#define TID_BLOODPRESS 1
 //! Heartbeat frequency template
 #define TID_HEARTBEAT 2
 //! Test cycle template
@@ -58,10 +56,32 @@ class LCDStethoscope {
   public:
     LCDStethoscope(AlphaLCD myLCD);
     void createDisplay();
+    void updateDisplay(int val);
     int id;
     field lcdFields[STETHOSCOPE_FIELDS];
   private:
     AlphaLCD mLcd;
 };
 
+/*
+//! Blood pressure template
+#define TID_BLOODPRESS 1
+#define BLOODPRESS_FIELDS 6
+#define BLOOD_TITLE 0
+#define BLOOD_WAIT 1
+#define BLOOD_MIN 2
+#define BLOOD_MINVAL 3
+#define BLOOD_MAX 4
+#define BLOOD_MAXVAL 5
+
+class LCDBloodPressure {
+  public:
+    LCDBloodPressure(AlphaLCD myLCD);
+    void createDisplay();
+    int id;
+    field lcdFields[BLOODPRESS_FIELDS];
+  private:
+    AlphaLCD mLcd;
+};
+*/
 #endif
