@@ -1,10 +1,10 @@
 /**
- *	\file LCD.h
- *  \brief LCD display Manager include file
- *
- *  Methods to manage the LCD output and display features, including some hard-coded strings that should be present,
- *  like the welcome message.
-*/
+  \file LCD.h
+  \brief LCD display Manager include file
+  
+  Methods to manage the LCD output and display features, including some hard-coded strings that should be present,
+  like the welcome message.
+  */
 
 #ifndef __LCD_H__
 #define __LCD_H__

@@ -41,7 +41,7 @@
 #include "Globals.h"
 #include "Temperature.h"
 #include <SoftPWMServo.h>
-
+#include "LCDTemplates.h"
 #include "DebugStrings.h"
 
 //! Display class instance
@@ -61,6 +61,9 @@ volatile boolean lidStatus;
 //! The update display task id (assigned on setup)
 int updateDispalyTaskID;
 
+//! Stethoscope display template
+LCDStethoscope steth(lcd);
+  
 /** 
   \brief Initialisation method
   
@@ -114,6 +117,7 @@ void setup() {
   // areas, i.e. the temperature monitor and other information.
   updateDispalyTaskID = createTask(updateDisplay, TASK_UPDATEDISPLAY, TASK_ENABLE, NULL);
   
+  steth.createDisplay();
 }
 
 /** 
@@ -129,13 +133,8 @@ void loop(void) {
 
   // Check if the lid is open
   if(lidStatus == LIDCLOSED) {
-/*
-    pValue = analogRead(CALIBRATION_POT);  // Read the pot value
-    int gainValue = map(pValue, 0, ANALOGDIVIDER, MINGAIN, MAXGAIN);
-    // Update the display
-    stethoscopeGainLevel(gainValue);
-*/
-checkSerial();
+
+  checkSerial();
   }
   else {
     // Show the error message
@@ -221,27 +220,6 @@ uint32_t fanSpeedRegulation(uint32_t currentTime) {
 
   // Restart the timer
   return (currentTime + CORE_TICK_RATE * UPDATE_FAN_SPEED_TIMEOUT);
-}
-
-/**
- * \brief Stethoscope title
- */
-void stethoscopeMsg() {
-
-  lcd.clear();
-  lcd.setCursor(0, LCDTOPROW);
-//  lcd << _STET;
-  lcd.setCursor(0, LCDBOTTOMROW);
-//  lcd << _STET_CAL;
-
-}
-
-/**
- * \brief Update the scaled analog value corresponding to the gain setting
- */
-void stethoscopeGainLevel(double value) {
-  lcd.setCursor(12, LCDBOTTOMROW);
-  lcd << value;
 }
 
 /**
