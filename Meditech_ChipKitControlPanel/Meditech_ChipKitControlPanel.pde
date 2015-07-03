@@ -121,7 +121,7 @@ void setup() {
   // areas, i.e. the temperature monitor and other information.
   updateDispalyTaskID = createTask(updateDisplay, TASK_UPDATEDISPLAY, TASK_ENABLE, NULL);
   // Test only !!!
-  steth.createDisplay();
+//  steth.createDisplay();
 }
 
 /** 
@@ -138,8 +138,8 @@ void loop(void) {
   // Check if the lid is open
   if(lidStatus == LIDCLOSED) {
     // Test only !!!
-    int pValue = analogRead(CALIBRATION_POT);  // Read the pot value
-    steth.updateDisplay(map(pValue, 0, ANALOGDIVIDER, MINGAIN, MAXGAIN));
+//    int pValue = analogRead(CALIBRATION_POT);  // Read the pot value
+//    steth.updateDisplay(map(pValue, 0, ANALOGDIVIDER, MINGAIN, MAXGAIN));
     checkSerial();
   }
   else {
@@ -159,16 +159,16 @@ void updateDisplay(int id, void * tptr) {
 }
 
 /**
-  \brief Control the presence of data from the serial interface
+  \brief Control the presence of data from the serial interface. 
+  
+  When data are detected on the serial buffer the parser function is 
+  launched to process the command.
   
   */
 void checkSerial() {
- 
-  lcd.setCursor(0, LCDBOTTOMROW);
 
-  while(Serial1.available()) {
-    lcd << (char)Serial1.read();
-    Serial1 << "ACK" << endl;  
+  if(Serial1.available()) {
+    parser();
   }
 
 }
@@ -417,7 +417,7 @@ void parser() {
   //! parser recursive process.
   int i = 0, k = 0, j = 0, value;
   //! Single-character commands array
-  char c[CMD_CHARLEN];
+  char c[] = { 'E', 'D', 'G', 'I', 'T', 'R', 'P', 'r', '\0' };
   //! Command object to store the components
   command cmd;
   
@@ -432,8 +432,16 @@ void parser() {
   cmd.cmdData[i++] = CMD_SEPARATOR;
   cmd.cmdData[i] = '\0';
   
+  debug(DBG_PARSER);
+  debug(cmd.cmdData);
+  
   // Here we start processing recursively the array until the end.
   while (k < i) {
+    
+    #ifdef __DEBUG
+//    Serial1 << "while ... k=" << k << " i=" << i << endl;
+    #endif
+    
     // If a command separator is found, anyway we have already finished processing
     // the command (including eventually an error condition). So the character is
     // skipped until a new command start is not found.
@@ -445,7 +453,7 @@ void parser() {
     // Search for a valid command character and when found set the procssing flags.
     // Else generates an error condition. 
     for (j = 0; j < CMD_CHARLEN; j++) {
-      // Process the current commant character
+      // Process the current command character
       if (c[j] == cmd.cmdData[k]) {
         // Found a matching command
         switch(cmd.cmdData[k]) {
@@ -453,9 +461,9 @@ void parser() {
           case CMD_DISPLAY:
             commandReturn(CMD_DISPLAY);
             // Syntax checking
-            if (!parseSeparator(cmd.cmdData[++k])) {
+            if (!parseFieldSeparator(cmd.cmdData[++k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
-              k = nextSeparator(k);
+              k = nextCommandSeparator(k);
               break;
             }
             // We expect the next paramter is row expressed in 00-nn
@@ -466,9 +474,16 @@ void parser() {
             } // No errors
             else {
               syntaxCheck(COMMAND_OUT_OF_RANGE);
-              k = nextSeparator(k);
+              k = nextCommandSeparator(k);
               break;
             } // Error out of range
+
+            // Syntax checking
+            if (!parseFieldSeparator(cmd.cmdData[++k])) {
+              syntaxCheck(COMMAND_MISSINGSEPARATOR);
+              k = nextCommandSeparator(k);
+              break;
+            }
             // We expect the next paramter is column expressed in 00-nn
             value = charsToInt(++k, 2);
             if (value < LCDCHARS) {
@@ -477,9 +492,16 @@ void parser() {
             } // No errors
             else {
               syntaxCheck(COMMAND_OUT_OF_RANGE);
-              k = nextSeparator(k);
+              k = nextCommandSeparator(k);
               break;
             } // Error out of range
+
+            // Syntax checking
+            if (!parseFieldSeparator(cmd.cmdData[++k])) {
+              syntaxCheck(COMMAND_MISSINGSEPARATOR);
+              k = nextCommandSeparator(k);
+              break;
+            }
             // We expect the next paramter is the data string
             cmd.stringValue = charsToString(++k);
             syntaxCheck(COMMAND_OK);
@@ -490,8 +512,8 @@ void parser() {
             case CMD_ENABLE:
               commandReturn(CMD_ENABLE);
               // Search for subcommands
-              if (!parseSeparator(cmd.cmdData[++k])) {
-                k = nextSeparator(k);
+              if (!parseFieldSeparator(cmd.cmdData[++k])) {
+                k = nextCommandSeparator(k);
                 syntaxCheck(COMMAND_MISSINGSEPARATOR);
                 break;
               } // Search subcommands
@@ -502,76 +524,76 @@ void parser() {
                 case S_STETHOSCOPE:
                   commandReturn(S_STETHOSCOPE);
                   // Check for subcommand separator
-                  if (!parseSeparator(cmd.cmdData[++k])) {
+                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
-                      k = nextSeparator(k);
+                      k = nextCommandSeparator(k);
                       break;
                   } // check for separator
                   if (!setStethoscopeStatus(++k))
                       syntaxCheck(COMMAND_STETHOSCOPE_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
-                  k = nextSeparator(k);
+                  k = nextCommandSeparator(k);
                   break;
                 // Enable / disable the ECG probe control panel settings
                 case S_ECG:
                   commandReturn(S_ECG);
                   // Check for subcommand separator
-                  if (!parseSeparator(cmd.cmdData[++k])) {
+                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
-                      k = nextSeparator(k);
+                      k = nextCommandSeparator(k);
                       break;
                   } // check for separator
                   if (!setECGStatus(++k))
                       syntaxCheck(COMMAND_ECG_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
-                  k = nextSeparator(k);
+                  k = nextCommandSeparator(k);
                   break;
                 // Enable / disable the Blood Pressure probe control panel settings
                 case S_PRESSURE:
                   commandReturn(S_PRESSURE);
                   // Check for subcommand separator
-                  if (!parseSeparator(cmd.cmdData[++k])) {
+                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
-                      k = nextSeparator(k);
+                      k = nextCommandSeparator(k);
                       break;
                   } // check for separator
                   if (!setPressureStatus(++k))
                       syntaxCheck(COMMAND_PRESSURE_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
-                  k = nextSeparator(k);
+                  k = nextCommandSeparator(k);
                   break;
                 // Enable / disable the Body Temperature probe control panel settings
                 case S_BODYTEMP:
                   commandReturn(S_BODYTEMP);
                   // Check for subcommand separator
-                  if (!parseSeparator(cmd.cmdData[++k])) {
+                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
-                      k = nextSeparator(k);
+                      k = nextCommandSeparator(k);
                       break;
                   } // check for separator
                   if (!setBodyTempStatus(++k))
                       syntaxCheck(COMMAND_BODYTEMP_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
-                  k = nextSeparator(k);
+                  k = nextCommandSeparator(k);
                   break;
                 // Enable / disable the Heart Beat probe control panel settings
                 case S_HEARTBEAT:
                   commandReturn(S_HEARTBEAT);
                   // Check for subcommand separator
-                  if (!parseSeparator(cmd.cmdData[++k])) {
+                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
-                      k = nextSeparator(k);
+                      k = nextCommandSeparator(k);
                       break;
                   } // check for separator
                   if (!setHeartBeatStatus(++k))
                       syntaxCheck(COMMAND_HEARTBEAT_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
-                  k = nextSeparator(k);
+                  k = nextCommandSeparator(k);
                   break;
                 // Subcommand unknown
                 default:
@@ -583,21 +605,11 @@ void parser() {
             // Show the global info on the control panel display
             case CMD_INFO:
               commandReturn(CMD_INFO);
-              if (!parseSeparator(cmd.cmdData[++k])) {
-                syntaxCheck(COMMAND_MISSINGSEPARATOR);
-                k = nextSeparator(k);
-                break;
-              }
             break;
 
             // Executes a test cycle of the control panel
             case CMD_TEST:
               commandReturn(CMD_TEST);
-              if (!parseSeparator(cmd.cmdData[++k])) {
-                syntaxCheck(COMMAND_MISSINGSEPARATOR);
-                k = nextSeparator(k);
-                break;
-              }
             break;
             
             // If no command is recognised, do nothing
@@ -625,9 +637,11 @@ void parser() {
   \return the position of the first command separator (if any) 
   or the last position before the end of the command string.
   */
-int nextSeparator(int startChar) {
+int nextCommandSeparator(int startChar) {
   int i = 0;
 
+  debug(DBG_NEXTSEP);
+  
   while (cmd.cmdData[startChar + i] != '\0') {
     if (cmd.cmdData[startChar + i] == CMD_SEPARATOR)
       return startChar + i;
@@ -644,17 +658,21 @@ int nextSeparator(int startChar) {
   \return The converted interger value
   */
 int charsToInt(int startChar, int numChars) {
-  char * value_to_convert;
-  String temp;
-  int i;
-
-  for (i = 0; i < numChars; i++)
-    temp += cmd.cmdData[i + startChar];
-
-  temp.toCharArray(value_to_convert, i);
-  i = atoi(value_to_convert);
-
-  return i;
+  int i, res = 0;
+  int k;
+  const char * number;
+  
+  debug(DBG_TOINT);
+  
+  k = numChars - 1;
+  
+  for (i = 0; i < numChars; i++) {
+    
+    res += (int)pow((float)10, (float)k) * ( (int)cmd.cmdData[i + startChar] - 32);
+    k--;
+  }
+    
+  return res;
 }
 
 /**
@@ -679,6 +697,8 @@ String charsToString(int startChar) {
   String temp = "";
   int i = 0;
   bool inString = false;
+  
+  debug(DBG_TOSTRING);
   
   // ========================================== FIRST STRING DELIMITER
   // Search for the first string delimiter
@@ -737,6 +757,8 @@ long charsToLong(int startChar, int numChars) {
   String temp;
   long i;
 
+  debug(DBG_TOLONG);
+
   for (i = 0; i < numChars; i++)
     temp += cmd.cmdData[i + startChar];
 
@@ -758,6 +780,8 @@ float charsToFloat(int startChar, int numChars) {
   int i;
   float result;
   
+  debug(DBG_TOFLOAT);
+
   for (i = 0; i < numChars; i++)
     temp += cmd.cmdData[i + startChar];
   
@@ -773,11 +797,19 @@ float charsToFloat(int startChar, int numChars) {
   \param test the character to test
   \return true if test is equal else returns false.
   */
-boolean parseSeparator(char test) {
-    if (test == FIELD_SEPARATOR)
+boolean parseFieldSeparator(char test) {
+    if (test == FIELD_SEPARATOR) {
+        #ifdef __DEBUG
+        Serial1 << "parseFieldSeparator(" << test << ") = TRUE" << endl;
+        #endif
         return true;
-    else
+    }
+    else {
+        #ifdef __DEBUG
+        Serial1 << "parseFieldSeparator(" << test << ") = FALSE" << endl;
+        #endif
         return false;
+    }
 }
 
 /**
@@ -790,6 +822,9 @@ boolean parseSeparator(char test) {
   \param errCode the error code from the command
   */
 void syntaxCheck(int errCode) {
+  
+    debug(DBG_SYNTACHECK);
+
     Serial1 << COMMAND_SEPARATOR << errCode << endl;
 }
 
@@ -807,7 +842,10 @@ void syntaxCheck(int errCode) {
   \param commandCode The command/subcommand character code.
   */
 void commandReturn(char commandCode) {
-    Serial1 << COMMAND_SEPARATOR << commandCode;
+  
+    debug(DBG_COMMANDRETURN);
+
+  Serial1 << COMMAND_SEPARATOR << commandCode;
 }
 
 /**
@@ -858,7 +896,7 @@ void strFloat(float val, unsigned int precision) {
   \todo Implement this function
   */
 bool setStethoscopeStatus(int startChar) {
-  
+  debug(DBG_STETHOSCOPE);
 }
 
 /**
@@ -868,7 +906,7 @@ bool setStethoscopeStatus(int startChar) {
   \todo Implement this function
   */
 bool setECGStatus(int startChar) {
-  
+  debug(DBG_ECG);
 }
 
 /**
@@ -879,7 +917,7 @@ bool setECGStatus(int startChar) {
   \todo Implement this function
   */
 bool setPressureStatus(int startChar) {
-  
+  debug(DBG_PRESSURE);
 }
 
 /**
@@ -890,7 +928,7 @@ bool setPressureStatus(int startChar) {
   \todo Implement this function
   */
 bool setBodyTempStatus(int startChar) {
-  
+  debug(DBG_BODYTEMP);
 }
 
 /**
@@ -904,6 +942,6 @@ bool setBodyTempStatus(int startChar) {
   \todo Implement this function
   */
 bool setHeartBeatStatus(int startChar) {
-  
+  debug(DBG_HEARTBEAT);
 }
 

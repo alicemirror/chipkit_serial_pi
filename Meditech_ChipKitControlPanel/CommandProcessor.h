@@ -82,18 +82,6 @@ typedef struct parseCommand {
     char cmdData[MAX_CMD_LEN];
 } command;
 
-/**
-  \brief All the commands in one string
-  
-  This string is used by the parser to check if a received character
-  is a command or not.
-  
-  \note If a command has been defined but is not listed in this string,
-  the parser syntax checker can't process it. Otherwise, never set a character
-  in this string if there is not a corresponding command definition.
-  */
-#define CMD_CHARACTERS "EDGITRPr"
-
 //! The lenght of CMD_CHARACTERS + 1
 #define CMD_CHARLEN 9
 
@@ -139,7 +127,7 @@ typedef struct parseCommand {
   name: D \n
   usage: D;<row(int)>;<column(int)>;<string> \n
   direction: receive\n
-  example: D;1;3;Test \n
+  example: D;01;03;Test \n
   */
 #define CMD_DISPLAY 'D'
 
