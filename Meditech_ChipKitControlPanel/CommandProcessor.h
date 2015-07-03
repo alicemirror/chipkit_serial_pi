@@ -64,7 +64,7 @@ typedef struct parseCommand {
     //! Command associated message string, used by S_SUBSTRING, CMD_WRITE, CMD_EXEC 
     char message[CMD_MSGLEN];
    
-    char stringValue;
+    String stringValue;
     long longValue[MAX_LONG];
     int intValue[MAX_INT];
     float floatValue[MAX_FLOAT];
