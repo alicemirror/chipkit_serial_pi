@@ -95,6 +95,8 @@ typedef struct parseCommand {
   //! The array number of position is the longer number of type parameters
   //! in a command
   float floatValue[MAX_FLOAT];
+  //! Returning parameter from the command parser
+  float booleanValue;
 
   /**
     \brief Unparsed Command String
@@ -276,7 +278,7 @@ typedef struct parseCommand {
 #define FLAG_DISABLE 0
 
 //! Command string separator used in the commandReturn() method
-#define COMMAND_SEPARATOR ":"
+#define RESPONSE_SEPARATOR ":"
 
 #endif
 

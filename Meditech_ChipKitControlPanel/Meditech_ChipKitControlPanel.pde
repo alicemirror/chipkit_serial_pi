@@ -419,8 +419,9 @@ void parser() {
   //! Single-character commands array
   char c[] = { 'E', 'D', 'G', 'I', 'T', 'R', 'P', 'r', '\0' };
   
-  // Initialises the command data to empty
+  // Initialises the command structure
   cmd.cmdData[0] = '\0';
+  cmd.message = "";
 
   // Load the command string coming from serial in the character array
   while (Serial1.available() > 0)
@@ -430,7 +431,6 @@ void parser() {
   cmd.cmdData[i++] = CMD_SEPARATOR;
   cmd.cmdData[i] = '\0';
   
-  debug(DBG_PARSER);
   debug(cmd.cmdData);
   
   // Here we start processing recursively the array until the end.
@@ -453,10 +453,11 @@ void parser() {
         switch(cmd.cmdData[k]) {
           // Show a string on the display.
           case CMD_DISPLAY:
-            commandReturn(CMD_DISPLAY);
+            appendResponse(CMD_DISPLAY);
             // Syntax checking
             if (!parseFieldSeparator(cmd.cmdData[++k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
+              ackMaster();
               k = nextCommandSeparator(k);
               break;
             }
@@ -468,6 +469,7 @@ void parser() {
             } // No errors
             else {
               syntaxCheck(COMMAND_OUT_OF_RANGE);
+              ackMaster();
               k = nextCommandSeparator(k);
               break;
             } // Error out of range
@@ -477,6 +479,7 @@ void parser() {
             // Syntax checking
             if (!parseFieldSeparator(cmd.cmdData[k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
+              ackMaster();
               k = nextCommandSeparator(k);
               break;
             }
@@ -488,6 +491,7 @@ void parser() {
             } // No errors
             else {
               syntaxCheck(COMMAND_OUT_OF_RANGE);
+              ackMaster();
               k = nextCommandSeparator(k);
               break;
             } // Error out of range
@@ -497,22 +501,27 @@ void parser() {
             // Syntax checking
             if (!parseFieldSeparator(cmd.cmdData[k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
+              ackMaster();
               k = nextCommandSeparator(k);
               break;
             }
             // We expect the next paramter is the data string
             cmd.stringValue = charsToString(k);
             syntaxCheck(COMMAND_OK);
+            // Display the message string on LCD
+            message(cmd.stringValue, cmd.intValue[1], cmd.intValue[0]);
+            ackMaster();
             break;
 
             // Enable a status on the control panel (mainly a probe setting).
             // The details of the object to enable are specified in the subcommand
             case CMD_ENABLE:
-              commandReturn(CMD_ENABLE);
+              appendResponse(CMD_ENABLE);
               // Search for subcommands
               if (!parseFieldSeparator(cmd.cmdData[++k])) {
-                k = nextCommandSeparator(k);
                 syntaxCheck(COMMAND_MISSINGSEPARATOR);
+                ackMaster();
+                k = nextCommandSeparator(k);
                 break;
               } // Search subcommands
               cmd.subcommand[0] = cmd.cmdData[++k];
@@ -520,10 +529,11 @@ void parser() {
               switch(cmd.subcommand[0]) {
                 // Enable / disable the stethoscope probe control panel settings
                 case S_STETHOSCOPE:
-                  commandReturn(S_STETHOSCOPE);
+                  appendResponse(S_STETHOSCOPE);
                   // Check for subcommand separator
                   if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
+                      ackMaster();
                       k = nextCommandSeparator(k);
                       break;
                   } // check for separator
@@ -531,14 +541,16 @@ void parser() {
                       syntaxCheck(COMMAND_STETHOSCOPE_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
+                  ackMaster();
                   k = nextCommandSeparator(k);
                   break;
                 // Enable / disable the ECG probe control panel settings
                 case S_ECG:
-                  commandReturn(S_ECG);
+                  appendResponse(S_ECG);
                   // Check for subcommand separator
                   if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
+                      ackMaster();
                       k = nextCommandSeparator(k);
                       break;
                   } // check for separator
@@ -546,14 +558,16 @@ void parser() {
                       syntaxCheck(COMMAND_ECG_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
+                  ackMaster();
                   k = nextCommandSeparator(k);
                   break;
                 // Enable / disable the Blood Pressure probe control panel settings
                 case S_PRESSURE:
-                  commandReturn(S_PRESSURE);
+                  appendResponse(S_PRESSURE);
                   // Check for subcommand separator
                   if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
+                      ackMaster();
                       k = nextCommandSeparator(k);
                       break;
                   } // check for separator
@@ -561,14 +575,16 @@ void parser() {
                       syntaxCheck(COMMAND_PRESSURE_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
+                  ackMaster();
                   k = nextCommandSeparator(k);
                   break;
                 // Enable / disable the Body Temperature probe control panel settings
                 case S_BODYTEMP:
-                  commandReturn(S_BODYTEMP);
+                  appendResponse(S_BODYTEMP);
                   // Check for subcommand separator
                   if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
+                      ackMaster();
                       k = nextCommandSeparator(k);
                       break;
                   } // check for separator
@@ -576,14 +592,16 @@ void parser() {
                       syntaxCheck(COMMAND_BODYTEMP_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
+                  ackMaster();
                   k = nextCommandSeparator(k);
                   break;
                 // Enable / disable the Heart Beat probe control panel settings
                 case S_HEARTBEAT:
-                  commandReturn(S_HEARTBEAT);
+                  appendResponse(S_HEARTBEAT);
                   // Check for subcommand separator
                   if (!parseFieldSeparator(cmd.cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
+                      ackMaster();
                       k = nextCommandSeparator(k);
                       break;
                   } // check for separator
@@ -591,23 +609,27 @@ void parser() {
                       syntaxCheck(COMMAND_HEARTBEAT_PARAMERROR);
                   else
                       syntaxCheck(COMMAND_OK);
+                  ackMaster();
                   k = nextCommandSeparator(k);
                   break;
                 // Subcommand unknown
                 default:
                     syntaxCheck(PARSER_SUBCOMMAND_UNKNOWN);
+                    ackMaster();
                     break;
             } // Subcommands for the Enable command
             break;
 
             // Show the global info on the control panel display
             case CMD_INFO:
-              commandReturn(CMD_INFO);
+              appendResponse(CMD_INFO);
+              ackMaster();
             break;
 
             // Executes a test cycle of the control panel
             case CMD_TEST:
-              commandReturn(CMD_TEST);
+              appendResponse(CMD_TEST);
+              ackMaster();
             break;
             
             // If no command is recognised, do nothing
@@ -638,8 +660,6 @@ void parser() {
 int nextCommandSeparator(int startChar) {
   int i = 0;
 
-  debug(DBG_NEXTSEP);
-  
   while (cmd.cmdData[startChar + i] != '\0') {
     if (cmd.cmdData[startChar + i] == CMD_SEPARATOR)
       return startChar + i;
@@ -658,13 +678,7 @@ int nextCommandSeparator(int startChar) {
 int charsToInt(int startChar, int numChars) {
   int res = 0;
 
-  debug(DBG_TOINT);
-
   res = (int)charsToLong(startChar, numChars);
-    
-  #ifdef __DEBUG
-  Serial1 << " res=" << res << endl;
-  #endif
   
   return res;
 }
@@ -691,8 +705,6 @@ String charsToString(int startChar) {
   String temp = "";
   int i = 0;
   bool inString = false;
-  
-  debug(DBG_TOSTRING);
   
   // ========================================== FIRST STRING DELIMITER
   // Search for the first string delimiter
@@ -725,9 +737,6 @@ String charsToString(int startChar) {
       // Check for the end of string
       if(cmd.cmdData[i + startChar] == MAX_CMD_LEN) {
         // Exit with the collected string
-        #ifdef __DEBUG
-        Serial1 << " temp=" << temp << endl;
-        #endif
         return temp;
       } // Reached the end of the command string ?
       else {
@@ -739,9 +748,6 @@ String charsToString(int startChar) {
   } // While inside the string
 
   // Found both delimiters and collected the string.
-  #ifdef __DEBUG
-  Serial1 << " temp=" << temp << endl;
-  #endif
   return temp;
 }
 
@@ -757,16 +763,10 @@ long charsToLong(int startChar, int numChars) {
   long res = 0;
   String extract = "";
 
-  debug(DBG_TOLONG);
-
   for (i = 0; i < numChars; i++)
     extract.concat(cmd.cmdData[i + startChar]);
     
   res = extract.toInt();
-
-  #ifdef __DEBUG
-  Serial1 << " res=" << res << " extract=" << extract << endl;
-  #endif
 
   return res;
 }
@@ -782,17 +782,11 @@ float charsToFloat(int startChar, int numChars) {
   int i;
   float res = 0;
   String extract = "";
-  
-  debug(DBG_TOFLOAT);
 
   for (i = 0; i < numChars; i++)
     extract.concat(cmd.cmdData[i + startChar]);
     
   res = extract.toFloat();
-
-  #ifdef __DEBUG
-  Serial1 << " res=" << res << " extract=" << extract << endl;
-  #endif
 
   return res;
 }
@@ -804,54 +798,117 @@ float charsToFloat(int startChar, int numChars) {
   \return true if test is equal else returns false.
   */
 boolean parseFieldSeparator(char test) {
-    if (test == FIELD_SEPARATOR) {
-        #ifdef __DEBUG
-        Serial1 << "parseFieldSeparator(" << test << ") = TRUE" << endl;
-        #endif
-        return true;
-    }
-    else {
-        #ifdef __DEBUG
-        Serial1 << "parseFieldSeparator(" << test << ") = FALSE" << endl;
-        #endif
-        return false;
-    }
+  if (test == FIELD_SEPARATOR)
+      return true;
+  else
+      return false;
 }
 
 /**
-  \brief Send command return code to the caller master
-  
-  Send the command and the error code to the caller master: is the return
-  cide us OK the command has been exectued.
-  This message is sent back when the first part of the parsing has been completed.
+  \brief Append the error code to the master response message string.
   
   \param errCode the error code from the command
   */
 void syntaxCheck(int errCode) {
-  
-    debug(DBG_SYNTACHECK);
-
-    Serial1 << COMMAND_SEPARATOR << errCode << endl;
+  appendResponse(errCode);
 }
 
 /**
-  \brief Send command or subcommand character to the calling master
+  \brief Append the string to the response message string
   
-  Send back the command or subcommand character to the master in the 
-  format "::command/subcommand"
+  Every new step of the parser that needs to be mentioned to the connected master
+  updates the response string. The string should be sent when the parser exits
+  for any condition.
   
-  This is the first part of the parser generate return string to the master. 
-  When the parser complete the command identification or a syntax error occours, 
-  it is called the syntaxCheck() function with the proper return code and the 
-  endline character.
+  \note The reponse string is NOT verbose as it should be managed faster and efficiently
+  by the master. Every new message parameter added to the response string is separated
+  by a RESPONSE_SEPARATOR character.
   
-  \param commandCode The command/subcommand character code.
+  \param message The response message to be added, usually a single-character elment or an error code
   */
-void commandReturn(char commandCode) {
-  
-    debug(DBG_COMMANDRETURN);
+void appendResponse(String message) {
+  cmd.message.concat(RESPONSE_SEPARATOR);
+  cmd.message.concat(message);
+}
 
-  Serial1 << COMMAND_SEPARATOR << commandCode;
+/**
+  \brief Append the character to the response message string
+  
+  Every new step of the parser that needs to be mentioned to the connected master
+  updates the response string. The string should be sent when the parser exits
+  for any condition.
+  
+  \note The reponse string is NOT verbose as it should be managed faster and efficiently
+  by the master. Every new message parameter added to the response string is separated
+  by a RESPONSE_SEPARATOR character.
+  
+  \param message The response message to be added, usually a single-character elment or an error code
+  */
+void appendResponse(char message) {
+  cmd.message.concat(RESPONSE_SEPARATOR);
+  cmd.message.concat(message);
+}
+
+/**
+  \brief Append the integer to the response message string
+  
+  Every new step of the parser that needs to be mentioned to the connected master
+  updates the response string. The string should be sent when the parser exits
+  for any condition.
+  
+  \note The reponse string is NOT verbose as it should be managed faster and efficiently
+  by the master. Every new message parameter added to the response string is separated
+  by a RESPONSE_SEPARATOR character.
+  
+  \param message The response message to be added, usually a single-character elment or an error code
+  */
+void appendResponse(int message) {
+  cmd.message.concat(RESPONSE_SEPARATOR);
+  cmd.message.concat(message);
+}
+
+/**
+  \brief Append the long integer to the response message string
+  
+  Every new step of the parser that needs to be mentioned to the connected master
+  updates the response string. The string should be sent when the parser exits
+  for any condition.
+  
+  \note The reponse string is NOT verbose as it should be managed faster and efficiently
+  by the master. Every new message parameter added to the response string is separated
+  by a RESPONSE_SEPARATOR character.
+  
+  \param message The response message to be added, usually a single-character elment or an error code
+  */
+void appendResponse(long int message) {
+  cmd.message.concat(RESPONSE_SEPARATOR);
+  cmd.message.concat(message);
+}
+
+/**
+  \brief Append the float to the response message string
+  
+  Every new step of the parser that needs to be mentioned to the connected master
+  updates the response string. The string should be sent when the parser exits
+  for any condition.
+  
+  \note The reponse string is NOT verbose as it should be managed faster and efficiently
+  by the master. Every new message parameter added to the response string is separated
+  by a RESPONSE_SEPARATOR character.
+  
+  \param message The response message to be added, usually a single-character elment or an error code
+  */
+void appendResponse(float message) {
+  cmd.message.concat(RESPONSE_SEPARATOR);
+  cmd.message.concat(message);
+}
+
+/**
+  \brief Acknowledge the master caller when a command parsing has been completed
+  
+  */
+void ackMaster() {
+  Serial1 << cmd.message << endl;
 }
 
 /**
@@ -904,15 +961,9 @@ void strFloat(float val, unsigned int precision) {
 bool setStethoscopeStatus(int startChar) {
   int res = 0;
   String extract = "";
-  
-  debug(DBG_STETHOSCOPE);
 
   extract.concat(cmd.cmdData[startChar]);
   res = extract.toInt();
-
-  #ifdef __DEBUG
-  Serial1 << " res=" << res << endl;
-  #endif
 
   if(res == 0)
     return false;
@@ -930,14 +981,8 @@ bool setECGStatus(int startChar) {
   int res = 0;
   String extract = "";
   
-  debug(DBG_ECG);
-
   extract.concat(cmd.cmdData[startChar]);
   res = extract.toInt();
-
-  #ifdef __DEBUG
-  Serial1 << " res=" << res << endl;
-  #endif
 
   if(res == 0)
     return false;
@@ -955,15 +1000,9 @@ bool setECGStatus(int startChar) {
 bool setPressureStatus(int startChar) {
   int res = 0;
   String extract = "";
-  
-  debug(DBG_PRESSURE);
 
   extract.concat(cmd.cmdData[startChar]);
   res = extract.toInt();
-
-  #ifdef __DEBUG
-  Serial1 << " res=" << res << endl;
-  #endif
 
   if(res == 0)
     return false;
@@ -981,15 +1020,9 @@ bool setPressureStatus(int startChar) {
 bool setBodyTempStatus(int startChar) {
   int res = 0;
   String extract = "";
-  
-  debug(DBG_BODYTEMP);
 
   extract.concat(cmd.cmdData[startChar]);
   res = extract.toInt();
-
-  #ifdef __DEBUG
-  Serial1 << " res=" << res << endl;
-  #endif
 
   if(res == 0)
     return false;
@@ -1011,14 +1044,8 @@ bool setHeartBeatStatus(int startChar) {
   int res = 0;
   String extract = "";
   
-  debug(DBG_HEARTBEAT);
-
   extract.concat(cmd.cmdData[startChar]);
   res = extract.toInt();
-
-  #ifdef __DEBUG
-  Serial1 << " res=" << res << endl;
-  #endif
 
   if(res == 0)
     return false;
