@@ -1,10 +1,6 @@
 /**
   \file LCDStethoscope.cpp
   \brief LCD display template for stethoscope probe
-
-  LCDStethoscope class defines the visualisation template of the LCD screen 
-  output for the Stethoscope probe.
-
   */
 
 #include "LCD.h"
@@ -16,6 +12,8 @@
   Initialises the fields with the static values
   and assign the local LCD class pointer with the calling
   program LCD class global instance.
+  The field name strings are assigned by the parser as far as what is
+  received from the master.
   */
 LCDStethoscope::LCDStethoscope(AlphaLCD myLCD) {
   mLcd = myLCD;
@@ -24,15 +22,12 @@ LCDStethoscope::LCDStethoscope(AlphaLCD myLCD) {
   // Initialise the fields
   lcdFields[STET_TITLE].row = 0;
   lcdFields[STET_TITLE].col = 0;
-  lcdFields[STET_TITLE].val = "Stethoscope";
   
   lcdFields[STET_GAIN].row = 1;
   lcdFields[STET_GAIN].col = 0;
-  lcdFields[STET_GAIN].val = "Gain value";
   
   lcdFields[STET_GAINVAL].row = 1;
   lcdFields[STET_GAINVAL].col = 12;
-  lcdFields[STET_GAINVAL].val = "00";
 }
 
 /**
@@ -55,18 +50,19 @@ void LCDStethoscope::createDisplay() {
   \brief Update the variable content field(s) only
   
   This method should be called every time the field content
-  is updated. It affects only the data content fields. To 
+  of a variable is updated. It affects only the data content fields. To 
   recreate the entire display the createDisplay() method
   should be called.
   When the method is called, the class field value is updated after
-  the proper conversion of the value,
+  the value conversion.
+  
+  \param val The value to update
+  \param field The field ID
   */
-void LCDStethoscope::updateDisplay(int val) {
-    lcdFields[STET_GAINVAL].val = String(val);
-  
-    mLcd.setCursor(lcdFields[STET_GAINVAL].col, lcdFields[STET_GAINVAL].row);
-    mLcd << lcdFields[STET_GAINVAL].val;
-  
-}
+void LCDStethoscope::updateDisplay(int val, int field) {
+  lcdFields[field].val = String(val);
 
+  mLcd.setCursor(lcdFields[field].col, lcdFields[field].row);
+  mLcd << lcdFields[field].val;
+}
 
