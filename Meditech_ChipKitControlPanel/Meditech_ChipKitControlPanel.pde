@@ -400,7 +400,7 @@ void debug(String msg) {
 }
   
 /** 
-  \brief Parses the serial input for contol command
+  \brief Parses the serial input for control command
   
   If the syntax checker doesn't recognize any valid command
   strings are ignored and discharged. Every command is a single-character,
@@ -418,8 +418,6 @@ void parser() {
   int i = 0, k = 0, j = 0, value;
   //! Single-character commands array
   char c[] = { 'E', 'D', 'G', 'I', 'T', 'R', 'P', 'r', '\0' };
-  //! Command object to store the components
-  command cmd;
   
   // Initialises the command data to empty
   cmd.cmdData[0] = '\0';
@@ -437,10 +435,6 @@ void parser() {
   
   // Here we start processing recursively the array until the end.
   while (k < i) {
-    
-    #ifdef __DEBUG
-//    Serial1 << "while ... k=" << k << " i=" << i << endl;
-    #endif
     
     // If a command separator is found, anyway we have already finished processing
     // the command (including eventually an error condition). So the character is
@@ -466,8 +460,8 @@ void parser() {
               k = nextCommandSeparator(k);
               break;
             }
-            // We expect the next paramter is row expressed in 00-nn
-            value = charsToInt(++k, 2);
+            // We expect the next paramter is row expressed in integer format
+            value = charsToInt(++k, PARM_INTEGER_LEN);
             if (value < LCDROWS) {
               syntaxCheck(COMMAND_OK);
               cmd.intValue[0] = value;
@@ -477,15 +471,17 @@ void parser() {
               k = nextCommandSeparator(k);
               break;
             } // Error out of range
+            
+            k += PARM_INTEGER_LEN; // Update the command string pointer
 
             // Syntax checking
-            if (!parseFieldSeparator(cmd.cmdData[++k])) {
+            if (!parseFieldSeparator(cmd.cmdData[k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
               k = nextCommandSeparator(k);
               break;
             }
-            // We expect the next paramter is column expressed in 00-nn
-            value = charsToInt(++k, 2);
+            // We expect the next paramter is column expressed in integer format
+            value = charsToInt(++k, PARM_INTEGER_LEN);
             if (value < LCDCHARS) {
               syntaxCheck(COMMAND_OK);
               cmd.intValue[1] = value;
@@ -495,15 +491,17 @@ void parser() {
               k = nextCommandSeparator(k);
               break;
             } // Error out of range
+            
+            k += PARM_INTEGER_LEN; // Update the command string pointer
 
             // Syntax checking
-            if (!parseFieldSeparator(cmd.cmdData[++k])) {
+            if (!parseFieldSeparator(cmd.cmdData[k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
               k = nextCommandSeparator(k);
               break;
             }
             // We expect the next paramter is the data string
-            cmd.stringValue = charsToString(++k);
+            cmd.stringValue = charsToString(k);
             syntaxCheck(COMMAND_OK);
             break;
 
@@ -658,20 +656,16 @@ int nextCommandSeparator(int startChar) {
   \return The converted interger value
   */
 int charsToInt(int startChar, int numChars) {
-  int i, res = 0;
-  int k;
-  const char * number;
-  
+  int res = 0;
+
   debug(DBG_TOINT);
-  
-  k = numChars - 1;
-  
-  for (i = 0; i < numChars; i++) {
+
+  res = (int)charsToLong(startChar, numChars);
     
-    res += (int)pow((float)10, (float)k) * ( (int)cmd.cmdData[i + startChar] - 32);
-    k--;
-  }
-    
+  #ifdef __DEBUG
+  Serial1 << " res=" << res << endl;
+  #endif
+  
   return res;
 }
 
@@ -731,17 +725,23 @@ String charsToString(int startChar) {
       // Check for the end of string
       if(cmd.cmdData[i + startChar] == MAX_CMD_LEN) {
         // Exit with the collected string
+        #ifdef __DEBUG
+        Serial1 << " temp=" << temp << endl;
+        #endif
         return temp;
       } // Reached the end of the command string ?
       else {
         // Collect the character in the string and move to next
-        temp += cmd.cmdData[i + startChar];
+        temp.concat(cmd.cmdData[i + startChar]);
         i++;
       } // Search to next character
     } // Delimiter not found
   } // While inside the string
 
   // Found both delimiters and collected the string.
+  #ifdef __DEBUG
+  Serial1 << " temp=" << temp << endl;
+  #endif
   return temp;
 }
 
@@ -753,18 +753,22 @@ String charsToString(int startChar) {
   \return The converted long interger value
   */
 long charsToLong(int startChar, int numChars) {
-  char * value_to_convert;
-  String temp;
-  long i;
+  int i;
+  long res = 0;
+  String extract = "";
 
   debug(DBG_TOLONG);
 
   for (i = 0; i < numChars; i++)
-    temp += cmd.cmdData[i + startChar];
+    extract.concat(cmd.cmdData[i + startChar]);
+    
+  res = extract.toInt();
 
-  temp.toCharArray(value_to_convert, i);
-  i = atol(value_to_convert);
-  return i;
+  #ifdef __DEBUG
+  Serial1 << " res=" << res << " extract=" << extract << endl;
+  #endif
+
+  return res;
 }
 
 /**
@@ -775,20 +779,22 @@ long charsToLong(int startChar, int numChars) {
   \return The converted floating value
   */
 float charsToFloat(int startChar, int numChars) {
-  char * value_to_convert;
-  String temp;
   int i;
-  float result;
+  float res = 0;
+  String extract = "";
   
   debug(DBG_TOFLOAT);
 
   for (i = 0; i < numChars; i++)
-    temp += cmd.cmdData[i + startChar];
-  
-  temp.toCharArray(value_to_convert, i);
+    extract.concat(cmd.cmdData[i + startChar]);
+    
+  res = extract.toFloat();
 
-  result = atof(value_to_convert);
-  return result;
+  #ifdef __DEBUG
+  Serial1 << " res=" << res << " extract=" << extract << endl;
+  #endif
+
+  return res;
 }
 
 /**
@@ -896,7 +902,22 @@ void strFloat(float val, unsigned int precision) {
   \todo Implement this function
   */
 bool setStethoscopeStatus(int startChar) {
+  int res = 0;
+  String extract = "";
+  
   debug(DBG_STETHOSCOPE);
+
+  extract.concat(cmd.cmdData[startChar]);
+  res = extract.toInt();
+
+  #ifdef __DEBUG
+  Serial1 << " res=" << res << endl;
+  #endif
+
+  if(res == 0)
+    return false;
+  else
+    return true;
 }
 
 /**
@@ -906,7 +927,22 @@ bool setStethoscopeStatus(int startChar) {
   \todo Implement this function
   */
 bool setECGStatus(int startChar) {
+  int res = 0;
+  String extract = "";
+  
   debug(DBG_ECG);
+
+  extract.concat(cmd.cmdData[startChar]);
+  res = extract.toInt();
+
+  #ifdef __DEBUG
+  Serial1 << " res=" << res << endl;
+  #endif
+
+  if(res == 0)
+    return false;
+  else
+    return true;
 }
 
 /**
@@ -917,7 +953,22 @@ bool setECGStatus(int startChar) {
   \todo Implement this function
   */
 bool setPressureStatus(int startChar) {
+  int res = 0;
+  String extract = "";
+  
   debug(DBG_PRESSURE);
+
+  extract.concat(cmd.cmdData[startChar]);
+  res = extract.toInt();
+
+  #ifdef __DEBUG
+  Serial1 << " res=" << res << endl;
+  #endif
+
+  if(res == 0)
+    return false;
+  else
+    return true;
 }
 
 /**
@@ -928,7 +979,22 @@ bool setPressureStatus(int startChar) {
   \todo Implement this function
   */
 bool setBodyTempStatus(int startChar) {
+  int res = 0;
+  String extract = "";
+  
   debug(DBG_BODYTEMP);
+
+  extract.concat(cmd.cmdData[startChar]);
+  res = extract.toInt();
+
+  #ifdef __DEBUG
+  Serial1 << " res=" << res << endl;
+  #endif
+
+  if(res == 0)
+    return false;
+  else
+    return true;
 }
 
 /**
@@ -942,6 +1008,21 @@ bool setBodyTempStatus(int startChar) {
   \todo Implement this function
   */
 bool setHeartBeatStatus(int startChar) {
+  int res = 0;
+  String extract = "";
+  
   debug(DBG_HEARTBEAT);
+
+  extract.concat(cmd.cmdData[startChar]);
+  res = extract.toInt();
+
+  #ifdef __DEBUG
+  Serial1 << " res=" << res << endl;
+  #endif
+
+  if(res == 0)
+    return false;
+  else
+    return true;
 }
 

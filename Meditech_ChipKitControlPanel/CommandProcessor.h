@@ -41,6 +41,22 @@
 //! String delimiter
 #define STRING_DELIMITER '"'
 
+//! Fixed integers characters lenght.
+//! Should be left zero filled in the form 00000
+#define PARM_INTEGER_LEN 5
+
+//! Fixed long integers characters lenght. 
+//! Should be left zero filled in the form 0000000
+#define PARM_LONGINT_LEN 7
+
+//! Fixed float characters lenght. 
+//! Should be left zero filled in the form 0000000.000
+#define PARM_FLOAT_LEN 11
+
+//! Fixed boolean character lenght. 
+//! Should be left zero filled in the form 0 (or 1)
+#define PARM_BOOL_LEN 1
+
 //! Max number of integer parameters in a command
 #define MAX_INT 2
 //! Max number of long integer parameters in a command
@@ -248,8 +264,8 @@ typedef struct parseCommand {
 //! Disable flag
 #define FLAG_DISABLE 0
 
-//! Command string separator
-#define COMMAND_SEPARATOR "::"
+//! Command string separator used in the commandReturn() method
+#define COMMAND_SEPARATOR ":"
 
 #endif
 

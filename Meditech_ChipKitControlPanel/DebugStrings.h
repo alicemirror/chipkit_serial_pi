@@ -5,7 +5,7 @@
   To disable the strings usage undef the __DEBUG definition
 */
 
-#undef __DEBUG
+#define __DEBUG
 
 #ifdef __DEBUG
 
