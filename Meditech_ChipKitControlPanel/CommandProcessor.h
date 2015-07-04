@@ -73,29 +73,40 @@
   for the further process.
 */
 typedef struct parseCommand {
-    char *toParse;
-    //! char subcommand[1]
-    //! Contains the last parsed subcommand
-    char subcommand[1];
-    //! Command associated message string, used by S_SUBSTRING, CMD_WRITE, CMD_EXEC 
-    char message[CMD_MSGLEN];
-   
-    String stringValue;
-    long longValue[MAX_LONG];
-    int intValue[MAX_INT];
-    float floatValue[MAX_FLOAT];
-    int separator; 
-    /**
-      \brief Unparsed Command String
+  //! char subcommand[1]
+  //! Contains the last parsed subcommand
+  char subcommand[1];
+  //! Command associated message string, used to return messages
+   //! to the master and sending requests. The string should not be
+   //! longer than CMD_MSGLEN
+  String message;
   
-      cmdData is the string after syntax checking.
-      The string can contain one or more commands.
-      When the command string is sent to the parser this value contains
-      the command sequence. When the this string is empy
-      all the commands has been processed and the system is ready to receive
-      a new command.
-    */
-    char cmdData[MAX_CMD_LEN];
+  //! Returning parameter from the command parser
+  String stringValue;
+  //! Returning parameter from the command parser
+  //! The array number of position is the longer number of type parameters
+  //! in a command
+  long longValue[MAX_LONG];
+  //! Returning parameter from the command parser
+  //! The array number of position is the longer number of type parameters
+  //! in a command
+  int intValue[MAX_INT];
+  //! Returning parameter from the command parser
+  //! The array number of position is the longer number of type parameters
+  //! in a command
+  float floatValue[MAX_FLOAT];
+
+  /**
+    \brief Unparsed Command String
+  
+    cmdData is the string after syntax checking.
+    The string can contain one or more commands.
+    When the command string is sent to the parser this value contains
+    the command sequence. When the this string is empy
+    all the commands has been processed and the system is ready to receive
+    a new command.
+  */
+  char cmdData[MAX_CMD_LEN];
 } command;
 
 //! The lenght of CMD_CHARACTERS + 1
