@@ -36,15 +36,6 @@ typedef struct LCDTemplateField {
   String val;    ///< Field content
 } field;
 
-//! Heartbeat frequency template
-#define TID_HEARTBEAT 2
-//! Test cycle template
-#define TID_TEST 3
-//! E.C.G. Template
-#define TID_ECG 4
-//! Control panel status template
-#define TID_INFO 5
-
 //! Microphonic stethoscope template
 #define TID_STETHOSCOPE 0
 #define STETHOSCOPE_FIELDS 3
@@ -63,7 +54,6 @@ class LCDStethoscope {
     AlphaLCD mLcd;
 };
 
-/*
 //! Blood pressure template
 #define TID_BLOODPRESS 1
 #define BLOODPRESS_FIELDS 6
@@ -83,5 +73,131 @@ class LCDBloodPressure {
   private:
     AlphaLCD mLcd;
 };
-*/
+
+//! Heartbeat frequency template
+#define TID_HEARTBEAT 2
+#define HEARTBEAT_FIELDS 5
+#define HEARTBEAT_TITLE 0
+#define HEARTBEAT_SPOT 1
+#define HEARTBEAT_SPOTVAL 2
+#define HEARTBEAT_AVERAGE 3
+#define HEARTBEAT_AVERAGEVAL 4
+
+class LCDHeartBeat {
+  public:
+    LCDHeartBeat(AlphaLCD myLCD);
+    void createDisplay();
+    int id;
+    field lcdFields[HEARTBEAT_FIELDS];
+  private:
+    AlphaLCD mLcd;
+};
+
+//! Temperature frequency template
+#define TID_TEMPERATURE 3
+#define TEMPERATURE_FIELDS 5
+#define TEMPERATURE_TITLE 0
+#define TEMPERATURE_SPOT 1
+#define TEMPERATURE_SPOTVAL 2
+#define TEMPERATURE_AVERAGE 3
+#define TEMPERATURE_AVERAGEVAL 4
+
+class LCDTemperature {
+  public:
+    LCDTemperature(AlphaLCD myLCD);
+    void createDisplay();
+    int id;
+    field lcdFields[TEMPERATURE_FIELDS];
+  private:
+    AlphaLCD mLcd;
+};
+
+//! Temperature frequency template
+#define TID_TEMPERATURE 3
+#define TEMPERATURE_FIELDS 5
+#define TEMPERATURE_TITLE 0
+#define TEMPERATURE_SPOT 1
+#define TEMPERATURE_SPOTVAL 2
+#define TEMPERATURE_AVERAGE 3
+#define TEMPERATURE_AVERAGEVAL 4
+
+class LCDTemperature {
+  public:
+    LCDTemperature(AlphaLCD myLCD);
+    void createDisplay();
+    int id;
+    field lcdFields[TEMPERATURE_FIELDS];
+  private:
+    AlphaLCD mLcd;
+};
+
+//! E.C.G. template
+#define TID_ECG 4
+#define ECG_FIELDS 3
+#define ECG_TITLE 0
+#define ECG_STATUS 1
+#define ECG_STATUSFLAG 2
+
+class LCDecg {
+  public:
+    LCDecg(AlphaLCD myLCD);
+    void createDisplay();
+    int id;
+    field lcdFields[ECG_FIELDS];
+  private:
+    AlphaLCD mLcd;
+};
+
+//! Test cycle template
+#define TID_TEST 5
+#define TEST_FIELDS 2
+#define TEST_TITLE 0
+#define TEST_STATUS 1
+
+class LCDTest {
+  public:
+    LCDTest(AlphaLCD myLCD);
+    void createDisplay();
+    int id;
+    field lcdFields[TEST_FIELDS];
+  private:
+    AlphaLCD mLcd;
+};
+
+//! Control panel status template
+#define TID_INFO 6
+#define INFO_FIELDS 5
+#define INFO_TITLE 0
+#define INFO_RPM 1
+#define INFO_DATE 2
+#define INFO_TIME 3
+#define INFO_GPS 4
+
+class LCDInfo {
+  public:
+    LCDInfo(AlphaLCD myLCD);
+    void createDisplay();
+    int id;
+    field lcdFields[INFO_FIELDS];
+  private:
+    AlphaLCD mLcd;
+};
+
+//! Control panel default template
+#define TID_DEFAULT 6
+#define DEFAULT_FIELDS 3
+#define DEFAULT_TITLE 0
+#define DEFAULT_VERSION 1
+#define DEFAULT_STATUS 2
+
+class LCDDefault {
+  public:
+    LCDDefault(AlphaLCD myLCD);
+    void createDisplay();
+    int id;
+    field lcdFields[DEFAULT_FIELDS];
+  private:
+    AlphaLCD mLcd;
+};
+
 #endif

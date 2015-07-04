@@ -2,9 +2,9 @@
   \file LCDStethoscope.cpp
   \brief LCD display template for stethoscope probe
 
-  Defines the visualisation templates to simplify the LCD screen output in the various
-  conditions for the Stethoscope probe.
-    
+  LCDStethoscope class defines the visualisation template of the LCD screen 
+  output for the Stethoscope probe.
+
   */
 
 #include "LCD.h"
