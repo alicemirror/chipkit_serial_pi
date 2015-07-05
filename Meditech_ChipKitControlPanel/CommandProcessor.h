@@ -112,7 +112,7 @@ typedef struct parseCommand {
 } command;
 
 //! The lenght of CMD_CHARACTERS + 1
-#define CMD_CHARLEN 9
+#define CMD_CHARLEN 10
 
 /**
   \brief command: Enable/disable a probe
@@ -124,6 +124,12 @@ typedef struct parseCommand {
   direction: receive
   example: E;S \n
   Enable the microphonic stethoscope
+  
+  \note The CMD_ENABLE command only activates the setup bit of the current probe, if a probe
+  has asked to enable. If the enable bit is not set the corresponding display layout on the 
+  control panel LCD can't be changed due the probe-dependant settings that the probe-enabled
+  status involves. The right method to display a probe template is to enable it then send a
+  template command to the control panel with the display layout parameters. If not, only the 
   */
 #define CMD_ENABLE 'E'
 
@@ -170,6 +176,20 @@ typedef struct parseCommand {
   \todo Not yet implemented
   */
 #define CMD_GO 'G'
+
+/**
+  \brief command: Create a LCD template layout
+  
+  description: string parameters to generate a template layout with
+  a variable number of parameters, depending on the requested template.
+  name: L \n
+  usage: L;<Template ID>;[[<Field ID>;<Field String>],] \n
+  direction: receive\n
+  
+  \note If the requested layout template is a probe display template the command
+  has effect only if the probe status bit is set to on (current probe active)
+  */
+#define CMD_LCDTEMPLATE 'L'
 
 /**
   \brief command: info

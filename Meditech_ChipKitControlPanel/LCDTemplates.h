@@ -71,6 +71,9 @@ typedef word probeActive;
 //! E.C.G. enabled bit
 #define ECG_ON 0x0010
 
+//! Max number of templates
+#define MAX_TEMPLATES 7
+
 //! Microphonic stethoscope template
 #define TID_STETHOSCOPE 0
 #define STETHOSCOPE_FIELDS 3

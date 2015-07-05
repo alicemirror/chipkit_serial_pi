@@ -417,7 +417,7 @@ void parser() {
   //! parser recursive process.
   int i = 0, k = 0, j = 0, value;
   //! Single-character commands array
-  char c[] = { 'E', 'D', 'G', 'I', 'T', 'R', 'P', 'r', '\0' };
+  char c[] = { 'E', 'D', 'L', 'G', 'I', 'T', 'R', 'P', 'r', '\0' };
   
   // Initialises the command structure
   cmd.cmdData[0] = '\0';
@@ -451,6 +451,80 @@ void parser() {
       if (c[j] == cmd.cmdData[k]) {
         // Found a matching command
         switch(cmd.cmdData[k]) {
+          // Show a LCD template based on the parameters
+          case CMD_LCDTEMPLATE:
+            appendResponse(CMD_DISPLAY);
+            // Syntax checking
+            if (!parseFieldSeparator(cmd.cmdData[++k])) {
+              syntaxCheck(COMMAND_MISSINGSEPARATOR);
+              ackMaster();
+              k = nextCommandSeparator(k);
+              break;
+            }
+            
+            //! The pointer to the selected template (will be assigned further)
+            void *pTemplate;
+            //! The field counter to fill the class fields description
+            int z = 0;
+            //! The max number of fields of the template class
+            int maxFields = 0;
+            
+            // We expect the next paramter is the template ID
+            value = charsToInt(++k, PARM_INTEGER_LEN);
+            // Check if the template ID exceeds the max number of templates
+            if(value > MAX_TEMPLATES) {
+              syntaxCheck(COMMAND_WRONG_TEMPLATE);
+              ackMaster();
+              k = nextCommandSeparator(k);
+              break;
+            } // Error wrong template ID
+            // Create the template class instance
+            switch(value) {
+              case TID_STETHOSCOPE:
+                // Initialise the pointer template to the template class
+                pTemplate = new LCDStethoscope(lcd);
+                maxFields = STETHOSCOPE_FIELDS;
+              break;
+              case TID_BLOODPRESS:
+                // Initialise the pointer template to the template class
+                pTemplate = new LCDBloodPressure(lcd);
+                maxFields = BLOODPRESS_FIELDS;
+              break;
+              case TID_HEARTBEAT:
+                // Initialise the pointer template to the template class
+                pTemplate = new LCDHeartBeat(lcd);
+                maxFields = HEARTBEAT_FIELDS;
+              break;
+              case TID_TEMPERATURE:
+                // Initialise the pointer template to the template class
+                pTemplate = new LCDTemperature(lcd);
+                maxFields = TEMPERATURE_FIELDS;
+              break;
+              case TID_ECG:
+                // Initialise the pointer template to the template class
+                pTemplate = new LCDecg(lcd);
+                maxFields = ECG_FIELDS;
+              break;
+              case TID_TEST:
+                // Initialise the pointer template to the template class
+                pTemplate = new LCDTest(lcd);
+                maxFields = TEST_FIELDS;
+              break;
+              case TID_INFO:
+                // Initialise the pointer template to the template class
+                pTemplate = new LCDInfo(lcd);
+                maxFields = INFO_FIELDS;
+              break;
+              case TID_DEFAULT:
+                // Initialise the pointer template to the template class
+                pTemplate = new LCDDefault(lcd);
+                maxFields = DEFAULT_FIELDS;
+              break;
+            } // Template switch selector based on the ID
+            
+            // Now we start processing the fields an populating the template class
+            
+          
           // Show a string on the display.
           case CMD_DISPLAY:
             appendResponse(CMD_DISPLAY);
