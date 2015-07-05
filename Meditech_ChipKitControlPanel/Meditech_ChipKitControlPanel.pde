@@ -62,9 +62,6 @@ volatile boolean lidStatus;
 //! The update display task id (assigned on setup)
 int updateDispalyTaskID;
 
-//! Stethoscope display template
-LCDStethoscope steth(lcd);
-
 //! Parser command structure
 command cmd;
   
@@ -120,8 +117,6 @@ void setup() {
   // This task updates automatically only the reserved display
   // areas, i.e. the temperature monitor and other information.
   updateDispalyTaskID = createTask(updateDisplay, TASK_UPDATEDISPLAY, TASK_ENABLE, NULL);
-  // Test only !!!
-//  steth.createDisplay();
 }
 
 /** 
@@ -137,9 +132,6 @@ void loop(void) {
 
   // Check if the lid is open
   if(lidStatus == LIDCLOSED) {
-    // Test only !!!
-//    int pValue = analogRead(CALIBRATION_POT);  // Read the pot value
-//    steth.updateDisplay(map(pValue, 0, ANALOGDIVIDER, MINGAIN, MAXGAIN));
     checkSerial();
   }
   else {
@@ -418,6 +410,12 @@ void parser() {
   int i = 0, k = 0, j = 0, value;
   //! Single-character commands array
   char c[] = { 'E', 'D', 'L', 'G', 'I', 'T', 'R', 'P', 'r', '\0' };
+  //! The template class instance
+  LCDTemplates mTemplate(lcd);
+  //! The field counter to fill the class fields description
+  int z = 0;
+  //! The max number of fields of the template class
+  int maxFields = 0;
   
   // Initialises the command structure
   cmd.cmdData[0] = '\0';
@@ -447,10 +445,13 @@ void parser() {
     // Search for a valid command character and when found set the procssing flags.
     // Else generates an error condition. 
     for (j = 0; j < CMD_CHARLEN; j++) {
+      
       // Process the current command character
       if (c[j] == cmd.cmdData[k]) {
+        
         // Found a matching command
         switch(cmd.cmdData[k]) {
+          
           // Show a LCD template based on the parameters
           case CMD_LCDTEMPLATE:
             appendResponse(CMD_DISPLAY);
@@ -460,17 +461,10 @@ void parser() {
               ackMaster();
               k = nextCommandSeparator(k);
               break;
-            }
-            
-            //! The pointer to the selected template (will be assigned further)
-            void *pTemplate;
-            //! The field counter to fill the class fields description
-            int z = 0;
-            //! The max number of fields of the template class
-            int maxFields = 0;
+            } // Check for separator
             
             // We expect the next paramter is the template ID
-            value = charsToInt(++k, PARM_INTEGER_LEN);
+            value = charsToInt(++k, PARM_FIELDID_LEN);
             // Check if the template ID exceeds the max number of templates
             if(value > MAX_TEMPLATES) {
               syntaxCheck(COMMAND_WRONG_TEMPLATE);
@@ -478,52 +472,40 @@ void parser() {
               k = nextCommandSeparator(k);
               break;
             } // Error wrong template ID
-            // Create the template class instance
-            switch(value) {
-              case TID_STETHOSCOPE:
-                // Initialise the pointer template to the template class
-                pTemplate = new LCDStethoscope(lcd);
-                maxFields = STETHOSCOPE_FIELDS;
-              break;
-              case TID_BLOODPRESS:
-                // Initialise the pointer template to the template class
-                pTemplate = new LCDBloodPressure(lcd);
-                maxFields = BLOODPRESS_FIELDS;
-              break;
-              case TID_HEARTBEAT:
-                // Initialise the pointer template to the template class
-                pTemplate = new LCDHeartBeat(lcd);
-                maxFields = HEARTBEAT_FIELDS;
-              break;
-              case TID_TEMPERATURE:
-                // Initialise the pointer template to the template class
-                pTemplate = new LCDTemperature(lcd);
-                maxFields = TEMPERATURE_FIELDS;
-              break;
-              case TID_ECG:
-                // Initialise the pointer template to the template class
-                pTemplate = new LCDecg(lcd);
-                maxFields = ECG_FIELDS;
-              break;
-              case TID_TEST:
-                // Initialise the pointer template to the template class
-                pTemplate = new LCDTest(lcd);
-                maxFields = TEST_FIELDS;
-              break;
-              case TID_INFO:
-                // Initialise the pointer template to the template class
-                pTemplate = new LCDInfo(lcd);
-                maxFields = INFO_FIELDS;
-              break;
-              case TID_DEFAULT:
-                // Initialise the pointer template to the template class
-                pTemplate = new LCDDefault(lcd);
-                maxFields = DEFAULT_FIELDS;
-              break;
-            } // Template switch selector based on the ID
             
-            // Now we start processing the fields an populating the template class
-            
+            // Saves the template ID in the template class
+            // And initalises the display parameters
+            mTemplate.id = value;
+            mTemplate.createDisplay();
+            // Initialises the field counter
+            z = 0;
+            // Move the pointer to the expected start of the field data
+            k++;
+            // Now we start processing the fields populating the template class
+            while(z < maxFields) {
+              // Syntax checking
+              if (!parseFieldSeparator(cmd.cmdData[k])) {
+                syntaxCheck(COMMAND_MISSINGSEPARATOR);
+                ackMaster();
+                k = nextCommandSeparator(k);
+                break;
+              }
+              
+              // We expect the next parameter is the field string
+              cmd.stringValue = charsToString(k);
+              syntaxCheck(COMMAND_OK);
+
+              // Display the message string on LCD
+              mTemplate.updateDisplay(cmd.stringValue, z);
+              
+              // Move the pointer to the next position
+              // including the two separator characters
+              k += (cmd.stringValue.length() + 2);
+              z++; // next field
+  
+            } // While all fields are processes (or exiting on error)
+            ackMaster();
+            break;
           
           // Show a string on the display.
           case CMD_DISPLAY:
@@ -598,9 +580,11 @@ void parser() {
                 k = nextCommandSeparator(k);
                 break;
               } // Search subcommands
+              
               cmd.subcommand[0] = cmd.cmdData[++k];
               // Manage the subcommands parameter
               switch(cmd.subcommand[0]) {
+                
                 // Enable / disable the stethoscope probe control panel settings
                 case S_STETHOSCOPE:
                   appendResponse(S_STETHOSCOPE);
@@ -618,6 +602,7 @@ void parser() {
                   ackMaster();
                   k = nextCommandSeparator(k);
                   break;
+                  
                 // Enable / disable the ECG probe control panel settings
                 case S_ECG:
                   appendResponse(S_ECG);
@@ -652,6 +637,7 @@ void parser() {
                   ackMaster();
                   k = nextCommandSeparator(k);
                   break;
+                  
                 // Enable / disable the Body Temperature probe control panel settings
                 case S_BODYTEMP:
                   appendResponse(S_BODYTEMP);
@@ -669,6 +655,7 @@ void parser() {
                   ackMaster();
                   k = nextCommandSeparator(k);
                   break;
+                  
                 // Enable / disable the Heart Beat probe control panel settings
                 case S_HEARTBEAT:
                   appendResponse(S_HEARTBEAT);

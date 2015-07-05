@@ -26,17 +26,6 @@
 #include "LCD.h"
 
 /**
-  \brief LCD template field type definition
-  
-  Defines a generic LCD display field
-  */
-typedef struct LCDTemplateField {
-  int row;       ///< Field row
-  int col;       ///< Field column
-  String val;    ///< Field content
-} field;
-
-/**
   \brief Defines the active probe bit
   
   The two-bytes word has the corresponding probe bit
@@ -74,6 +63,20 @@ typedef word probeActive;
 //! Max number of templates
 #define MAX_TEMPLATES 7
 
+//! Largest field array. Corresonds to the largest
+//! possible template
+#define MAX_FIELDS 6;
+
+/**
+  \brief LCD template field type definition
+  
+  Defines a generic LCD display field
+  */
+typedef struct LCDTemplateField {
+  int row[6];       ///< Field row
+  int col[6];       ///< Field column
+} field;
+
 //! Microphonic stethoscope template
 #define TID_STETHOSCOPE 0
 #define STETHOSCOPE_FIELDS 3
@@ -81,18 +84,7 @@ typedef word probeActive;
 #define STET_GAIN 1
 #define STET_GAINVAL 2
 
-class LCDStethoscope {
-  public:
-    LCDStethoscope(AlphaLCD myLCD);
-    void createDisplay();
-    void updateDisplay(int val, int field);
-    int id;
-    field lcdFields[STETHOSCOPE_FIELDS];
-  private:
-    AlphaLCD mLcd;
-};
-
-//! Blood pressure template
+//! Blood pressure template parameters
 #define TID_BLOODPRESS 1
 #define BLOODPRESS_FIELDS 6
 #define BLOOD_TITLE 0
@@ -101,17 +93,6 @@ class LCDStethoscope {
 #define BLOOD_MINVAL 3
 #define BLOOD_MAX 4
 #define BLOOD_MAXVAL 5
-
-class LCDBloodPressure {
-  public:
-    LCDBloodPressure(AlphaLCD myLCD);
-    void createDisplay();
-    void updateDisplay(int val, int field);
-    int id;
-    field lcdFields[BLOODPRESS_FIELDS];
-  private:
-    AlphaLCD mLcd;
-};
 
 //! Heartbeat frequency template
 #define TID_HEARTBEAT 2
@@ -122,17 +103,6 @@ class LCDBloodPressure {
 #define HEARTBEAT_AVERAGE 3
 #define HEARTBEAT_AVERAGEVAL 4
 
-class LCDHeartBeat {
-  public:
-    LCDHeartBeat(AlphaLCD myLCD);
-    void createDisplay();
-    int id;
-    field lcdFields[HEARTBEAT_FIELDS];
-    void updateDisplay(int val, int field);
-  private:
-    AlphaLCD mLcd;
-};
-
 //! Temperature frequency template
 #define TID_TEMPERATURE 3
 #define TEMPERATURE_FIELDS 5
@@ -142,17 +112,6 @@ class LCDHeartBeat {
 #define TEMPERATURE_AVERAGE 3
 #define TEMPERATURE_AVERAGEVAL 4
 
-class LCDTemperature {
-  public:
-    LCDTemperature(AlphaLCD myLCD);
-    void createDisplay();
-    void updateDisplay(int val, int field);
-    int id;
-    field lcdFields[TEMPERATURE_FIELDS];
-  private:
-    AlphaLCD mLcd;
-};
-
 //! Control panel E.C.G. template
 #define TID_ECG 4
 #define ECG_FIELDS 3
@@ -160,32 +119,11 @@ class LCDTemperature {
 #define ECG_STATUS 1
 #define ECG_STATUSFLAG 2
 
-class LCDecg {
-  public:
-    LCDecg(AlphaLCD myLCD);
-    void createDisplay();
-    void updateDisplay(int val, int field);
-    int id;
-    field lcdFields[ECG_FIELDS];
-  private:
-    AlphaLCD mLcd;
-};
-
 //! Control panel test cycle template
 #define TID_TEST 5
 #define TEST_FIELDS 2
 #define TEST_TITLE 0
 #define TEST_STATUS 1
-
-class LCDTest {
-  public:
-    LCDTest(AlphaLCD myLCD);
-    void createDisplay();
-    int id;
-    field lcdFields[TEST_FIELDS];
-  private:
-    AlphaLCD mLcd;
-};
 
 //! Control panel info template
 #define TID_INFO 6
@@ -196,16 +134,6 @@ class LCDTest {
 #define INFO_TIME 3
 #define INFO_GPS 4
 
-class LCDInfo {
-  public:
-    LCDInfo(AlphaLCD myLCD);
-    void createDisplay();
-    int id;
-    field lcdFields[INFO_FIELDS];
-  private:
-    AlphaLCD mLcd;
-};
-
 //! Control panel default template
 #define TID_DEFAULT 7
 #define DEFAULT_FIELDS 3
@@ -213,12 +141,13 @@ class LCDInfo {
 #define DEFAULT_VERSION 1
 #define DEFAULT_STATUS 2
 
-class LCDDefault {
+class LCDTemplates {
   public:
-    LCDDefault(AlphaLCD myLCD);
+    LCDTemplates(AlphaLCD myLCD);
     void createDisplay();
+    void updateDisplay(String val, int fieldID);
     int id;
-    field lcdFields[DEFAULT_FIELDS];
+    LCDTemplateField fields;
   private:
     AlphaLCD mLcd;
 };

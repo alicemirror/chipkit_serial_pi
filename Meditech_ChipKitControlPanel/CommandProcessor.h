@@ -41,6 +41,10 @@
 //! String delimiter
 #define STRING_DELIMITER '"'
 
+//! Fixed field ID characters lenght.
+//! Should be left zero filled in the form 00
+#define PARM_FIELDID_LEN 2
+
 //! Fixed integers characters lenght.
 //! Should be left zero filled in the form 00000
 #define PARM_INTEGER_LEN 5
