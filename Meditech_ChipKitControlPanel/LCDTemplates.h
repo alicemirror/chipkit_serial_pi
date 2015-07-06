@@ -144,8 +144,9 @@ typedef struct LCDTemplateField {
 class LCDTemplates {
   public:
     LCDTemplates(AlphaLCD myLCD);
-    void createDisplay();
+    int createDisplay();
     void updateDisplay(String val, int fieldID);
+    void cleanDisplay();
     int id;
     LCDTemplateField fields;
   private:

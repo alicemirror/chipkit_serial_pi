@@ -85,34 +85,27 @@ typedef struct parseCommand {
    //! longer than CMD_MSGLEN
   String message;
   
+  //! The number of characters collected by the last lines read buffer
+  //! from serial
+  int commandLength;
+  
   //! Returning parameter from the command parser
   String stringValue;
   //! Returning parameter from the command parser
   //! The array number of position is the longer number of type parameters
   //! in a command
-  long longValue[MAX_LONG];
+  long longValue[2];
   //! Returning parameter from the command parser
   //! The array number of position is the longer number of type parameters
   //! in a command
-  int intValue[MAX_INT];
+  int intValue[2];
   //! Returning parameter from the command parser
   //! The array number of position is the longer number of type parameters
   //! in a command
-  float floatValue[MAX_FLOAT];
+  float floatValue[2];
   //! Returning parameter from the command parser
   float booleanValue;
 
-  /**
-    \brief Unparsed Command String
-  
-    cmdData is the string after syntax checking.
-    The string can contain one or more commands.
-    When the command string is sent to the parser this value contains
-    the command sequence. When the this string is empy
-    all the commands has been processed and the system is ready to receive
-    a new command.
-  */
-  char cmdData[MAX_CMD_LEN];
 } command;
 
 //! The lenght of CMD_CHARACTERS + 1
@@ -187,7 +180,7 @@ typedef struct parseCommand {
   description: string parameters to generate a template layout with
   a variable number of parameters, depending on the requested template.
   name: L \n
-  usage: L;<Template ID>;[[<Field ID>;<Field String>],] \n
+  usage: L;<Template ID>;[[;<Field String>];] \n
   direction: receive\n
   
   \note If the requested layout template is a probe display template the command

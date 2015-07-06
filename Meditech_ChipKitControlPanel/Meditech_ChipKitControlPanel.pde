@@ -18,7 +18,7 @@
   by timer interrupts while the other functions will run in background via the board Task Manager. The use of
   these two strategies makes the loop() method more simple and the entire system is more efficient.
   
-  \license This code is distributed under the Apache license
+  \warning This code is distributed under the Apache license
   These sources has been developed under the mpide application, adapted for the
   ChipKit PI board.\n
   This application is part of the Meditech project, created by Enrico Miglino for
@@ -64,6 +64,18 @@ int updateDispalyTaskID;
 
 //! Parser command structure
 command cmd;
+
+  /**
+    \brief Unparsed Command String
+  
+    cmdData is the string after syntax checking.
+    The string can contain one or more commands.
+    When the command string is sent to the parser this value contains
+    the command sequence. When the this string is empy
+    all the commands has been processed and the system is ready to receive
+    a new command.
+  */
+  static char cmdData[MAX_CMD_LEN];
   
 /** 
   \brief Initialisation method
@@ -155,14 +167,19 @@ void updateDisplay(int id, void * tptr) {
   
   When data are detected on the serial buffer the parser function is 
   launched to process the command.
-  
   */
 void checkSerial() {
-
-  if(Serial1.available()) {
-    parser();
+  int nChar;
+  
+  cmd.commandLength = readline(Serial1.read(), cmdData, MAX_CMD_LEN);
+  
+  // If the line ends the program launch the parser.
+  if (cmd.commandLength > 0) {
+    #ifdef __DEBUG
+    Serial1 << "Received: >" << cmdData << "<" << endl;
+    #endif
+    parser(); // parse the command
   }
-
 }
 
 /**
@@ -390,6 +407,37 @@ void debug(String msg) {
   Serial1 << DEBG_PREFIX << "> " << msg << endl;
 #endif
 }
+
+/**
+  \brief Read a full line buffer from serial
+  
+  \parm readch The character read from serial
+  \param buffer The char buffer pointer
+  \param len the las position read in the buffer
+  \return -1 of the number of read characers on the line (if the line ends)
+  */
+int readline(int readch, char *buffer, int len) {
+  static int pos = 0;
+  int rpos;
+
+  if (readch > 0) {
+    switch (readch) {
+      case '\n': // Ignore new-lines
+        break;
+      case '\r': // Return on CR
+        rpos = pos;
+        pos = 0;  // Reset position index ready for next time
+        return rpos;
+      default:
+        if (pos < len-1) {
+          buffer[pos++] = readch;
+          buffer[pos] = 0;
+        }
+    }
+  }
+  // No end of line has been found, so return -1.
+  return -1;
+}
   
 /** 
   \brief Parses the serial input for control command
@@ -418,18 +466,19 @@ void parser() {
   int maxFields = 0;
   
   // Initialises the command structure
-  cmd.cmdData[0] = '\0';
+//  cmdData[0] = '\0';
   cmd.message = "";
 
   // Load the command string coming from serial in the character array
-  while (Serial1.available() > 0)
-      cmd.cmdData[i++] = (char)Serial1.read();
+//  while (Serial1.available() > 0)
+//      cmdData[i++] = (char)Serial1.read();
   
   // Add the closing command character
-  cmd.cmdData[i++] = CMD_SEPARATOR;
-  cmd.cmdData[i] = '\0';
+  cmdData[cmd.commandLength] = CMD_SEPARATOR;
+//  cmdData[i] = '\0';
   
-  debug(cmd.cmdData);
+  i = cmd.commandLength + 1;
+  debug(cmdData);
   
   // Here we start processing recursively the array until the end.
   while (k < i) {
@@ -439,24 +488,23 @@ void parser() {
     // skipped until a new command start is not found.
     // Using this strategy it is possible to include between two commands or anywhere
     // outside a valid sequence any kind of comment.
-    if (cmd.cmdData[k] == CMD_SEPARATOR)
+    if (cmdData[k] == CMD_SEPARATOR)
       k++;
 
-    // Search for a valid command character and when found set the procssing flags.
+    // Search for a valid command character and when found set the processing flags.
     // Else generates an error condition. 
     for (j = 0; j < CMD_CHARLEN; j++) {
       
       // Process the current command character
-      if (c[j] == cmd.cmdData[k]) {
+      if (c[j] == cmdData[k]) {
         
         // Found a matching command
-        switch(cmd.cmdData[k]) {
-          
+        switch(cmdData[k]) {
           // Show a LCD template based on the parameters
           case CMD_LCDTEMPLATE:
-            appendResponse(CMD_DISPLAY);
+            appendResponse(CMD_LCDTEMPLATE);
             // Syntax checking
-            if (!parseFieldSeparator(cmd.cmdData[++k])) {
+            if (!isFieldSeparator(cmdData[++k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
               ackMaster();
               k = nextCommandSeparator(k);
@@ -476,42 +524,66 @@ void parser() {
             // Saves the template ID in the template class
             // And initalises the display parameters
             mTemplate.id = value;
-            mTemplate.createDisplay();
+            maxFields = mTemplate.createDisplay();
             // Initialises the field counter
             z = 0;
-            // Move the pointer to the expected start of the field data
-            k++;
+
+            // Update the command string pointer to the next separator
+            k = nextFieldSeparator(k); 
+
+            #ifdef __DEBUG
+            Serial1 << "maxFields=" << maxFields << " k=" << k << endl;
+            #endif
+            
+            // Clear the display before showing another template
+            mTemplate.cleanDisplay();
+            
             // Now we start processing the fields populating the template class
             while(z < maxFields) {
+              bool stopLoop = false;
+
+              #ifdef __DEBUG
+              Serial1 << "z=" << z << endl;
+              #endif
+
               // Syntax checking
-              if (!parseFieldSeparator(cmd.cmdData[k])) {
+              if (!isFieldSeparator(cmdData[k])) {
                 syntaxCheck(COMMAND_MISSINGSEPARATOR);
-                ackMaster();
                 k = nextCommandSeparator(k);
-                break;
+                z = maxFields; // force the exit conditions
+                stopLoop = true;
               }
               
-              // We expect the next parameter is the field string
-              cmd.stringValue = charsToString(k);
-              syntaxCheck(COMMAND_OK);
-
-              // Display the message string on LCD
-              mTemplate.updateDisplay(cmd.stringValue, z);
-              
-              // Move the pointer to the next position
-              // including the two separator characters
-              k += (cmd.stringValue.length() + 2);
-              z++; // next field
+              // Start processing the strings only if the stop loop condition
+              // is false (no error)
+              if(!stopLoop) {
+                // We expect the next parameter is the field string
+                cmd.stringValue = charsToString(k);
+                syntaxCheck(COMMAND_OK);
+                
+                #ifdef __DEBUG
+                Serial1 << "Template string " << cmd.stringValue << endl;
+                #endif
   
+                // Display the message string on LCD
+                mTemplate.updateDisplay(cmd.stringValue, z);
+                
+                // Update the command string pointer to the next separator
+                // We start from the character point immediately after the 
+                // previous field separator found in the loop
+                k = nextFieldSeparator(k+1); 
+
+                z++; // next field
+              } // If stop loop is not set
             } // While all fields are processes (or exiting on error)
             ackMaster();
             break;
-          
+
           // Show a string on the display.
           case CMD_DISPLAY:
             appendResponse(CMD_DISPLAY);
             // Syntax checking
-            if (!parseFieldSeparator(cmd.cmdData[++k])) {
+            if (!isFieldSeparator(cmdData[++k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
               ackMaster();
               k = nextCommandSeparator(k);
@@ -530,10 +602,11 @@ void parser() {
               break;
             } // Error out of range
             
-            k += PARM_INTEGER_LEN; // Update the command string pointer
+            // Update the command string pointer to the next separator
+            k = nextFieldSeparator(k); 
 
             // Syntax checking
-            if (!parseFieldSeparator(cmd.cmdData[k])) {
+            if (!isFieldSeparator(cmdData[k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
               ackMaster();
               k = nextCommandSeparator(k);
@@ -552,10 +625,11 @@ void parser() {
               break;
             } // Error out of range
             
-            k += PARM_INTEGER_LEN; // Update the command string pointer
+            // Update the command string pointer to the next separator
+            k = nextFieldSeparator(k); 
 
             // Syntax checking
-            if (!parseFieldSeparator(cmd.cmdData[k])) {
+            if (!isFieldSeparator(cmdData[k])) {
               syntaxCheck(COMMAND_MISSINGSEPARATOR);
               ackMaster();
               k = nextCommandSeparator(k);
@@ -574,14 +648,14 @@ void parser() {
             case CMD_ENABLE:
               appendResponse(CMD_ENABLE);
               // Search for subcommands
-              if (!parseFieldSeparator(cmd.cmdData[++k])) {
+              if (!isFieldSeparator(cmdData[++k])) {
                 syntaxCheck(COMMAND_MISSINGSEPARATOR);
                 ackMaster();
                 k = nextCommandSeparator(k);
                 break;
               } // Search subcommands
               
-              cmd.subcommand[0] = cmd.cmdData[++k];
+              cmd.subcommand[0] = cmdData[++k];
               // Manage the subcommands parameter
               switch(cmd.subcommand[0]) {
                 
@@ -589,7 +663,7 @@ void parser() {
                 case S_STETHOSCOPE:
                   appendResponse(S_STETHOSCOPE);
                   // Check for subcommand separator
-                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
+                  if (!isFieldSeparator(cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
                       ackMaster();
                       k = nextCommandSeparator(k);
@@ -607,7 +681,7 @@ void parser() {
                 case S_ECG:
                   appendResponse(S_ECG);
                   // Check for subcommand separator
-                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
+                  if (!isFieldSeparator(cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
                       ackMaster();
                       k = nextCommandSeparator(k);
@@ -624,7 +698,7 @@ void parser() {
                 case S_PRESSURE:
                   appendResponse(S_PRESSURE);
                   // Check for subcommand separator
-                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
+                  if (!isFieldSeparator(cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
                       ackMaster();
                       k = nextCommandSeparator(k);
@@ -642,7 +716,7 @@ void parser() {
                 case S_BODYTEMP:
                   appendResponse(S_BODYTEMP);
                   // Check for subcommand separator
-                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
+                  if (!isFieldSeparator(cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
                       ackMaster();
                       k = nextCommandSeparator(k);
@@ -660,7 +734,7 @@ void parser() {
                 case S_HEARTBEAT:
                   appendResponse(S_HEARTBEAT);
                   // Check for subcommand separator
-                  if (!parseFieldSeparator(cmd.cmdData[++k])) {
+                  if (!isFieldSeparator(cmdData[++k])) {
                       syntaxCheck(COMMAND_MISSINGSEPARATOR);
                       ackMaster();
                       k = nextCommandSeparator(k);
@@ -721,8 +795,39 @@ void parser() {
 int nextCommandSeparator(int startChar) {
   int i = 0;
 
-  while (cmd.cmdData[startChar + i] != '\0') {
-    if (cmd.cmdData[startChar + i] == CMD_SEPARATOR)
+  while (cmdData[startChar + i] != '\0') {
+    if (cmdData[startChar + i] == CMD_SEPARATOR)
+      return startChar + i;
+    i++;
+  }
+  return i;
+}
+
+/**
+  \brief Search the position for next field separator starting from a position
+  
+  This function is used to find the first next field separator starting from the
+  specified position. It should be used instead of the isFieldSeparator() boolean
+  check when the last processed field has a variable length (i.e. strings)
+  
+  \note The use of this function may generate errors so it is best practice after
+  a value is returned to check it in the calling program with isFieldSeparator()
+  function.
+  
+  \param startChar initial character in the command string
+  \return the position of the first command separator (if any) 
+  or the last reached position (end of string)
+  */
+int nextFieldSeparator(int startChar) {
+  int i = 0;
+
+  while (cmdData[startChar + i] != '\0') {
+    
+    #ifdef __DEBUG
+    Serial1 << "nextFieldSeparator(" << startChar << ") i = " << i << " char = " << cmdData[startChar + i] << endl;
+    #endif
+    
+    if (cmdData[startChar + i] == FIELD_SEPARATOR)
       return startChar + i;
     i++;
   }
@@ -771,13 +876,13 @@ String charsToString(int startChar) {
   // Search for the first string delimiter
   while(!inString) {
     // Check if the current char points to the first string delimiter
-    if(cmd.cmdData[i + startChar] == STRING_DELIMITER) {
+    if(cmdData[i + startChar] == STRING_DELIMITER) {
       i++;
       inString = true;
     } // String delimieter found ?
     else {
       // Check for the end of string
-      if(cmd.cmdData[i + startChar] == MAX_CMD_LEN) {
+      if(cmdData[i + startChar] == MAX_CMD_LEN) {
         // Exit with an empty string
         return "";
       } // Reached the end of the command string ?
@@ -791,18 +896,18 @@ String charsToString(int startChar) {
   // Collect the string characters
   while(inString) {
     // Check if the current char points to the first string delimiter
-    if(cmd.cmdData[i + startChar] == STRING_DELIMITER) {
+    if(cmdData[i + startChar] == STRING_DELIMITER) {
       inString = false;
     } // String delimieter found ?
     else {
       // Check for the end of string
-      if(cmd.cmdData[i + startChar] == MAX_CMD_LEN) {
+      if(cmdData[i + startChar] == MAX_CMD_LEN) {
         // Exit with the collected string
         return temp;
       } // Reached the end of the command string ?
       else {
         // Collect the character in the string and move to next
-        temp.concat(cmd.cmdData[i + startChar]);
+        temp.concat(cmdData[i + startChar]);
         i++;
       } // Search to next character
     } // Delimiter not found
@@ -825,7 +930,7 @@ long charsToLong(int startChar, int numChars) {
   String extract = "";
 
   for (i = 0; i < numChars; i++)
-    extract.concat(cmd.cmdData[i + startChar]);
+    extract.concat(cmdData[i + startChar]);
     
   res = extract.toInt();
 
@@ -845,7 +950,7 @@ float charsToFloat(int startChar, int numChars) {
   String extract = "";
 
   for (i = 0; i < numChars; i++)
-    extract.concat(cmd.cmdData[i + startChar]);
+    extract.concat(cmdData[i + startChar]);
     
   res = extract.toFloat();
 
@@ -858,7 +963,12 @@ float charsToFloat(int startChar, int numChars) {
   \param test the character to test
   \return true if test is equal else returns false.
   */
-boolean parseFieldSeparator(char test) {
+boolean isFieldSeparator(char test) {
+  
+  #ifdef __DEBUG
+  Serial1 << "Field separator=" << test << endl;
+  #endif
+  
   if (test == FIELD_SEPARATOR)
       return true;
   else
@@ -1023,7 +1133,7 @@ bool setStethoscopeStatus(int startChar) {
   int res = 0;
   String extract = "";
 
-  extract.concat(cmd.cmdData[startChar]);
+  extract.concat(cmdData[startChar]);
   res = extract.toInt();
 
   if(res == 0)
@@ -1042,7 +1152,7 @@ bool setECGStatus(int startChar) {
   int res = 0;
   String extract = "";
   
-  extract.concat(cmd.cmdData[startChar]);
+  extract.concat(cmdData[startChar]);
   res = extract.toInt();
 
   if(res == 0)
@@ -1062,7 +1172,7 @@ bool setPressureStatus(int startChar) {
   int res = 0;
   String extract = "";
 
-  extract.concat(cmd.cmdData[startChar]);
+  extract.concat(cmdData[startChar]);
   res = extract.toInt();
 
   if(res == 0)
@@ -1082,7 +1192,7 @@ bool setBodyTempStatus(int startChar) {
   int res = 0;
   String extract = "";
 
-  extract.concat(cmd.cmdData[startChar]);
+  extract.concat(cmdData[startChar]);
   res = extract.toInt();
 
   if(res == 0)
@@ -1105,7 +1215,7 @@ bool setHeartBeatStatus(int startChar) {
   int res = 0;
   String extract = "";
   
-  extract.concat(cmd.cmdData[startChar]);
+  extract.concat(cmdData[startChar]);
   res = extract.toInt();
 
   if(res == 0)
