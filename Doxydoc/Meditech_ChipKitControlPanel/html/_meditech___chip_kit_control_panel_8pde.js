@@ -1,0 +1,27 @@
+var _meditech___chip_kit_control_panel_8pde =
+[
+    [ "checkSerial", "_meditech___chip_kit_control_panel_8pde.html#a318afc268cf08e16ff1e53698727ec77", null ],
+    [ "debug", "_meditech___chip_kit_control_panel_8pde.html#ad5b3677e61ca769d9d9e5cf9cfa1b33c", null ],
+    [ "error", "_meditech___chip_kit_control_panel_8pde.html#a5abae2c246607db092b33a647206b932", null ],
+    [ "error", "_meditech___chip_kit_control_panel_8pde.html#a6cce144e7c040f9016e8bd1be2a412c5", null ],
+    [ "fanSpeedRegulation", "_meditech___chip_kit_control_panel_8pde.html#a16768141866f1d78608528f2867aeab4", null ],
+    [ "isLidStatusChanged", "_meditech___chip_kit_control_panel_8pde.html#a9cb6bd9c7a705cdd913780d7adef7bb4", null ],
+    [ "lcd", "_meditech___chip_kit_control_panel_8pde.html#ae0b100905fb0ed88dddaafda0aa05379", null ],
+    [ "loop", "_meditech___chip_kit_control_panel_8pde.html#a0b33edabd7f1c4e4a0bf32c67269be2f", null ],
+    [ "message", "_meditech___chip_kit_control_panel_8pde.html#a6144e628c9b27d96d525aac6746e6461", null ],
+    [ "message", "_meditech___chip_kit_control_panel_8pde.html#ae1956b5b6310b3339e72931911b84e3f", null ],
+    [ "setFanSpeed", "_meditech___chip_kit_control_panel_8pde.html#ac0f1975168c58bd48fc29f8e3004a5a8", null ],
+    [ "setFanSpeed", "_meditech___chip_kit_control_panel_8pde.html#aac6d40e9f46456f3b2d16f2fe64004cc", null ],
+    [ "setup", "_meditech___chip_kit_control_panel_8pde.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
+    [ "showTemp", "_meditech___chip_kit_control_panel_8pde.html#a89c0a8283a410b693ebef39173a8f493", null ],
+    [ "tempMonitor", "_meditech___chip_kit_control_panel_8pde.html#a3428cc5f679f463cc86ff3d48874eedc", null ],
+    [ "testFanSpeed", "_meditech___chip_kit_control_panel_8pde.html#a697689ffa626676db9a1abb5e6662762", null ],
+    [ "testStatusLED", "_meditech___chip_kit_control_panel_8pde.html#af1a6bbf84a5ea76623bdc49aaf642a28", null ],
+    [ "updateDisplay", "_meditech___chip_kit_control_panel_8pde.html#a5a7516a22f178c51ec37c6c8167aaf70", null ],
+    [ "welcome", "_meditech___chip_kit_control_panel_8pde.html#a236e454e493fc9b262f746305660a2eb", null ],
+    [ "internalTemp", "_meditech___chip_kit_control_panel_8pde.html#adcfca3504612462229db71750def77f9", null ],
+    [ "lidStatus", "_meditech___chip_kit_control_panel_8pde.html#adea51712174a5f82a31231a67e0d4608", null ],
+    [ "pValue", "_meditech___chip_kit_control_panel_8pde.html#a3134d7e85042180eb421c3f6ee88d3b3", null ],
+    [ "steth", "_meditech___chip_kit_control_panel_8pde.html#ac2215fe61cf27d0fc83fa54cf1db73fc", null ],
+    [ "updateDispalyTaskID", "_meditech___chip_kit_control_panel_8pde.html#a527a89c41abb1d8660b53f5e727e655c", null ]
+];
