@@ -1,7 +1,0 @@
-To simplify the display of the different conditions a set of predefined templates are defined so it is sufficient to send the I\-Ds and relative strings to create the needed visualisation.
-
-This mechanism will also reduce the code size of the program.\par
- Every template has a symbolic I\-D and is built by a simple structure where every string to be shown has its own row and columns. Then a single recursive method can be used to generate the visualisation The templates are though as static objects leaving the space, where needed, for the variable data; in this case the template defines only the position on the display but does not define the content.\par
- Tas the template is an abstraction of the visualisation the strings are not defined statically\-:\par
-{\bfseries  the template is filled at runtime}\par
- Every template is an array of a set of basic {\bfseries fields} defining the parameters where a certain value should be shown. 
