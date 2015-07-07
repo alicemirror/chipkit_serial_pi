@@ -33,7 +33,7 @@ int LCDTemplates::createDisplay() {
       fields.row[STET_GAIN] = 1;
       fields.col[STET_GAIN] = 0;
       fields.row[STET_GAINVAL] = 1;
-      fields.col[STET_GAINVAL] = 12;
+      fields.col[STET_GAINVAL] = 6;
       numFields = STETHOSCOPE_FIELDS;
     break;
     case TID_BLOODPRESS:
@@ -44,11 +44,11 @@ int LCDTemplates::createDisplay() {
       fields.row[BLOOD_MIN] = 1;
       fields.col[BLOOD_MIN] = 0;
       fields.row[BLOOD_MINVAL] = 1;
-      fields.col[BLOOD_MINVAL] = 3;
+      fields.col[BLOOD_MINVAL] = 4;
       fields.row[BLOOD_MAX] = 1;
-      fields.col[BLOOD_MAX] = 7;
+      fields.col[BLOOD_MAX] = 9;
       fields.row[BLOOD_MAXVAL] = 1;
-      fields.col[BLOOD_MAXVAL] = 9;
+      fields.col[BLOOD_MAXVAL] = 11;
       numFields = BLOODPRESS_FIELDS;
     break;
     case TID_HEARTBEAT:
@@ -72,9 +72,9 @@ int LCDTemplates::createDisplay() {
       fields.row[TEMPERATURE_SPOTVAL] = 1;
       fields.col[TEMPERATURE_SPOTVAL] = 5;
       fields.row[TEMPERATURE_AVERAGE] = 1;
-      fields.col[TEMPERATURE_AVERAGE] = 10;
+      fields.col[TEMPERATURE_AVERAGE] = 11;
       fields.row[TEMPERATURE_AVERAGEVAL] = 1;
-      fields.col[TEMPERATURE_AVERAGEVAL] = 15;
+      fields.col[TEMPERATURE_AVERAGEVAL] = 16;
       numFields = TEMPERATURE_FIELDS;
     break;
     case TID_ECG:
