@@ -46,7 +46,7 @@ int LCDTemplates::createDisplay() {
       fields.row[BLOOD_MINVAL] = 1;
       fields.col[BLOOD_MINVAL] = 4;
       fields.row[BLOOD_MAX] = 1;
-      fields.col[BLOOD_MAX] = 9;
+      fields.col[BLOOD_MAX] = 8;
       fields.row[BLOOD_MAXVAL] = 1;
       fields.col[BLOOD_MAXVAL] = 11;
       numFields = BLOODPRESS_FIELDS;
