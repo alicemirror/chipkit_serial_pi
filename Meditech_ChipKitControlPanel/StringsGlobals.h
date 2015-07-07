@@ -8,8 +8,8 @@
  
  */
 
-#ifndef Strings_h_
-#define Strings_h_
+#ifndef StringsGlobals_h_
+#define StringsGlobals_h_
 
 #include "Version.h"
 

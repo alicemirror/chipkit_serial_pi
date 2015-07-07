@@ -8,12 +8,16 @@
   the serial connection.
   */
 
-//! The max len of an unparsed command string
-#define MAX_CMD_LEN 160
+#include <PString.h>
+#include "ParserErrors.h"
 
+#ifndef __COMMANDPROCESSOR_H__
+#define __COMMANDPROCESSOR_H__
+
+//! The max len of an unparsed command string
+#define MAX_CMD_LEN 1024
 //! The max len of the message command string
 #define CMD_MSGLEN 20
-
 //! The max len of a header/menu string
 #define CMD_HEADERLEN 14
 
@@ -40,8 +44,13 @@
 //! String delimiter
 #define STRING_DELIMITER '"'
 
-#ifndef COMMAND_STRUCT
-#define COMMAND_STRUCT
+//! Max number of integer parameters in a command
+#define MAX_INT 2
+//! Max number of long integer parameters in a command
+#define MAX_LONG 2
+//! Max number of float parameters in a command
+#define MAX_FLOAT 2
+
 /** 
   \typedef command
   \brief Command Structure
@@ -50,19 +59,18 @@
   When the syntax checker of the parser decode a command the structure is filled
   for the further process.
 */
-typedef struct parseCommand
-{
+typedef struct parseCommand {
     //! char subcommand[1]
     //! Contains the last parsed subcommand
     char subcommand[1];
     //! Command associated message string, used by S_SUBSTRING, CMD_WRITE, CMD_EXEC 
-    char message[CMD_MSGLEN]; 
-    
-    long longValue;     ///< Generic long parameter
-    int intValue;       ///< Generic integer parameter
-    float floatValue;   ///< Generic float parameter
-    int separator;      ///< Separator character
-
+    char message[CMD_MSGLEN];
+   
+    String stringValue;
+    long longValue[MAX_LONG];
+    int intValue[MAX_INT];
+    float floatValue[MAX_FLOAT];
+    int separator; 
     /**
       \brief Unparsed Command String
   
@@ -74,9 +82,7 @@ typedef struct parseCommand
       a new command.
     */
     char cmdData[MAX_CMD_LEN];
-}
-command;
-#endif
+} command;
 
 /**
   \brief All the commands in one string
@@ -88,10 +94,10 @@ command;
   the parser syntax checker can't process it. Otherwise, never set a character
   in this string if there is not a corresponding command definition.
   */
-#define CMD_CHARACTERS "EDGITRpr"
+#define CMD_CHARACTERS "EDGITRPr"
 
 //! The lenght of CMD_CHARACTERS + 1
-#define CMD_CHARLEN 12
+#define CMD_CHARLEN 9
 
 /**
   \brief command: Enable/disable a probe
@@ -115,21 +121,27 @@ command;
   direction: send
   example: P;G;23 \n
   Send the stethoscope gain level to the master
+  \todo Not yet implemented
   */
-#define CMD_PARAMETER 'p'
+#define CMD_PARAMETER 'P'
 
 /**
   \brief command: Shows a message on the display
   
   description: this is a descriptive command only, reflecting the state of a
   user request from the remote IR controller. The row and column values should be
-  integers, zero-based, inside the physical limits of the LCD display.\n
+  integers, zero-based, inside the physical limits of the LCD display.
+  
+  \note This command needs less controls than expected because errors like
+  out of bound string lenght, wrong cursor position etc. never occurs using the
+  display templates. Templates include file is the same on both the master and the microcontroller
+  with the difference that the master also includes the strings definition that are
+  sent when a display should be drawn with a template.
   
   name: D \n
   usage: D;<row(int)>;<column(int)>;<string> \n
   direction: receive\n
-  example: D;1;3;"Test" \n
-  Display the string "Test" at row 1, col 3
+  example: D;1;3;Test \n
   */
 #define CMD_DISPLAY 'D'
 
@@ -140,6 +152,7 @@ command;
   name: G \n
   usage: G \n
   direction: receive\n
+  \todo Not yet implemented
   */
 #define CMD_GO 'G'
 
@@ -175,6 +188,7 @@ command;
   name: r \n
   usage: r;<parameter ID> \n
   direction: send\n
+  \todo Should be implemented in the RPI master before
   */
 #define CMD_REQUEST 'r'
 
@@ -188,26 +202,86 @@ command;
   name: R \n
   usage: R;<parameter ID>;<value>\n
   direction: receive\n
+  \todo Not yet implemented
   */
 #define CMD_REQUEST 'R'
 
-/** 
-  \brief Error codes definition for parser answers
+/**
+  \brief subcommand: Enable Stethoscope probe status
   
-  */
+  description: enable or disable the stethoscope probe. \n
+  usage: S (int)status \n
+  parameters: the status accepted values are STETH_ENABLE and STETH_DISABLE
+  example: S;001 \n
+  Enable the stethoscope probe.
+*/
+#define S_STETHOSCOPE 'S'
+
+/**
+  \brief subcommand: Enable ECG probe status
+  
+  description: enable or disable the E.C.G. probe. \n
+  usage: G (int)status \n
+  parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE
+  example: G;001 \n
+*/
+#define S_ECG 'G'
+
+/**
+  \brief subcommand: Enable Blood pressure probe status
+  
+  description: enable or disable the Sphygmomanometer probe. \n
+  usage: P (int)status \n
+  parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE
+  example: P;001 \n
+*/
+#define S_PRESSURE 'P'
+
+/**
+  \brief subcommand: Enable Body temperature probe status
+  
+  description: enable or disable the body temperature probe. \n
+  usage: T (int)status \n
+  parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE
+  example: T;001 \n
+*/
+#define S_BODYTEMP 'T'
+
+/**
+  \brief subcommand: Enable Heartbeat probe status
+  
+  description: enable or disable the Heart Beat probe. \n
+  usage: H (int)status \n
+  parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE
+  example: H;001 \n
+*/
+#define S_HEARTBEAT 'H'
+
+//! Enable flag
+#define FLAG_ENABLE 1
+//! Disable flag
+#define FLAG_DISABLE 0
 
 //! Command string separator
 #define COMMAND_SEPARATOR "::"
-//! Command completion code
-#define COMMAND_OK 0
-//! Command unknown to the parser
-#define COMMAND_UNKNOWN 1
-//! Wrong or malformed command.
-//! This message occours when the parameters following a command are wrong,
-//! incomplete or missing.
-#define COMMAND_WRONG 2
-//! The requested parameter separator was missing
-#define COMMAND_MISSINGSEPARATOR 3
-//! The received subcommand is unknown
-#define PARSER_SUBCOMMAND_UNKNOWN 6
+
+class CommandProcessor {
+  public:
+    CommandProcessor(void);
+    void parser(void);
+  private:
+    command cmd;
+    PString commandBuff(cmd.cmdData, sizeof(cmd.cmdData));
+  
+    int nextSeparator(int startChar);
+    int charsToInt(int startChar, int numChars);
+    long charsToLong(int startChar, int numChars);
+    float charsToFloat(int startChar, int numChars);
+    boolean parseSeparator(char test);
+    void syntaxError(int errCode);
+    void commandReturn(char commandCode);
+    void strFloat(float val, unsigned int precision);
+};
+
+#endif
 
