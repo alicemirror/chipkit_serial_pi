@@ -6,13 +6,13 @@
   like the welcome message.
   */
 
+#ifndef __LCD_H__
+#define __LCD_H__
+
 #include <inttypes.h>
 #include <Print.h>
 #include <AlphaLCD.h>
 #include <Streaming.h>
-
-#ifndef __LCD_H__
-#define __LCD_H__
 
 //! Display characters per line
 //! Define this value accordingly with the LCD Hardware datasheet

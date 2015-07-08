@@ -8,9 +8,6 @@
   the serial connection.
   */
 
-#include <PString.h>
-#include "ParserErrors.h"
-
 #ifndef __COMMANDPROCESSOR_H__
 #define __COMMANDPROCESSOR_H__
 
@@ -60,13 +57,14 @@
   for the further process.
 */
 typedef struct parseCommand {
+    char *toParse;
     //! char subcommand[1]
     //! Contains the last parsed subcommand
     char subcommand[1];
     //! Command associated message string, used by S_SUBSTRING, CMD_WRITE, CMD_EXEC 
     char message[CMD_MSGLEN];
    
-    String stringValue;
+    char stringValue;
     long longValue[MAX_LONG];
     int intValue[MAX_INT];
     float floatValue[MAX_FLOAT];
@@ -264,24 +262,6 @@ typedef struct parseCommand {
 
 //! Command string separator
 #define COMMAND_SEPARATOR "::"
-
-class CommandProcessor {
-  public:
-    CommandProcessor(void);
-    void parser(void);
-  private:
-    command cmd;
-    PString commandBuff(cmd.cmdData, sizeof(cmd.cmdData));
-  
-    int nextSeparator(int startChar);
-    int charsToInt(int startChar, int numChars);
-    long charsToLong(int startChar, int numChars);
-    float charsToFloat(int startChar, int numChars);
-    boolean parseSeparator(char test);
-    void syntaxError(int errCode);
-    void commandReturn(char commandCode);
-    void strFloat(float val, unsigned int precision);
-};
 
 #endif
 

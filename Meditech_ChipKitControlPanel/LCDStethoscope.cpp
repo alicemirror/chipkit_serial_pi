@@ -7,8 +7,6 @@
     
   */
 
-#include <AlphaLCD.h>
-#include <Streaming.h>
 #include "LCD.h"
 #include "LCDTemplates.h"
 
