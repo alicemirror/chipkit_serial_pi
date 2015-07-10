@@ -121,35 +121,54 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a10312bf6b72a9315a4fb550458bc3ae9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a10312bf6b72a9315a4fb550458bc3ae9">subcommand</a> [1]</td></tr>
 <tr class="memdesc:a10312bf6b72a9315a4fb550458bc3ae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">char subcommand[1] Contains the last parsed subcommand  <a href="#a10312bf6b72a9315a4fb550458bc3ae9">More...</a><br/></td></tr>
 <tr class="separator:a10312bf6b72a9315a4fb550458bc3ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab80399acc713a2d31a48dd2db5c7d0a2"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#ab80399acc713a2d31a48dd2db5c7d0a2">message</a> [20]</td></tr>
-<tr class="memdesc:ab80399acc713a2d31a48dd2db5c7d0a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command associated message string, used by S_SUBSTRING, CMD_WRITE, CMD_EXEC.  <a href="#ab80399acc713a2d31a48dd2db5c7d0a2">More...</a><br/></td></tr>
-<tr class="separator:ab80399acc713a2d31a48dd2db5c7d0a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad062df88615d7d66ded447dd4ff87bad"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#ad062df88615d7d66ded447dd4ff87bad">longValue</a></td></tr>
-<tr class="memdesc:ad062df88615d7d66ded447dd4ff87bad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic long parameter.  <a href="#ad062df88615d7d66ded447dd4ff87bad">More...</a><br/></td></tr>
-<tr class="separator:ad062df88615d7d66ded447dd4ff87bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a022bdea84dc5c07ff20af8690a1aa2e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a022bdea84dc5c07ff20af8690a1aa2e3">intValue</a></td></tr>
-<tr class="memdesc:a022bdea84dc5c07ff20af8690a1aa2e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic integer parameter.  <a href="#a022bdea84dc5c07ff20af8690a1aa2e3">More...</a><br/></td></tr>
-<tr class="separator:a022bdea84dc5c07ff20af8690a1aa2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a121ded5fdf791ba216ad84cef651fe74"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a121ded5fdf791ba216ad84cef651fe74">floatValue</a></td></tr>
-<tr class="memdesc:a121ded5fdf791ba216ad84cef651fe74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic float parameter.  <a href="#a121ded5fdf791ba216ad84cef651fe74">More...</a><br/></td></tr>
-<tr class="separator:a121ded5fdf791ba216ad84cef651fe74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f5c48be92f3aae7c4b1b71ca750298b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a5f5c48be92f3aae7c4b1b71ca750298b">separator</a></td></tr>
-<tr class="memdesc:a5f5c48be92f3aae7c4b1b71ca750298b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Separator character.  <a href="#a5f5c48be92f3aae7c4b1b71ca750298b">More...</a><br/></td></tr>
-<tr class="separator:a5f5c48be92f3aae7c4b1b71ca750298b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cb5165cf18cc63d7eed9fa34be4efd8"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a7cb5165cf18cc63d7eed9fa34be4efd8">cmdData</a> [160]</td></tr>
-<tr class="memdesc:a7cb5165cf18cc63d7eed9fa34be4efd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unparsed Command String.  <a href="#a7cb5165cf18cc63d7eed9fa34be4efd8">More...</a><br/></td></tr>
-<tr class="separator:a7cb5165cf18cc63d7eed9fa34be4efd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d2f84606922f34ad6a8ca5f7d8a59b5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a5d2f84606922f34ad6a8ca5f7d8a59b5">message</a></td></tr>
+<tr class="memdesc:a5d2f84606922f34ad6a8ca5f7d8a59b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command associated message string, used to return messages to the master and sending requests. The string should not be longer than CMD_MSGLEN.  <a href="#a5d2f84606922f34ad6a8ca5f7d8a59b5">More...</a><br/></td></tr>
+<tr class="separator:a5d2f84606922f34ad6a8ca5f7d8a59b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5ece0b161e3fae794d08911247c0b1e"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#ac5ece0b161e3fae794d08911247c0b1e">stringValue</a></td></tr>
+<tr class="memdesc:ac5ece0b161e3fae794d08911247c0b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returning parameter from the command parser.  <a href="#ac5ece0b161e3fae794d08911247c0b1e">More...</a><br/></td></tr>
+<tr class="separator:ac5ece0b161e3fae794d08911247c0b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10deac33dc255dd8a8b84532bbeb6c42"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a10deac33dc255dd8a8b84532bbeb6c42">longValue</a> [2]</td></tr>
+<tr class="memdesc:a10deac33dc255dd8a8b84532bbeb6c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returning parameter from the command parser The array number of position is the longer number of type parameters in a command.  <a href="#a10deac33dc255dd8a8b84532bbeb6c42">More...</a><br/></td></tr>
+<tr class="separator:a10deac33dc255dd8a8b84532bbeb6c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ad775810b79683631510fd333096c6f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a9ad775810b79683631510fd333096c6f">intValue</a> [2]</td></tr>
+<tr class="memdesc:a9ad775810b79683631510fd333096c6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returning parameter from the command parser The array number of position is the longer number of type parameters in a command.  <a href="#a9ad775810b79683631510fd333096c6f">More...</a><br/></td></tr>
+<tr class="separator:a9ad775810b79683631510fd333096c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a475f06e9e3728cc583008ad66dc48329"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a475f06e9e3728cc583008ad66dc48329">floatValue</a> [2]</td></tr>
+<tr class="memdesc:a475f06e9e3728cc583008ad66dc48329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returning parameter from the command parser The array number of position is the longer number of type parameters in a command.  <a href="#a475f06e9e3728cc583008ad66dc48329">More...</a><br/></td></tr>
+<tr class="separator:a475f06e9e3728cc583008ad66dc48329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff75594be6413210138456dc4572be52"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#aff75594be6413210138456dc4572be52">booleanValue</a></td></tr>
+<tr class="memdesc:aff75594be6413210138456dc4572be52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returning parameter from the command parser.  <a href="#aff75594be6413210138456dc4572be52">More...</a><br/></td></tr>
+<tr class="separator:aff75594be6413210138456dc4572be52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01d90da128793f2c09ce31ce4a9f2ce5"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparse_command.html#a01d90da128793f2c09ce31ce4a9f2ce5">cmdData</a> [1024]</td></tr>
+<tr class="memdesc:a01d90da128793f2c09ce31ce4a9f2ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unparsed Command String.  <a href="#a01d90da128793f2c09ce31ce4a9f2ce5">More...</a><br/></td></tr>
+<tr class="separator:a01d90da128793f2c09ce31ce4a9f2ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00053">53</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00075">75</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a7cb5165cf18cc63d7eed9fa34be4efd8"></a>
+<a class="anchor" id="aff75594be6413210138456dc4572be52"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char parseCommand::cmdData[160]</td>
+          <td class="memname">float parseCommand::booleanValue</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returning parameter from the command parser. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00099">99</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a01d90da128793f2c09ce31ce4a9f2ce5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char parseCommand::cmdData[1024]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -157,87 +176,95 @@ Public Attributes</h2></td></tr>
 <p>Unparsed Command String. </p>
 <p>cmdData is the string after syntax checking. The string can contain one or more commands. When the command string is sent to the parser this value contains the command sequence. When the this string is empy all the commands has been processed and the system is ready to receive a new command. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00076">76</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00111">111</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00855">charsToFloat()</a>, <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00835">charsToLong()</a>, <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00778">charsToString()</a>, <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00734">nextCommandSeparator()</a>, <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>, <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l01094">setBodyTempStatus()</a>, <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l01054">setECGStatus()</a>, <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l01117">setHeartBeatStatus()</a>, <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l01074">setPressureStatus()</a>, and <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l01035">setStethoscopeStatus()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a121ded5fdf791ba216ad84cef651fe74"></a>
+<a class="anchor" id="a475f06e9e3728cc583008ad66dc48329"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float parseCommand::floatValue</td>
+          <td class="memname">float parseCommand::floatValue[2]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generic float parameter. </p>
+<p>Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00063">63</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00097">97</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a022bdea84dc5c07ff20af8690a1aa2e3"></a>
+<a class="anchor" id="a9ad775810b79683631510fd333096c6f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int parseCommand::intValue</td>
+          <td class="memname">int parseCommand::intValue[2]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generic integer parameter. </p>
+<p>Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00062">62</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00093">93</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad062df88615d7d66ded447dd4ff87bad"></a>
+<a class="anchor" id="a10deac33dc255dd8a8b84532bbeb6c42"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long parseCommand::longValue</td>
+          <td class="memname">long parseCommand::longValue[2]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Generic long parameter. </p>
+<p>Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00061">61</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00089">89</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ab80399acc713a2d31a48dd2db5c7d0a2"></a>
+<a class="anchor" id="a5d2f84606922f34ad6a8ca5f7d8a59b5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char parseCommand::message[20]</td>
+          <td class="memname">String parseCommand::message</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Command associated message string, used by S_SUBSTRING, CMD_WRITE, CMD_EXEC. </p>
+<p>Command associated message string, used to return messages to the master and sending requests. The string should not be longer than CMD_MSGLEN. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00059">59</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00082">82</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00984">ackMaster()</a>, <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00903">appendResponse()</a>, and <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5f5c48be92f3aae7c4b1b71ca750298b"></a>
+<a class="anchor" id="ac5ece0b161e3fae794d08911247c0b1e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int parseCommand::separator</td>
+          <td class="memname">String parseCommand::stringValue</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Separator character. </p>
+<p>Returning parameter from the command parser. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00064">64</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00085">85</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
@@ -253,7 +280,9 @@ Public Attributes</h2></td></tr>
 
 <p>char subcommand[1] Contains the last parsed subcommand </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00057">57</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00078">78</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
@@ -266,7 +295,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structparse_command.html">parseCommand</a></li>
-    <li class="footer">Generated on Mon Jul 6 2015 00:17:44 for Meditech control panel software by
+    <li class="footer">Generated on Sat Jul 11 2015 00:07:17 for Meditech control panel software by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

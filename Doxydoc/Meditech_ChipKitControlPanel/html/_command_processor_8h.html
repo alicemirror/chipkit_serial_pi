@@ -125,7 +125,7 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a1eb73c104b484cf18752169509cebfe2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a1eb73c104b484cf18752169509cebfe2">MAX_CMD_LEN</a>&#160;&#160;&#160;160</td></tr>
+<tr class="memitem:a1eb73c104b484cf18752169509cebfe2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a1eb73c104b484cf18752169509cebfe2">MAX_CMD_LEN</a>&#160;&#160;&#160;1024</td></tr>
 <tr class="memdesc:a1eb73c104b484cf18752169509cebfe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max len of an unparsed command string.  <a href="#a1eb73c104b484cf18752169509cebfe2">More...</a><br/></td></tr>
 <tr class="separator:a1eb73c104b484cf18752169509cebfe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0471f5acd384512926d8baf49f0b2660"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a0471f5acd384512926d8baf49f0b2660">CMD_MSGLEN</a>&#160;&#160;&#160;20</td></tr>
@@ -143,16 +143,34 @@ Macros</h2></td></tr>
 <tr class="memitem:a0f64fd8fb7385169ef53c7d2d49b02cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a0f64fd8fb7385169ef53c7d2d49b02cc">STRING_DELIMITER</a>&#160;&#160;&#160;'&quot;'</td></tr>
 <tr class="memdesc:a0f64fd8fb7385169ef53c7d2d49b02cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">String delimiter.  <a href="#a0f64fd8fb7385169ef53c7d2d49b02cc">More...</a><br/></td></tr>
 <tr class="separator:a0f64fd8fb7385169ef53c7d2d49b02cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac811537f9bf84054de554040481bdf45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#ac811537f9bf84054de554040481bdf45">CMD_CHARACTERS</a>&#160;&#160;&#160;&quot;EDGITRpr&quot;</td></tr>
-<tr class="memdesc:ac811537f9bf84054de554040481bdf45"><td class="mdescLeft">&#160;</td><td class="mdescRight">All the commands in one string.  <a href="#ac811537f9bf84054de554040481bdf45">More...</a><br/></td></tr>
-<tr class="separator:ac811537f9bf84054de554040481bdf45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91c8743332ff637bc271733a535f31e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a91c8743332ff637bc271733a535f31e7">CMD_CHARLEN</a>&#160;&#160;&#160;12</td></tr>
+<tr class="memitem:a3bf9ddf196d90a4e4639a0c4a086b9c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a3bf9ddf196d90a4e4639a0c4a086b9c7">PARM_INTEGER_LEN</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memdesc:a3bf9ddf196d90a4e4639a0c4a086b9c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed integers characters lenght. Should be left zero filled in the form 00000.  <a href="#a3bf9ddf196d90a4e4639a0c4a086b9c7">More...</a><br/></td></tr>
+<tr class="separator:a3bf9ddf196d90a4e4639a0c4a086b9c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab40da0a39802f94a9f893c2c71e4209f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#ab40da0a39802f94a9f893c2c71e4209f">PARM_LONGINT_LEN</a>&#160;&#160;&#160;7</td></tr>
+<tr class="memdesc:ab40da0a39802f94a9f893c2c71e4209f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed long integers characters lenght. Should be left zero filled in the form 0000000.  <a href="#ab40da0a39802f94a9f893c2c71e4209f">More...</a><br/></td></tr>
+<tr class="separator:ab40da0a39802f94a9f893c2c71e4209f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c250fc72c31cefb9685066b33160748"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a1c250fc72c31cefb9685066b33160748">PARM_FLOAT_LEN</a>&#160;&#160;&#160;11</td></tr>
+<tr class="memdesc:a1c250fc72c31cefb9685066b33160748"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed float characters lenght. Should be left zero filled in the form 0000000.000.  <a href="#a1c250fc72c31cefb9685066b33160748">More...</a><br/></td></tr>
+<tr class="separator:a1c250fc72c31cefb9685066b33160748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1abb7c195d0c34570d725c0b8b554a5e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a1abb7c195d0c34570d725c0b8b554a5e">PARM_BOOL_LEN</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a1abb7c195d0c34570d725c0b8b554a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed boolean character lenght. Should be left zero filled in the form 0 (or 1)  <a href="#a1abb7c195d0c34570d725c0b8b554a5e">More...</a><br/></td></tr>
+<tr class="separator:a1abb7c195d0c34570d725c0b8b554a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa1ac5caef84256eaeb39594e58e096f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#aaa1ac5caef84256eaeb39594e58e096f">MAX_INT</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:aaa1ac5caef84256eaeb39594e58e096f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max number of integer parameters in a command.  <a href="#aaa1ac5caef84256eaeb39594e58e096f">More...</a><br/></td></tr>
+<tr class="separator:aaa1ac5caef84256eaeb39594e58e096f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5535b838abf57fcd6aa71dd632c51bc8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a5535b838abf57fcd6aa71dd632c51bc8">MAX_LONG</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a5535b838abf57fcd6aa71dd632c51bc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max number of long integer parameters in a command.  <a href="#a5535b838abf57fcd6aa71dd632c51bc8">More...</a><br/></td></tr>
+<tr class="separator:a5535b838abf57fcd6aa71dd632c51bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb31aa2d196755fb259d43a03c18c9d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#afb31aa2d196755fb259d43a03c18c9d7">MAX_FLOAT</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:afb31aa2d196755fb259d43a03c18c9d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max number of float parameters in a command.  <a href="#afb31aa2d196755fb259d43a03c18c9d7">More...</a><br/></td></tr>
+<tr class="separator:afb31aa2d196755fb259d43a03c18c9d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91c8743332ff637bc271733a535f31e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a91c8743332ff637bc271733a535f31e7">CMD_CHARLEN</a>&#160;&#160;&#160;10</td></tr>
 <tr class="memdesc:a91c8743332ff637bc271733a535f31e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The lenght of CMD_CHARACTERS + 1.  <a href="#a91c8743332ff637bc271733a535f31e7">More...</a><br/></td></tr>
 <tr class="separator:a91c8743332ff637bc271733a535f31e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9a73413ff369c86384379fe9464b405"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#ab9a73413ff369c86384379fe9464b405">CMD_ENABLE</a>&#160;&#160;&#160;'E'</td></tr>
 <tr class="memdesc:ab9a73413ff369c86384379fe9464b405"><td class="mdescLeft">&#160;</td><td class="mdescRight">command: Enable/disable a probe  <a href="#ab9a73413ff369c86384379fe9464b405">More...</a><br/></td></tr>
 <tr class="separator:ab9a73413ff369c86384379fe9464b405"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a775f86e197716388e422fbb58dca826f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a775f86e197716388e422fbb58dca826f">CMD_PARAMETER</a>&#160;&#160;&#160;'p'</td></tr>
+<tr class="memitem:a775f86e197716388e422fbb58dca826f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a775f86e197716388e422fbb58dca826f">CMD_PARAMETER</a>&#160;&#160;&#160;'P'</td></tr>
 <tr class="memdesc:a775f86e197716388e422fbb58dca826f"><td class="mdescLeft">&#160;</td><td class="mdescRight">command: send [[parameter] value]  <a href="#a775f86e197716388e422fbb58dca826f">More...</a><br/></td></tr>
 <tr class="separator:a775f86e197716388e422fbb58dca826f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc05c302b4af62eff7f5652dafabf7eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#adc05c302b4af62eff7f5652dafabf7eb">CMD_DISPLAY</a>&#160;&#160;&#160;'D'</td></tr>
@@ -161,6 +179,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ab44ed89a60c5bb25c357ce8c3eee91e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#ab44ed89a60c5bb25c357ce8c3eee91e1">CMD_GO</a>&#160;&#160;&#160;'G'</td></tr>
 <tr class="memdesc:ab44ed89a60c5bb25c357ce8c3eee91e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">command: start running the actual pending command  <a href="#ab44ed89a60c5bb25c357ce8c3eee91e1">More...</a><br/></td></tr>
 <tr class="separator:ab44ed89a60c5bb25c357ce8c3eee91e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd6dc9f192384457eca2de560b24e112"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#acd6dc9f192384457eca2de560b24e112">CMD_LCDTEMPLATE</a>&#160;&#160;&#160;'L'</td></tr>
+<tr class="memdesc:acd6dc9f192384457eca2de560b24e112"><td class="mdescLeft">&#160;</td><td class="mdescRight">command: Create a <a class="el" href="class_l_c_d.html" title="Manages the Alphanumeric display for program output messages. ">LCD</a> template layout  <a href="#acd6dc9f192384457eca2de560b24e112">More...</a><br/></td></tr>
+<tr class="separator:acd6dc9f192384457eca2de560b24e112"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42bf1fd637b1c921700bf479cc2f8533"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a42bf1fd637b1c921700bf479cc2f8533">CMD_INFO</a>&#160;&#160;&#160;'I'</td></tr>
 <tr class="memdesc:a42bf1fd637b1c921700bf479cc2f8533"><td class="mdescLeft">&#160;</td><td class="mdescRight">command: info  <a href="#a42bf1fd637b1c921700bf479cc2f8533">More...</a><br/></td></tr>
 <tr class="separator:a42bf1fd637b1c921700bf479cc2f8533"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,24 +194,30 @@ Macros</h2></td></tr>
 <tr class="memitem:a0a838d0ab7a3cc09b5b9ea002198f36c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a0a838d0ab7a3cc09b5b9ea002198f36c">CMD_REQUEST</a>&#160;&#160;&#160;'R'</td></tr>
 <tr class="memdesc:a0a838d0ab7a3cc09b5b9ea002198f36c"><td class="mdescLeft">&#160;</td><td class="mdescRight">command: request a parameter definition  <a href="#a0a838d0ab7a3cc09b5b9ea002198f36c">More...</a><br/></td></tr>
 <tr class="separator:a0a838d0ab7a3cc09b5b9ea002198f36c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad403ec3c993914032780bc08071049fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#ad403ec3c993914032780bc08071049fb">COMMAND_SEPARATOR</a>&#160;&#160;&#160;&quot;::&quot;</td></tr>
-<tr class="memdesc:ad403ec3c993914032780bc08071049fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error codes definition for parser answers.  <a href="#ad403ec3c993914032780bc08071049fb">More...</a><br/></td></tr>
-<tr class="separator:ad403ec3c993914032780bc08071049fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c83bbbe0909f24f241850845b38aa9f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a2c83bbbe0909f24f241850845b38aa9f">COMMAND_OK</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:a2c83bbbe0909f24f241850845b38aa9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command completion code.  <a href="#a2c83bbbe0909f24f241850845b38aa9f">More...</a><br/></td></tr>
-<tr class="separator:a2c83bbbe0909f24f241850845b38aa9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47e2ddf8d1da00eea05a9e08fd6463d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a47e2ddf8d1da00eea05a9e08fd6463d4">COMMAND_UNKNOWN</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memdesc:a47e2ddf8d1da00eea05a9e08fd6463d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command unknown to the parser.  <a href="#a47e2ddf8d1da00eea05a9e08fd6463d4">More...</a><br/></td></tr>
-<tr class="separator:a47e2ddf8d1da00eea05a9e08fd6463d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae92e07b17e96bd3903a2c24b0573d803"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#ae92e07b17e96bd3903a2c24b0573d803">COMMAND_WRONG</a>&#160;&#160;&#160;2</td></tr>
-<tr class="memdesc:ae92e07b17e96bd3903a2c24b0573d803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrong or malformed command. This message occours when the parameters following a command are wrong, incomplete or missing.  <a href="#ae92e07b17e96bd3903a2c24b0573d803">More...</a><br/></td></tr>
-<tr class="separator:ae92e07b17e96bd3903a2c24b0573d803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1641bf12003024ece5012a639004d5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#af1641bf12003024ece5012a639004d5c">COMMAND_MISSINGSEPARATOR</a>&#160;&#160;&#160;3</td></tr>
-<tr class="memdesc:af1641bf12003024ece5012a639004d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The requested parameter separator was missing.  <a href="#af1641bf12003024ece5012a639004d5c">More...</a><br/></td></tr>
-<tr class="separator:af1641bf12003024ece5012a639004d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8903cfb5556f03fd11b980119b7baefe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a8903cfb5556f03fd11b980119b7baefe">PARSER_SUBCOMMAND_UNKNOWN</a>&#160;&#160;&#160;6</td></tr>
-<tr class="memdesc:a8903cfb5556f03fd11b980119b7baefe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The received subcommand is unknown.  <a href="#a8903cfb5556f03fd11b980119b7baefe">More...</a><br/></td></tr>
-<tr class="separator:a8903cfb5556f03fd11b980119b7baefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfbfa32f9a07ea8c418302629c5f9e2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#adfbfa32f9a07ea8c418302629c5f9e2c">S_STETHOSCOPE</a>&#160;&#160;&#160;'S'</td></tr>
+<tr class="memdesc:adfbfa32f9a07ea8c418302629c5f9e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">subcommand: Enable Stethoscope probe status  <a href="#adfbfa32f9a07ea8c418302629c5f9e2c">More...</a><br/></td></tr>
+<tr class="separator:adfbfa32f9a07ea8c418302629c5f9e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a303228c055bef09bc6f3af3fca182193"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a303228c055bef09bc6f3af3fca182193">S_ECG</a>&#160;&#160;&#160;'G'</td></tr>
+<tr class="memdesc:a303228c055bef09bc6f3af3fca182193"><td class="mdescLeft">&#160;</td><td class="mdescRight">subcommand: Enable ECG probe status  <a href="#a303228c055bef09bc6f3af3fca182193">More...</a><br/></td></tr>
+<tr class="separator:a303228c055bef09bc6f3af3fca182193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2addd9a5224e4691a4c804672f360f89"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a2addd9a5224e4691a4c804672f360f89">S_PRESSURE</a>&#160;&#160;&#160;'P'</td></tr>
+<tr class="memdesc:a2addd9a5224e4691a4c804672f360f89"><td class="mdescLeft">&#160;</td><td class="mdescRight">subcommand: Enable Blood pressure probe status  <a href="#a2addd9a5224e4691a4c804672f360f89">More...</a><br/></td></tr>
+<tr class="separator:a2addd9a5224e4691a4c804672f360f89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45a3bcfc2052f567c0c9bf1e77e072d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a45a3bcfc2052f567c0c9bf1e77e072d9">S_BODYTEMP</a>&#160;&#160;&#160;'T'</td></tr>
+<tr class="memdesc:a45a3bcfc2052f567c0c9bf1e77e072d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">subcommand: Enable Body temperature probe status  <a href="#a45a3bcfc2052f567c0c9bf1e77e072d9">More...</a><br/></td></tr>
+<tr class="separator:a45a3bcfc2052f567c0c9bf1e77e072d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a101bcad25a341bbe132207b51432de89"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a101bcad25a341bbe132207b51432de89">S_HEARTBEAT</a>&#160;&#160;&#160;'H'</td></tr>
+<tr class="memdesc:a101bcad25a341bbe132207b51432de89"><td class="mdescLeft">&#160;</td><td class="mdescRight">subcommand: Enable Heartbeat probe status  <a href="#a101bcad25a341bbe132207b51432de89">More...</a><br/></td></tr>
+<tr class="separator:a101bcad25a341bbe132207b51432de89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94db433efaf9f11f691afcd4666d5033"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a94db433efaf9f11f691afcd4666d5033">FLAG_ENABLE</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a94db433efaf9f11f691afcd4666d5033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable flag.  <a href="#a94db433efaf9f11f691afcd4666d5033">More...</a><br/></td></tr>
+<tr class="separator:a94db433efaf9f11f691afcd4666d5033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a127a418702ab50cf9f7e49e100533ebd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a127a418702ab50cf9f7e49e100533ebd">FLAG_DISABLE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a127a418702ab50cf9f7e49e100533ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable flag.  <a href="#a127a418702ab50cf9f7e49e100533ebd">More...</a><br/></td></tr>
+<tr class="separator:a127a418702ab50cf9f7e49e100533ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a446d8db1041da5746439b5655890b3ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a446d8db1041da5746439b5655890b3ed">RESPONSE_SEPARATOR</a>&#160;&#160;&#160;&quot;:&quot;</td></tr>
+<tr class="memdesc:a446d8db1041da5746439b5655890b3ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command string separator used in the commandReturn() method.  <a href="#a446d8db1041da5746439b5655890b3ed">More...</a><br/></td></tr>
+<tr class="separator:a446d8db1041da5746439b5655890b3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -204,37 +231,21 @@ Typedefs</h2></td></tr>
 
 <p>Definition in file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="ac811537f9bf84054de554040481bdf45"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CMD_CHARACTERS&#160;&#160;&#160;&quot;EDGITRpr&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>All the commands in one string. </p>
-<p>This string is used by the parser to check if a received character is a command or not.</p>
-<dl class="section note"><dt>Note</dt><dd>If a command has been defined but is not listed in this string, the parser syntax checker can't process it. Otherwise, never set a character in this string if there is not a corresponding command definition. </dd></dl>
-
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00091">91</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a91c8743332ff637bc271733a535f31e7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CMD_CHARLEN&#160;&#160;&#160;12</td>
+          <td class="memname">#define CMD_CHARLEN&#160;&#160;&#160;10</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The lenght of CMD_CHARACTERS + 1. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00094">94</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00115">115</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
@@ -249,14 +260,17 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p>command: Shows a message on the display </p>
-<p>description: this is a descriptive command only, reflecting the state of a user request from the remote IR controller. The row and column values should be integers, zero-based, inside the physical limits of the <a class="el" href="class_l_c_d.html" title="Manages the Alphanumeric display for program output messages. ">LCD</a> display.<br/>
- name: D <br/>
+<p>description: this is a descriptive command only, reflecting the state of a user request from the remote IR controller. The row and column values should be integers, zero-based, inside the physical limits of the <a class="el" href="class_l_c_d.html" title="Manages the Alphanumeric display for program output messages. ">LCD</a> display.</p>
+<dl class="section note"><dt>Note</dt><dd>This command needs less controls than expected because errors like out of bound string lenght, wrong cursor position etc. never occurs using the display templates. Templates include file is the same on both the master and the microcontroller with the difference that the master also includes the strings definition that are sent when a display should be drawn with a template.</dd></dl>
+<p>name: D <br/>
 usage: D;&lt;row(int)&gt;;&lt;column(int)&gt;;&lt;string&gt; <br/>
 direction: receive<br/>
-example: D;1;3;"Test" <br/>
-Display the string "Test" at row 1, col 3 </p>
+example: D;01;03;Test <br/>
+</p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00134">134</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00167">167</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
@@ -275,9 +289,12 @@ Display the string "Test" at row 1, col 3 </p>
 name: E <br/>
 usage: E;&lt;subcommand&gt; <br/>
 direction: receive example: E;S <br/>
-Enable the microphonic stethoscope </p>
+Enable the microphonic stethoscope</p>
+<dl class="section note"><dt>Note</dt><dd>The CMD_ENABLE command only activates the setup bit of the current probe, if a probe has asked to enable. If the enable bit is not set the corresponding display layout on the control panel <a class="el" href="class_l_c_d.html" title="Manages the Alphanumeric display for program output messages. ">LCD</a> can't be changed due the probe-dependant settings that the probe-enabled status involves. The right method to display a probe template is to enable it then send a template command to the control panel with the display layout parameters. If not, only the </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00107">107</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00134">134</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
@@ -297,8 +314,9 @@ name: G <br/>
 usage: G <br/>
 direction: receive<br/>
 </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Not yet implemented </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00144">144</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00178">178</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -314,7 +332,7 @@ direction: receive<br/>
 
 <p>The max len of a header/menu string. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00018">18</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00019">19</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -334,7 +352,32 @@ usage: I <br/>
 direction: receive<br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00155">155</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00203">203</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acd6dc9f192384457eca2de560b24e112"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMD_LCDTEMPLATE&#160;&#160;&#160;'L'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>command: Create a <a class="el" href="class_l_c_d.html" title="Manages the Alphanumeric display for program output messages. ">LCD</a> template layout </p>
+<p>description: string parameters to generate a template layout with a variable number of parameters, depending on the requested template. name: L <br/>
+usage: L;&lt;Template id&gt;=""&gt;;[[&lt;Field id&gt;=""&gt;;&lt;Field string&gt;=""&gt;],] <br/>
+direction: receive<br/>
+ </p>
+<dl class="section note"><dt>Note</dt><dd>If the requested layout template is a probe display template the command has effect only if the probe status bit is set to on (current probe active) </dd></dl>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00192">192</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
@@ -350,7 +393,7 @@ direction: receive<br/>
 
 <p>The max len of the message command string. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00015">15</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00017">17</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -359,7 +402,7 @@ direction: receive<br/>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CMD_PARAMETER&#160;&#160;&#160;'p'</td>
+          <td class="memname">#define CMD_PARAMETER&#160;&#160;&#160;'P'</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -371,8 +414,9 @@ usage: P;&lt;parameter&gt;;</p>
 <p><br/>
 direction: send example: P;G;23 <br/>
 Send the stethoscope gain level to the master </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Not yet implemented </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00119">119</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00147">147</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -392,14 +436,17 @@ Send the stethoscope gain level to the master </p>
 name: r <br/>
 usage: r;&lt;parameter id&gt;=""&gt; <br/>
 direction: send<br/>
- description: receive from the master the requested value for one of the template fields to show on the display. In most of the cases these are strings managed by the master to save memory space on the board and support the multi-language localisation.<br/>
+</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Should be implemented in the RPI master before </dd></dl>
+<p>description: receive from the master the requested value for one of the template fields to show on the display. In most of the cases these are strings managed by the master to save memory space on the board and support the multi-language localisation.<br/>
 name: R <br/>
 usage: R;&lt;parameter id&gt;=""&gt;;</p>
 <p><br/>
 direction: receive<br/>
 </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Not yet implemented </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00192">192</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00242">242</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -419,14 +466,17 @@ direction: receive<br/>
 name: r <br/>
 usage: r;&lt;parameter id&gt;=""&gt; <br/>
 direction: send<br/>
- description: receive from the master the requested value for one of the template fields to show on the display. In most of the cases these are strings managed by the master to save memory space on the board and support the multi-language localisation.<br/>
+</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Should be implemented in the RPI master before </dd></dl>
+<p>description: receive from the master the requested value for one of the template fields to show on the display. In most of the cases these are strings managed by the master to save memory space on the board and support the multi-language localisation.<br/>
 name: R <br/>
 usage: R;&lt;parameter id&gt;=""&gt;;</p>
 <p><br/>
 direction: receive<br/>
 </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Not yet implemented </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00192">192</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00242">242</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -445,7 +495,9 @@ direction: receive<br/>
  Example: &lt;cmd 1&gt;&lt;cmd 2&gt;&lt;cmd 3&gt; <br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00029">29</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00030">30</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00734">nextCommandSeparator()</a>, and <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
@@ -467,88 +519,9 @@ usage: T <br/>
 direction: receive<br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00166">166</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00214">214</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-</div>
-</div>
-<a class="anchor" id="af1641bf12003024ece5012a639004d5c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define COMMAND_MISSINGSEPARATOR&#160;&#160;&#160;3</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The requested parameter separator was missing. </p>
-
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00210">210</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2c83bbbe0909f24f241850845b38aa9f"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define COMMAND_OK&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Command completion code. </p>
-
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00202">202</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad403ec3c993914032780bc08071049fb"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define COMMAND_SEPARATOR&#160;&#160;&#160;&quot;::&quot;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Error codes definition for parser answers. </p>
-<p>Command string separator </p>
-
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00200">200</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a47e2ddf8d1da00eea05a9e08fd6463d4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define COMMAND_UNKNOWN&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Command unknown to the parser. </p>
-
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00204">204</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae92e07b17e96bd3903a2c24b0573d803"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define COMMAND_WRONG&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Wrong or malformed command. This message occours when the parameters following a command are wrong, incomplete or missing. </p>
-
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00208">208</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
@@ -565,7 +538,41 @@ direction: receive<br/>
 <p>Separator for subcommands and command parameters. </p>
 <p>The single-character commands can be followed by a sub-command or a series of parameters. Every one of them should be separed by a field separator character. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00038">38</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00039">39</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00874">parseFieldSeparator()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a127a418702ab50cf9f7e49e100533ebd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_DISABLE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disable flag. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00298">298</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a94db433efaf9f11f691afcd4666d5033"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_ENABLE&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enable flag. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00296">296</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -574,30 +581,258 @@ direction: receive<br/>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MAX_CMD_LEN&#160;&#160;&#160;160</td>
+          <td class="memname">#define MAX_CMD_LEN&#160;&#160;&#160;1024</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The max len of an unparsed command string. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00012">12</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00015">15</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00778">charsToString()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8903cfb5556f03fd11b980119b7baefe"></a>
+<a class="anchor" id="afb31aa2d196755fb259d43a03c18c9d7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define PARSER_SUBCOMMAND_UNKNOWN&#160;&#160;&#160;6</td>
+          <td class="memname">#define MAX_FLOAT&#160;&#160;&#160;2</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>The received subcommand is unknown. </p>
+<p>Max number of float parameters in a command. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00212">212</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00065">65</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaa1ac5caef84256eaeb39594e58e096f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_INT&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Max number of integer parameters in a command. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00061">61</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5535b838abf57fcd6aa71dd632c51bc8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_LONG&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Max number of long integer parameters in a command. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00063">63</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1abb7c195d0c34570d725c0b8b554a5e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PARM_BOOL_LEN&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fixed boolean character lenght. Should be left zero filled in the form 0 (or 1) </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00058">58</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1c250fc72c31cefb9685066b33160748"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PARM_FLOAT_LEN&#160;&#160;&#160;11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fixed float characters lenght. Should be left zero filled in the form 0000000.000. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00054">54</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3bf9ddf196d90a4e4639a0c4a086b9c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PARM_INTEGER_LEN&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fixed integers characters lenght. Should be left zero filled in the form 00000. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00046">46</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab40da0a39802f94a9f893c2c71e4209f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PARM_LONGINT_LEN&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fixed long integers characters lenght. Should be left zero filled in the form 0000000. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00050">50</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a446d8db1041da5746439b5655890b3ed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESPONSE_SEPARATOR&#160;&#160;&#160;&quot;:&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Command string separator used in the commandReturn() method. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00301">301</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00903">appendResponse()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a45a3bcfc2052f567c0c9bf1e77e072d9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define S_BODYTEMP&#160;&#160;&#160;'T'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>subcommand: Enable Body temperature probe status </p>
+<p>description: enable or disable the body temperature probe. <br/>
+usage: T (int)status <br/>
+parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE example: T;001 <br/>
+</p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00283">283</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a303228c055bef09bc6f3af3fca182193"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define S_ECG&#160;&#160;&#160;'G'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>subcommand: Enable ECG probe status </p>
+<p>description: enable or disable the E.C.G. probe. <br/>
+usage: G (int)status <br/>
+parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE example: G;001 <br/>
+</p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00263">263</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a101bcad25a341bbe132207b51432de89"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define S_HEARTBEAT&#160;&#160;&#160;'H'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>subcommand: Enable Heartbeat probe status </p>
+<p>description: enable or disable the Heart Beat probe. <br/>
+usage: H (int)status <br/>
+parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE example: H;001 <br/>
+</p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00293">293</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2addd9a5224e4691a4c804672f360f89"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define S_PRESSURE&#160;&#160;&#160;'P'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>subcommand: Enable Blood pressure probe status </p>
+<p>description: enable or disable the Sphygmomanometer probe. <br/>
+usage: P (int)status <br/>
+parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE example: P;001 <br/>
+</p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00273">273</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adfbfa32f9a07ea8c418302629c5f9e2c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define S_STETHOSCOPE&#160;&#160;&#160;'S'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>subcommand: Enable Stethoscope probe status </p>
+<p>description: enable or disable the stethoscope probe. <br/>
+usage: S (int)status <br/>
+parameters: the status accepted values are STETH_ENABLE and STETH_DISABLE example: S;001 <br/>
+Enable the stethoscope probe. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00253">253</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
 
 </div>
 </div>
@@ -613,7 +848,9 @@ direction: receive<br/>
 
 <p>String delimiter. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00041">41</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00042">42</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00778">charsToString()</a>.</p>
 
 </div>
 </div>
@@ -639,7 +876,7 @@ direction: receive<br/>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_31941a8e4ed3519dfa509f058cac090e.html">Meditech_ChipKitControlPanel</a></li><li class="navelem"><a class="el" href="_command_processor_8h.html">CommandProcessor.h</a></li>
-    <li class="footer">Generated on Mon Jul 6 2015 00:17:44 for Meditech control panel software by
+    <li class="footer">Generated on Sat Jul 11 2015 00:07:17 for Meditech control panel software by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

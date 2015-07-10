@@ -1,0 +1,259 @@
+\hypertarget{class_l_c_d}{\section{L\-C\-D Class Reference}
+\label{class_l_c_d}\index{L\-C\-D@{L\-C\-D}}
+}
+
+
+Manages the Alphanumeric display for program output messages.  
+
+
+
+
+{\ttfamily \#include \char`\"{}L\-C\-D.\-h\char`\"{}}
+
+Inheritance diagram for L\-C\-D\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_l_c_d}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_l_c_d_a00bb2db1390721abc7b24ac4b8c276c8}{L\-C\-D} ()
+\item 
+\hyperlink{class_l_c_d_a5ac2667d164486b73b35dce3fd76bd95}{$\sim$\-L\-C\-D} ()
+\item 
+void \hyperlink{class_l_c_d_a744d30666c9d253089ce10b551854a2f}{enable} (bool s)
+\begin{DoxyCompactList}\small\item\em Set the display on or off. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_ad034fa16a3b92276071741d9b31240e5}{blink} (bool set)
+\begin{DoxyCompactList}\small\item\em Set blink mode. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_a728c09b7c47d67fc544ed87d06662eb4}{error} (String m)
+\begin{DoxyCompactList}\small\item\em shows an error message \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_a510e3f387c93e318402163f96d69c2a2}{error} (String m, int x, int y)
+\begin{DoxyCompactList}\small\item\em shows an error message at specified coordinates \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_a34190efc6a03bb5c0b6cdfff2d7199b9}{message} (String m)
+\begin{DoxyCompactList}\small\item\em shows a string message \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_a9974c0a77562d699d422992d9bfa1915}{message} (String m, int x, int y)
+\begin{DoxyCompactList}\small\item\em shows a string message at specified coordinates \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_a0faf36a77c08f7ca19ef7a6df81c3cea}{clean} ()
+\begin{DoxyCompactList}\small\item\em clean the \hyperlink{class_l_c_d}{L\-C\-D} screen \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_a444c14cc67983cdc179cdf97fda60194}{dec} (int n)
+\begin{DoxyCompactList}\small\item\em shows an integer in decimal format \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_a3dbdcf6441737a00891f70e472401f77}{hex} (int n)
+\begin{DoxyCompactList}\small\item\em shows an integer in hexadeciaml format \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_af549238d5b8990cc30115644f4c9138c}{bin} (int n)
+\begin{DoxyCompactList}\small\item\em shows an integer in binary format \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_ad0b68fbac8b664f506fae6b9af56d366}{oct} (int n)
+\begin{DoxyCompactList}\small\item\em shows an integer in octal format \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_ac73e78361f5a1004d37b399843d8b5a2}{welcome} ()
+\begin{DoxyCompactList}\small\item\em shows the program welcome message \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_l_c_d_af0e1f361079353b77e3836eadba85149}{L\-C\-D} (const \hyperlink{class_l_c_d}{L\-C\-D} \&c)
+\item 
+\hyperlink{class_l_c_d}{L\-C\-D} \& \hyperlink{class_l_c_d_a417d9ed76eb050d25ce6fa6d91c871f1}{operator=} (const \hyperlink{class_l_c_d}{L\-C\-D} \&c)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Alpha\-L\-C\-D \hyperlink{class_l_c_d_ae4b9e9c4a04d3d976ffb09d112831a5a}{lcd}
+\begin{DoxyCompactList}\small\item\em Alpha\-L\-C\-D class inherited instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Manages the Alphanumeric display for program output messages. 
+
+This class implements the {\itshape Alpha\-L\-C\-D} class that manages the Alphanumeric \hyperlink{class_l_c_d}{L\-C\-D} display hardware using three digital pins via a shift-\/out register. 
+
+Definition at line 40 of file L\-C\-D.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_l_c_d_a00bb2db1390721abc7b24ac4b8c276c8}{\index{L\-C\-D@{L\-C\-D}!L\-C\-D@{L\-C\-D}}
+\index{L\-C\-D@{L\-C\-D}!LCD@{L\-C\-D}}
+\subsubsection[{L\-C\-D}]{\setlength{\rightskip}{0pt plus 5cm}L\-C\-D\-::\-L\-C\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a00bb2db1390721abc7b24ac4b8c276c8}
+\hypertarget{class_l_c_d_a5ac2667d164486b73b35dce3fd76bd95}{\index{L\-C\-D@{L\-C\-D}!$\sim$\-L\-C\-D@{$\sim$\-L\-C\-D}}
+\index{$\sim$\-L\-C\-D@{$\sim$\-L\-C\-D}!LCD@{L\-C\-D}}
+\subsubsection[{$\sim$\-L\-C\-D}]{\setlength{\rightskip}{0pt plus 5cm}L\-C\-D\-::$\sim$\-L\-C\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a5ac2667d164486b73b35dce3fd76bd95}
+\hypertarget{class_l_c_d_af0e1f361079353b77e3836eadba85149}{\index{L\-C\-D@{L\-C\-D}!L\-C\-D@{L\-C\-D}}
+\index{L\-C\-D@{L\-C\-D}!LCD@{L\-C\-D}}
+\subsubsection[{L\-C\-D}]{\setlength{\rightskip}{0pt plus 5cm}L\-C\-D\-::\-L\-C\-D (
+\begin{DoxyParamCaption}
+\item[{const {\bf L\-C\-D} \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_l_c_d_af0e1f361079353b77e3836eadba85149}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_c_d_af549238d5b8990cc30115644f4c9138c}{\index{L\-C\-D@{L\-C\-D}!bin@{bin}}
+\index{bin@{bin}!LCD@{L\-C\-D}}
+\subsubsection[{bin}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::bin (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_af549238d5b8990cc30115644f4c9138c}
+
+
+shows an integer in binary format 
+
+\hypertarget{class_l_c_d_ad034fa16a3b92276071741d9b31240e5}{\index{L\-C\-D@{L\-C\-D}!blink@{blink}}
+\index{blink@{blink}!LCD@{L\-C\-D}}
+\subsubsection[{blink}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::blink (
+\begin{DoxyParamCaption}
+\item[{bool}]{set}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_ad034fa16a3b92276071741d9b31240e5}
+
+
+Set blink mode. 
+
+\hypertarget{class_l_c_d_a0faf36a77c08f7ca19ef7a6df81c3cea}{\index{L\-C\-D@{L\-C\-D}!clean@{clean}}
+\index{clean@{clean}!LCD@{L\-C\-D}}
+\subsubsection[{clean}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::clean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a0faf36a77c08f7ca19ef7a6df81c3cea}
+
+
+clean the \hyperlink{class_l_c_d}{L\-C\-D} screen 
+
+\hypertarget{class_l_c_d_a444c14cc67983cdc179cdf97fda60194}{\index{L\-C\-D@{L\-C\-D}!dec@{dec}}
+\index{dec@{dec}!LCD@{L\-C\-D}}
+\subsubsection[{dec}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::dec (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a444c14cc67983cdc179cdf97fda60194}
+
+
+shows an integer in decimal format 
+
+\hypertarget{class_l_c_d_a744d30666c9d253089ce10b551854a2f}{\index{L\-C\-D@{L\-C\-D}!enable@{enable}}
+\index{enable@{enable}!LCD@{L\-C\-D}}
+\subsubsection[{enable}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::enable (
+\begin{DoxyParamCaption}
+\item[{bool}]{s}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a744d30666c9d253089ce10b551854a2f}
+
+
+Set the display on or off. 
+
+\hypertarget{class_l_c_d_a728c09b7c47d67fc544ed87d06662eb4}{\index{L\-C\-D@{L\-C\-D}!error@{error}}
+\index{error@{error}!LCD@{L\-C\-D}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::error (
+\begin{DoxyParamCaption}
+\item[{String}]{m}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a728c09b7c47d67fc544ed87d06662eb4}
+
+
+shows an error message 
+
+\hypertarget{class_l_c_d_a510e3f387c93e318402163f96d69c2a2}{\index{L\-C\-D@{L\-C\-D}!error@{error}}
+\index{error@{error}!LCD@{L\-C\-D}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::error (
+\begin{DoxyParamCaption}
+\item[{String}]{m, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a510e3f387c93e318402163f96d69c2a2}
+
+
+shows an error message at specified coordinates 
+
+\hypertarget{class_l_c_d_a3dbdcf6441737a00891f70e472401f77}{\index{L\-C\-D@{L\-C\-D}!hex@{hex}}
+\index{hex@{hex}!LCD@{L\-C\-D}}
+\subsubsection[{hex}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::hex (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a3dbdcf6441737a00891f70e472401f77}
+
+
+shows an integer in hexadeciaml format 
+
+\hypertarget{class_l_c_d_a34190efc6a03bb5c0b6cdfff2d7199b9}{\index{L\-C\-D@{L\-C\-D}!message@{message}}
+\index{message@{message}!LCD@{L\-C\-D}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::message (
+\begin{DoxyParamCaption}
+\item[{String}]{m}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a34190efc6a03bb5c0b6cdfff2d7199b9}
+
+
+shows a string message 
+
+\hypertarget{class_l_c_d_a9974c0a77562d699d422992d9bfa1915}{\index{L\-C\-D@{L\-C\-D}!message@{message}}
+\index{message@{message}!LCD@{L\-C\-D}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::message (
+\begin{DoxyParamCaption}
+\item[{String}]{m, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_a9974c0a77562d699d422992d9bfa1915}
+
+
+shows a string message at specified coordinates 
+
+\hypertarget{class_l_c_d_ad0b68fbac8b664f506fae6b9af56d366}{\index{L\-C\-D@{L\-C\-D}!oct@{oct}}
+\index{oct@{oct}!LCD@{L\-C\-D}}
+\subsubsection[{oct}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::oct (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_ad0b68fbac8b664f506fae6b9af56d366}
+
+
+shows an integer in octal format 
+
+\hypertarget{class_l_c_d_a417d9ed76eb050d25ce6fa6d91c871f1}{\index{L\-C\-D@{L\-C\-D}!operator=@{operator=}}
+\index{operator=@{operator=}!LCD@{L\-C\-D}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\-C\-D}\& L\-C\-D\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf L\-C\-D} \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_l_c_d_a417d9ed76eb050d25ce6fa6d91c871f1}
+\hypertarget{class_l_c_d_ac73e78361f5a1004d37b399843d8b5a2}{\index{L\-C\-D@{L\-C\-D}!welcome@{welcome}}
+\index{welcome@{welcome}!LCD@{L\-C\-D}}
+\subsubsection[{welcome}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-::welcome (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_ac73e78361f5a1004d37b399843d8b5a2}
+
+
+shows the program welcome message 
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_c_d_ae4b9e9c4a04d3d976ffb09d112831a5a}{\index{L\-C\-D@{L\-C\-D}!lcd@{lcd}}
+\index{lcd@{lcd}!LCD@{L\-C\-D}}
+\subsubsection[{lcd}]{\setlength{\rightskip}{0pt plus 5cm}Alpha\-L\-C\-D L\-C\-D\-::lcd\hspace{0.3cm}{\ttfamily [private]}}}\label{class_l_c_d_ae4b9e9c4a04d3d976ffb09d112831a5a}
+
+
+Alpha\-L\-C\-D class inherited instance. 
+
+
+
+Definition at line 45 of file L\-C\-D.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\hyperlink{_l_c_d_8h}{L\-C\-D.\-h}\end{DoxyCompactItemize}

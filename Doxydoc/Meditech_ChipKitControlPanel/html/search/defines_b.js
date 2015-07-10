@@ -1,11 +1,14 @@
 var searchData=
 [
-  ['task_5fupdatedisplay',['TASK_UPDATEDISPLAY',['../_globals_8h.html#ab24200fce9fdcbdd9b76bd40f21cb50e',1,'Globals.h']]],
-  ['temp_5foffset',['TEMP_OFFSET',['../_temperature_8h.html#a3cb24f09004f92185b77e9e7bac6ea61',1,'Temperature.h']]],
-  ['temp_5fsensor',['TEMP_SENSOR',['../_temperature_8h.html#a16433c75f0d3615fe60d59ec8a86834a',1,'Temperature.h']]],
-  ['tid_5fecg',['TID_ECG',['../_l_c_d_templates_8h.html#aa23412c6cd3b50876409b150c502a843',1,'LCDTemplates.h']]],
-  ['tid_5fheartbeat',['TID_HEARTBEAT',['../_l_c_d_templates_8h.html#a3123215c6e06adef7844e2618c2f44ac',1,'LCDTemplates.h']]],
-  ['tid_5finfo',['TID_INFO',['../_l_c_d_templates_8h.html#aff20d279e92773f5794c520a9a9ab212',1,'LCDTemplates.h']]],
-  ['tid_5fstethoscope',['TID_STETHOSCOPE',['../_l_c_d_templates_8h.html#ac3ee9f1dc127335a24c11e2dc3a4c024',1,'LCDTemplates.h']]],
-  ['tid_5ftest',['TID_TEST',['../_l_c_d_templates_8h.html#a1fa2d890c1a0373f3259708a83a43268',1,'LCDTemplates.h']]]
+  ['max_5fcmd_5flen',['MAX_CMD_LEN',['../_command_processor_8h.html#a1eb73c104b484cf18752169509cebfe2',1,'CommandProcessor.h']]],
+  ['max_5ffanspeed',['MAX_FANSPEED',['../_globals_8h.html#ac9351f029741923529816df3678ea765',1,'Globals.h']]],
+  ['max_5ffloat',['MAX_FLOAT',['../_command_processor_8h.html#afb31aa2d196755fb259d43a03c18c9d7',1,'CommandProcessor.h']]],
+  ['max_5fint',['MAX_INT',['../_command_processor_8h.html#aaa1ac5caef84256eaeb39594e58e096f',1,'CommandProcessor.h']]],
+  ['max_5flong',['MAX_LONG',['../_command_processor_8h.html#a5535b838abf57fcd6aa71dd632c51bc8',1,'CommandProcessor.h']]],
+  ['max_5ftemp',['MAX_TEMP',['../_globals_8h.html#aed8ea54a2630aaf2ae3f2bd5fa886959',1,'Globals.h']]],
+  ['max_5ftemplates',['MAX_TEMPLATES',['../_l_c_d_templates_8h.html#a0b935b9f5a6d3f57285fece1aa0a37a5',1,'LCDTemplates.h']]],
+  ['maxgain',['MAXGAIN',['../_analog_8h.html#ad9f7f39b0dfbced74592416643e45475',1,'Analog.h']]],
+  ['min_5ffanspeed',['MIN_FANSPEED',['../_globals_8h.html#a1ba666d06d08bf653b276d2207542cab',1,'Globals.h']]],
+  ['min_5ftemp',['MIN_TEMP',['../_globals_8h.html#a2522d2568f63855838c3ecfb44084710',1,'Globals.h']]],
+  ['mingain',['MINGAIN',['../_analog_8h.html#a901b2c5395b6d9dbeb1b7232a0db6d36',1,'Analog.h']]]
 ];

@@ -1,0 +1,149 @@
+\hypertarget{structparse_command}{\section{parse\-Command Struct Reference}
+\label{structparse_command}\index{parse\-Command@{parse\-Command}}
+}
+
+
+{\ttfamily \#include \char`\"{}Command\-Processor.\-h\char`\"{}}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}{subcommand} \mbox{[}1\mbox{]}
+\begin{DoxyCompactList}\small\item\em char subcommand\mbox{[}1\mbox{]} Contains the last parsed subcommand \end{DoxyCompactList}\item 
+String \hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}
+\begin{DoxyCompactList}\small\item\em Command associated message string, used to return messages to the master and sending requests. The string should not be longer than C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N. \end{DoxyCompactList}\item 
+String \hyperlink{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{string\-Value}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser. \end{DoxyCompactList}\item 
+long \hyperlink{structparse_command_a10deac33dc255dd8a8b84532bbeb6c42}{long\-Value} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. \end{DoxyCompactList}\item 
+int \hyperlink{structparse_command_a9ad775810b79683631510fd333096c6f}{int\-Value} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. \end{DoxyCompactList}\item 
+float \hyperlink{structparse_command_a475f06e9e3728cc583008ad66dc48329}{float\-Value} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. \end{DoxyCompactList}\item 
+float \hyperlink{structparse_command_aff75594be6413210138456dc4572be52}{boolean\-Value}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser. \end{DoxyCompactList}\item 
+char \hyperlink{structparse_command_a01d90da128793f2c09ce31ce4a9f2ce5}{cmd\-Data} \mbox{[}1024\mbox{]}
+\begin{DoxyCompactList}\small\item\em Unparsed Command String. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 75 of file Command\-Processor.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structparse_command_aff75594be6413210138456dc4572be52}{\index{parse\-Command@{parse\-Command}!boolean\-Value@{boolean\-Value}}
+\index{boolean\-Value@{boolean\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{boolean\-Value}]{\setlength{\rightskip}{0pt plus 5cm}float parse\-Command\-::boolean\-Value}}\label{structparse_command_aff75594be6413210138456dc4572be52}
+
+
+Returning parameter from the command parser. 
+
+
+
+Definition at line 99 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a01d90da128793f2c09ce31ce4a9f2ce5}{\index{parse\-Command@{parse\-Command}!cmd\-Data@{cmd\-Data}}
+\index{cmd\-Data@{cmd\-Data}!parseCommand@{parse\-Command}}
+\subsubsection[{cmd\-Data}]{\setlength{\rightskip}{0pt plus 5cm}char parse\-Command\-::cmd\-Data\mbox{[}1024\mbox{]}}}\label{structparse_command_a01d90da128793f2c09ce31ce4a9f2ce5}
+
+
+Unparsed Command String. 
+
+cmd\-Data is the string after syntax checking. The string can contain one or more commands. When the command string is sent to the parser this value contains the command sequence. When the this string is empy all the commands has been processed and the system is ready to receive a new command. 
+
+Definition at line 111 of file Command\-Processor.\-h.
+
+
+
+Referenced by chars\-To\-Float(), chars\-To\-Long(), chars\-To\-String(), next\-Command\-Separator(), parser(), set\-Body\-Temp\-Status(), set\-E\-C\-G\-Status(), set\-Heart\-Beat\-Status(), set\-Pressure\-Status(), and set\-Stethoscope\-Status().
+
+\hypertarget{structparse_command_a475f06e9e3728cc583008ad66dc48329}{\index{parse\-Command@{parse\-Command}!float\-Value@{float\-Value}}
+\index{float\-Value@{float\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{float\-Value}]{\setlength{\rightskip}{0pt plus 5cm}float parse\-Command\-::float\-Value\mbox{[}2\mbox{]}}}\label{structparse_command_a475f06e9e3728cc583008ad66dc48329}
+
+
+Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. 
+
+
+
+Definition at line 97 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a9ad775810b79683631510fd333096c6f}{\index{parse\-Command@{parse\-Command}!int\-Value@{int\-Value}}
+\index{int\-Value@{int\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{int\-Value}]{\setlength{\rightskip}{0pt plus 5cm}int parse\-Command\-::int\-Value\mbox{[}2\mbox{]}}}\label{structparse_command_a9ad775810b79683631510fd333096c6f}
+
+
+Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. 
+
+
+
+Definition at line 93 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{structparse_command_a10deac33dc255dd8a8b84532bbeb6c42}{\index{parse\-Command@{parse\-Command}!long\-Value@{long\-Value}}
+\index{long\-Value@{long\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{long\-Value}]{\setlength{\rightskip}{0pt plus 5cm}long parse\-Command\-::long\-Value\mbox{[}2\mbox{]}}}\label{structparse_command_a10deac33dc255dd8a8b84532bbeb6c42}
+
+
+Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. 
+
+
+
+Definition at line 89 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{\index{parse\-Command@{parse\-Command}!message@{message}}
+\index{message@{message}!parseCommand@{parse\-Command}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}String parse\-Command\-::message}}\label{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}
+
+
+Command associated message string, used to return messages to the master and sending requests. The string should not be longer than C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N. 
+
+
+
+Definition at line 82 of file Command\-Processor.\-h.
+
+
+
+Referenced by ack\-Master(), append\-Response(), and parser().
+
+\hypertarget{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{\index{parse\-Command@{parse\-Command}!string\-Value@{string\-Value}}
+\index{string\-Value@{string\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{string\-Value}]{\setlength{\rightskip}{0pt plus 5cm}String parse\-Command\-::string\-Value}}\label{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}
+
+
+Returning parameter from the command parser. 
+
+
+
+Definition at line 85 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}{\index{parse\-Command@{parse\-Command}!subcommand@{subcommand}}
+\index{subcommand@{subcommand}!parseCommand@{parse\-Command}}
+\subsubsection[{subcommand}]{\setlength{\rightskip}{0pt plus 5cm}char parse\-Command\-::subcommand\mbox{[}1\mbox{]}}}\label{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}
+
+
+char subcommand\mbox{[}1\mbox{]} Contains the last parsed subcommand 
+
+
+
+Definition at line 78 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\hyperlink{_command_processor_8h}{Command\-Processor.\-h}\end{DoxyCompactItemize}

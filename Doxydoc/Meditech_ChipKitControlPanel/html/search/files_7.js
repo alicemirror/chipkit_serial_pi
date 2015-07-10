@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['version_2eh',['Version.h',['../_version_8h.html',1,'']]]
+  ['stringsglobals_2eh',['StringsGlobals.h',['../_strings_globals_8h.html',1,'']]]
 ];

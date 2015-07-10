@@ -1,0 +1,193 @@
+\hypertarget{class_l_c_d_blood_pressure}{\section{L\-C\-D\-Blood\-Pressure Class Reference}
+\label{class_l_c_d_blood_pressure}\index{L\-C\-D\-Blood\-Pressure@{L\-C\-D\-Blood\-Pressure}}
+}
+
+
+{\ttfamily \#include \char`\"{}L\-C\-D\-Templates.\-h\char`\"{}}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_l_c_d_blood_pressure_a61953d65527d1c62746746bd18398fd9}{L\-C\-D\-Blood\-Pressure} (Alpha\-L\-C\-D my\-L\-C\-D)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_blood_pressure_a59cea5aac4016136f02d5355e24a34fb}{create\-Display} ()
+\begin{DoxyCompactList}\small\item\em Create the full display view. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_c_d_blood_pressure_ab04c92a0291696007acac275c52e6316}{update\-Display} (int val, int \hyperlink{_l_c_d_templates_8h_a20a49e010fbfc3a43959f12d92e01bb6}{field})
+\begin{DoxyCompactList}\small\item\em Update the variable content field(s) only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_l_c_d_blood_pressure_a696aeab13e1360ccab183461537b5901}{id}
+\item 
+\hyperlink{_l_c_d_templates_8h_a20a49e010fbfc3a43959f12d92e01bb6}{field} \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcd\-Fields} \mbox{[}6\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Alpha\-L\-C\-D \hyperlink{class_l_c_d_blood_pressure_abb80767c8e4d018ced0356fe1623577f}{m\-Lcd}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 105 of file L\-C\-D\-Templates.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_l_c_d_blood_pressure_a61953d65527d1c62746746bd18398fd9}{\index{L\-C\-D\-Blood\-Pressure@{L\-C\-D\-Blood\-Pressure}!L\-C\-D\-Blood\-Pressure@{L\-C\-D\-Blood\-Pressure}}
+\index{L\-C\-D\-Blood\-Pressure@{L\-C\-D\-Blood\-Pressure}!LCDBloodPressure@{L\-C\-D\-Blood\-Pressure}}
+\subsubsection[{L\-C\-D\-Blood\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}L\-C\-D\-Blood\-Pressure\-::\-L\-C\-D\-Blood\-Pressure (
+\begin{DoxyParamCaption}
+\item[{Alpha\-L\-C\-D}]{my\-L\-C\-D}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_blood_pressure_a61953d65527d1c62746746bd18398fd9}
+
+
+Class constructor. 
+
+Initialises the fields with the static values and assign the local \hyperlink{class_l_c_d}{L\-C\-D} class pointer with the calling program \hyperlink{class_l_c_d}{L\-C\-D} class global instance. The field name strings are assigned by the parser as far as are received from the master. 
+
+Definition at line 19 of file L\-C\-D\-Blood\-Pressure.\-cpp.
+
+
+
+References B\-L\-O\-O\-D\-\_\-\-M\-A\-X, B\-L\-O\-O\-D\-\_\-\-M\-A\-X\-V\-A\-L, B\-L\-O\-O\-D\-\_\-\-M\-I\-N, B\-L\-O\-O\-D\-\_\-\-M\-I\-N\-V\-A\-L, B\-L\-O\-O\-D\-\_\-\-T\-I\-T\-L\-E, B\-L\-O\-O\-D\-\_\-\-W\-A\-I\-T, L\-C\-D\-Template\-Field\-::col, lcd\-Fields, m\-Lcd, L\-C\-D\-Template\-Field\-::row, and T\-I\-D\-\_\-\-B\-L\-O\-O\-D\-P\-R\-E\-S\-S.
+
+
+\begin{DoxyCode}
+19                                                  \{
+20   \hyperlink{class_l_c_d_blood_pressure_abb80767c8e4d018ced0356fe1623577f}{mLcd} = myLCD;
+21   \textcolor{keywordtype}{id} = \hyperlink{_l_c_d_templates_8h_aaf2c3d4506041e2dc83aa27f28ea6d81}{TID\_BLOODPRESS};
+22   
+23   \textcolor{comment}{// Initialise the fields}
+24   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a300e1cb7e2671b15d4cb72cbc18a9ce7}{BLOOD\_TITLE}].\hyperlink{struct_l_c_d_template_field_a842db0224937e139c4ff9f9a6da123e6}{row} = 0;
+25   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a300e1cb7e2671b15d4cb72cbc18a9ce7}{BLOOD\_TITLE}].\hyperlink{struct_l_c_d_template_field_a5dec4293e8f4f297609c83e8612c3f06}{col} = 0;
+26   
+27   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a726eab7d3d8bc5b13a32e1fd8c8d11aa}{BLOOD\_WAIT}].\hyperlink{struct_l_c_d_template_field_a842db0224937e139c4ff9f9a6da123e6}{row} = 1;
+28   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a726eab7d3d8bc5b13a32e1fd8c8d11aa}{BLOOD\_WAIT}].\hyperlink{struct_l_c_d_template_field_a5dec4293e8f4f297609c83e8612c3f06}{col} = 16;
+29   
+30   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_affc959f533dfb8908431895dda6d1a5e}{BLOOD\_MIN}].\hyperlink{struct_l_c_d_template_field_a842db0224937e139c4ff9f9a6da123e6}{row} = 1;
+31   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_affc959f533dfb8908431895dda6d1a5e}{BLOOD\_MIN}].\hyperlink{struct_l_c_d_template_field_a5dec4293e8f4f297609c83e8612c3f06}{col} = 0;
+32 
+33   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a764f0d73d432fa04797953292f67ad10}{BLOOD\_MINVAL}].\hyperlink{struct_l_c_d_template_field_a842db0224937e139c4ff9f9a6da123e6}{row} = 1;
+34   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a764f0d73d432fa04797953292f67ad10}{BLOOD\_MINVAL}].\hyperlink{struct_l_c_d_template_field_a5dec4293e8f4f297609c83e8612c3f06}{col} = 3;
+35 
+36   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a96b68d70226d7153d39632e4c1a3e83d}{BLOOD\_MAX}].\hyperlink{struct_l_c_d_template_field_a842db0224937e139c4ff9f9a6da123e6}{row} = 1;
+37   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a96b68d70226d7153d39632e4c1a3e83d}{BLOOD\_MAX}].\hyperlink{struct_l_c_d_template_field_a5dec4293e8f4f297609c83e8612c3f06}{col} = 7;
+38 
+39   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a7ca44aa5642aff8924996f821049c765}{BLOOD\_MAXVAL}].\hyperlink{struct_l_c_d_template_field_a842db0224937e139c4ff9f9a6da123e6}{row} = 1;
+40   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a7ca44aa5642aff8924996f821049c765}{BLOOD\_MAXVAL}].\hyperlink{struct_l_c_d_template_field_a5dec4293e8f4f297609c83e8612c3f06}{col} = 9;
+41 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_l_c_d_blood_pressure_a59cea5aac4016136f02d5355e24a34fb}{\index{L\-C\-D\-Blood\-Pressure@{L\-C\-D\-Blood\-Pressure}!create\-Display@{create\-Display}}
+\index{create\-Display@{create\-Display}!LCDBloodPressure@{L\-C\-D\-Blood\-Pressure}}
+\subsubsection[{create\-Display}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-Blood\-Pressure\-::create\-Display (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_blood_pressure_a59cea5aac4016136f02d5355e24a34fb}
+
+
+Create the full display view. 
+
+This method should be called only when the template is shown on start then only the \hyperlink{class_l_c_d_blood_pressure_ab04c92a0291696007acac275c52e6316}{update\-Display()} method should be used to change the variable fields. 
+
+Definition at line 50 of file L\-C\-D\-Blood\-Pressure.\-cpp.
+
+
+
+References B\-L\-O\-O\-D\-P\-R\-E\-S\-S\-\_\-\-F\-I\-E\-L\-D\-S, lcd\-Fields, m\-Lcd, and L\-C\-D\-Template\-Field\-::val.
+
+
+\begin{DoxyCode}
+50                                      \{
+51   \hyperlink{class_l_c_d_blood_pressure_abb80767c8e4d018ced0356fe1623577f}{mLcd}.clear();
+52 
+53   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < \hyperlink{_l_c_d_templates_8h_a31c8ffe16ffc1e2f21020d9f7d972c5d}{BLOODPRESS\_FIELDS}; j++) \{
+54     \hyperlink{class_l_c_d_blood_pressure_abb80767c8e4d018ced0356fe1623577f}{mLcd}.setCursor(\hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[j].col, \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[j].row);
+55     \hyperlink{class_l_c_d_blood_pressure_abb80767c8e4d018ced0356fe1623577f}{mLcd} << \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[j].\hyperlink{struct_l_c_d_template_field_a6eb7ce0547fc28ac3a2538f0fac3f117}{val};
+56   \}
+57 \}
+\end{DoxyCode}
+\hypertarget{class_l_c_d_blood_pressure_ab04c92a0291696007acac275c52e6316}{\index{L\-C\-D\-Blood\-Pressure@{L\-C\-D\-Blood\-Pressure}!update\-Display@{update\-Display}}
+\index{update\-Display@{update\-Display}!LCDBloodPressure@{L\-C\-D\-Blood\-Pressure}}
+\subsubsection[{update\-Display}]{\setlength{\rightskip}{0pt plus 5cm}void L\-C\-D\-Blood\-Pressure\-::update\-Display (
+\begin{DoxyParamCaption}
+\item[{int}]{val, }
+\item[{int}]{field}
+\end{DoxyParamCaption}
+)}}\label{class_l_c_d_blood_pressure_ab04c92a0291696007acac275c52e6316}
+
+
+Update the variable content field(s) only. 
+
+This method should be called every time the field content of a variable is updated. It affects only the data content fields. To recreate the entire display the \hyperlink{class_l_c_d_blood_pressure_a59cea5aac4016136f02d5355e24a34fb}{create\-Display()} method should be called. When the method is called, the class field value is updated after the value conversion.
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & The value to update \\
+\hline
+{\em field} & The field I\-D \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 72 of file L\-C\-D\-Blood\-Pressure.\-cpp.
+
+
+
+References lcd\-Fields, m\-Lcd, and L\-C\-D\-Template\-Field\-::val.
+
+
+\begin{DoxyCode}
+72                                                        \{
+73   \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a20a49e010fbfc3a43959f12d92e01bb6}{field}].\hyperlink{struct_l_c_d_template_field_a6eb7ce0547fc28ac3a2538f0fac3f117}{val} = String(val);
+74 
+75   \hyperlink{class_l_c_d_blood_pressure_abb80767c8e4d018ced0356fe1623577f}{mLcd}.setCursor(\hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{struct_l_c_d_template_field}{field}].col, \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[
+      \hyperlink{struct_l_c_d_template_field}{field}].row);
+76   \hyperlink{class_l_c_d_blood_pressure_abb80767c8e4d018ced0356fe1623577f}{mLcd} << \hyperlink{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{lcdFields}[\hyperlink{_l_c_d_templates_8h_a20a49e010fbfc3a43959f12d92e01bb6}{field}].\hyperlink{struct_l_c_d_template_field_a6eb7ce0547fc28ac3a2538f0fac3f117}{val};
+77 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_l_c_d_blood_pressure_a696aeab13e1360ccab183461537b5901}{\index{L\-C\-D\-Blood\-Pressure@{L\-C\-D\-Blood\-Pressure}!id@{id}}
+\index{id@{id}!LCDBloodPressure@{L\-C\-D\-Blood\-Pressure}}
+\subsubsection[{id}]{\setlength{\rightskip}{0pt plus 5cm}int L\-C\-D\-Blood\-Pressure\-::id}}\label{class_l_c_d_blood_pressure_a696aeab13e1360ccab183461537b5901}
+
+
+Definition at line 110 of file L\-C\-D\-Templates.\-h.
+
+\hypertarget{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}{\index{L\-C\-D\-Blood\-Pressure@{L\-C\-D\-Blood\-Pressure}!lcd\-Fields@{lcd\-Fields}}
+\index{lcd\-Fields@{lcd\-Fields}!LCDBloodPressure@{L\-C\-D\-Blood\-Pressure}}
+\subsubsection[{lcd\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}{\bf field} L\-C\-D\-Blood\-Pressure\-::lcd\-Fields\mbox{[}6\mbox{]}}}\label{class_l_c_d_blood_pressure_a6e1365c0d4e86f192ce5b1daae22bb79}
+
+
+Definition at line 111 of file L\-C\-D\-Templates.\-h.
+
+
+
+Referenced by create\-Display(), L\-C\-D\-Blood\-Pressure(), and update\-Display().
+
+\hypertarget{class_l_c_d_blood_pressure_abb80767c8e4d018ced0356fe1623577f}{\index{L\-C\-D\-Blood\-Pressure@{L\-C\-D\-Blood\-Pressure}!m\-Lcd@{m\-Lcd}}
+\index{m\-Lcd@{m\-Lcd}!LCDBloodPressure@{L\-C\-D\-Blood\-Pressure}}
+\subsubsection[{m\-Lcd}]{\setlength{\rightskip}{0pt plus 5cm}Alpha\-L\-C\-D L\-C\-D\-Blood\-Pressure\-::m\-Lcd\hspace{0.3cm}{\ttfamily [private]}}}\label{class_l_c_d_blood_pressure_abb80767c8e4d018ced0356fe1623577f}
+
+
+Definition at line 113 of file L\-C\-D\-Templates.\-h.
+
+
+
+Referenced by create\-Display(), L\-C\-D\-Blood\-Pressure(), and update\-Display().
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\hyperlink{_l_c_d_templates_8h}{L\-C\-D\-Templates.\-h}\item 
+/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\hyperlink{_l_c_d_blood_pressure_8cpp}{L\-C\-D\-Blood\-Pressure.\-cpp}\end{DoxyCompactItemize}
