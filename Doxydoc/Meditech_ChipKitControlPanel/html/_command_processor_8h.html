@@ -143,6 +143,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a0f64fd8fb7385169ef53c7d2d49b02cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a0f64fd8fb7385169ef53c7d2d49b02cc">STRING_DELIMITER</a>&#160;&#160;&#160;'&quot;'</td></tr>
 <tr class="memdesc:a0f64fd8fb7385169ef53c7d2d49b02cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">String delimiter.  <a href="#a0f64fd8fb7385169ef53c7d2d49b02cc">More...</a><br/></td></tr>
 <tr class="separator:a0f64fd8fb7385169ef53c7d2d49b02cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01ff82405086f08d2af53956b5247a30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a01ff82405086f08d2af53956b5247a30">PARM_FIELDID_LEN</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a01ff82405086f08d2af53956b5247a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed field ID characters lenght. Should be left zero filled in the form 00.  <a href="#a01ff82405086f08d2af53956b5247a30">More...</a><br/></td></tr>
+<tr class="separator:a01ff82405086f08d2af53956b5247a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bf9ddf196d90a4e4639a0c4a086b9c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_command_processor_8h.html#a3bf9ddf196d90a4e4639a0c4a086b9c7">PARM_INTEGER_LEN</a>&#160;&#160;&#160;5</td></tr>
 <tr class="memdesc:a3bf9ddf196d90a4e4639a0c4a086b9c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fixed integers characters lenght. Should be left zero filled in the form 00000.  <a href="#a3bf9ddf196d90a4e4639a0c4a086b9c7">More...</a><br/></td></tr>
 <tr class="separator:a3bf9ddf196d90a4e4639a0c4a086b9c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -243,9 +246,9 @@ Typedefs</h2></td></tr>
 
 <p>The lenght of CMD_CHARACTERS + 1. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00115">115</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00112">112</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -268,9 +271,9 @@ direction: receive<br/>
 example: D;01;03;Test <br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00167">167</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00164">164</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -292,9 +295,9 @@ direction: receive example: E;S <br/>
 Enable the microphonic stethoscope</p>
 <dl class="section note"><dt>Note</dt><dd>The CMD_ENABLE command only activates the setup bit of the current probe, if a probe has asked to enable. If the enable bit is not set the corresponding display layout on the control panel <a class="el" href="class_l_c_d.html" title="Manages the Alphanumeric display for program output messages. ">LCD</a> can't be changed due the probe-dependant settings that the probe-enabled status involves. The right method to display a probe template is to enable it then send a template command to the control panel with the display layout parameters. If not, only the </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00134">134</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00131">131</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -316,7 +319,7 @@ direction: receive<br/>
 </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Not yet implemented </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00178">178</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00175">175</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -352,9 +355,9 @@ usage: I <br/>
 direction: receive<br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00203">203</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00200">200</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -370,14 +373,14 @@ direction: receive<br/>
 
 <p>command: Create a <a class="el" href="class_l_c_d.html" title="Manages the Alphanumeric display for program output messages. ">LCD</a> template layout </p>
 <p>description: string parameters to generate a template layout with a variable number of parameters, depending on the requested template. name: L <br/>
-usage: L;&lt;Template id&gt;=""&gt;;[[&lt;Field id&gt;=""&gt;;&lt;Field string&gt;=""&gt;],] <br/>
+usage: L;&lt;Template id&gt;=""&gt;;[[;&lt;Field string&gt;=""&gt;];] <br/>
 direction: receive<br/>
  </p>
 <dl class="section note"><dt>Note</dt><dd>If the requested layout template is a probe display template the command has effect only if the probe status bit is set to on (current probe active) </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00192">192</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00189">189</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -416,7 +419,7 @@ direction: send example: P;G;23 <br/>
 Send the stethoscope gain level to the master </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Not yet implemented </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00147">147</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00144">144</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -446,7 +449,7 @@ direction: receive<br/>
 </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Not yet implemented </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00242">242</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00239">239</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -476,7 +479,7 @@ direction: receive<br/>
 </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Not yet implemented </dd></dl>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00242">242</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00239">239</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -497,7 +500,7 @@ direction: receive<br/>
 
 <p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00030">30</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00734">nextCommandSeparator()</a>, and <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00795">nextCommandSeparator()</a>, and <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -519,9 +522,9 @@ usage: T <br/>
 direction: receive<br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00214">214</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00211">211</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -540,7 +543,7 @@ direction: receive<br/>
 
 <p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00039">39</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00874">parseFieldSeparator()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00966">isFieldSeparator()</a>, and <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00821">nextFieldSeparator()</a>.</p>
 
 </div>
 </div>
@@ -556,7 +559,7 @@ direction: receive<br/>
 
 <p>Disable flag. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00298">298</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00295">295</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -572,7 +575,7 @@ direction: receive<br/>
 
 <p>Enable flag. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00296">296</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00293">293</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -590,7 +593,7 @@ direction: receive<br/>
 
 <p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00015">15</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00778">charsToString()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00870">charsToString()</a>, and <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00171">checkSerial()</a>.</p>
 
 </div>
 </div>
@@ -606,7 +609,7 @@ direction: receive<br/>
 
 <p>Max number of float parameters in a command. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00065">65</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00069">69</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -622,7 +625,7 @@ direction: receive<br/>
 
 <p>Max number of integer parameters in a command. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00061">61</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00065">65</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -638,7 +641,7 @@ direction: receive<br/>
 
 <p>Max number of long integer parameters in a command. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00063">63</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00067">67</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -654,7 +657,25 @@ direction: receive<br/>
 
 <p>Fixed boolean character lenght. Should be left zero filled in the form 0 (or 1) </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00058">58</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00062">62</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a01ff82405086f08d2af53956b5247a30"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PARM_FIELDID_LEN&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fixed field ID characters lenght. Should be left zero filled in the form 00. </p>
+
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00046">46</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -670,7 +691,7 @@ direction: receive<br/>
 
 <p>Fixed float characters lenght. Should be left zero filled in the form 0000000.000. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00054">54</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00058">58</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -686,9 +707,9 @@ direction: receive<br/>
 
 <p>Fixed integers characters lenght. Should be left zero filled in the form 00000. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00046">46</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00050">50</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -704,7 +725,7 @@ direction: receive<br/>
 
 <p>Fixed long integers characters lenght. Should be left zero filled in the form 0000000. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00050">50</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00054">54</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
 </div>
 </div>
@@ -720,9 +741,9 @@ direction: receive<br/>
 
 <p>Command string separator used in the commandReturn() method. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00301">301</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00298">298</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00903">appendResponse()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l01000">appendResponse()</a>.</p>
 
 </div>
 </div>
@@ -742,9 +763,9 @@ usage: T (int)status <br/>
 parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE example: T;001 <br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00283">283</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00280">280</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -764,9 +785,9 @@ usage: G (int)status <br/>
 parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE example: G;001 <br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00263">263</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00260">260</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -786,9 +807,9 @@ usage: H (int)status <br/>
 parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE example: H;001 <br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00293">293</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00290">290</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -808,9 +829,9 @@ usage: P (int)status <br/>
 parameters: the status accepted values are FLAG_ENABLE and FLAG_DISABLE example: P;001 <br/>
 </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00273">273</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00270">270</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -830,9 +851,9 @@ usage: S (int)status <br/>
 parameters: the status accepted values are STETH_ENABLE and STETH_DISABLE example: S;001 <br/>
 Enable the stethoscope probe. </p>
 
-<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00253">253</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
+<p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00250">250</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00414">parser()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00454">parser()</a>.</p>
 
 </div>
 </div>
@@ -850,7 +871,7 @@ Enable the stethoscope probe. </p>
 
 <p>Definition at line <a class="el" href="_command_processor_8h_source.html#l00042">42</a> of file <a class="el" href="_command_processor_8h_source.html">CommandProcessor.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00778">charsToString()</a>.</p>
+<p>Referenced by <a class="el" href="_meditech___chip_kit_control_panel_8pde_source.html#l00870">charsToString()</a>.</p>
 
 </div>
 </div>
@@ -876,7 +897,7 @@ Enable the stethoscope probe. </p>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_31941a8e4ed3519dfa509f058cac090e.html">Meditech_ChipKitControlPanel</a></li><li class="navelem"><a class="el" href="_command_processor_8h.html">CommandProcessor.h</a></li>
-    <li class="footer">Generated on Sat Jul 11 2015 00:07:17 for Meditech control panel software by
+    <li class="footer">Generated on Sun Jul 12 2015 17:56:02 for Meditech control panel software by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

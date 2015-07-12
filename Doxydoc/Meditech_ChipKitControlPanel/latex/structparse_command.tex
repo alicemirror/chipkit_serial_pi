@@ -12,6 +12,8 @@ char \hyperlink{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}{subcomman
 \begin{DoxyCompactList}\small\item\em char subcommand\mbox{[}1\mbox{]} Contains the last parsed subcommand \end{DoxyCompactList}\item 
 String \hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}
 \begin{DoxyCompactList}\small\item\em Command associated message string, used to return messages to the master and sending requests. The string should not be longer than C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N. \end{DoxyCompactList}\item 
+int \hyperlink{structparse_command_a8359e121af4d2f16e054ead0b7844a30}{command\-Length}
+\begin{DoxyCompactList}\small\item\em The number of characters collected by the last lines read buffer from serial. \end{DoxyCompactList}\item 
 String \hyperlink{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{string\-Value}
 \begin{DoxyCompactList}\small\item\em Returning parameter from the command parser. \end{DoxyCompactList}\item 
 long \hyperlink{structparse_command_a10deac33dc255dd8a8b84532bbeb6c42}{long\-Value} \mbox{[}2\mbox{]}
@@ -21,15 +23,13 @@ int \hyperlink{structparse_command_a9ad775810b79683631510fd333096c6f}{int\-Value
 float \hyperlink{structparse_command_a475f06e9e3728cc583008ad66dc48329}{float\-Value} \mbox{[}2\mbox{]}
 \begin{DoxyCompactList}\small\item\em Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. \end{DoxyCompactList}\item 
 float \hyperlink{structparse_command_aff75594be6413210138456dc4572be52}{boolean\-Value}
-\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser. \end{DoxyCompactList}\item 
-char \hyperlink{structparse_command_a01d90da128793f2c09ce31ce4a9f2ce5}{cmd\-Data} \mbox{[}1024\mbox{]}
-\begin{DoxyCompactList}\small\item\em Unparsed Command String. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 
 
-Definition at line 75 of file Command\-Processor.\-h.
+Definition at line 79 of file Command\-Processor.\-h.
 
 
 
@@ -43,22 +43,22 @@ Returning parameter from the command parser.
 
 
 
-Definition at line 99 of file Command\-Processor.\-h.
+Definition at line 107 of file Command\-Processor.\-h.
 
-\hypertarget{structparse_command_a01d90da128793f2c09ce31ce4a9f2ce5}{\index{parse\-Command@{parse\-Command}!cmd\-Data@{cmd\-Data}}
-\index{cmd\-Data@{cmd\-Data}!parseCommand@{parse\-Command}}
-\subsubsection[{cmd\-Data}]{\setlength{\rightskip}{0pt plus 5cm}char parse\-Command\-::cmd\-Data\mbox{[}1024\mbox{]}}}\label{structparse_command_a01d90da128793f2c09ce31ce4a9f2ce5}
+\hypertarget{structparse_command_a8359e121af4d2f16e054ead0b7844a30}{\index{parse\-Command@{parse\-Command}!command\-Length@{command\-Length}}
+\index{command\-Length@{command\-Length}!parseCommand@{parse\-Command}}
+\subsubsection[{command\-Length}]{\setlength{\rightskip}{0pt plus 5cm}int parse\-Command\-::command\-Length}}\label{structparse_command_a8359e121af4d2f16e054ead0b7844a30}
 
 
-Unparsed Command String. 
-
-cmd\-Data is the string after syntax checking. The string can contain one or more commands. When the command string is sent to the parser this value contains the command sequence. When the this string is empy all the commands has been processed and the system is ready to receive a new command. 
-
-Definition at line 111 of file Command\-Processor.\-h.
+The number of characters collected by the last lines read buffer from serial. 
 
 
 
-Referenced by chars\-To\-Float(), chars\-To\-Long(), chars\-To\-String(), next\-Command\-Separator(), parser(), set\-Body\-Temp\-Status(), set\-E\-C\-G\-Status(), set\-Heart\-Beat\-Status(), set\-Pressure\-Status(), and set\-Stethoscope\-Status().
+Definition at line 90 of file Command\-Processor.\-h.
+
+
+
+Referenced by check\-Serial(), and parser().
 
 \hypertarget{structparse_command_a475f06e9e3728cc583008ad66dc48329}{\index{parse\-Command@{parse\-Command}!float\-Value@{float\-Value}}
 \index{float\-Value@{float\-Value}!parseCommand@{parse\-Command}}
@@ -69,7 +69,7 @@ Returning parameter from the command parser The array number of position is the 
 
 
 
-Definition at line 97 of file Command\-Processor.\-h.
+Definition at line 105 of file Command\-Processor.\-h.
 
 \hypertarget{structparse_command_a9ad775810b79683631510fd333096c6f}{\index{parse\-Command@{parse\-Command}!int\-Value@{int\-Value}}
 \index{int\-Value@{int\-Value}!parseCommand@{parse\-Command}}
@@ -80,7 +80,7 @@ Returning parameter from the command parser The array number of position is the 
 
 
 
-Definition at line 93 of file Command\-Processor.\-h.
+Definition at line 101 of file Command\-Processor.\-h.
 
 
 
@@ -95,7 +95,7 @@ Returning parameter from the command parser The array number of position is the 
 
 
 
-Definition at line 89 of file Command\-Processor.\-h.
+Definition at line 97 of file Command\-Processor.\-h.
 
 \hypertarget{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{\index{parse\-Command@{parse\-Command}!message@{message}}
 \index{message@{message}!parseCommand@{parse\-Command}}
@@ -106,7 +106,7 @@ Command associated message string, used to return messages to the master and sen
 
 
 
-Definition at line 82 of file Command\-Processor.\-h.
+Definition at line 86 of file Command\-Processor.\-h.
 
 
 
@@ -121,7 +121,7 @@ Returning parameter from the command parser.
 
 
 
-Definition at line 85 of file Command\-Processor.\-h.
+Definition at line 93 of file Command\-Processor.\-h.
 
 
 
@@ -136,7 +136,7 @@ char subcommand\mbox{[}1\mbox{]} Contains the last parsed subcommand
 
 
 
-Definition at line 78 of file Command\-Processor.\-h.
+Definition at line 82 of file Command\-Processor.\-h.
 
 
 

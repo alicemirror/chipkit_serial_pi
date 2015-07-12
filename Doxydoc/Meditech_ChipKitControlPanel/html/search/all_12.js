@@ -22,7 +22,7 @@ var searchData=
   ['teststatusled',['testStatusLED',['../_meditech___chip_kit_control_panel_8pde.html#af1a6bbf84a5ea76623bdc49aaf642a28',1,'Meditech_ChipKitControlPanel.pde']]],
   ['tid_5fbloodpress',['TID_BLOODPRESS',['../_l_c_d_templates_8h.html#aaf2c3d4506041e2dc83aa27f28ea6d81',1,'LCDTemplates.h']]],
   ['tid_5fdefault',['TID_DEFAULT',['../_l_c_d_templates_8h.html#ab8c87f34cee2394f3eb4c989577e2e8e',1,'LCDTemplates.h']]],
-  ['tid_5fecg',['TID_ECG',['../_l_c_decg_8cpp.html#aa23412c6cd3b50876409b150c502a843',1,'TID_ECG():&#160;LCDecg.cpp'],['../_l_c_d_templates_8h.html#aa23412c6cd3b50876409b150c502a843',1,'TID_ECG():&#160;LCDTemplates.h']]],
+  ['tid_5fecg',['TID_ECG',['../_l_c_d_templates_8h.html#aa23412c6cd3b50876409b150c502a843',1,'LCDTemplates.h']]],
   ['tid_5fheartbeat',['TID_HEARTBEAT',['../_l_c_d_templates_8h.html#a3123215c6e06adef7844e2618c2f44ac',1,'LCDTemplates.h']]],
   ['tid_5finfo',['TID_INFO',['../_l_c_d_templates_8h.html#aff20d279e92773f5794c520a9a9ab212',1,'LCDTemplates.h']]],
   ['tid_5fstethoscope',['TID_STETHOSCOPE',['../_l_c_d_templates_8h.html#ac3ee9f1dc127335a24c11e2dc3a4c024',1,'LCDTemplates.h']]],

@@ -26,6 +26,8 @@ struct \hyperlink{structparse_command}{parse\-Command}
 \begin{DoxyCompactList}\small\item\em Separator for subcommands and command parameters. \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_a0f64fd8fb7385169ef53c7d2d49b02cc}{S\-T\-R\-I\-N\-G\-\_\-\-D\-E\-L\-I\-M\-I\-T\-E\-R}~'\char`\"{}'
 \begin{DoxyCompactList}\small\item\em String delimiter. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a01ff82405086f08d2af53956b5247a30}{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N}~2
+\begin{DoxyCompactList}\small\item\em Fixed field I\-D characters lenght. Should be left zero filled in the form 00. \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_a3bf9ddf196d90a4e4639a0c4a086b9c7}{P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N}~5
 \begin{DoxyCompactList}\small\item\em Fixed integers characters lenght. Should be left zero filled in the form 00000. \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_ab40da0a39802f94a9f893c2c71e4209f}{P\-A\-R\-M\-\_\-\-L\-O\-N\-G\-I\-N\-T\-\_\-\-L\-E\-N}~7
@@ -100,7 +102,7 @@ The lenght of C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S + 1.
 
 
 
-Definition at line 115 of file Command\-Processor.\-h.
+Definition at line 112 of file Command\-Processor.\-h.
 
 
 
@@ -124,7 +126,7 @@ direction\-: receive\par
 example\-: D;01;03;Test \par
 
 
-Definition at line 167 of file Command\-Processor.\-h.
+Definition at line 164 of file Command\-Processor.\-h.
 
 
 
@@ -148,7 +150,7 @@ The C\-M\-D\-\_\-\-E\-N\-A\-B\-L\-E command only activates the setup bit of the 
 \end{DoxyNote}
 
 
-Definition at line 134 of file Command\-Processor.\-h.
+Definition at line 131 of file Command\-Processor.\-h.
 
 
 
@@ -169,7 +171,7 @@ direction\-: receive\par
 \item[\hyperlink{todo__todo000002}{Todo}]Not yet implemented \end{DoxyRefDesc}
 
 
-Definition at line 178 of file Command\-Processor.\-h.
+Definition at line 175 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_ab8b47ab0f69099ac94b48c767ae0fade}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-H\-E\-A\-D\-E\-R\-L\-E\-N@{C\-M\-D\-\_\-\-H\-E\-A\-D\-E\-R\-L\-E\-N}}
 \index{C\-M\-D\-\_\-\-H\-E\-A\-D\-E\-R\-L\-E\-N@{C\-M\-D\-\_\-\-H\-E\-A\-D\-E\-R\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -194,7 +196,7 @@ usage\-: I \par
 direction\-: receive\par
 
 
-Definition at line 203 of file Command\-Processor.\-h.
+Definition at line 200 of file Command\-Processor.\-h.
 
 
 
@@ -208,14 +210,14 @@ Referenced by parser().
 command\-: Create a \hyperlink{class_l_c_d}{L\-C\-D} template layout 
 
 description\-: string parameters to generate a template layout with a variable number of parameters, depending on the requested template. name\-: L \par
-usage\-: L;$<$\-Template id$>$=\char`\"{}\char`\"{}$>$;\mbox{[}\mbox{[}$<$\-Field id$>$=\char`\"{}\char`\"{}$>$;$<$\-Field string$>$=\char`\"{}\char`\"{}$>$\mbox{]},\mbox{]} \par
+usage\-: L;$<$\-Template id$>$=\char`\"{}\char`\"{}$>$;\mbox{[}\mbox{[};$<$\-Field string$>$=\char`\"{}\char`\"{}$>$\mbox{]};\mbox{]} \par
 direction\-: receive\par
  \begin{DoxyNote}{Note}
 If the requested layout template is a probe display template the command has effect only if the probe status bit is set to on (current probe active) 
 \end{DoxyNote}
 
 
-Definition at line 192 of file Command\-Processor.\-h.
+Definition at line 189 of file Command\-Processor.\-h.
 
 
 
@@ -249,7 +251,7 @@ Send the stethoscope gain level to the master \begin{DoxyRefDesc}{Todo}
 \item[\hyperlink{todo__todo000001}{Todo}]Not yet implemented \end{DoxyRefDesc}
 
 
-Definition at line 147 of file Command\-Processor.\-h.
+Definition at line 144 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_a0a838d0ab7a3cc09b5b9ea002198f36c}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T}}
 \index{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -278,7 +280,7 @@ direction\-: receive\par
 \item[\hyperlink{todo__todo000004}{Todo}]Not yet implemented \end{DoxyRefDesc}
 
 
-Definition at line 242 of file Command\-Processor.\-h.
+Definition at line 239 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_a0a838d0ab7a3cc09b5b9ea002198f36c}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T}}
 \index{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -307,7 +309,7 @@ direction\-: receive\par
 \item[\hyperlink{todo__todo000004}{Todo}]Not yet implemented \end{DoxyRefDesc}
 
 
-Definition at line 242 of file Command\-Processor.\-h.
+Definition at line 239 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_aa3115116a4036d93c8c91cf7e0f13c70}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}}
 \index{C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -340,7 +342,7 @@ usage\-: T \par
 direction\-: receive\par
 
 
-Definition at line 214 of file Command\-Processor.\-h.
+Definition at line 211 of file Command\-Processor.\-h.
 
 
 
@@ -359,7 +361,7 @@ Definition at line 39 of file Command\-Processor.\-h.
 
 
 
-Referenced by parse\-Field\-Separator().
+Referenced by is\-Field\-Separator(), and next\-Field\-Separator().
 
 \hypertarget{_command_processor_8h_a127a418702ab50cf9f7e49e100533ebd}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E@{F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E}}
 \index{F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E@{F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -370,7 +372,7 @@ Disable flag.
 
 
 
-Definition at line 298 of file Command\-Processor.\-h.
+Definition at line 295 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_a94db433efaf9f11f691afcd4666d5033}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E@{F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E}}
 \index{F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E@{F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -381,7 +383,7 @@ Enable flag.
 
 
 
-Definition at line 296 of file Command\-Processor.\-h.
+Definition at line 293 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_a1eb73c104b484cf18752169509cebfe2}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N@{M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N}}
 \index{M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N@{M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -396,7 +398,7 @@ Definition at line 15 of file Command\-Processor.\-h.
 
 
 
-Referenced by chars\-To\-String().
+Referenced by chars\-To\-String(), and check\-Serial().
 
 \hypertarget{_command_processor_8h_afb31aa2d196755fb259d43a03c18c9d7}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!M\-A\-X\-\_\-\-F\-L\-O\-A\-T@{M\-A\-X\-\_\-\-F\-L\-O\-A\-T}}
 \index{M\-A\-X\-\_\-\-F\-L\-O\-A\-T@{M\-A\-X\-\_\-\-F\-L\-O\-A\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -407,7 +409,7 @@ Max number of float parameters in a command.
 
 
 
-Definition at line 65 of file Command\-Processor.\-h.
+Definition at line 69 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_aaa1ac5caef84256eaeb39594e58e096f}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!M\-A\-X\-\_\-\-I\-N\-T@{M\-A\-X\-\_\-\-I\-N\-T}}
 \index{M\-A\-X\-\_\-\-I\-N\-T@{M\-A\-X\-\_\-\-I\-N\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -418,7 +420,7 @@ Max number of integer parameters in a command.
 
 
 
-Definition at line 61 of file Command\-Processor.\-h.
+Definition at line 65 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_a5535b838abf57fcd6aa71dd632c51bc8}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!M\-A\-X\-\_\-\-L\-O\-N\-G@{M\-A\-X\-\_\-\-L\-O\-N\-G}}
 \index{M\-A\-X\-\_\-\-L\-O\-N\-G@{M\-A\-X\-\_\-\-L\-O\-N\-G}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -429,7 +431,7 @@ Max number of long integer parameters in a command.
 
 
 
-Definition at line 63 of file Command\-Processor.\-h.
+Definition at line 67 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_a1abb7c195d0c34570d725c0b8b554a5e}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N}}
 \index{P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -440,7 +442,22 @@ Fixed boolean character lenght. Should be left zero filled in the form 0 (or 1)
 
 
 
-Definition at line 58 of file Command\-Processor.\-h.
+Definition at line 62 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_a01ff82405086f08d2af53956b5247a30}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N}}
+\index{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N~2}}\label{_command_processor_8h_a01ff82405086f08d2af53956b5247a30}
+
+
+Fixed field I\-D characters lenght. Should be left zero filled in the form 00. 
+
+
+
+Definition at line 46 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
 
 \hypertarget{_command_processor_8h_a1c250fc72c31cefb9685066b33160748}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N}}
 \index{P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -451,7 +468,7 @@ Fixed float characters lenght. Should be left zero filled in the form 0000000.\-
 
 
 
-Definition at line 54 of file Command\-Processor.\-h.
+Definition at line 58 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_a3bf9ddf196d90a4e4639a0c4a086b9c7}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N}}
 \index{P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -462,7 +479,7 @@ Fixed integers characters lenght. Should be left zero filled in the form 00000.
 
 
 
-Definition at line 46 of file Command\-Processor.\-h.
+Definition at line 50 of file Command\-Processor.\-h.
 
 
 
@@ -477,7 +494,7 @@ Fixed long integers characters lenght. Should be left zero filled in the form 00
 
 
 
-Definition at line 50 of file Command\-Processor.\-h.
+Definition at line 54 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_a446d8db1041da5746439b5655890b3ed}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}}
 \index{R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -488,7 +505,7 @@ Command string separator used in the command\-Return() method.
 
 
 
-Definition at line 301 of file Command\-Processor.\-h.
+Definition at line 298 of file Command\-Processor.\-h.
 
 
 
@@ -506,7 +523,7 @@ usage\-: T (int)status \par
 parameters\-: the status accepted values are F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E and F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: T;001 \par
 
 
-Definition at line 283 of file Command\-Processor.\-h.
+Definition at line 280 of file Command\-Processor.\-h.
 
 
 
@@ -524,7 +541,7 @@ usage\-: G (int)status \par
 parameters\-: the status accepted values are F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E and F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: G;001 \par
 
 
-Definition at line 263 of file Command\-Processor.\-h.
+Definition at line 260 of file Command\-Processor.\-h.
 
 
 
@@ -542,7 +559,7 @@ usage\-: H (int)status \par
 parameters\-: the status accepted values are F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E and F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: H;001 \par
 
 
-Definition at line 293 of file Command\-Processor.\-h.
+Definition at line 290 of file Command\-Processor.\-h.
 
 
 
@@ -560,7 +577,7 @@ usage\-: P (int)status \par
 parameters\-: the status accepted values are F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E and F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: P;001 \par
 
 
-Definition at line 273 of file Command\-Processor.\-h.
+Definition at line 270 of file Command\-Processor.\-h.
 
 
 
@@ -578,7 +595,7 @@ usage\-: S (int)status \par
 parameters\-: the status accepted values are S\-T\-E\-T\-H\-\_\-\-E\-N\-A\-B\-L\-E and S\-T\-E\-T\-H\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: S;001 \par
 Enable the stethoscope probe. 
 
-Definition at line 253 of file Command\-Processor.\-h.
+Definition at line 250 of file Command\-Processor.\-h.
 
 
 

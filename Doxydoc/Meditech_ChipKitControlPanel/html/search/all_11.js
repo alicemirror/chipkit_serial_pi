@@ -17,7 +17,6 @@ var searchData=
   ['stet_5fgain',['STET_GAIN',['../_l_c_d_templates_8h.html#ac0f6206db0de9e1c215be9808bf4b1e1',1,'LCDTemplates.h']]],
   ['stet_5fgainval',['STET_GAINVAL',['../_l_c_d_templates_8h.html#a99df264a27c8c425105db42a1dbc5fbb',1,'LCDTemplates.h']]],
   ['stet_5ftitle',['STET_TITLE',['../_l_c_d_templates_8h.html#ad52ae2dd0134d3077ab114f680d349e0',1,'LCDTemplates.h']]],
-  ['steth',['steth',['../_meditech___chip_kit_control_panel_8pde.html#ac2215fe61cf27d0fc83fa54cf1db73fc',1,'Meditech_ChipKitControlPanel.pde']]],
   ['stethoscope_5ffields',['STETHOSCOPE_FIELDS',['../_l_c_d_templates_8h.html#ab9c573f6265daafe7befb06655294666',1,'LCDTemplates.h']]],
   ['stethoscope_5fon',['STETHOSCOPE_ON',['../_l_c_d_templates_8h.html#a0b1d992a56e4396a98c98360535f03c0',1,'LCDTemplates.h']]],
   ['stethoscope_5fstatus',['STETHOSCOPE_STATUS',['../_globals_8h.html#a8519a074bf27b6dcc876ce549b2f5ea7',1,'Globals.h']]],

@@ -1,14 +1,7 @@
 var _l_c_d_templates_8h =
 [
     [ "LCDTemplateField", "struct_l_c_d_template_field.html", "struct_l_c_d_template_field" ],
-    [ "LCDStethoscope", "class_l_c_d_stethoscope.html", "class_l_c_d_stethoscope" ],
-    [ "LCDBloodPressure", "class_l_c_d_blood_pressure.html", "class_l_c_d_blood_pressure" ],
-    [ "LCDHeartBeat", "class_l_c_d_heart_beat.html", "class_l_c_d_heart_beat" ],
-    [ "LCDTemperature", "class_l_c_d_temperature.html", "class_l_c_d_temperature" ],
-    [ "LCDecg", "class_l_c_decg.html", "class_l_c_decg" ],
-    [ "LCDTest", "class_l_c_d_test.html", "class_l_c_d_test" ],
-    [ "LCDInfo", "class_l_c_d_info.html", "class_l_c_d_info" ],
-    [ "LCDDefault", "class_l_c_d_default.html", "class_l_c_d_default" ],
+    [ "LCDTemplates", "class_l_c_d_templates.html", "class_l_c_d_templates" ],
     [ "BLOOD_MAX", "_l_c_d_templates_8h.html#a96b68d70226d7153d39632e4c1a3e83d", null ],
     [ "BLOOD_MAXVAL", "_l_c_d_templates_8h.html#a7ca44aa5642aff8924996f821049c765", null ],
     [ "BLOOD_MIN", "_l_c_d_templates_8h.html#affc959f533dfb8908431895dda6d1a5e", null ],
@@ -39,6 +32,7 @@ var _l_c_d_templates_8h =
     [ "INFO_RPM", "_l_c_d_templates_8h.html#a9e8e9c4abac12d9fb2b1f568d869265b", null ],
     [ "INFO_TIME", "_l_c_d_templates_8h.html#a8066428eb5e9fd60743260eb91ac381e", null ],
     [ "INFO_TITLE", "_l_c_d_templates_8h.html#aad7135adf1b88566462acfb21a93cc16", null ],
+    [ "MAX_FIELDS", "_l_c_d_templates_8h.html#a679dffecfb16ab6f5832ddf756b5fabd", null ],
     [ "MAX_TEMPLATES", "_l_c_d_templates_8h.html#a0b935b9f5a6d3f57285fece1aa0a37a5", null ],
     [ "STET_GAIN", "_l_c_d_templates_8h.html#ac0f6206db0de9e1c215be9808bf4b1e1", null ],
     [ "STET_GAINVAL", "_l_c_d_templates_8h.html#a99df264a27c8c425105db42a1dbc5fbb", null ],

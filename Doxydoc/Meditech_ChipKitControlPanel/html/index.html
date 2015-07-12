@@ -105,9 +105,9 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="textblock"><p>This application will run on the ChipKit PI module of the Meditech device. The module is connected to the Raspberry PI Mod B2. The software includes two parts: one independent series of features, related to the Meditech general health status overriding the user controlled parameters. The board also control che alphanumeric <a class="el" href="class_l_c_d.html" title="Manages the Alphanumeric display for program output messages. ">LCD</a> display for status messages, warnings and alarms. <br/>
 The user-controlled part instead is managed by the Raspberry PI "PI master" controlling the active probes and other functions. The counterpart of this application is a C++ command set running on the PI linux machine communicating with the board through a custom serial protocol. To reduce the weight of the microcontroller application most of the strings shown by the control panel display are sent by the linux machine.</p>
 <dl class="section note"><dt>Note</dt><dd>Most of the control panel functions should follow specific priorities, e.g. the lid open status while other functions should be exectued periodically byt the board. The high frequency check methods are managed by timer interrupts while the other functions will run in background via the board Task Manager. The use of these two strategies makes the <a class="el" href="_meditech___chip_kit_control_panel_8pde.html#a0b33edabd7f1c4e4a0bf32c67269be2f" title="Main loop method. ">loop()</a> method more simple and the entire system is more efficient.</dd></dl>
-<p>This code is distributed under the Apache license These sources has been developed under the mpide application, adapted for the ChipKit PI board.<br/>
+<dl class="section warning"><dt>Warning</dt><dd>This code is distributed under the Apache license These sources has been developed under the mpide application, adapted for the ChipKit PI board.<br/>
 This application is part of the Meditech project, created by Enrico Miglino for Balearic Dynamics - Balearic Islands - Spain<br/>
-For the last updated application version and subversion, see the <a class="el" href="_version_8h.html" title="Version and Build Number Helper Class. ">version.h</a> include file.</p>
+For the last updated application version and subversion, see the <a class="el" href="_version_8h.html" title="Version and Build Number Helper Class. ">version.h</a> include file.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Enrico Miglino <a href="#" onclick="location.href='mai'+'lto:'+'enr'+'ic'+'o.m'+'ig'+'lin'+'o@'+'gma'+'il'+'.co'+'m'; return false;">enric<span style="display: none;">.nosp@m.</span>o.mi<span style="display: none;">.nosp@m.</span>glino<span style="display: none;">.nosp@m.</span>@gma<span style="display: none;">.nosp@m.</span>il.co<span style="display: none;">.nosp@m.</span>m</a> </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Balearic Dynamics - Spain <a href="#" onclick="location.href='mai'+'lto:'+'bal'+'ea'+'ric'+'dy'+'nam'+'ic'+'s@g'+'ma'+'il.'+'co'+'m'; return false;">balea<span style="display: none;">.nosp@m.</span>ricd<span style="display: none;">.nosp@m.</span>ynami<span style="display: none;">.nosp@m.</span>cs@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a> </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>1.0b </dd></dl>
@@ -117,7 +117,7 @@ For the last updated application version and subversion, see the <a class="el" h
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Jul 11 2015 00:07:17 for Meditech control panel software by
+    <li class="footer">Generated on Sun Jul 12 2015 17:56:02 for Meditech control panel software by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
