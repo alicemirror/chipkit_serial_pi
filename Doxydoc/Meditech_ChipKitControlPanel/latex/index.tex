@@ -1,0 +1,22 @@
+This application will run on the Chip\-Kit P\-I module of the Meditech device. The module is connected to the Raspberry P\-I Mod B2. The software includes two parts\-: one independent series of features, related to the Meditech general health status overriding the user controlled parameters. The board also control che alphanumeric \hyperlink{class_l_c_d}{L\-C\-D} display for status messages, warnings and alarms. \par
+The user-\/controlled part instead is managed by the Raspberry P\-I \char`\"{}\-P\-I master\char`\"{} controlling the active probes and other functions. The counterpart of this application is a C++ command set running on the P\-I linux machine communicating with the board through a custom serial protocol. To reduce the weight of the microcontroller application most of the strings shown by the control panel display are sent by the linux machine.
+
+\begin{DoxyNote}{Note}
+Most of the control panel functions should follow specific priorities, e.\-g. the lid open status while other functions should be exectued periodically byt the board. The high frequency check methods are managed by timer interrupts while the other functions will run in background via the board Task Manager. The use of these two strategies makes the \hyperlink{_meditech___chip_kit_control_panel_8pde_a0b33edabd7f1c4e4a0bf32c67269be2f}{loop()} method more simple and the entire system is more efficient.
+\end{DoxyNote}
+This code is distributed under the Apache license These sources has been developed under the mpide application, adapted for the Chip\-Kit P\-I board.\par
+This application is part of the Meditech project, created by Enrico Miglino for Balearic Dynamics -\/ Balearic Islands -\/ Spain\par
+For the last updated application version and subversion, see the \hyperlink{_version_8h}{version.\-h} include file.
+
+\begin{DoxyAuthor}{Author}
+Enrico Miglino \href{mailto:enrico.miglino@gmail.com}{\tt enrico.\-miglino@gmail.\-com} 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+Balearic Dynamics -\/ Spain \href{mailto:balearicdynamics@gmail.com}{\tt balearicdynamics@gmail.\-com} 
+\end{DoxyCopyright}
+\begin{DoxyVersion}{Version}
+1.\-0b 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+First version on July 2015 
+\end{DoxyDate}

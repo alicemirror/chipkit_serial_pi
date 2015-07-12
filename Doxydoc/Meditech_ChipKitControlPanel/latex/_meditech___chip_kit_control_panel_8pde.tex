@@ -1,0 +1,857 @@
+\hypertarget{_meditech___chip_kit_control_panel_8pde}{\section{/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.pde File Reference}
+\label{_meditech___chip_kit_control_panel_8pde}\index{/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+}
+
+
+meditech Chip\-Kit control panel main application  
+
+
+{\ttfamily \#include $<$Alpha\-L\-C\-D.\-h$>$}\\*
+{\ttfamily \#include $<$Streaming.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}L\-C\-D.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Analog.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Strings.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Version.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Globals.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Temperature.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$Soft\-P\-W\-M\-Servo.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}L\-C\-D\-Templates.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Debug\-Strings.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Alpha\-L\-C\-D \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd} (11, 12, 13)
+\begin{DoxyCompactList}\small\item\em Display class instance. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a4fc01d736fe50cf5b977f755b675f11d}{setup} ()
+\begin{DoxyCompactList}\small\item\em Initialisation method. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a0b33edabd7f1c4e4a0bf32c67269be2f}{loop} (void)
+\begin{DoxyCompactList}\small\item\em Main loop method. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a5a7516a22f178c51ec37c6c8167aaf70}{update\-Display} (int id, void $\ast$tptr)
+\begin{DoxyCompactList}\small\item\em Periodically update the display. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a318afc268cf08e16ff1e53698727ec77}{check\-Serial} ()
+\begin{DoxyCompactList}\small\item\em Control the presence of data from the serial interface. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a3428cc5f679f463cc86ff3d48874eedc}{temp\-Monitor} ()
+\begin{DoxyCompactList}\small\item\em Update the internal temperature from the sensor and update the display. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a89c0a8283a410b693ebef39173a8f493}{show\-Temp} ()
+\begin{DoxyCompactList}\small\item\em shows the actual internal temperature on the top right corner. \end{DoxyCompactList}\item 
+uint32\-\_\-t \hyperlink{_meditech___chip_kit_control_panel_8pde_a9cb6bd9c7a705cdd913780d7adef7bb4}{is\-Lid\-Status\-Changed} (uint32\-\_\-t current\-Time)
+\begin{DoxyCompactList}\small\item\em Callback function from the list status change hardware interrupt. \end{DoxyCompactList}\item 
+uint32\-\_\-t \hyperlink{_meditech___chip_kit_control_panel_8pde_a16768141866f1d78608528f2867aeab4}{fan\-Speed\-Regulation} (uint32\-\_\-t current\-Time)
+\begin{DoxyCompactList}\small\item\em Callback function from the fan cooler speed regulation interrupt. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a236e454e493fc9b262f746305660a2eb}{welcome} ()
+\begin{DoxyCompactList}\small\item\em Welcome message shown at device power-\/on. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message} (String m)
+\begin{DoxyCompactList}\small\item\em Display a string on the \hyperlink{class_l_c_d}{L\-C\-D} at the cursor position. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a5abae2c246607db092b33a647206b932}{error} (String m, int x, int y)
+\begin{DoxyCompactList}\small\item\em Display an error message at the specified cursor coordinates. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a6cce144e7c040f9016e8bd1be2a412c5}{error} (String m)
+\begin{DoxyCompactList}\small\item\em Display an error message at the cursor position. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_ae1956b5b6310b3339e72931911b84e3f}{message} (String m, int x, int y)
+\begin{DoxyCompactList}\small\item\em Display a string on the \hyperlink{class_l_c_d}{L\-C\-D} at the specified cursor coordinates. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_af1a6bbf84a5ea76623bdc49aaf642a28}{test\-Status\-L\-E\-D} ()
+\begin{DoxyCompactList}\small\item\em Show the status led blinking for a cycle to test that all are working. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a697689ffa626676db9a1abb5e6662762}{test\-Fan\-Speed} ()
+\begin{DoxyCompactList}\small\item\em Variable fan speed test cycle. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}{set\-Fan\-Speed} (float temp)
+\begin{DoxyCompactList}\small\item\em Set the fan speed based on the actual temperature. \end{DoxyCompactList}\item 
+int \hyperlink{_meditech___chip_kit_control_panel_8pde_aac6d40e9f46456f3b2d16f2fe64004cc}{set\-Fan\-Speed} (int freq)
+\begin{DoxyCompactList}\small\item\em Set the fan speed at the desired P\-W\-M frequency. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_ad5b3677e61ca769d9d9e5cf9cfa1b33c}{debug} (String msg)
+\begin{DoxyCompactList}\small\item\em Serial debugging function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_temperature}{Temperature} \hyperlink{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{internal\-Temp}
+\begin{DoxyCompactList}\small\item\em Internal temperature sensor class instance. \end{DoxyCompactList}\item 
+int \hyperlink{_meditech___chip_kit_control_panel_8pde_a3134d7e85042180eb421c3f6ee88d3b3}{p\-Value} = 0
+\begin{DoxyCompactList}\small\item\em Initial potentiometer value. \end{DoxyCompactList}\item 
+volatile boolean \hyperlink{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{lid\-Status}
+\begin{DoxyCompactList}\small\item\em Current lid status. The variable is declared volatile as it is used by the I\-R\-Q callback function too. \end{DoxyCompactList}\item 
+int \hyperlink{_meditech___chip_kit_control_panel_8pde_a527a89c41abb1d8660b53f5e727e655c}{update\-Dispaly\-Task\-I\-D}
+\begin{DoxyCompactList}\small\item\em The update display task id (assigned on setup) \end{DoxyCompactList}\item 
+\hyperlink{class_l_c_d_stethoscope}{L\-C\-D\-Stethoscope} \hyperlink{_meditech___chip_kit_control_panel_8pde_ac2215fe61cf27d0fc83fa54cf1db73fc}{steth} (\hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd})
+\begin{DoxyCompactList}\small\item\em Stethoscope display template. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+meditech Chip\-Kit control panel main application 
+
+Definition in file \hyperlink{_meditech___chip_kit_control_panel_8pde_source}{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a318afc268cf08e16ff1e53698727ec77}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!check\-Serial@{check\-Serial}}
+\index{check\-Serial@{check\-Serial}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{check\-Serial}]{\setlength{\rightskip}{0pt plus 5cm}void check\-Serial (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a318afc268cf08e16ff1e53698727ec77}
+
+
+Control the presence of data from the serial interface. 
+
+
+
+Definition at line 161 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References lcd(), and L\-C\-D\-B\-O\-T\-T\-O\-M\-R\-O\-W.
+
+
+
+Referenced by loop().
+
+
+\begin{DoxyCode}
+161                    \{
+162  
+163   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, \hyperlink{_l_c_d_8h_a46c173b564806ac8d8db0404f5036671}{LCDBOTTOMROW});
+164 
+165   \textcolor{keywordflow}{while}(Serial1.available()) \{
+166     \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd} << (char)Serial1.read();
+167     Serial1 << \textcolor{stringliteral}{"ACK"} << endl;  
+168   \}
+169 
+170 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ad5b3677e61ca769d9d9e5cf9cfa1b33c}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!debug@{debug}}
+\index{debug@{debug}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{debug}]{\setlength{\rightskip}{0pt plus 5cm}void debug (
+\begin{DoxyParamCaption}
+\item[{String}]{msg}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ad5b3677e61ca769d9d9e5cf9cfa1b33c}
+
+
+Serial debugging function. 
+
+
+
+Definition at line 392 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+\begin{DoxyCode}
+392                        \{
+393 \textcolor{preprocessor}{#ifdef \_\_DEBUG}
+394 \textcolor{preprocessor}{}  Serial1 << DEBG\_PREFIX << \textcolor{stringliteral}{"> "} << msg << endl;
+395 \textcolor{preprocessor}{#endif}
+396 \textcolor{preprocessor}{}\}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a5abae2c246607db092b33a647206b932}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!error@{error}}
+\index{error@{error}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}void error (
+\begin{DoxyParamCaption}
+\item[{String}]{m, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a5abae2c246607db092b33a647206b932}
+
+
+Display an error message at the specified cursor coordinates. 
+
+The error message is shown for a L\-C\-D\-E\-R\-R\-O\-R\-\_\-\-D\-E\-L\-A\-Y milliseconds. After the timeout expires the screen is not cleared so the next steps should be managed by the program flow. It is expected that error messages are shown in a calling code that manages the error conditions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & the message string \\
+\hline
+{\em x} & the cursor column zero based \\
+\hline
+{\em y} & the row number zero based \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 269 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References L\-C\-D\-E\-R\-R\-O\-R\-\_\-\-D\-E\-L\-A\-Y, and message().
+
+
+\begin{DoxyCode}
+269                                    \{
+270   \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(m, x, y);
+271   delay(\hyperlink{_l_c_d_8h_ab4020c76ba7c28cd201976eacafb1dd3}{LCDERROR\_DELAY});
+272 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a6cce144e7c040f9016e8bd1be2a412c5}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!error@{error}}
+\index{error@{error}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}void error (
+\begin{DoxyParamCaption}
+\item[{String}]{m}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a6cce144e7c040f9016e8bd1be2a412c5}
+
+
+Display an error message at the cursor position. 
+
+The error message is shown for a L\-C\-D\-E\-R\-R\-O\-R\-\_\-\-D\-E\-L\-A\-Y milliseconds. After the timeout expires the screen is not cleared so the next steps should be managed by the program flow. It is expected that error messages are shown in a calling code that manages the error conditions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & the string message \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 284 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References L\-C\-D\-E\-R\-R\-O\-R\-\_\-\-D\-E\-L\-A\-Y, and message().
+
+
+\begin{DoxyCode}
+284                      \{
+285   \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(m);
+286   delay(\hyperlink{_l_c_d_8h_ab4020c76ba7c28cd201976eacafb1dd3}{LCDERROR\_DELAY});
+287 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a16768141866f1d78608528f2867aeab4}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!fan\-Speed\-Regulation@{fan\-Speed\-Regulation}}
+\index{fan\-Speed\-Regulation@{fan\-Speed\-Regulation}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{fan\-Speed\-Regulation}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t fan\-Speed\-Regulation (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{current\-Time}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a16768141866f1d78608528f2867aeab4}
+
+
+Callback function from the fan cooler speed regulation interrupt. 
+
+As the interrupt triggers periodically a new temperature reading is done and the P\-W\-M fan cooler speed is set accordingly. 
+
+Definition at line 214 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References F\-A\-N\-\_\-\-S\-P\-E\-E\-D, M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D, M\-A\-X\-\_\-\-T\-E\-M\-P, M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D, M\-I\-N\-\_\-\-T\-E\-M\-P, T\-E\-M\-P\-\_\-\-O\-F\-F\-S\-E\-T, T\-E\-M\-P\-\_\-\-S\-E\-N\-S\-O\-R, and U\-P\-D\-A\-T\-E\-\_\-\-F\-A\-N\-\_\-\-S\-P\-E\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T.
+
+
+
+Referenced by setup().
+
+
+\begin{DoxyCode}
+214                                                   \{
+215   
+216   \textcolor{keywordtype}{float} temp;
+217   \textcolor{keywordtype}{int} pwmSpeed;
+218 
+219   temp = (((analogRead(\hyperlink{_temperature_8h_a16433c75f0d3615fe60d59ec8a86834a}{TEMP\_SENSOR}) / 1024) * 5) * 100) - \hyperlink{_temperature_8h_a3cb24f09004f92185b77e9e7bac6ea61}{TEMP\_OFFSET};
+220   pwmSpeed = map(temp, \hyperlink{_globals_8h_a2522d2568f63855838c3ecfb44084710}{MIN\_TEMP}, \hyperlink{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{MAX\_TEMP}, \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{MIN\_FANSPEED}, 
+      \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED});
+221   SoftPWMServoPWMWrite(\hyperlink{_globals_8h_aa25a0ac569f39f937b5020cda2687799}{FAN\_SPEED}, pwmSpeed);
+222 
+223   \textcolor{comment}{// Restart the timer}
+224   \textcolor{keywordflow}{return} (currentTime + CORE\_TICK\_RATE * \hyperlink{_globals_8h_a4851a9d0178d5f1ffceea89b4f583e94}{UPDATE\_FAN\_SPEED\_TIMEOUT});
+225 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a9cb6bd9c7a705cdd913780d7adef7bb4}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!is\-Lid\-Status\-Changed@{is\-Lid\-Status\-Changed}}
+\index{is\-Lid\-Status\-Changed@{is\-Lid\-Status\-Changed}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{is\-Lid\-Status\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t is\-Lid\-Status\-Changed (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{current\-Time}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a9cb6bd9c7a705cdd913780d7adef7bb4}
+
+
+Callback function from the list status change hardware interrupt. 
+
+When the lid status switch changes (pinned to the L\-I\-D\-S\-T\-A\-T\-U\-S pin) the attached interrupt calls this callback that simply invert the lid\-Status state of the boolean variable. After the function has been exectued the timer is restarted. 
+
+Definition at line 200 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References L\-I\-D\-\_\-\-O\-P\-E\-N\-\_\-\-T\-I\-M\-E\-O\-U\-T, L\-I\-D\-S\-T\-A\-T\-U\-S, and lid\-Status.
+
+
+
+Referenced by setup().
+
+
+\begin{DoxyCode}
+200                                                   \{
+201   
+202     \hyperlink{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{lidStatus} = digitalRead(\hyperlink{_globals_8h_a9d1e04090b98f20c171c70e566a32e16}{LIDSTATUS});
+203     
+204     \textcolor{comment}{// Restart the timer}
+205     \textcolor{keywordflow}{return} (currentTime + CORE\_TICK\_RATE * \hyperlink{_globals_8h_aa0e7d4f84a28711b1e4c378655ee8d41}{LID\_OPEN\_TIMEOUT});
+206 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!lcd@{lcd}}
+\index{lcd@{lcd}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{lcd}]{\setlength{\rightskip}{0pt plus 5cm}Alpha\-L\-C\-D lcd (
+\begin{DoxyParamCaption}
+\item[{11}]{, }
+\item[{12}]{, }
+\item[{13}]{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}
+
+
+Display class instance. 
+
+
+
+Referenced by check\-Serial(), loop(), message(), setup(), show\-Temp(), and welcome().
+
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a0b33edabd7f1c4e4a0bf32c67269be2f}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!loop@{loop}}
+\index{loop@{loop}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{loop}]{\setlength{\rightskip}{0pt plus 5cm}void loop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a0b33edabd7f1c4e4a0bf32c67269be2f}
+
+
+Main loop method. 
+
+The main application loop is interrupted by the lid open status generating a high priority alarm. Also the internal temperature is checked periodically to set the fan speed to the correct value.\par
+When serial data are present (a command waiting from the P\-I main) the data are parsed as needed. 
+
+Definition at line 132 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References \-\_\-\-L\-I\-D\-\_\-\-O\-P\-E\-N, A\-N\-A\-L\-O\-G\-D\-I\-V\-I\-D\-E\-R, C\-A\-L\-I\-B\-R\-A\-T\-I\-O\-N\-\_\-\-P\-O\-T, check\-Serial(), lcd(), L\-C\-D\-T\-O\-P\-R\-O\-W, L\-I\-D\-C\-L\-O\-S\-E\-D, lid\-Status, M\-A\-X\-G\-A\-I\-N, message(), M\-I\-N\-G\-A\-I\-N, p\-Value, steth, and L\-C\-D\-Stethoscope\-::update\-Display().
+
+
+\begin{DoxyCode}
+132                 \{
+133 
+134   \textcolor{comment}{// Check if the lid is open}
+135   \textcolor{keywordflow}{if}(\hyperlink{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{lidStatus} == \hyperlink{_globals_8h_af04a3919dc1fa7d521c9514be995b43d}{LIDCLOSED}) \{
+136     \textcolor{comment}{// Test only !!!}
+137     \textcolor{keywordtype}{int} \hyperlink{_meditech___chip_kit_control_panel_8pde_a3134d7e85042180eb421c3f6ee88d3b3}{pValue} = analogRead(\hyperlink{_analog_8h_a82418bdd6214d81f79cfdd0ba73bd2cb}{CALIBRATION\_POT});  \textcolor{comment}{// Read the pot value}
+138     \hyperlink{_meditech___chip_kit_control_panel_8pde_ac2215fe61cf27d0fc83fa54cf1db73fc}{steth}.\hyperlink{class_l_c_d_stethoscope_a6b1c171fbe2cc21944e26af50135ba31}{updateDisplay}(map(pValue, 0, \hyperlink{_analog_8h_aa87c040916c9c4e5c0f1b3da51466394}{ANALOGDIVIDER}, 
+      \hyperlink{_analog_8h_a901b2c5395b6d9dbeb1b7232a0db6d36}{MINGAIN}, \hyperlink{_analog_8h_ad9f7f39b0dfbced74592416643e45475}{MAXGAIN}));
+139     \hyperlink{_meditech___chip_kit_control_panel_8pde_a318afc268cf08e16ff1e53698727ec77}{checkSerial}();
+140   \}
+141   \textcolor{keywordflow}{else} \{
+142     \textcolor{comment}{// Show the error message}
+143     \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
+144     \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(\hyperlink{_strings_8h_a78ef175fe9eb45ba7ee1772904c1fbab}{\_LID\_OPEN}, 5, \hyperlink{_l_c_d_8h_af51f2930b0a791ffa528731a5cac5756}{LCDTOPROW});
+145   \}
+146 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!message@{message}}
+\index{message@{message}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}void message (
+\begin{DoxyParamCaption}
+\item[{String}]{m}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}
+
+
+Display a string on the \hyperlink{class_l_c_d}{L\-C\-D} at the cursor position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & the message string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 253 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References lcd().
+
+
+
+Referenced by error(), loop(), and message().
+
+
+\begin{DoxyCode}
+253                        \{
+254   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.print(m);
+255 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ae1956b5b6310b3339e72931911b84e3f}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!message@{message}}
+\index{message@{message}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}void message (
+\begin{DoxyParamCaption}
+\item[{String}]{m, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ae1956b5b6310b3339e72931911b84e3f}
+
+
+Display a string on the \hyperlink{class_l_c_d}{L\-C\-D} at the specified cursor coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & the string message \\
+\hline
+{\em x} & the cursor column zero based \\
+\hline
+{\em y} & the row number zero based \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 296 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References lcd(), and message().
+
+
+\begin{DoxyCode}
+296                                      \{
+297   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(x, y);
+298   \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(m);
+299 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!set\-Fan\-Speed@{set\-Fan\-Speed}}
+\index{set\-Fan\-Speed@{set\-Fan\-Speed}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{set\-Fan\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Fan\-Speed (
+\begin{DoxyParamCaption}
+\item[{float}]{temp}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}
+
+
+Set the fan speed based on the actual temperature. 
+
+The fan speed is mapped on the current temperature scaled to the P\-W\-M range values. Note that any P\-W\-M frequency under M\-I\-N\-\_\-\-F\-A\-N\-\_\-\-S\-P\-E\-E\-D should not used at is has no effect (the motor don't start)
+
+\begin{DoxyNote}{Note}
+This function sets manually the fan speed based on the internal temperature sensor. To use this function the interrupt timer fan\-Speed\-Regulation\-Task\-I\-D should be disabled before. 
+\end{DoxyNote}
+The filtered temperature to control the out-\/of-\/range values 
+
+Definition at line 349 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References F\-A\-N\-\_\-\-S\-P\-E\-E\-D, M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D, M\-A\-X\-\_\-\-T\-E\-M\-P, M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D, and M\-I\-N\-\_\-\-T\-E\-M\-P.
+
+
+
+Referenced by setup(), and test\-Fan\-Speed().
+
+
+\begin{DoxyCode}
+349                              \{
+350   
+352   \textcolor{keywordtype}{float} filteredTemp;
+353   
+354   \textcolor{comment}{// Check the temperature range}
+355   \textcolor{keywordflow}{if} (temp < \hyperlink{_globals_8h_a2522d2568f63855838c3ecfb44084710}{MIN\_TEMP})
+356     filteredTemp = \hyperlink{_globals_8h_a2522d2568f63855838c3ecfb44084710}{MIN\_TEMP};
+357   \textcolor{keywordflow}{else}
+358     \textcolor{keywordflow}{if} (temp > \hyperlink{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{MAX\_TEMP})
+359       filteredTemp = \hyperlink{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{MAX\_TEMP};
+360       \textcolor{keywordflow}{else}
+361         filteredTemp = temp;
+362   
+363   \textcolor{keywordtype}{int} pwmSpeed = map(temp, \hyperlink{_globals_8h_a2522d2568f63855838c3ecfb44084710}{MIN\_TEMP}, \hyperlink{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{MAX\_TEMP}, \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{MIN\_FANSPEED}, 
+      \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED});
+364   
+365   SoftPWMServoPWMWrite(\hyperlink{_globals_8h_aa25a0ac569f39f937b5020cda2687799}{FAN\_SPEED}, pwmSpeed);
+366 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_aac6d40e9f46456f3b2d16f2fe64004cc}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!set\-Fan\-Speed@{set\-Fan\-Speed}}
+\index{set\-Fan\-Speed@{set\-Fan\-Speed}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{set\-Fan\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}int set\-Fan\-Speed (
+\begin{DoxyParamCaption}
+\item[{int}]{freq}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_aac6d40e9f46456f3b2d16f2fe64004cc}
+
+
+Set the fan speed at the desired P\-W\-M frequency. 
+
+The P\-W\-M frequency should be included between the min and max fan speed values. If these values are outside the limits the fan is set to off Fan speed P\-W\-M frequency, initialised to the stop status 
+
+Definition at line 374 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References F\-A\-N\-\_\-\-S\-P\-E\-E\-D, M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D, and S\-T\-O\-P\-\_\-\-F\-A\-N.
+
+
+\begin{DoxyCode}
+374                           \{
+376   \textcolor{keywordtype}{int} pwmFreq = \hyperlink{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}{STOP\_FAN};
+377   
+378   \textcolor{comment}{// Check if the freq is a correct value}
+379   \textcolor{keywordflow}{if}( (freq >= \hyperlink{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}{STOP\_FAN}) && (freq <= \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED}) ) \{
+380     pwmFreq = freq;
+381   \}
+382   \textcolor{comment}{// Set the current fan speed}
+383   SoftPWMServoPWMWrite(\hyperlink{_globals_8h_aa25a0ac569f39f937b5020cda2687799}{FAN\_SPEED}, pwmFreq);
+384   
+385   \textcolor{keywordflow}{return} pwmFreq;
+386   
+387 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a4fc01d736fe50cf5b977f755b675f11d}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!setup@{setup}}
+\index{setup@{setup}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{setup}]{\setlength{\rightskip}{0pt plus 5cm}void setup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a4fc01d736fe50cf5b977f755b675f11d}
+
+
+Initialisation method. 
+
+Loaded once at power-\/on the \hyperlink{_meditech___chip_kit_control_panel_8pde_a4fc01d736fe50cf5b977f755b675f11d}{setup()} method presets the parameters of the application and initializes the Chip\-Kit board to its initial conditions. The startup conditions assumes that the Meditech lid is closed. If not, after a couple of seconds the alarm starts immediately. 
+
+Definition at line 74 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References Temperature\-::\-Calc\-Temp(), C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S, L\-C\-D\-Stethoscope\-::create\-Display(), E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S, fan\-Speed\-Regulation(), is\-Lid\-Status\-Changed(), lcd(), L\-C\-D\-C\-H\-A\-R\-S, L\-C\-D\-R\-O\-W\-S, L\-I\-D\-C\-L\-O\-S\-E\-D, L\-I\-D\-S\-T\-A\-T\-U\-S, lid\-Status, S\-E\-R\-I\-A\-L\-\_\-\-S\-P\-E\-E\-D, set\-Fan\-Speed(), show\-Temp(), steth, S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S, S\-T\-O\-P\-\_\-\-F\-A\-N, T\-A\-S\-K\-\_\-\-U\-P\-D\-A\-T\-E\-D\-I\-S\-P\-L\-A\-Y, T\-E\-M\-P\-\_\-\-S\-E\-N\-S\-O\-R, test\-Fan\-Speed(), test\-Status\-L\-E\-D(), update\-Dispaly\-Task\-I\-D, update\-Display(), and welcome().
+
+
+\begin{DoxyCode}
+74              \{
+75   Serial1.begin(\hyperlink{_globals_8h_a4081bc1d938e0d9b2b0941e3a1143498}{SERIAL\_SPEED});
+76 
+77   \textcolor{comment}{// Initializes the Lid status switch pin}
+78   pinMode(\hyperlink{_globals_8h_a9d1e04090b98f20c171c70e566a32e16}{LIDSTATUS}, INPUT);
+79   \hyperlink{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{lidStatus} = \hyperlink{_globals_8h_af04a3919dc1fa7d521c9514be995b43d}{LIDCLOSED};
+80   
+81   pinMode(\hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{ECG\_STATUS}, OUTPUT);
+82   pinMode(\hyperlink{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{STETHOSCOPE\_STATUS}, OUTPUT);
+83   pinMode(\hyperlink{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{CAMERA\_STATUS}, OUTPUT);
+84 
+85   digitalWrite(\hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{ECG\_STATUS}, HIGH);
+86   digitalWrite(\hyperlink{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{STETHOSCOPE\_STATUS}, HIGH);
+87   digitalWrite(\hyperlink{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{CAMERA\_STATUS}, HIGH);
+88 
+89   \textcolor{comment}{// Initializes the LCD library}
+90   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.begin(\hyperlink{_l_c_d_8h_acea744bc7db589514d98dde1a19a4be6}{LCDCHARS}, \hyperlink{_l_c_d_8h_a1b8861bc5ab0412d754e0bd902c73bcf}{LCDROWS});
+91   \textcolor{comment}{// Turn LCD On}
+92   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.display();
+93 
+94   \textcolor{comment}{// Initialisation string}
+95   \hyperlink{_meditech___chip_kit_control_panel_8pde_a236e454e493fc9b262f746305660a2eb}{welcome}();
+96   \textcolor{comment}{// Test the LEDs}
+97   \hyperlink{_meditech___chip_kit_control_panel_8pde_af1a6bbf84a5ea76623bdc49aaf642a28}{testStatusLED}();
+98   \textcolor{comment}{// Read the actual temperature}
+99   \hyperlink{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{internalTemp}.\hyperlink{class_temperature_a909c328fd6235d0e7c8ea110a1fb201d}{CalcTemp}(analogRead(\hyperlink{_temperature_8h_a16433c75f0d3615fe60d59ec8a86834a}{TEMP\_SENSOR}));
+100   \textcolor{comment}{// Shows the actual internal temperature}
+101   \hyperlink{_meditech___chip_kit_control_panel_8pde_a89c0a8283a410b693ebef39173a8f493}{showTemp}();
+102   
+103   \textcolor{comment}{// Start the fan to stopped state}
+104   \hyperlink{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}{setFanSpeed}(\hyperlink{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}{STOP\_FAN});
+105   \textcolor{comment}{// Test LEDs on startup}
+106   \hyperlink{_meditech___chip_kit_control_panel_8pde_af1a6bbf84a5ea76623bdc49aaf642a28}{testStatusLED}();
+107   \textcolor{comment}{// Test the fan variable speed}
+108   \hyperlink{_meditech___chip_kit_control_panel_8pde_a697689ffa626676db9a1abb5e6662762}{testFanSpeed}();
+109   
+110   \textcolor{comment}{// Set and start the timer for lid status}
+111   attachCoreTimerService(\hyperlink{_meditech___chip_kit_control_panel_8pde_a9cb6bd9c7a705cdd913780d7adef7bb4}{isLidStatusChanged});
+112   \textcolor{comment}{// Set and start the timer for fan cooler speed regulation}
+113   attachCoreTimerService(\hyperlink{_meditech___chip_kit_control_panel_8pde_a16768141866f1d78608528f2867aeab4}{fanSpeedRegulation});
+114   
+115   \textcolor{comment}{// Create the display update task.}
+116   \textcolor{comment}{// This task updates automatically only the reserved display}
+117   \textcolor{comment}{// areas, i.e. the temperature monitor and other information.}
+118   \hyperlink{_meditech___chip_kit_control_panel_8pde_a527a89c41abb1d8660b53f5e727e655c}{updateDispalyTaskID} = createTask(\hyperlink{_meditech___chip_kit_control_panel_8pde_a5a7516a22f178c51ec37c6c8167aaf70}{updateDisplay}, 
+      \hyperlink{_globals_8h_ab24200fce9fdcbdd9b76bd40f21cb50e}{TASK\_UPDATEDISPLAY}, TASK\_ENABLE, NULL);
+119   \textcolor{comment}{// Test only !!!}
+120   \hyperlink{_meditech___chip_kit_control_panel_8pde_ac2215fe61cf27d0fc83fa54cf1db73fc}{steth}.\hyperlink{class_l_c_d_stethoscope_a2641dd844d4070d6f498ba20c04cdfac}{createDisplay}();
+121 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a89c0a8283a410b693ebef39173a8f493}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!show\-Temp@{show\-Temp}}
+\index{show\-Temp@{show\-Temp}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{show\-Temp}]{\setlength{\rightskip}{0pt plus 5cm}void show\-Temp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a89c0a8283a410b693ebef39173a8f493}
+
+
+shows the actual internal temperature on the top right corner. 
+
+This is a display-\/only method. 
+
+Definition at line 187 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References \-\_\-\-C\-E\-L\-S\-I\-U\-S, Temperature\-::\-Celsius(), lcd(), and L\-C\-D\-T\-O\-P\-R\-O\-W.
+
+
+
+Referenced by setup(), and temp\-Monitor().
+
+
+\begin{DoxyCode}
+187                 \{
+188 
+189   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(14, \hyperlink{_l_c_d_8h_af51f2930b0a791ffa528731a5cac5756}{LCDTOPROW});
+190   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd} << \hyperlink{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{internalTemp}.\hyperlink{class_temperature_a3cb76ed5fdb2227d59a6759c1e9938d8}{Celsius}() << \hyperlink{_strings_8h_af9125aadefd37fbb0a941c09f7dca82e}{\_CELSIUS};
+191 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a3428cc5f679f463cc86ff3d48874eedc}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!temp\-Monitor@{temp\-Monitor}}
+\index{temp\-Monitor@{temp\-Monitor}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{temp\-Monitor}]{\setlength{\rightskip}{0pt plus 5cm}void temp\-Monitor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a3428cc5f679f463cc86ff3d48874eedc}
+
+
+Update the internal temperature from the sensor and update the display. 
+
+
+
+Definition at line 175 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References Temperature\-::\-Calc\-Temp(), show\-Temp(), and T\-E\-M\-P\-\_\-\-S\-E\-N\-S\-O\-R.
+
+
+
+Referenced by update\-Display().
+
+
+\begin{DoxyCode}
+175                    \{
+176 
+177   \textcolor{comment}{// Read the actual temperature}
+178   \hyperlink{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{internalTemp}.\hyperlink{class_temperature_a909c328fd6235d0e7c8ea110a1fb201d}{CalcTemp}(analogRead(\hyperlink{_temperature_8h_a16433c75f0d3615fe60d59ec8a86834a}{TEMP\_SENSOR}));
+179   \hyperlink{_meditech___chip_kit_control_panel_8pde_a89c0a8283a410b693ebef39173a8f493}{showTemp}();
+180 
+181 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a697689ffa626676db9a1abb5e6662762}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!test\-Fan\-Speed@{test\-Fan\-Speed}}
+\index{test\-Fan\-Speed@{test\-Fan\-Speed}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{test\-Fan\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}void test\-Fan\-Speed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a697689ffa626676db9a1abb5e6662762}
+
+
+Variable fan speed test cycle. 
+
+
+
+Definition at line 325 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D, M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D, and set\-Fan\-Speed().
+
+
+
+Referenced by setup().
+
+
+\begin{DoxyCode}
+325                     \{
+326  
+327  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{MIN\_FANSPEED}; j <= \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED}; j += 10) \{
+328    \hyperlink{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}{setFanSpeed}(j);
+329    delay(500);
+330  \} 
+331 
+332  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED}; j <= \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{MIN\_FANSPEED}; j -= 10) \{
+333    \hyperlink{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}{setFanSpeed}(j);
+334    delay(500);
+335  \} 
+336 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_af1a6bbf84a5ea76623bdc49aaf642a28}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!test\-Status\-L\-E\-D@{test\-Status\-L\-E\-D}}
+\index{test\-Status\-L\-E\-D@{test\-Status\-L\-E\-D}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{test\-Status\-L\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}void test\-Status\-L\-E\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_af1a6bbf84a5ea76623bdc49aaf642a28}
+
+
+Show the status led blinking for a cycle to test that all are working. 
+
+
+
+Definition at line 304 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S, E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S, and S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S.
+
+
+
+Referenced by setup().
+
+
+\begin{DoxyCode}
+304                      \{
+305 
+306   digitalWrite(\hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{ECG\_STATUS}, LOW);
+307   delay(200);  
+308   digitalWrite(\hyperlink{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{STETHOSCOPE\_STATUS}, LOW);
+309   delay(200);  
+310   digitalWrite(\hyperlink{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{CAMERA\_STATUS}, LOW);
+311   delay(200);  
+312 
+313   digitalWrite(\hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{ECG\_STATUS}, HIGH);
+314   delay(200);  
+315   digitalWrite(\hyperlink{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{STETHOSCOPE\_STATUS}, HIGH);
+316   delay(200);  
+317   digitalWrite(\hyperlink{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{CAMERA\_STATUS}, HIGH);
+318   delay(200);  
+319 
+320 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a5a7516a22f178c51ec37c6c8167aaf70}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!update\-Display@{update\-Display}}
+\index{update\-Display@{update\-Display}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{update\-Display}]{\setlength{\rightskip}{0pt plus 5cm}void update\-Display (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{void $\ast$}]{tptr}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a5a7516a22f178c51ec37c6c8167aaf70}
+
+
+Periodically update the display. 
+
+This is a task callback function 
+
+Definition at line 153 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References temp\-Monitor().
+
+
+
+Referenced by setup().
+
+
+\begin{DoxyCode}
+153                                         \{
+154  \hyperlink{_meditech___chip_kit_control_panel_8pde_a3428cc5f679f463cc86ff3d48874eedc}{tempMonitor}(); 
+155 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a236e454e493fc9b262f746305660a2eb}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!welcome@{welcome}}
+\index{welcome@{welcome}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{welcome}]{\setlength{\rightskip}{0pt plus 5cm}void welcome (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a236e454e493fc9b262f746305660a2eb}
+
+
+Welcome message shown at device power-\/on. 
+
+
+
+Definition at line 230 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References \-\_\-\-B\-D, \-\_\-\-B\-U\-I\-L\-D, \-\_\-\-M\-E\-D\-I\-T\-E\-C\-H, \-\_\-\-S\-P\-A\-C\-I\-N\-G, \-\_\-\-V\-E\-R\-S\-I\-O\-N, build, lcd(), L\-C\-D\-B\-O\-T\-T\-O\-M\-R\-O\-W, L\-C\-D\-M\-E\-S\-S\-A\-G\-E\-\_\-\-D\-E\-L\-A\-Y, L\-C\-D\-T\-O\-P\-R\-O\-W, project, and version.
+
+
+
+Referenced by setup().
+
+
+\begin{DoxyCode}
+230                \{
+231 
+232   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
+233   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, \hyperlink{_l_c_d_8h_af51f2930b0a791ffa528731a5cac5756}{LCDTOPROW});
+234   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd} << \hyperlink{_version_8h_aa9397d85369472e4b76a813648f20e46}{project}();
+235   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, \hyperlink{_l_c_d_8h_a46c173b564806ac8d8db0404f5036671}{LCDBOTTOMROW});
+236   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd} << \hyperlink{_strings_8h_a069a1175d7ba5c8452e30b0213ed01c1}{\_VERSION} << \hyperlink{_strings_8h_abdf1c06d350b875620aa94f29a63526e}{\_SPACING} << \hyperlink{_version_8h_a2a79e63190ab37e5d6dafdd1eef5630f}{version}() << \hyperlink{_strings_8h_abdf1c06d350b875620aa94f29a63526e}{\_SPACING} << 
+      \hyperlink{_strings_8h_aeb54c78fa1d4adc784d583e1ba8a1893}{\_BUILD} << \hyperlink{_strings_8h_abdf1c06d350b875620aa94f29a63526e}{\_SPACING} << \hyperlink{_version_8h_a2adc5cea78bc971f47b8553ecf51b89e}{build}(); 
+237   delay(\hyperlink{_l_c_d_8h_a346f4cb5c01c503eb3f25e291ead40d8}{LCDMESSAGE\_DELAY});
+238   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
+239 
+240   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, 0);
+241   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.print(\hyperlink{_strings_8h_a8191ea68252cd604b51e2e57594251e6}{\_BD});
+242   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, 1);
+243   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.print(\hyperlink{_strings_8h_a6de9775cdfe8b42b6261313a9d23ff51}{\_MEDITECH});
+244   delay(2500);
+245   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
+246 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!internal\-Temp@{internal\-Temp}}
+\index{internal\-Temp@{internal\-Temp}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{internal\-Temp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Temperature} internal\-Temp}}\label{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}
+
+
+Internal temperature sensor class instance. 
+
+
+
+Definition at line 51 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+\hypertarget{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!lid\-Status@{lid\-Status}}
+\index{lid\-Status@{lid\-Status}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{lid\-Status}]{\setlength{\rightskip}{0pt plus 5cm}volatile boolean lid\-Status}}\label{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}
+
+
+Current lid status. The variable is declared volatile as it is used by the I\-R\-Q callback function too. 
+
+
+
+Definition at line 59 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+Referenced by is\-Lid\-Status\-Changed(), loop(), and setup().
+
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a3134d7e85042180eb421c3f6ee88d3b3}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!p\-Value@{p\-Value}}
+\index{p\-Value@{p\-Value}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{p\-Value}]{\setlength{\rightskip}{0pt plus 5cm}int p\-Value = 0}}\label{_meditech___chip_kit_control_panel_8pde_a3134d7e85042180eb421c3f6ee88d3b3}
+
+
+Initial potentiometer value. 
+
+
+
+Definition at line 54 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+Referenced by loop().
+
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ac2215fe61cf27d0fc83fa54cf1db73fc}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!steth@{steth}}
+\index{steth@{steth}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{steth}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\-C\-D\-Stethoscope} steth({\bf lcd})}}\label{_meditech___chip_kit_control_panel_8pde_ac2215fe61cf27d0fc83fa54cf1db73fc}
+
+
+Stethoscope display template. 
+
+
+
+Referenced by loop(), and setup().
+
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a527a89c41abb1d8660b53f5e727e655c}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!update\-Dispaly\-Task\-I\-D@{update\-Dispaly\-Task\-I\-D}}
+\index{update\-Dispaly\-Task\-I\-D@{update\-Dispaly\-Task\-I\-D}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{update\-Dispaly\-Task\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}int update\-Dispaly\-Task\-I\-D}}\label{_meditech___chip_kit_control_panel_8pde_a527a89c41abb1d8660b53f5e727e655c}
+
+
+The update display task id (assigned on setup) 
+
+
+
+Definition at line 62 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+Referenced by setup().
+

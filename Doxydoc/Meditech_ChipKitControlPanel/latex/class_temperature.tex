@@ -1,0 +1,273 @@
+\hypertarget{class_temperature}{\section{Temperature Class Reference}
+\label{class_temperature}\index{Temperature@{Temperature}}
+}
+
+
+{\ttfamily \#include \char`\"{}Temperature.\-h\char`\"{}}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_temperature_ab8f4f9e793a8e4f35eed33c240bbe278}{Temperature} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_temperature}{Temperature} class constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_temperature_a909c328fd6235d0e7c8ea110a1fb201d}{Calc\-Temp} (float sensor)
+\begin{DoxyCompactList}\small\item\em Convert the analog value to the respective value. \end{DoxyCompactList}\item 
+float \hyperlink{class_temperature_a3cb76ed5fdb2227d59a6759c1e9938d8}{Celsius} () const 
+\begin{DoxyCompactList}\small\item\em Return the last temperature read in Celsius deg. \end{DoxyCompactList}\item 
+float \hyperlink{class_temperature_ab0833daedc73ca32235680fa4aa6c664}{Fahrenheit} () const 
+\begin{DoxyCompactList}\small\item\em Return the last temperature read in Fahrenheit deg. \end{DoxyCompactList}\item 
+float \hyperlink{class_temperature_a0abbc7cb4f86d2305f9633dfc74f0228}{Kelvin} () const 
+\begin{DoxyCompactList}\small\item\em Return the last temperature read in Kelvin deg. \end{DoxyCompactList}\item 
+float \hyperlink{class_temperature_a63f20b0118f0ea69bb3172c65511ab65}{Rankine} () const 
+\begin{DoxyCompactList}\small\item\em Return the last temperature read in Rankine deg. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{class_temperature_a847274ce6df795e801620cd7cd0247ef}{\-\_\-\-Celsius}
+\item 
+float \hyperlink{class_temperature_a0beb140a271261eb89c3f2fb3bd1f4db}{\-\_\-\-Fahrenheit}
+\item 
+float \hyperlink{class_temperature_a832a839960e688420e234a9ccfbc363e}{\-\_\-\-Kelvin}
+\item 
+float \hyperlink{class_temperature_a3934bf7760e98ece1f0d1487051e6c6e}{\-\_\-\-Rankine}
+\item 
+float \hyperlink{class_temperature_a827e297c3c400d55542b6125626e4de1}{\-\_\-sensor\-Value}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 22 of file Temperature.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_temperature_ab8f4f9e793a8e4f35eed33c240bbe278}{\index{Temperature@{Temperature}!Temperature@{Temperature}}
+\index{Temperature@{Temperature}!Temperature@{Temperature}}
+\subsubsection[{Temperature}]{\setlength{\rightskip}{0pt plus 5cm}Temperature\-::\-Temperature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_temperature_ab8f4f9e793a8e4f35eed33c240bbe278}
+
+
+\hyperlink{class_temperature}{Temperature} class constructor. 
+
+Set the analog pin for data reading 
+
+Definition at line 31 of file Temperature.\-cpp.
+
+
+\begin{DoxyCode}
+31                           \{
+32  \} 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_temperature_a909c328fd6235d0e7c8ea110a1fb201d}{\index{Temperature@{Temperature}!Calc\-Temp@{Calc\-Temp}}
+\index{Calc\-Temp@{Calc\-Temp}!Temperature@{Temperature}}
+\subsubsection[{Calc\-Temp}]{\setlength{\rightskip}{0pt plus 5cm}void Temperature\-::\-Calc\-Temp (
+\begin{DoxyParamCaption}
+\item[{float}]{sensor}
+\end{DoxyParamCaption}
+)}}\label{class_temperature_a909c328fd6235d0e7c8ea110a1fb201d}
+
+
+Convert the analog value to the respective value. 
+
+As the call to the temperature reading is not a high priority task and does not need very high responsivity, when the analog data are read they are immediately converted to the three temperature scales\-: Celsius, Kelvin and Farehneit. 
+
+Definition at line 41 of file Temperature.\-cpp.
+
+
+
+References \-\_\-\-Celsius, \-\_\-\-Fahrenheit, \-\_\-\-Kelvin, \-\_\-\-Rankine, \-\_\-sensor\-Value, A\-B\-S\-O\-L\-U\-T\-E\-\_\-\-Z\-E\-R\-O\-\_\-\-C\-E\-L\-S\-I\-U\-S, and T\-E\-M\-P\-\_\-\-O\-F\-F\-S\-E\-T.
+
+
+
+Referenced by setup(), and temp\-Monitor().
+
+
+\begin{DoxyCode}
+41                                        \{
+42 
+43   \hyperlink{class_temperature_a827e297c3c400d55542b6125626e4de1}{\_sensorValue} = sensor;
+44   \hyperlink{class_temperature_a847274ce6df795e801620cd7cd0247ef}{\_Celsius} = (((\hyperlink{class_temperature_a827e297c3c400d55542b6125626e4de1}{\_sensorValue} / 1024) * 5) * 100) - 
+      \hyperlink{_temperature_8h_a3cb24f09004f92185b77e9e7bac6ea61}{TEMP\_OFFSET}; \textcolor{comment}{// convert the reading to C}
+45   \hyperlink{class_temperature_a0beb140a271261eb89c3f2fb3bd1f4db}{\_Fahrenheit} = \hyperlink{class_temperature_a847274ce6df795e801620cd7cd0247ef}{\_Celsius} * 1.8 + 32.0; \textcolor{comment}{// convert the reading to F}
+46   \hyperlink{class_temperature_a832a839960e688420e234a9ccfbc363e}{\_Kelvin} = \hyperlink{class_temperature_a847274ce6df795e801620cd7cd0247ef}{\_Celsius} - \hyperlink{_temperature_8h_ad1a84d196111fded75a90ce4facc6a8d}{ABSOLUTE\_ZERO\_CELSIUS}; \textcolor{comment}{// convert the reading to
+       K}
+47   \hyperlink{class_temperature_a3934bf7760e98ece1f0d1487051e6c6e}{\_Rankine} = ((\hyperlink{class_temperature_a847274ce6df795e801620cd7cd0247ef}{\_Celsius} - \hyperlink{_temperature_8h_ad1a84d196111fded75a90ce4facc6a8d}{ABSOLUTE\_ZERO\_CELSIUS}) * 9) / 5; \textcolor{comment}{// convert
+       the reading do R}
+48 \}
+\end{DoxyCode}
+\hypertarget{class_temperature_a3cb76ed5fdb2227d59a6759c1e9938d8}{\index{Temperature@{Temperature}!Celsius@{Celsius}}
+\index{Celsius@{Celsius}!Temperature@{Temperature}}
+\subsubsection[{Celsius}]{\setlength{\rightskip}{0pt plus 5cm}float Temperature\-::\-Celsius (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_temperature_a3cb76ed5fdb2227d59a6759c1e9938d8}
+
+
+Return the last temperature read in Celsius deg. 
+
+
+
+Definition at line 51 of file Temperature.\-cpp.
+
+
+
+References \-\_\-\-Celsius.
+
+
+
+Referenced by show\-Temp().
+
+
+\begin{DoxyCode}
+51                                  \{
+52     \textcolor{keywordflow}{return}(\hyperlink{class_temperature_a847274ce6df795e801620cd7cd0247ef}{\_Celsius});
+53 \}
+\end{DoxyCode}
+\hypertarget{class_temperature_ab0833daedc73ca32235680fa4aa6c664}{\index{Temperature@{Temperature}!Fahrenheit@{Fahrenheit}}
+\index{Fahrenheit@{Fahrenheit}!Temperature@{Temperature}}
+\subsubsection[{Fahrenheit}]{\setlength{\rightskip}{0pt plus 5cm}float Temperature\-::\-Fahrenheit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_temperature_ab0833daedc73ca32235680fa4aa6c664}
+
+
+Return the last temperature read in Fahrenheit deg. 
+
+
+
+Definition at line 56 of file Temperature.\-cpp.
+
+
+
+References \-\_\-\-Fahrenheit.
+
+
+\begin{DoxyCode}
+56                                     \{
+57     \textcolor{keywordflow}{return}(\hyperlink{class_temperature_a0beb140a271261eb89c3f2fb3bd1f4db}{\_Fahrenheit});
+58 \}
+\end{DoxyCode}
+\hypertarget{class_temperature_a0abbc7cb4f86d2305f9633dfc74f0228}{\index{Temperature@{Temperature}!Kelvin@{Kelvin}}
+\index{Kelvin@{Kelvin}!Temperature@{Temperature}}
+\subsubsection[{Kelvin}]{\setlength{\rightskip}{0pt plus 5cm}float Temperature\-::\-Kelvin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_temperature_a0abbc7cb4f86d2305f9633dfc74f0228}
+
+
+Return the last temperature read in Kelvin deg. 
+
+
+
+Definition at line 61 of file Temperature.\-cpp.
+
+
+
+References \-\_\-\-Kelvin.
+
+
+\begin{DoxyCode}
+61                                 \{
+62     \textcolor{keywordflow}{return}(\hyperlink{class_temperature_a832a839960e688420e234a9ccfbc363e}{\_Kelvin});
+63 \}
+\end{DoxyCode}
+\hypertarget{class_temperature_a63f20b0118f0ea69bb3172c65511ab65}{\index{Temperature@{Temperature}!Rankine@{Rankine}}
+\index{Rankine@{Rankine}!Temperature@{Temperature}}
+\subsubsection[{Rankine}]{\setlength{\rightskip}{0pt plus 5cm}float Temperature\-::\-Rankine (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_temperature_a63f20b0118f0ea69bb3172c65511ab65}
+
+
+Return the last temperature read in Rankine deg. 
+
+
+
+Definition at line 66 of file Temperature.\-cpp.
+
+
+
+References \-\_\-\-Rankine.
+
+
+\begin{DoxyCode}
+66                                  \{
+67     \textcolor{keywordflow}{return}(\hyperlink{class_temperature_a3934bf7760e98ece1f0d1487051e6c6e}{\_Rankine});
+68 \}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_temperature_a847274ce6df795e801620cd7cd0247ef}{\index{Temperature@{Temperature}!\-\_\-\-Celsius@{\-\_\-\-Celsius}}
+\index{\-\_\-\-Celsius@{\-\_\-\-Celsius}!Temperature@{Temperature}}
+\subsubsection[{\-\_\-\-Celsius}]{\setlength{\rightskip}{0pt plus 5cm}float Temperature\-::\-\_\-\-Celsius\hspace{0.3cm}{\ttfamily [private]}}}\label{class_temperature_a847274ce6df795e801620cd7cd0247ef}
+
+
+Definition at line 32 of file Temperature.\-h.
+
+
+
+Referenced by Calc\-Temp(), and Celsius().
+
+\hypertarget{class_temperature_a0beb140a271261eb89c3f2fb3bd1f4db}{\index{Temperature@{Temperature}!\-\_\-\-Fahrenheit@{\-\_\-\-Fahrenheit}}
+\index{\-\_\-\-Fahrenheit@{\-\_\-\-Fahrenheit}!Temperature@{Temperature}}
+\subsubsection[{\-\_\-\-Fahrenheit}]{\setlength{\rightskip}{0pt plus 5cm}float Temperature\-::\-\_\-\-Fahrenheit\hspace{0.3cm}{\ttfamily [private]}}}\label{class_temperature_a0beb140a271261eb89c3f2fb3bd1f4db}
+
+
+Definition at line 33 of file Temperature.\-h.
+
+
+
+Referenced by Calc\-Temp(), and Fahrenheit().
+
+\hypertarget{class_temperature_a832a839960e688420e234a9ccfbc363e}{\index{Temperature@{Temperature}!\-\_\-\-Kelvin@{\-\_\-\-Kelvin}}
+\index{\-\_\-\-Kelvin@{\-\_\-\-Kelvin}!Temperature@{Temperature}}
+\subsubsection[{\-\_\-\-Kelvin}]{\setlength{\rightskip}{0pt plus 5cm}float Temperature\-::\-\_\-\-Kelvin\hspace{0.3cm}{\ttfamily [private]}}}\label{class_temperature_a832a839960e688420e234a9ccfbc363e}
+
+
+Definition at line 34 of file Temperature.\-h.
+
+
+
+Referenced by Calc\-Temp(), and Kelvin().
+
+\hypertarget{class_temperature_a3934bf7760e98ece1f0d1487051e6c6e}{\index{Temperature@{Temperature}!\-\_\-\-Rankine@{\-\_\-\-Rankine}}
+\index{\-\_\-\-Rankine@{\-\_\-\-Rankine}!Temperature@{Temperature}}
+\subsubsection[{\-\_\-\-Rankine}]{\setlength{\rightskip}{0pt plus 5cm}float Temperature\-::\-\_\-\-Rankine\hspace{0.3cm}{\ttfamily [private]}}}\label{class_temperature_a3934bf7760e98ece1f0d1487051e6c6e}
+
+
+Definition at line 35 of file Temperature.\-h.
+
+
+
+Referenced by Calc\-Temp(), and Rankine().
+
+\hypertarget{class_temperature_a827e297c3c400d55542b6125626e4de1}{\index{Temperature@{Temperature}!\-\_\-sensor\-Value@{\-\_\-sensor\-Value}}
+\index{\-\_\-sensor\-Value@{\-\_\-sensor\-Value}!Temperature@{Temperature}}
+\subsubsection[{\-\_\-sensor\-Value}]{\setlength{\rightskip}{0pt plus 5cm}float Temperature\-::\-\_\-sensor\-Value\hspace{0.3cm}{\ttfamily [private]}}}\label{class_temperature_a827e297c3c400d55542b6125626e4de1}
+
+
+Definition at line 36 of file Temperature.\-h.
+
+
+
+Referenced by Calc\-Temp().
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\hyperlink{_temperature_8h}{Temperature.\-h}\item 
+/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\hyperlink{_temperature_8cpp}{Temperature.\-cpp}\end{DoxyCompactItemize}

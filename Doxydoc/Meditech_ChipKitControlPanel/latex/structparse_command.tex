@@ -1,0 +1,116 @@
+\hypertarget{structparse_command}{\section{parse\-Command Struct Reference}
+\label{structparse_command}\index{parse\-Command@{parse\-Command}}
+}
+
+
+{\ttfamily \#include \char`\"{}Command\-Processor.\-h\char`\"{}}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}{subcommand} \mbox{[}1\mbox{]}
+\begin{DoxyCompactList}\small\item\em char subcommand\mbox{[}1\mbox{]} Contains the last parsed subcommand \end{DoxyCompactList}\item 
+char \hyperlink{structparse_command_ab80399acc713a2d31a48dd2db5c7d0a2}{message} \mbox{[}20\mbox{]}
+\begin{DoxyCompactList}\small\item\em Command associated message string, used by S\-\_\-\-S\-U\-B\-S\-T\-R\-I\-N\-G, C\-M\-D\-\_\-\-W\-R\-I\-T\-E, C\-M\-D\-\_\-\-E\-X\-E\-C. \end{DoxyCompactList}\item 
+long \hyperlink{structparse_command_ad062df88615d7d66ded447dd4ff87bad}{long\-Value}
+\begin{DoxyCompactList}\small\item\em Generic long parameter. \end{DoxyCompactList}\item 
+int \hyperlink{structparse_command_a022bdea84dc5c07ff20af8690a1aa2e3}{int\-Value}
+\begin{DoxyCompactList}\small\item\em Generic integer parameter. \end{DoxyCompactList}\item 
+float \hyperlink{structparse_command_a121ded5fdf791ba216ad84cef651fe74}{float\-Value}
+\begin{DoxyCompactList}\small\item\em Generic float parameter. \end{DoxyCompactList}\item 
+int \hyperlink{structparse_command_a5f5c48be92f3aae7c4b1b71ca750298b}{separator}
+\begin{DoxyCompactList}\small\item\em Separator character. \end{DoxyCompactList}\item 
+char \hyperlink{structparse_command_a7cb5165cf18cc63d7eed9fa34be4efd8}{cmd\-Data} \mbox{[}160\mbox{]}
+\begin{DoxyCompactList}\small\item\em Unparsed Command String. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 53 of file Command\-Processor.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structparse_command_a7cb5165cf18cc63d7eed9fa34be4efd8}{\index{parse\-Command@{parse\-Command}!cmd\-Data@{cmd\-Data}}
+\index{cmd\-Data@{cmd\-Data}!parseCommand@{parse\-Command}}
+\subsubsection[{cmd\-Data}]{\setlength{\rightskip}{0pt plus 5cm}char parse\-Command\-::cmd\-Data\mbox{[}160\mbox{]}}}\label{structparse_command_a7cb5165cf18cc63d7eed9fa34be4efd8}
+
+
+Unparsed Command String. 
+
+cmd\-Data is the string after syntax checking. The string can contain one or more commands. When the command string is sent to the parser this value contains the command sequence. When the this string is empy all the commands has been processed and the system is ready to receive a new command. 
+
+Definition at line 76 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a121ded5fdf791ba216ad84cef651fe74}{\index{parse\-Command@{parse\-Command}!float\-Value@{float\-Value}}
+\index{float\-Value@{float\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{float\-Value}]{\setlength{\rightskip}{0pt plus 5cm}float parse\-Command\-::float\-Value}}\label{structparse_command_a121ded5fdf791ba216ad84cef651fe74}
+
+
+Generic float parameter. 
+
+
+
+Definition at line 63 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a022bdea84dc5c07ff20af8690a1aa2e3}{\index{parse\-Command@{parse\-Command}!int\-Value@{int\-Value}}
+\index{int\-Value@{int\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{int\-Value}]{\setlength{\rightskip}{0pt plus 5cm}int parse\-Command\-::int\-Value}}\label{structparse_command_a022bdea84dc5c07ff20af8690a1aa2e3}
+
+
+Generic integer parameter. 
+
+
+
+Definition at line 62 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_ad062df88615d7d66ded447dd4ff87bad}{\index{parse\-Command@{parse\-Command}!long\-Value@{long\-Value}}
+\index{long\-Value@{long\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{long\-Value}]{\setlength{\rightskip}{0pt plus 5cm}long parse\-Command\-::long\-Value}}\label{structparse_command_ad062df88615d7d66ded447dd4ff87bad}
+
+
+Generic long parameter. 
+
+
+
+Definition at line 61 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_ab80399acc713a2d31a48dd2db5c7d0a2}{\index{parse\-Command@{parse\-Command}!message@{message}}
+\index{message@{message}!parseCommand@{parse\-Command}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}char parse\-Command\-::message\mbox{[}20\mbox{]}}}\label{structparse_command_ab80399acc713a2d31a48dd2db5c7d0a2}
+
+
+Command associated message string, used by S\-\_\-\-S\-U\-B\-S\-T\-R\-I\-N\-G, C\-M\-D\-\_\-\-W\-R\-I\-T\-E, C\-M\-D\-\_\-\-E\-X\-E\-C. 
+
+
+
+Definition at line 59 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a5f5c48be92f3aae7c4b1b71ca750298b}{\index{parse\-Command@{parse\-Command}!separator@{separator}}
+\index{separator@{separator}!parseCommand@{parse\-Command}}
+\subsubsection[{separator}]{\setlength{\rightskip}{0pt plus 5cm}int parse\-Command\-::separator}}\label{structparse_command_a5f5c48be92f3aae7c4b1b71ca750298b}
+
+
+Separator character. 
+
+
+
+Definition at line 64 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}{\index{parse\-Command@{parse\-Command}!subcommand@{subcommand}}
+\index{subcommand@{subcommand}!parseCommand@{parse\-Command}}
+\subsubsection[{subcommand}]{\setlength{\rightskip}{0pt plus 5cm}char parse\-Command\-::subcommand\mbox{[}1\mbox{]}}}\label{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}
+
+
+char subcommand\mbox{[}1\mbox{]} Contains the last parsed subcommand 
+
+
+
+Definition at line 57 of file Command\-Processor.\-h.
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\hyperlink{_command_processor_8h}{Command\-Processor.\-h}\end{DoxyCompactItemize}

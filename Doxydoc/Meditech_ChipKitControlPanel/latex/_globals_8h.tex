@@ -1,0 +1,328 @@
+\hypertarget{_globals_8h}{\section{/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\-Globals.h File Reference}
+\label{_globals_8h}\index{/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\-Globals.\-h@{/\-Volumes/\-John Doe/\-Development Projects/\-Meditech Sci\-Fi/\-Sources\-Repositories/chipkit\-\_\-serial\-\_\-pi/\-Meditech\-\_\-\-Chip\-Kit\-Control\-Panel/\-Globals.\-h}}
+}
+
+
+Global constants.  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_globals_8h_a539a19d2fb8a8836fef76ea26e3df0ee}{L\-I\-D\-O\-P\-E\-N}~false
+\begin{DoxyCompactList}\small\item\em Lid open status. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_af04a3919dc1fa7d521c9514be995b43d}{L\-I\-D\-C\-L\-O\-S\-E\-D}~true
+\begin{DoxyCompactList}\small\item\em Lid closed status. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_aa25a0ac569f39f937b5020cda2687799}{F\-A\-N\-\_\-\-S\-P\-E\-E\-D}~2
+\begin{DoxyCompactList}\small\item\em P\-W\-M fan control speed P\-I\-N. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S}~3
+\begin{DoxyCompactList}\small\item\em E\-C\-G enabled P\-I\-N. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S}~8
+\begin{DoxyCompactList}\small\item\em Stethoscope enabled P\-I\-N. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S}~9
+\begin{DoxyCompactList}\small\item\em Camera transmitting enabled P\-I\-N. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_a9d1e04090b98f20c171c70e566a32e16}{L\-I\-D\-S\-T\-A\-T\-U\-S}~10
+\begin{DoxyCompactList}\small\item\em Lid switch input pin. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_afaebaaa44c81b42b1b7d9e04a4a3c1c4}{L\-C\-Ddata\-Pin}~11
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_l_c_d}{L\-C\-D} Shift control pin -\/ Data signal Define this value accordingly with the available I2\-C board pins. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_ada347804f64dd51a45b22ec70883cea2}{L\-C\-Dclock\-Pin}~12
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_l_c_d}{L\-C\-D} Shift control pin -\/ Clock signal Define this value accordingly with the available I2\-C board pins. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_a95345abf72ecd9d235365e0bb6b8eae8}{L\-C\-Dlatch\-Pin}~13
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_l_c_d}{L\-C\-D} Shift control pin -\/ Latch signal Define this value accordingly with the available I2\-C board pins. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D}~35
+\begin{DoxyCompactList}\small\item\em Minimum P\-W\-M frequency for fan stopped. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D}~255
+\begin{DoxyCompactList}\small\item\em Maximum P\-W\-M frequency for fan running. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}{S\-T\-O\-P\-\_\-\-F\-A\-N}~5
+\begin{DoxyCompactList}\small\item\em P\-W\-M frequency for fan stopped (lower values has no effect) \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_a2522d2568f63855838c3ecfb44084710}{M\-I\-N\-\_\-\-T\-E\-M\-P}~38.\-00
+\begin{DoxyCompactList}\small\item\em Minimum temperature (Celsius) to start the fan (min speed) Lower temperature values does not need the fan starting. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{M\-A\-X\-\_\-\-T\-E\-M\-P}~60.\-00
+\begin{DoxyCompactList}\small\item\em Maximum temperature (Celsius) to reach the higher fan speed. Higher temperature values should generate an overheating alarm condition. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_aa0e7d4f84a28711b1e4c378655ee8d41}{L\-I\-D\-\_\-\-O\-P\-E\-N\-\_\-\-T\-I\-M\-E\-O\-U\-T}~1
+\begin{DoxyCompactList}\small\item\em Lid open check status frequency (1 sec.) \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_a4851a9d0178d5f1ffceea89b4f583e94}{U\-P\-D\-A\-T\-E\-\_\-\-F\-A\-N\-\_\-\-S\-P\-E\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}~5
+\begin{DoxyCompactList}\small\item\em Fan cooler interrupt timer update frequency (5 secs.) \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_a4081bc1d938e0d9b2b0941e3a1143498}{S\-E\-R\-I\-A\-L\-\_\-\-S\-P\-E\-E\-D}~38400
+\begin{DoxyCompactList}\small\item\em The serial communication speed with the R\-P\-I master. \end{DoxyCompactList}\item 
+\#define \hyperlink{_globals_8h_ab24200fce9fdcbdd9b76bd40f21cb50e}{T\-A\-S\-K\-\_\-\-U\-P\-D\-A\-T\-E\-D\-I\-S\-P\-L\-A\-Y}~1000
+\begin{DoxyCompactList}\small\item\em Update the display task every second (in ms) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Global constants. 
+
+Definition in file \hyperlink{_globals_8h_source}{Globals.\-h}.
+
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{\index{Globals.\-h@{Globals.\-h}!C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S@{C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S}}
+\index{C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S@{C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S}!Globals.h@{Globals.\-h}}
+\subsubsection[{C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S~9}}\label{_globals_8h_ad0154ccab9906702a495f07dfedd0136}
+
+
+Camera transmitting enabled P\-I\-N. 
+
+
+
+Definition at line 21 of file Globals.\-h.
+
+
+
+Referenced by setup(), and test\-Status\-L\-E\-D().
+
+\hypertarget{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{\index{Globals.\-h@{Globals.\-h}!E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S@{E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S}}
+\index{E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S@{E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S}!Globals.h@{Globals.\-h}}
+\subsubsection[{E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S~3}}\label{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}
+
+
+E\-C\-G enabled P\-I\-N. 
+
+
+
+Definition at line 17 of file Globals.\-h.
+
+
+
+Referenced by setup(), and test\-Status\-L\-E\-D().
+
+\hypertarget{_globals_8h_aa25a0ac569f39f937b5020cda2687799}{\index{Globals.\-h@{Globals.\-h}!F\-A\-N\-\_\-\-S\-P\-E\-E\-D@{F\-A\-N\-\_\-\-S\-P\-E\-E\-D}}
+\index{F\-A\-N\-\_\-\-S\-P\-E\-E\-D@{F\-A\-N\-\_\-\-S\-P\-E\-E\-D}!Globals.h@{Globals.\-h}}
+\subsubsection[{F\-A\-N\-\_\-\-S\-P\-E\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-A\-N\-\_\-\-S\-P\-E\-E\-D~2}}\label{_globals_8h_aa25a0ac569f39f937b5020cda2687799}
+
+
+P\-W\-M fan control speed P\-I\-N. 
+
+
+
+Definition at line 15 of file Globals.\-h.
+
+
+
+Referenced by fan\-Speed\-Regulation(), and set\-Fan\-Speed().
+
+\hypertarget{_globals_8h_ada347804f64dd51a45b22ec70883cea2}{\index{Globals.\-h@{Globals.\-h}!L\-C\-Dclock\-Pin@{L\-C\-Dclock\-Pin}}
+\index{L\-C\-Dclock\-Pin@{L\-C\-Dclock\-Pin}!Globals.h@{Globals.\-h}}
+\subsubsection[{L\-C\-Dclock\-Pin}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-C\-Dclock\-Pin~12}}\label{_globals_8h_ada347804f64dd51a45b22ec70883cea2}
+
+
+\hyperlink{class_l_c_d}{L\-C\-D} Shift control pin -\/ Clock signal Define this value accordingly with the available I2\-C board pins. 
+
+
+
+Definition at line 30 of file Globals.\-h.
+
+\hypertarget{_globals_8h_afaebaaa44c81b42b1b7d9e04a4a3c1c4}{\index{Globals.\-h@{Globals.\-h}!L\-C\-Ddata\-Pin@{L\-C\-Ddata\-Pin}}
+\index{L\-C\-Ddata\-Pin@{L\-C\-Ddata\-Pin}!Globals.h@{Globals.\-h}}
+\subsubsection[{L\-C\-Ddata\-Pin}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-C\-Ddata\-Pin~11}}\label{_globals_8h_afaebaaa44c81b42b1b7d9e04a4a3c1c4}
+
+
+\hyperlink{class_l_c_d}{L\-C\-D} Shift control pin -\/ Data signal Define this value accordingly with the available I2\-C board pins. 
+
+
+
+Definition at line 27 of file Globals.\-h.
+
+\hypertarget{_globals_8h_a95345abf72ecd9d235365e0bb6b8eae8}{\index{Globals.\-h@{Globals.\-h}!L\-C\-Dlatch\-Pin@{L\-C\-Dlatch\-Pin}}
+\index{L\-C\-Dlatch\-Pin@{L\-C\-Dlatch\-Pin}!Globals.h@{Globals.\-h}}
+\subsubsection[{L\-C\-Dlatch\-Pin}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-C\-Dlatch\-Pin~13}}\label{_globals_8h_a95345abf72ecd9d235365e0bb6b8eae8}
+
+
+\hyperlink{class_l_c_d}{L\-C\-D} Shift control pin -\/ Latch signal Define this value accordingly with the available I2\-C board pins. 
+
+
+
+Definition at line 33 of file Globals.\-h.
+
+\hypertarget{_globals_8h_aa0e7d4f84a28711b1e4c378655ee8d41}{\index{Globals.\-h@{Globals.\-h}!L\-I\-D\-\_\-\-O\-P\-E\-N\-\_\-\-T\-I\-M\-E\-O\-U\-T@{L\-I\-D\-\_\-\-O\-P\-E\-N\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{L\-I\-D\-\_\-\-O\-P\-E\-N\-\_\-\-T\-I\-M\-E\-O\-U\-T@{L\-I\-D\-\_\-\-O\-P\-E\-N\-\_\-\-T\-I\-M\-E\-O\-U\-T}!Globals.h@{Globals.\-h}}
+\subsubsection[{L\-I\-D\-\_\-\-O\-P\-E\-N\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-D\-\_\-\-O\-P\-E\-N\-\_\-\-T\-I\-M\-E\-O\-U\-T~1}}\label{_globals_8h_aa0e7d4f84a28711b1e4c378655ee8d41}
+
+
+Lid open check status frequency (1 sec.) 
+
+
+
+Definition at line 51 of file Globals.\-h.
+
+
+
+Referenced by is\-Lid\-Status\-Changed().
+
+\hypertarget{_globals_8h_af04a3919dc1fa7d521c9514be995b43d}{\index{Globals.\-h@{Globals.\-h}!L\-I\-D\-C\-L\-O\-S\-E\-D@{L\-I\-D\-C\-L\-O\-S\-E\-D}}
+\index{L\-I\-D\-C\-L\-O\-S\-E\-D@{L\-I\-D\-C\-L\-O\-S\-E\-D}!Globals.h@{Globals.\-h}}
+\subsubsection[{L\-I\-D\-C\-L\-O\-S\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-D\-C\-L\-O\-S\-E\-D~true}}\label{_globals_8h_af04a3919dc1fa7d521c9514be995b43d}
+
+
+Lid closed status. 
+
+
+
+Definition at line 12 of file Globals.\-h.
+
+
+
+Referenced by loop(), and setup().
+
+\hypertarget{_globals_8h_a539a19d2fb8a8836fef76ea26e3df0ee}{\index{Globals.\-h@{Globals.\-h}!L\-I\-D\-O\-P\-E\-N@{L\-I\-D\-O\-P\-E\-N}}
+\index{L\-I\-D\-O\-P\-E\-N@{L\-I\-D\-O\-P\-E\-N}!Globals.h@{Globals.\-h}}
+\subsubsection[{L\-I\-D\-O\-P\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-D\-O\-P\-E\-N~false}}\label{_globals_8h_a539a19d2fb8a8836fef76ea26e3df0ee}
+
+
+Lid open status. 
+
+
+
+Definition at line 10 of file Globals.\-h.
+
+\hypertarget{_globals_8h_a9d1e04090b98f20c171c70e566a32e16}{\index{Globals.\-h@{Globals.\-h}!L\-I\-D\-S\-T\-A\-T\-U\-S@{L\-I\-D\-S\-T\-A\-T\-U\-S}}
+\index{L\-I\-D\-S\-T\-A\-T\-U\-S@{L\-I\-D\-S\-T\-A\-T\-U\-S}!Globals.h@{Globals.\-h}}
+\subsubsection[{L\-I\-D\-S\-T\-A\-T\-U\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-D\-S\-T\-A\-T\-U\-S~10}}\label{_globals_8h_a9d1e04090b98f20c171c70e566a32e16}
+
+
+Lid switch input pin. 
+
+
+
+Definition at line 23 of file Globals.\-h.
+
+
+
+Referenced by is\-Lid\-Status\-Changed(), and setup().
+
+\hypertarget{_globals_8h_ac9351f029741923529816df3678ea765}{\index{Globals.\-h@{Globals.\-h}!M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D@{M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D}}
+\index{M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D@{M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D}!Globals.h@{Globals.\-h}}
+\subsubsection[{M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D~255}}\label{_globals_8h_ac9351f029741923529816df3678ea765}
+
+
+Maximum P\-W\-M frequency for fan running. 
+
+
+
+Definition at line 38 of file Globals.\-h.
+
+
+
+Referenced by fan\-Speed\-Regulation(), set\-Fan\-Speed(), and test\-Fan\-Speed().
+
+\hypertarget{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{\index{Globals.\-h@{Globals.\-h}!M\-A\-X\-\_\-\-T\-E\-M\-P@{M\-A\-X\-\_\-\-T\-E\-M\-P}}
+\index{M\-A\-X\-\_\-\-T\-E\-M\-P@{M\-A\-X\-\_\-\-T\-E\-M\-P}!Globals.h@{Globals.\-h}}
+\subsubsection[{M\-A\-X\-\_\-\-T\-E\-M\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-T\-E\-M\-P~60.\-00}}\label{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}
+
+
+Maximum temperature (Celsius) to reach the higher fan speed. Higher temperature values should generate an overheating alarm condition. 
+
+
+
+Definition at line 48 of file Globals.\-h.
+
+
+
+Referenced by fan\-Speed\-Regulation(), and set\-Fan\-Speed().
+
+\hypertarget{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{\index{Globals.\-h@{Globals.\-h}!M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D@{M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D}}
+\index{M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D@{M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D}!Globals.h@{Globals.\-h}}
+\subsubsection[{M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-I\-N\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D~35}}\label{_globals_8h_a1ba666d06d08bf653b276d2207542cab}
+
+
+Minimum P\-W\-M frequency for fan stopped. 
+
+
+
+Definition at line 36 of file Globals.\-h.
+
+
+
+Referenced by fan\-Speed\-Regulation(), set\-Fan\-Speed(), and test\-Fan\-Speed().
+
+\hypertarget{_globals_8h_a2522d2568f63855838c3ecfb44084710}{\index{Globals.\-h@{Globals.\-h}!M\-I\-N\-\_\-\-T\-E\-M\-P@{M\-I\-N\-\_\-\-T\-E\-M\-P}}
+\index{M\-I\-N\-\_\-\-T\-E\-M\-P@{M\-I\-N\-\_\-\-T\-E\-M\-P}!Globals.h@{Globals.\-h}}
+\subsubsection[{M\-I\-N\-\_\-\-T\-E\-M\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-I\-N\-\_\-\-T\-E\-M\-P~38.\-00}}\label{_globals_8h_a2522d2568f63855838c3ecfb44084710}
+
+
+Minimum temperature (Celsius) to start the fan (min speed) Lower temperature values does not need the fan starting. 
+
+
+
+Definition at line 44 of file Globals.\-h.
+
+
+
+Referenced by fan\-Speed\-Regulation(), and set\-Fan\-Speed().
+
+\hypertarget{_globals_8h_a4081bc1d938e0d9b2b0941e3a1143498}{\index{Globals.\-h@{Globals.\-h}!S\-E\-R\-I\-A\-L\-\_\-\-S\-P\-E\-E\-D@{S\-E\-R\-I\-A\-L\-\_\-\-S\-P\-E\-E\-D}}
+\index{S\-E\-R\-I\-A\-L\-\_\-\-S\-P\-E\-E\-D@{S\-E\-R\-I\-A\-L\-\_\-\-S\-P\-E\-E\-D}!Globals.h@{Globals.\-h}}
+\subsubsection[{S\-E\-R\-I\-A\-L\-\_\-\-S\-P\-E\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-R\-I\-A\-L\-\_\-\-S\-P\-E\-E\-D~38400}}\label{_globals_8h_a4081bc1d938e0d9b2b0941e3a1143498}
+
+
+The serial communication speed with the R\-P\-I master. 
+
+
+
+Definition at line 57 of file Globals.\-h.
+
+
+
+Referenced by setup().
+
+\hypertarget{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{\index{Globals.\-h@{Globals.\-h}!S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S@{S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S}}
+\index{S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S@{S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S}!Globals.h@{Globals.\-h}}
+\subsubsection[{S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S~8}}\label{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}
+
+
+Stethoscope enabled P\-I\-N. 
+
+
+
+Definition at line 19 of file Globals.\-h.
+
+
+
+Referenced by setup(), and test\-Status\-L\-E\-D().
+
+\hypertarget{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}{\index{Globals.\-h@{Globals.\-h}!S\-T\-O\-P\-\_\-\-F\-A\-N@{S\-T\-O\-P\-\_\-\-F\-A\-N}}
+\index{S\-T\-O\-P\-\_\-\-F\-A\-N@{S\-T\-O\-P\-\_\-\-F\-A\-N}!Globals.h@{Globals.\-h}}
+\subsubsection[{S\-T\-O\-P\-\_\-\-F\-A\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-T\-O\-P\-\_\-\-F\-A\-N~5}}\label{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}
+
+
+P\-W\-M frequency for fan stopped (lower values has no effect) 
+
+
+
+Definition at line 40 of file Globals.\-h.
+
+
+
+Referenced by set\-Fan\-Speed(), and setup().
+
+\hypertarget{_globals_8h_ab24200fce9fdcbdd9b76bd40f21cb50e}{\index{Globals.\-h@{Globals.\-h}!T\-A\-S\-K\-\_\-\-U\-P\-D\-A\-T\-E\-D\-I\-S\-P\-L\-A\-Y@{T\-A\-S\-K\-\_\-\-U\-P\-D\-A\-T\-E\-D\-I\-S\-P\-L\-A\-Y}}
+\index{T\-A\-S\-K\-\_\-\-U\-P\-D\-A\-T\-E\-D\-I\-S\-P\-L\-A\-Y@{T\-A\-S\-K\-\_\-\-U\-P\-D\-A\-T\-E\-D\-I\-S\-P\-L\-A\-Y}!Globals.h@{Globals.\-h}}
+\subsubsection[{T\-A\-S\-K\-\_\-\-U\-P\-D\-A\-T\-E\-D\-I\-S\-P\-L\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-A\-S\-K\-\_\-\-U\-P\-D\-A\-T\-E\-D\-I\-S\-P\-L\-A\-Y~1000}}\label{_globals_8h_ab24200fce9fdcbdd9b76bd40f21cb50e}
+
+
+Update the display task every second (in ms) 
+
+
+
+Definition at line 61 of file Globals.\-h.
+
+
+
+Referenced by setup().
+
+\hypertarget{_globals_8h_a4851a9d0178d5f1ffceea89b4f583e94}{\index{Globals.\-h@{Globals.\-h}!U\-P\-D\-A\-T\-E\-\_\-\-F\-A\-N\-\_\-\-S\-P\-E\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T@{U\-P\-D\-A\-T\-E\-\_\-\-F\-A\-N\-\_\-\-S\-P\-E\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{U\-P\-D\-A\-T\-E\-\_\-\-F\-A\-N\-\_\-\-S\-P\-E\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T@{U\-P\-D\-A\-T\-E\-\_\-\-F\-A\-N\-\_\-\-S\-P\-E\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}!Globals.h@{Globals.\-h}}
+\subsubsection[{U\-P\-D\-A\-T\-E\-\_\-\-F\-A\-N\-\_\-\-S\-P\-E\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-P\-D\-A\-T\-E\-\_\-\-F\-A\-N\-\_\-\-S\-P\-E\-E\-D\-\_\-\-T\-I\-M\-E\-O\-U\-T~5}}\label{_globals_8h_a4851a9d0178d5f1ffceea89b4f583e94}
+
+
+Fan cooler interrupt timer update frequency (5 secs.) 
+
+
+
+Definition at line 54 of file Globals.\-h.
+
+
+
+Referenced by fan\-Speed\-Regulation().
+
