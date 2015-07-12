@@ -10,13 +10,22 @@ meditech Chip\-Kit control panel main application
 {\ttfamily \#include $<$Streaming.\-h$>$}\\*
 {\ttfamily \#include \char`\"{}L\-C\-D.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Analog.\-h\char`\"{}}\\*
+<<<<<<< HEAD
 {\ttfamily \#include \char`\"{}Strings.\-h\char`\"{}}\\*
+=======
+{\ttfamily \#include \char`\"{}Strings\-Globals.\-h\char`\"{}}\\*
+>>>>>>> master
 {\ttfamily \#include \char`\"{}Version.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Globals.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Temperature.\-h\char`\"{}}\\*
 {\ttfamily \#include $<$Soft\-P\-W\-M\-Servo.\-h$>$}\\*
 {\ttfamily \#include \char`\"{}L\-C\-D\-Templates.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Debug\-Strings.\-h\char`\"{}}\\*
+<<<<<<< HEAD
+=======
+{\ttfamily \#include \char`\"{}Command\-Processor.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Parser\-Errors.\-h\char`\"{}}\\*
+>>>>>>> master
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -57,7 +66,55 @@ void \hyperlink{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8
 int \hyperlink{_meditech___chip_kit_control_panel_8pde_aac6d40e9f46456f3b2d16f2fe64004cc}{set\-Fan\-Speed} (int freq)
 \begin{DoxyCompactList}\small\item\em Set the fan speed at the desired P\-W\-M frequency. \end{DoxyCompactList}\item 
 void \hyperlink{_meditech___chip_kit_control_panel_8pde_ad5b3677e61ca769d9d9e5cf9cfa1b33c}{debug} (String msg)
+<<<<<<< HEAD
 \begin{DoxyCompactList}\small\item\em Serial debugging function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+=======
+\begin{DoxyCompactList}\small\item\em Serial debugging function. \end{DoxyCompactList}\item 
+int \hyperlink{_meditech___chip_kit_control_panel_8pde_ad425a899bc1884bbf9a24d56ba4d6f53}{readline} (int readch, char $\ast$buffer, int len)
+\begin{DoxyCompactList}\small\item\em Read a full line buffer from serial. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_ac15f7c36f6055edec43d0f0f611c4dc0}{parser} ()
+\begin{DoxyCompactList}\small\item\em Parses the serial input for control command. \end{DoxyCompactList}\item 
+int \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{next\-Command\-Separator} (int start\-Char)
+\begin{DoxyCompactList}\small\item\em Search the position for next command separator. \end{DoxyCompactList}\item 
+int \hyperlink{_meditech___chip_kit_control_panel_8pde_a6b0edf09b0e4b4ed48c9213d14d27efa}{next\-Field\-Separator} (int start\-Char)
+\begin{DoxyCompactList}\small\item\em Search the position for next field separator starting from a position. \end{DoxyCompactList}\item 
+int \hyperlink{_meditech___chip_kit_control_panel_8pde_ad893e606e19944faa6540bba9387370f}{chars\-To\-Int} (int start\-Char, int num\-Chars)
+\begin{DoxyCompactList}\small\item\em Convert a string to integer. \end{DoxyCompactList}\item 
+String \hyperlink{_meditech___chip_kit_control_panel_8pde_af256eb98be4447dd754239d6c5cf4792}{chars\-To\-String} (int start\-Char)
+\begin{DoxyCompactList}\small\item\em Convert a portion of the char array command string to string. \end{DoxyCompactList}\item 
+long \hyperlink{_meditech___chip_kit_control_panel_8pde_ac6fe1eb1fb2d6c60ea6e06cacfa0fda7}{chars\-To\-Long} (int start\-Char, int num\-Chars)
+\begin{DoxyCompactList}\small\item\em Convert a string to long integer. \end{DoxyCompactList}\item 
+float \hyperlink{_meditech___chip_kit_control_panel_8pde_ab87a8658559acd359f0eeec0e64a5af6}{chars\-To\-Float} (int start\-Char, int num\-Chars)
+\begin{DoxyCompactList}\small\item\em Convert a string to floating point. \end{DoxyCompactList}\item 
+boolean \hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{is\-Field\-Separator} (char test)
+\begin{DoxyCompactList}\small\item\em check for separator character \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntax\-Check} (int err\-Code)
+\begin{DoxyCompactList}\small\item\em Append the error code to the master response message string. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{append\-Response} (String \hyperlink{_meditech___chip_kit_control_panel_8pde_ae1956b5b6310b3339e72931911b84e3f}{message})
+\begin{DoxyCompactList}\small\item\em Append the string to the response message string. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_ab4a96ab750b61d7410c41283cf17bac5}{append\-Response} (char \hyperlink{_meditech___chip_kit_control_panel_8pde_ae1956b5b6310b3339e72931911b84e3f}{message})
+\begin{DoxyCompactList}\small\item\em Append the character to the response message string. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a4d7e4234d7256ea1f3cca5fd420c84da}{append\-Response} (int \hyperlink{_meditech___chip_kit_control_panel_8pde_ae1956b5b6310b3339e72931911b84e3f}{message})
+\begin{DoxyCompactList}\small\item\em Append the integer to the response message string. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a26e2576348920e813fa803510e0a6d24}{append\-Response} (long int \hyperlink{_meditech___chip_kit_control_panel_8pde_ae1956b5b6310b3339e72931911b84e3f}{message})
+\begin{DoxyCompactList}\small\item\em Append the long integer to the response message string. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_aaf26af1780165c4f85c952760a7b5c3d}{append\-Response} (float \hyperlink{_meditech___chip_kit_control_panel_8pde_ae1956b5b6310b3339e72931911b84e3f}{message})
+\begin{DoxyCompactList}\small\item\em Append the float to the response message string. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ack\-Master} ()
+\begin{DoxyCompactList}\small\item\em Acknowledge the master caller when a command parsing has been completed. \end{DoxyCompactList}\item 
+void \hyperlink{_meditech___chip_kit_control_panel_8pde_a125eb587e203fa47288d5f3493506628}{str\-Float} (float val, unsigned int precision)
+\begin{DoxyCompactList}\small\item\em Convert a floating value to string with the specified precision. \end{DoxyCompactList}\item 
+bool \hyperlink{_meditech___chip_kit_control_panel_8pde_af1fb1c240965fd8ff8ad7ecf88651a0d}{set\-Stethoscope\-Status} (int start\-Char)
+\begin{DoxyCompactList}\small\item\em Set the stethoscope status flag and initialises the display parameters if needed. \end{DoxyCompactList}\item 
+bool \hyperlink{_meditech___chip_kit_control_panel_8pde_affc4e4b28b2554dffef9ef55fc1f23a4}{set\-E\-C\-G\-Status} (int start\-Char)
+\begin{DoxyCompactList}\small\item\em Set the E\-C\-G status flag and initialises the display parameters if needed. \end{DoxyCompactList}\item 
+bool \hyperlink{_meditech___chip_kit_control_panel_8pde_a962bcf9caf0e8d607a561a6e45c1d4cf}{set\-Pressure\-Status} (int start\-Char)
+\begin{DoxyCompactList}\small\item\em Set the bood pressure status flag and initialises the display parameters if needed. \end{DoxyCompactList}\item 
+bool \hyperlink{_meditech___chip_kit_control_panel_8pde_a40ac0af2d0c4437faa8aebff8336b19b}{set\-Body\-Temp\-Status} (int start\-Char)
+\begin{DoxyCompactList}\small\item\em Set the body temperature status flag and initialises the display parameters if needed. \end{DoxyCompactList}\item 
+bool \hyperlink{_meditech___chip_kit_control_panel_8pde_aac2c481fecf0a8b7db0babe49a27d1ea}{set\-Heart\-Beat\-Status} (int start\-Char)
+\begin{DoxyCompactList}\small\item\em Set the heart beat status flag and initialises the display parameters if needed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+>>>>>>> master
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -69,8 +126,15 @@ volatile boolean \hyperlink{_meditech___chip_kit_control_panel_8pde_adea51712174
 \begin{DoxyCompactList}\small\item\em Current lid status. The variable is declared volatile as it is used by the I\-R\-Q callback function too. \end{DoxyCompactList}\item 
 int \hyperlink{_meditech___chip_kit_control_panel_8pde_a527a89c41abb1d8660b53f5e727e655c}{update\-Dispaly\-Task\-I\-D}
 \begin{DoxyCompactList}\small\item\em The update display task id (assigned on setup) \end{DoxyCompactList}\item 
+<<<<<<< HEAD
 \hyperlink{class_l_c_d_stethoscope}{L\-C\-D\-Stethoscope} \hyperlink{_meditech___chip_kit_control_panel_8pde_ac2215fe61cf27d0fc83fa54cf1db73fc}{steth} (\hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd})
 \begin{DoxyCompactList}\small\item\em Stethoscope display template. \end{DoxyCompactList}\end{DoxyCompactItemize}
+=======
+\hyperlink{_command_processor_8h_a9e0992eae3950adccaf4847fbff4231d}{command} \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}
+\begin{DoxyCompactList}\small\item\em Parser command structure. \end{DoxyCompactList}\item 
+static char \hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmd\-Data} \mbox{[}1024\mbox{]}
+\begin{DoxyCompactList}\small\item\em Unparsed Command String. \end{DoxyCompactList}\end{DoxyCompactItemize}
+>>>>>>> master
 
 
 \subsection{Detailed Description}
@@ -81,6 +145,449 @@ Definition in file \hyperlink{_meditech___chip_kit_control_panel_8pde_source}{Me
 
 
 \subsection{Function Documentation}
+<<<<<<< HEAD
+=======
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!ack\-Master@{ack\-Master}}
+\index{ack\-Master@{ack\-Master}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{ack\-Master}]{\setlength{\rightskip}{0pt plus 5cm}void ack\-Master (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}
+
+
+Acknowledge the master caller when a command parsing has been completed. 
+
+
+
+Definition at line 1081 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References parse\-Command\-::message.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+1081                  \{
+1082   Serial1 << \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message} << endl;
+1083 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!append\-Response@{append\-Response}}
+\index{append\-Response@{append\-Response}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{append\-Response}]{\setlength{\rightskip}{0pt plus 5cm}void append\-Response (
+\begin{DoxyParamCaption}
+\item[{String}]{message}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}
+
+
+Append the string to the response message string. 
+
+Every new step of the parser that needs to be mentioned to the connected master updates the response string. The string should be sent when the parser exits for any condition.
+
+\begin{DoxyNote}{Note}
+The reponse string is N\-O\-T verbose as it should be managed faster and efficiently by the master. Every new message parameter added to the response string is separated by a R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R character.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The response message to be added, usually a single-\/character elment or an error code \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1000 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References parse\-Command\-::message, and R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R.
+
+
+
+Referenced by parser(), and syntax\-Check().
+
+
+\begin{DoxyCode}
+1000                                     \{
+1001   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_command_processor_8h_a446d8db1041da5746439b5655890b3ed}{RESPONSE\_SEPARATOR});
+1002   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message});
+1003 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ab4a96ab750b61d7410c41283cf17bac5}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!append\-Response@{append\-Response}}
+\index{append\-Response@{append\-Response}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{append\-Response}]{\setlength{\rightskip}{0pt plus 5cm}void append\-Response (
+\begin{DoxyParamCaption}
+\item[{char}]{message}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ab4a96ab750b61d7410c41283cf17bac5}
+
+
+Append the character to the response message string. 
+
+Every new step of the parser that needs to be mentioned to the connected master updates the response string. The string should be sent when the parser exits for any condition.
+
+\begin{DoxyNote}{Note}
+The reponse string is N\-O\-T verbose as it should be managed faster and efficiently by the master. Every new message parameter added to the response string is separated by a R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R character.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The response message to be added, usually a single-\/character elment or an error code \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1018 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References parse\-Command\-::message, and R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R.
+
+
+\begin{DoxyCode}
+1018                                   \{
+1019   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_command_processor_8h_a446d8db1041da5746439b5655890b3ed}{RESPONSE\_SEPARATOR});
+1020   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message});
+1021 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a4d7e4234d7256ea1f3cca5fd420c84da}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!append\-Response@{append\-Response}}
+\index{append\-Response@{append\-Response}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{append\-Response}]{\setlength{\rightskip}{0pt plus 5cm}void append\-Response (
+\begin{DoxyParamCaption}
+\item[{int}]{message}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a4d7e4234d7256ea1f3cca5fd420c84da}
+
+
+Append the integer to the response message string. 
+
+Every new step of the parser that needs to be mentioned to the connected master updates the response string. The string should be sent when the parser exits for any condition.
+
+\begin{DoxyNote}{Note}
+The reponse string is N\-O\-T verbose as it should be managed faster and efficiently by the master. Every new message parameter added to the response string is separated by a R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R character.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The response message to be added, usually a single-\/character elment or an error code \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1036 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References parse\-Command\-::message, and R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R.
+
+
+\begin{DoxyCode}
+1036                                  \{
+1037   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_command_processor_8h_a446d8db1041da5746439b5655890b3ed}{RESPONSE\_SEPARATOR});
+1038   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message});
+1039 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a26e2576348920e813fa803510e0a6d24}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!append\-Response@{append\-Response}}
+\index{append\-Response@{append\-Response}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{append\-Response}]{\setlength{\rightskip}{0pt plus 5cm}void append\-Response (
+\begin{DoxyParamCaption}
+\item[{long int}]{message}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a26e2576348920e813fa803510e0a6d24}
+
+
+Append the long integer to the response message string. 
+
+Every new step of the parser that needs to be mentioned to the connected master updates the response string. The string should be sent when the parser exits for any condition.
+
+\begin{DoxyNote}{Note}
+The reponse string is N\-O\-T verbose as it should be managed faster and efficiently by the master. Every new message parameter added to the response string is separated by a R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R character.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The response message to be added, usually a single-\/character elment or an error code \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1054 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References parse\-Command\-::message, and R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R.
+
+
+\begin{DoxyCode}
+1054                                       \{
+1055   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_command_processor_8h_a446d8db1041da5746439b5655890b3ed}{RESPONSE\_SEPARATOR});
+1056   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message});
+1057 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_aaf26af1780165c4f85c952760a7b5c3d}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!append\-Response@{append\-Response}}
+\index{append\-Response@{append\-Response}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{append\-Response}]{\setlength{\rightskip}{0pt plus 5cm}void append\-Response (
+\begin{DoxyParamCaption}
+\item[{float}]{message}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_aaf26af1780165c4f85c952760a7b5c3d}
+
+
+Append the float to the response message string. 
+
+Every new step of the parser that needs to be mentioned to the connected master updates the response string. The string should be sent when the parser exits for any condition.
+
+\begin{DoxyNote}{Note}
+The reponse string is N\-O\-T verbose as it should be managed faster and efficiently by the master. Every new message parameter added to the response string is separated by a R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R character.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The response message to be added, usually a single-\/character elment or an error code \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1072 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References parse\-Command\-::message, and R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R.
+
+
+\begin{DoxyCode}
+1072                                    \{
+1073   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_command_processor_8h_a446d8db1041da5746439b5655890b3ed}{RESPONSE\_SEPARATOR});
+1074   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message});
+1075 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ab87a8658559acd359f0eeec0e64a5af6}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!chars\-To\-Float@{chars\-To\-Float}}
+\index{chars\-To\-Float@{chars\-To\-Float}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{chars\-To\-Float}]{\setlength{\rightskip}{0pt plus 5cm}float chars\-To\-Float (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char, }
+\item[{int}]{num\-Chars}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ab87a8658559acd359f0eeec0e64a5af6}
+
+
+Convert a string to floating point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+{\em num\-Chars} & number of characters composing the number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted floating value 
+\end{DoxyReturn}
+
+
+Definition at line 947 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data.
+
+
+\begin{DoxyCode}
+947                                                 \{
+948   \textcolor{keywordtype}{int} i;
+949   \textcolor{keywordtype}{float} res = 0;
+950   String extract = \textcolor{stringliteral}{""};
+951 
+952   \textcolor{keywordflow}{for} (i = 0; i < numChars; i++)
+953     extract.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[i + startChar]);
+954     
+955   res = extract.toFloat();
+956 
+957   \textcolor{keywordflow}{return} res;
+958 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ad893e606e19944faa6540bba9387370f}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!chars\-To\-Int@{chars\-To\-Int}}
+\index{chars\-To\-Int@{chars\-To\-Int}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{chars\-To\-Int}]{\setlength{\rightskip}{0pt plus 5cm}int chars\-To\-Int (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char, }
+\item[{int}]{num\-Chars}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ad893e606e19944faa6540bba9387370f}
+
+
+Convert a string to integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+{\em num\-Chars} & number of characters composing the number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted interger value 
+\end{DoxyReturn}
+
+
+Definition at line 844 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References chars\-To\-Long().
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+844                                             \{
+845   \textcolor{keywordtype}{int} res = 0;
+846 
+847   res = (int)\hyperlink{_meditech___chip_kit_control_panel_8pde_ac6fe1eb1fb2d6c60ea6e06cacfa0fda7}{charsToLong}(startChar, numChars);
+848   
+849   \textcolor{keywordflow}{return} res;
+850 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ac6fe1eb1fb2d6c60ea6e06cacfa0fda7}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!chars\-To\-Long@{chars\-To\-Long}}
+\index{chars\-To\-Long@{chars\-To\-Long}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{chars\-To\-Long}]{\setlength{\rightskip}{0pt plus 5cm}long chars\-To\-Long (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char, }
+\item[{int}]{num\-Chars}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ac6fe1eb1fb2d6c60ea6e06cacfa0fda7}
+
+
+Convert a string to long integer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+{\em num\-Chars} & number of characters composing the number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted long interger value 
+\end{DoxyReturn}
+
+
+Definition at line 927 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data.
+
+
+
+Referenced by chars\-To\-Int().
+
+
+\begin{DoxyCode}
+927                                               \{
+928   \textcolor{keywordtype}{int} i;
+929   \textcolor{keywordtype}{long} res = 0;
+930   String extract = \textcolor{stringliteral}{""};
+931 
+932   \textcolor{keywordflow}{for} (i = 0; i < numChars; i++)
+933     extract.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[i + startChar]);
+934     
+935   res = extract.toInt();
+936 
+937   \textcolor{keywordflow}{return} res;
+938 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_af256eb98be4447dd754239d6c5cf4792}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!chars\-To\-String@{chars\-To\-String}}
+\index{chars\-To\-String@{chars\-To\-String}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{chars\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}String chars\-To\-String (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_af256eb98be4447dd754239d6c5cf4792}
+
+
+Convert a portion of the char array command string to string. 
+
+This function does not include the number of characters as it is a variable lenght. The command strings are identified by the initial and final '\char`\"{}' string delimiter character, so the function search for the first delimiter and queue charaters in the destination string until the second string delimiter is not found.\par
+If no string delimiters are found the cycle stops when reach the C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N character count limit; in this case an empty string is returned. If only the first string delimiter is found the function returns the entire right string command character array.
+
+\begin{DoxyWarning}{Warning}
+As the character '\char`\"{}' is used as string delimiter it should not be used as part of the string. Use the ''' instead.
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted interger value 
+\end{DoxyReturn}
+
+
+Definition at line 870 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data, M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N, and S\-T\-R\-I\-N\-G\-\_\-\-D\-E\-L\-I\-M\-I\-T\-E\-R.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+870                                     \{
+871   String temp = \textcolor{stringliteral}{""};
+872   \textcolor{keywordtype}{int} i = 0;
+873   \textcolor{keywordtype}{bool} inString = \textcolor{keyword}{false};
+874   
+875   \textcolor{comment}{// ========================================== FIRST STRING DELIMITER}
+876   \textcolor{comment}{// Search for the first string delimiter}
+877   \textcolor{keywordflow}{while}(!inString) \{
+878     \textcolor{comment}{// Check if the current char points to the first string delimiter}
+879     \textcolor{keywordflow}{if}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[i + startChar] == \hyperlink{_command_processor_8h_a0f64fd8fb7385169ef53c7d2d49b02cc}{STRING\_DELIMITER}) \{
+880       i++;
+881       inString = \textcolor{keyword}{true};
+882     \} \textcolor{comment}{// String delimieter found ?}
+883     \textcolor{keywordflow}{else} \{
+884       \textcolor{comment}{// Check for the end of string}
+885       \textcolor{keywordflow}{if}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[i + startChar] == \hyperlink{_command_processor_8h_a1eb73c104b484cf18752169509cebfe2}{MAX\_CMD\_LEN}) \{
+886         \textcolor{comment}{// Exit with an empty string}
+887         \textcolor{keywordflow}{return} \textcolor{stringliteral}{""};
+888       \} \textcolor{comment}{// Reached the end of the command string ?}
+889       \textcolor{keywordflow}{else} \{
+890         i++;
+891       \} \textcolor{comment}{// Search to next character}
+892     \} \textcolor{comment}{// Delimiter not found}
+893   \} \textcolor{comment}{// While out of string}
+894 
+895   \textcolor{comment}{// ========================================== UNTIL SECOND STRING DELIMITER}
+896   \textcolor{comment}{// Collect the string characters}
+897   \textcolor{keywordflow}{while}(inString) \{
+898     \textcolor{comment}{// Check if the current char points to the first string delimiter}
+899     \textcolor{keywordflow}{if}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[i + startChar] == \hyperlink{_command_processor_8h_a0f64fd8fb7385169ef53c7d2d49b02cc}{STRING\_DELIMITER}) \{
+900       inString = \textcolor{keyword}{false};
+901     \} \textcolor{comment}{// String delimieter found ?}
+902     \textcolor{keywordflow}{else} \{
+903       \textcolor{comment}{// Check for the end of string}
+904       \textcolor{keywordflow}{if}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[i + startChar] == \hyperlink{_command_processor_8h_a1eb73c104b484cf18752169509cebfe2}{MAX\_CMD\_LEN}) \{
+905         \textcolor{comment}{// Exit with the collected string}
+906         \textcolor{keywordflow}{return} temp;
+907       \} \textcolor{comment}{// Reached the end of the command string ?}
+908       \textcolor{keywordflow}{else} \{
+909         \textcolor{comment}{// Collect the character in the string and move to next}
+910         temp.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[i + startChar]);
+911         i++;
+912       \} \textcolor{comment}{// Search to next character}
+913     \} \textcolor{comment}{// Delimiter not found}
+914   \} \textcolor{comment}{// While inside the string}
+915 
+916   \textcolor{comment}{// Found both delimiters and collected the string.}
+917   \textcolor{keywordflow}{return} temp;
+918 \}
+\end{DoxyCode}
+>>>>>>> master
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a318afc268cf08e16ff1e53698727ec77}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!check\-Serial@{check\-Serial}}
 \index{check\-Serial@{check\-Serial}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
 \subsubsection[{check\-Serial}]{\setlength{\rightskip}{0pt plus 5cm}void check\-Serial (
@@ -92,6 +599,7 @@ Definition in file \hyperlink{_meditech___chip_kit_control_panel_8pde_source}{Me
 
 Control the presence of data from the serial interface. 
 
+<<<<<<< HEAD
 
 
 Definition at line 161 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
@@ -99,6 +607,15 @@ Definition at line 161 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
 
 
 References lcd(), and L\-C\-D\-B\-O\-T\-T\-O\-M\-R\-O\-W.
+=======
+When data are detected on the serial buffer the parser function is launched to process the command. 
+
+Definition at line 171 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data, parse\-Command\-::command\-Length, M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N, parser(), and readline().
+>>>>>>> master
 
 
 
@@ -106,6 +623,7 @@ Referenced by loop().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 161                    \{
 162  
 163   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, \hyperlink{_l_c_d_8h_a46c173b564806ac8d8db0404f5036671}{LCDBOTTOMROW});
@@ -116,6 +634,22 @@ Referenced by loop().
 168   \}
 169 
 170 \}
+=======
+171                    \{
+172   \textcolor{keywordtype}{int} nChar;
+173   
+174   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a8359e121af4d2f16e054ead0b7844a30}{commandLength} = \hyperlink{_meditech___chip_kit_control_panel_8pde_ad425a899bc1884bbf9a24d56ba4d6f53}{readline}(Serial1.read(), \hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}, 
+      \hyperlink{_command_processor_8h_a1eb73c104b484cf18752169509cebfe2}{MAX\_CMD\_LEN});
+175   
+176   \textcolor{comment}{// If the line ends the program launch the parser.}
+177   \textcolor{keywordflow}{if} (\hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a8359e121af4d2f16e054ead0b7844a30}{commandLength} > 0) \{
+178 \textcolor{preprocessor}{    #ifdef \_\_DEBUG}
+179 \textcolor{preprocessor}{}    Serial1 << \textcolor{stringliteral}{"Received: >"} << \hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData} << \textcolor{stringliteral}{"<"} << endl;
+180 \textcolor{preprocessor}{    #endif}
+181 \textcolor{preprocessor}{}    \hyperlink{_meditech___chip_kit_control_panel_8pde_ac15f7c36f6055edec43d0f0f611c4dc0}{parser}(); \textcolor{comment}{// parse the command}
+182   \}
+183 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_ad5b3677e61ca769d9d9e5cf9cfa1b33c}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!debug@{debug}}
 \index{debug@{debug}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -130,6 +664,7 @@ Serial debugging function.
 
 
 
+<<<<<<< HEAD
 Definition at line 392 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
 
 
@@ -139,6 +674,25 @@ Definition at line 392 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
 394 \textcolor{preprocessor}{}  Serial1 << DEBG\_PREFIX << \textcolor{stringliteral}{"> "} << msg << endl;
 395 \textcolor{preprocessor}{#endif}
 396 \textcolor{preprocessor}{}\}
+=======
+Definition at line 405 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References D\-E\-B\-G\-\_\-\-P\-R\-E\-F\-I\-X.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+405                        \{
+406 \textcolor{preprocessor}{#ifdef \_\_DEBUG}
+407 \textcolor{preprocessor}{}  Serial1 << \hyperlink{_debug_strings_8h_a3d2228ca38229182ee5c808f28f9ab4a}{DEBG\_PREFIX} << \textcolor{stringliteral}{"> "} << msg << endl;
+408 \textcolor{preprocessor}{#endif}
+409 \textcolor{preprocessor}{}\}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a5abae2c246607db092b33a647206b932}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!error@{error}}
 \index{error@{error}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -166,7 +720,11 @@ The error message is shown for a L\-C\-D\-E\-R\-R\-O\-R\-\_\-\-D\-E\-L\-A\-Y mil
 \end{DoxyParams}
 
 
+<<<<<<< HEAD
 Definition at line 269 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 282 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -174,10 +732,17 @@ References L\-C\-D\-E\-R\-R\-O\-R\-\_\-\-D\-E\-L\-A\-Y, and message().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 269                                    \{
 270   \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(m, x, y);
 271   delay(\hyperlink{_l_c_d_8h_ab4020c76ba7c28cd201976eacafb1dd3}{LCDERROR\_DELAY});
 272 \}
+=======
+282                                    \{
+283   \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(m, x, y);
+284   delay(\hyperlink{_l_c_d_8h_ab4020c76ba7c28cd201976eacafb1dd3}{LCDERROR\_DELAY});
+285 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a6cce144e7c040f9016e8bd1be2a412c5}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!error@{error}}
 \index{error@{error}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -199,7 +764,11 @@ The error message is shown for a L\-C\-D\-E\-R\-R\-O\-R\-\_\-\-D\-E\-L\-A\-Y mil
 \end{DoxyParams}
 
 
+<<<<<<< HEAD
 Definition at line 284 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 297 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -207,10 +776,17 @@ References L\-C\-D\-E\-R\-R\-O\-R\-\_\-\-D\-E\-L\-A\-Y, and message().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 284                      \{
 285   \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(m);
 286   delay(\hyperlink{_l_c_d_8h_ab4020c76ba7c28cd201976eacafb1dd3}{LCDERROR\_DELAY});
 287 \}
+=======
+297                      \{
+298   \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(m);
+299   delay(\hyperlink{_l_c_d_8h_ab4020c76ba7c28cd201976eacafb1dd3}{LCDERROR\_DELAY});
+300 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a16768141866f1d78608528f2867aeab4}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!fan\-Speed\-Regulation@{fan\-Speed\-Regulation}}
 \index{fan\-Speed\-Regulation@{fan\-Speed\-Regulation}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -225,7 +801,11 @@ Callback function from the fan cooler speed regulation interrupt.
 
 As the interrupt triggers periodically a new temperature reading is done and the P\-W\-M fan cooler speed is set accordingly. 
 
+<<<<<<< HEAD
 Definition at line 214 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 227 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -237,6 +817,7 @@ Referenced by setup().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 214                                                   \{
 215   
 216   \textcolor{keywordtype}{float} temp;
@@ -250,6 +831,66 @@ Referenced by setup().
 223   \textcolor{comment}{// Restart the timer}
 224   \textcolor{keywordflow}{return} (currentTime + CORE\_TICK\_RATE * \hyperlink{_globals_8h_a4851a9d0178d5f1ffceea89b4f583e94}{UPDATE\_FAN\_SPEED\_TIMEOUT});
 225 \}
+=======
+227                                                   \{
+228   
+229   \textcolor{keywordtype}{float} temp;
+230   \textcolor{keywordtype}{int} pwmSpeed;
+231 
+232   temp = (((analogRead(\hyperlink{_temperature_8h_a16433c75f0d3615fe60d59ec8a86834a}{TEMP\_SENSOR}) / 1024) * 5) * 100) - \hyperlink{_temperature_8h_a3cb24f09004f92185b77e9e7bac6ea61}{TEMP\_OFFSET};
+233   pwmSpeed = map(temp, \hyperlink{_globals_8h_a2522d2568f63855838c3ecfb44084710}{MIN\_TEMP}, \hyperlink{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{MAX\_TEMP}, \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{MIN\_FANSPEED}, 
+      \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED});
+234   SoftPWMServoPWMWrite(\hyperlink{_globals_8h_aa25a0ac569f39f937b5020cda2687799}{FAN\_SPEED}, pwmSpeed);
+235 
+236   \textcolor{comment}{// Restart the timer}
+237   \textcolor{keywordflow}{return} (currentTime + CORE\_TICK\_RATE * \hyperlink{_globals_8h_a4851a9d0178d5f1ffceea89b4f583e94}{UPDATE\_FAN\_SPEED\_TIMEOUT});
+238 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!is\-Field\-Separator@{is\-Field\-Separator}}
+\index{is\-Field\-Separator@{is\-Field\-Separator}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{is\-Field\-Separator}]{\setlength{\rightskip}{0pt plus 5cm}boolean is\-Field\-Separator (
+\begin{DoxyParamCaption}
+\item[{char}]{test}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}
+
+
+check for separator character 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test} & the character to test \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if test is equal else returns false. 
+\end{DoxyReturn}
+
+
+Definition at line 966 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References F\-I\-E\-L\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+966                                     \{
+967   
+968 \textcolor{preprocessor}{  #ifdef \_\_DEBUG}
+969 \textcolor{preprocessor}{}  Serial1 << \textcolor{stringliteral}{"Field separator="} << test << endl;
+970 \textcolor{preprocessor}{  #endif}
+971 \textcolor{preprocessor}{}  
+972   \textcolor{keywordflow}{if} (test == \hyperlink{_command_processor_8h_abf632b2ae0f986eeb5e98e5f2a5b1c1e}{FIELD\_SEPARATOR})
+973       \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+974   \textcolor{keywordflow}{else}
+975       \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+976 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a9cb6bd9c7a705cdd913780d7adef7bb4}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!is\-Lid\-Status\-Changed@{is\-Lid\-Status\-Changed}}
 \index{is\-Lid\-Status\-Changed@{is\-Lid\-Status\-Changed}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -264,7 +905,11 @@ Callback function from the list status change hardware interrupt.
 
 When the lid status switch changes (pinned to the L\-I\-D\-S\-T\-A\-T\-U\-S pin) the attached interrupt calls this callback that simply invert the lid\-Status state of the boolean variable. After the function has been exectued the timer is restarted. 
 
+<<<<<<< HEAD
 Definition at line 200 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 213 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -276,6 +921,7 @@ Referenced by setup().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 200                                                   \{
 201   
 202     \hyperlink{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{lidStatus} = digitalRead(\hyperlink{_globals_8h_a9d1e04090b98f20c171c70e566a32e16}{LIDSTATUS});
@@ -283,6 +929,15 @@ Referenced by setup().
 204     \textcolor{comment}{// Restart the timer}
 205     \textcolor{keywordflow}{return} (currentTime + CORE\_TICK\_RATE * \hyperlink{_globals_8h_aa0e7d4f84a28711b1e4c378655ee8d41}{LID\_OPEN\_TIMEOUT});
 206 \}
+=======
+213                                                   \{
+214   
+215     \hyperlink{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{lidStatus} = digitalRead(\hyperlink{_globals_8h_a9d1e04090b98f20c171c70e566a32e16}{LIDSTATUS});
+216     
+217     \textcolor{comment}{// Restart the timer}
+218     \textcolor{keywordflow}{return} (currentTime + CORE\_TICK\_RATE * \hyperlink{_globals_8h_aa0e7d4f84a28711b1e4c378655ee8d41}{LID\_OPEN\_TIMEOUT});
+219 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!lcd@{lcd}}
 \index{lcd@{lcd}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -299,7 +954,11 @@ Display class instance.
 
 
 
+<<<<<<< HEAD
 Referenced by check\-Serial(), loop(), message(), setup(), show\-Temp(), and welcome().
+=======
+Referenced by loop(), message(), parser(), setup(), show\-Temp(), and welcome().
+>>>>>>> master
 
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a0b33edabd7f1c4e4a0bf32c67269be2f}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!loop@{loop}}
 \index{loop@{loop}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -315,6 +974,7 @@ Main loop method.
 The main application loop is interrupted by the lid open status generating a high priority alarm. Also the internal temperature is checked periodically to set the fan speed to the correct value.\par
 When serial data are present (a command waiting from the P\-I main) the data are parsed as needed. 
 
+<<<<<<< HEAD
 Definition at line 132 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
 
 
@@ -339,6 +999,28 @@ References \-\_\-\-L\-I\-D\-\_\-\-O\-P\-E\-N, A\-N\-A\-L\-O\-G\-D\-I\-V\-I\-D\-E
 144     \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(\hyperlink{_strings_8h_a78ef175fe9eb45ba7ee1772904c1fbab}{\_LID\_OPEN}, 5, \hyperlink{_l_c_d_8h_af51f2930b0a791ffa528731a5cac5756}{LCDTOPROW});
 145   \}
 146 \}
+=======
+Definition at line 143 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References \-\_\-\-L\-I\-D\-\_\-\-O\-P\-E\-N, check\-Serial(), lcd(), L\-C\-D\-T\-O\-P\-R\-O\-W, L\-I\-D\-C\-L\-O\-S\-E\-D, lid\-Status, and message().
+
+
+\begin{DoxyCode}
+143                 \{
+144 
+145   \textcolor{comment}{// Check if the lid is open}
+146   \textcolor{keywordflow}{if}(\hyperlink{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{lidStatus} == \hyperlink{_globals_8h_af04a3919dc1fa7d521c9514be995b43d}{LIDCLOSED}) \{
+147     \hyperlink{_meditech___chip_kit_control_panel_8pde_a318afc268cf08e16ff1e53698727ec77}{checkSerial}();
+148   \}
+149   \textcolor{keywordflow}{else} \{
+150     \textcolor{comment}{// Show the error message}
+151     \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
+152     \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(\hyperlink{_strings_globals_8h_a78ef175fe9eb45ba7ee1772904c1fbab}{\_LID\_OPEN}, 5, \hyperlink{_l_c_d_8h_af51f2930b0a791ffa528731a5cac5756}{LCDTOPROW});
+153   \}
+154 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!message@{message}}
 \index{message@{message}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -358,7 +1040,11 @@ Display a string on the \hyperlink{class_l_c_d}{L\-C\-D} at the cursor position.
 \end{DoxyParams}
 
 
+<<<<<<< HEAD
 Definition at line 253 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 266 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -366,6 +1052,7 @@ References lcd().
 
 
 
+<<<<<<< HEAD
 Referenced by error(), loop(), and message().
 
 
@@ -373,6 +1060,15 @@ Referenced by error(), loop(), and message().
 253                        \{
 254   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.print(m);
 255 \}
+=======
+Referenced by error(), loop(), message(), and parser().
+
+
+\begin{DoxyCode}
+266                        \{
+267   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.print(m);
+268 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_ae1956b5b6310b3339e72931911b84e3f}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!message@{message}}
 \index{message@{message}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -398,7 +1094,11 @@ Display a string on the \hyperlink{class_l_c_d}{L\-C\-D} at the specified cursor
 \end{DoxyParams}
 
 
+<<<<<<< HEAD
 Definition at line 296 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 309 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -406,10 +1106,614 @@ References lcd(), and message().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 296                                      \{
 297   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(x, y);
 298   \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(m);
 299 \}
+=======
+309                                      \{
+310   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(x, y);
+311   \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(m);
+312 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!next\-Command\-Separator@{next\-Command\-Separator}}
+\index{next\-Command\-Separator@{next\-Command\-Separator}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{next\-Command\-Separator}]{\setlength{\rightskip}{0pt plus 5cm}int next\-Command\-Separator (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}
+
+
+Search the position for next command separator. 
+
+This function is used for complex commands to find the first starting point of a new command (if exist) The function starts from the start\-Char and ends when a command separator is found. If none exists, the function ends when a null character is encountered.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the position of the first command separator (if any) or the last position before the end of the command string. 
+\end{DoxyReturn}
+
+
+Definition at line 795 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R, and cmd\-Data.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+795                                         \{
+796   \textcolor{keywordtype}{int} i = 0;
+797 
+798   \textcolor{keywordflow}{while} (\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar + i] != \textcolor{charliteral}{'\(\backslash\)0'}) \{
+799     \textcolor{keywordflow}{if} (\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar + i] == \hyperlink{_command_processor_8h_aa3115116a4036d93c8c91cf7e0f13c70}{CMD\_SEPARATOR})
+800       \textcolor{keywordflow}{return} startChar + i;
+801     i++;
+802   \}
+803   \textcolor{keywordflow}{return} i;
+804 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a6b0edf09b0e4b4ed48c9213d14d27efa}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!next\-Field\-Separator@{next\-Field\-Separator}}
+\index{next\-Field\-Separator@{next\-Field\-Separator}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{next\-Field\-Separator}]{\setlength{\rightskip}{0pt plus 5cm}int next\-Field\-Separator (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a6b0edf09b0e4b4ed48c9213d14d27efa}
+
+
+Search the position for next field separator starting from a position. 
+
+This function is used to find the first next field separator starting from the specified position. It should be used instead of the \hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{is\-Field\-Separator()} boolean check when the last processed field has a variable length (i.\-e. strings)
+
+\begin{DoxyNote}{Note}
+The use of this function may generate errors so it is best practice after a value is returned to check it in the calling program with \hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{is\-Field\-Separator()} function.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the position of the first command separator (if any) or the last reached position (end of string) 
+\end{DoxyReturn}
+
+
+Definition at line 821 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data, and F\-I\-E\-L\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+821                                       \{
+822   \textcolor{keywordtype}{int} i = 0;
+823 
+824   \textcolor{keywordflow}{while} (\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar + i] != \textcolor{charliteral}{'\(\backslash\)0'}) \{
+825     
+826 \textcolor{preprocessor}{    #ifdef \_\_DEBUG}
+827 \textcolor{preprocessor}{}    Serial1 << \textcolor{stringliteral}{"nextFieldSeparator("} << startChar << \textcolor{stringliteral}{") i = "} << i << \textcolor{stringliteral}{" char = "} << 
+      \hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar + i] << endl;
+828 \textcolor{preprocessor}{    #endif}
+829 \textcolor{preprocessor}{}    
+830     \textcolor{keywordflow}{if} (\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar + i] == \hyperlink{_command_processor_8h_abf632b2ae0f986eeb5e98e5f2a5b1c1e}{FIELD\_SEPARATOR})
+831       \textcolor{keywordflow}{return} startChar + i;
+832     i++;
+833   \}
+834   \textcolor{keywordflow}{return} i;
+835 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ac15f7c36f6055edec43d0f0f611c4dc0}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!parser@{parser}}
+\index{parser@{parser}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{parser}]{\setlength{\rightskip}{0pt plus 5cm}void parser (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ac15f7c36f6055edec43d0f0f611c4dc0}
+
+
+Parses the serial input for control command. 
+
+If the syntax checker doesn't recognize any valid command strings are ignored and discharged. Every command is a single-\/character, case sensitive. All the characters recognised as a command are listed in the C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S constant; when the parser starts only those commands included in this string and stored in the c\-Buff character buffer can be accepted as valid commands, else the string portion is not processed until the next command separator (or the end of the string if there is only one command or it is the last). Counters and indexes. The initaliasation matters are these are the correct points for the parser recursive process.
+
+Single-\/character commands array
+
+The template class instance
+
+The field counter to fill the class fields description
+
+The max number of fields of the template class 
+
+Definition at line 454 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References ack\-Master(), append\-Response(), chars\-To\-Int(), chars\-To\-String(), L\-C\-D\-Templates\-::clean\-Display(), C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N, C\-M\-D\-\_\-\-D\-I\-S\-P\-L\-A\-Y, C\-M\-D\-\_\-\-E\-N\-A\-B\-L\-E, C\-M\-D\-\_\-\-I\-N\-F\-O, C\-M\-D\-\_\-\-L\-C\-D\-T\-E\-M\-P\-L\-A\-T\-E, C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R, C\-M\-D\-\_\-\-T\-E\-S\-T, cmd\-Data, C\-O\-M\-M\-A\-N\-D\-\_\-\-B\-O\-D\-Y\-T\-E\-M\-P\-\_\-\-P\-A\-R\-A\-M\-E\-R\-R\-O\-R, C\-O\-M\-M\-A\-N\-D\-\_\-\-E\-C\-G\-\_\-\-P\-A\-R\-A\-M\-E\-R\-R\-O\-R, C\-O\-M\-M\-A\-N\-D\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-P\-A\-R\-A\-M\-E\-R\-R\-O\-R, C\-O\-M\-M\-A\-N\-D\-\_\-\-M\-I\-S\-S\-I\-N\-G\-S\-E\-P\-A\-R\-A\-T\-O\-R, C\-O\-M\-M\-A\-N\-D\-\_\-\-O\-K, C\-O\-M\-M\-A\-N\-D\-\_\-\-O\-U\-T\-\_\-\-O\-F\-\_\-\-R\-A\-N\-G\-E, C\-O\-M\-M\-A\-N\-D\-\_\-\-P\-R\-E\-S\-S\-U\-R\-E\-\_\-\-P\-A\-R\-A\-M\-E\-R\-R\-O\-R, C\-O\-M\-M\-A\-N\-D\-\_\-\-S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-P\-A\-R\-A\-M\-E\-R\-R\-O\-R, C\-O\-M\-M\-A\-N\-D\-\_\-\-W\-R\-O\-N\-G\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E, parse\-Command\-::command\-Length, L\-C\-D\-Templates\-::create\-Display(), debug(), L\-C\-D\-Templates\-::id, parse\-Command\-::int\-Value, is\-Field\-Separator(), lcd(), L\-C\-D\-C\-H\-A\-R\-S, L\-C\-D\-R\-O\-W\-S, M\-A\-X\-\_\-\-T\-E\-M\-P\-L\-A\-T\-E\-S, parse\-Command\-::message, message(), next\-Command\-Separator(), next\-Field\-Separator(), P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N, P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N, P\-A\-R\-S\-E\-R\-\_\-\-S\-U\-B\-C\-O\-M\-M\-A\-N\-D\-\_\-\-U\-N\-K\-N\-O\-W\-N, S\-\_\-\-B\-O\-D\-Y\-T\-E\-M\-P, S\-\_\-\-E\-C\-G, S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T, S\-\_\-\-P\-R\-E\-S\-S\-U\-R\-E, S\-\_\-\-S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E, set\-Body\-Temp\-Status(), set\-E\-C\-G\-Status(), set\-Heart\-Beat\-Status(), set\-Pressure\-Status(), set\-Stethoscope\-Status(), parse\-Command\-::string\-Value, parse\-Command\-::subcommand, syntax\-Check(), and L\-C\-D\-Templates\-::update\-Display().
+
+
+
+Referenced by check\-Serial().
+
+
+\begin{DoxyCode}
+454               \{
+458   \textcolor{keywordtype}{int} i = 0, k = 0, j = 0, value;
+460   \textcolor{keywordtype}{char} c[] = \{ \textcolor{charliteral}{'E'}, \textcolor{charliteral}{'D'}, \textcolor{charliteral}{'L'}, \textcolor{charliteral}{'G'}, \textcolor{charliteral}{'I'}, \textcolor{charliteral}{'T'}, \textcolor{charliteral}{'R'}, \textcolor{charliteral}{'P'}, \textcolor{charliteral}{'r'}, \textcolor{charliteral}{'\(\backslash\)0'} \};
+462   \hyperlink{class_l_c_d_templates}{LCDTemplates} mTemplate(\hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd});
+464   \textcolor{keywordtype}{int} z = 0;
+466   \textcolor{keywordtype}{int} maxFields = 0;
+467   
+468   \textcolor{comment}{// Initialises the command structure}
+469 \textcolor{comment}{//  cmdData[0] = '\(\backslash\)0';}
+470   \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message} = \textcolor{stringliteral}{""};
+471 
+472   \textcolor{comment}{// Load the command string coming from serial in the character array}
+473 \textcolor{comment}{//  while (Serial1.available() > 0)}
+474 \textcolor{comment}{//      cmdData[i++] = (char)Serial1.read();}
+475   
+476   \textcolor{comment}{// Add the closing command character}
+477   \hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[\hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a8359e121af4d2f16e054ead0b7844a30}{commandLength}] = \hyperlink{_command_processor_8h_aa3115116a4036d93c8c91cf7e0f13c70}{CMD\_SEPARATOR};
+478 \textcolor{comment}{//  cmdData[i] = '\(\backslash\)0';}
+479   
+480   i = \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a8359e121af4d2f16e054ead0b7844a30}{commandLength} + 1;
+481   \hyperlink{_meditech___chip_kit_control_panel_8pde_ad5b3677e61ca769d9d9e5cf9cfa1b33c}{debug}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData});
+482   
+483   \textcolor{comment}{// Here we start processing recursively the array until the end.}
+484   \textcolor{keywordflow}{while} (k < i) \{
+485     
+486     \textcolor{comment}{// If a command separator is found, anyway we have already finished processing}
+487     \textcolor{comment}{// the command (including eventually an error condition). So the character is}
+488     \textcolor{comment}{// skipped until a new command start is not found.}
+489     \textcolor{comment}{// Using this strategy it is possible to include between two commands or anywhere}
+490     \textcolor{comment}{// outside a valid sequence any kind of comment.}
+491     \textcolor{keywordflow}{if} (\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[k] == \hyperlink{_command_processor_8h_aa3115116a4036d93c8c91cf7e0f13c70}{CMD\_SEPARATOR})
+492       k++;
+493 
+494     \textcolor{comment}{// Search for a valid command character and when found set the processing flags.}
+495     \textcolor{comment}{// Else generates an error condition. }
+496     \textcolor{keywordflow}{for} (j = 0; j < \hyperlink{_command_processor_8h_a91c8743332ff637bc271733a535f31e7}{CMD\_CHARLEN}; j++) \{
+497       
+498       \textcolor{comment}{// Process the current command character}
+499       \textcolor{keywordflow}{if} (c[j] == \hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[k]) \{
+500         
+501         \textcolor{comment}{// Found a matching command}
+502         \textcolor{keywordflow}{switch}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[k]) \{
+503           \textcolor{comment}{// Show a LCD template based on the parameters}
+504           \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_acd6dc9f192384457eca2de560b24e112}{CMD\_LCDTEMPLATE}:
+505             \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_acd6dc9f192384457eca2de560b24e112}{CMD\_LCDTEMPLATE});
+506             \textcolor{comment}{// Syntax checking}
+507             \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[++k])) \{
+508               \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+509               \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+510               k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+511               \textcolor{keywordflow}{break};
+512             \} \textcolor{comment}{// Check for separator}
+513             
+514             \textcolor{comment}{// We expect the next paramter is the template ID}
+515             value = \hyperlink{_meditech___chip_kit_control_panel_8pde_ad893e606e19944faa6540bba9387370f}{charsToInt}(++k, \hyperlink{_command_processor_8h_a01ff82405086f08d2af53956b5247a30}{PARM\_FIELDID\_LEN});
+516             \textcolor{comment}{// Check if the template ID exceeds the max number of templates}
+517             \textcolor{keywordflow}{if}(value > \hyperlink{_l_c_d_templates_8h_a0b935b9f5a6d3f57285fece1aa0a37a5}{MAX\_TEMPLATES}) \{
+518               \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a5a9f152004095e86df06f3ac426d26fc}{COMMAND\_WRONG\_TEMPLATE});
+519               \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+520               k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+521               \textcolor{keywordflow}{break};
+522             \} \textcolor{comment}{// Error wrong template ID}
+523             
+524             \textcolor{comment}{// Saves the template ID in the template class}
+525             \textcolor{comment}{// And initalises the display parameters}
+526             mTemplate.id = value;
+527             maxFields = mTemplate.createDisplay();
+528             \textcolor{comment}{// Initialises the field counter}
+529             z = 0;
+530 
+531             \textcolor{comment}{// Update the command string pointer to the next separator}
+532             k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a6b0edf09b0e4b4ed48c9213d14d27efa}{nextFieldSeparator}(k); 
+533 
+534 \textcolor{preprocessor}{            #ifdef \_\_DEBUG}
+535 \textcolor{preprocessor}{}            Serial1 << \textcolor{stringliteral}{"maxFields="} << maxFields << \textcolor{stringliteral}{" k="} << k << endl;
+536 \textcolor{preprocessor}{            #endif}
+537 \textcolor{preprocessor}{}            
+538             \textcolor{comment}{// Clear the display before showing another template}
+539             mTemplate.cleanDisplay();
+540             
+541             \textcolor{comment}{// Now we start processing the fields populating the template class}
+542             \textcolor{keywordflow}{while}(z < maxFields) \{
+543               \textcolor{keywordtype}{bool} stopLoop = \textcolor{keyword}{false};
+544 
+545 \textcolor{preprocessor}{              #ifdef \_\_DEBUG}
+546 \textcolor{preprocessor}{}              Serial1 << \textcolor{stringliteral}{"z="} << z << endl;
+547 \textcolor{preprocessor}{              #endif}
+548 \textcolor{preprocessor}{}
+549               \textcolor{comment}{// Syntax checking}
+550               \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[k])) \{
+551                 \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+552                 k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+553                 z = maxFields; \textcolor{comment}{// force the exit conditions}
+554                 stopLoop = \textcolor{keyword}{true};
+555               \}
+556               
+557               \textcolor{comment}{// Start processing the strings only if the stop loop condition}
+558               \textcolor{comment}{// is false (no error)}
+559               \textcolor{keywordflow}{if}(!stopLoop) \{
+560                 \textcolor{comment}{// We expect the next parameter is the field string}
+561                 \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{stringValue} = \hyperlink{_meditech___chip_kit_control_panel_8pde_af256eb98be4447dd754239d6c5cf4792}{charsToString}(k);
+562                 \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a2c83bbbe0909f24f241850845b38aa9f}{COMMAND\_OK});
+563                 
+564 \textcolor{preprocessor}{                #ifdef \_\_DEBUG}
+565 \textcolor{preprocessor}{}                Serial1 << \textcolor{stringliteral}{"Template string "} << \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{stringValue} << endl;
+566 \textcolor{preprocessor}{                #endif}
+567 \textcolor{preprocessor}{}  
+568                 \textcolor{comment}{// Display the message string on LCD}
+569                 mTemplate.updateDisplay(\hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{stringValue}, z);
+570                 
+571                 \textcolor{comment}{// Update the command string pointer to the next separator}
+572                 \textcolor{comment}{// We start from the character point immediately after the }
+573                 \textcolor{comment}{// previous field separator found in the loop}
+574                 k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a6b0edf09b0e4b4ed48c9213d14d27efa}{nextFieldSeparator}(k+1); 
+575 
+576                 z++; \textcolor{comment}{// next field}
+577               \} \textcolor{comment}{// If stop loop is not set}
+578             \} \textcolor{comment}{// While all fields are processes (or exiting on error)}
+579             \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+580             \textcolor{keywordflow}{break};
+581 
+582           \textcolor{comment}{// Show a string on the display.}
+583           \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_adc05c302b4af62eff7f5652dafabf7eb}{CMD\_DISPLAY}:
+584             \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_adc05c302b4af62eff7f5652dafabf7eb}{CMD\_DISPLAY});
+585             \textcolor{comment}{// Syntax checking}
+586             \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[++k])) \{
+587               \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+588               \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+589               k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+590               \textcolor{keywordflow}{break};
+591             \}
+592             \textcolor{comment}{// We expect the next paramter is row expressed in integer format}
+593             value = \hyperlink{_meditech___chip_kit_control_panel_8pde_ad893e606e19944faa6540bba9387370f}{charsToInt}(++k, \hyperlink{_command_processor_8h_a3bf9ddf196d90a4e4639a0c4a086b9c7}{PARM\_INTEGER\_LEN});
+594             \textcolor{keywordflow}{if} (value < \hyperlink{_l_c_d_8h_a1b8861bc5ab0412d754e0bd902c73bcf}{LCDROWS}) \{
+595               \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a2c83bbbe0909f24f241850845b38aa9f}{COMMAND\_OK});
+596               \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a9ad775810b79683631510fd333096c6f}{intValue}[0] = value;
+597             \} \textcolor{comment}{// No errors}
+598             \textcolor{keywordflow}{else} \{
+599               \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af426ad7983bd40dc75491c33d86c32fb}{COMMAND\_OUT\_OF\_RANGE});
+600               \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+601               k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+602               \textcolor{keywordflow}{break};
+603             \} \textcolor{comment}{// Error out of range}
+604             
+605             \textcolor{comment}{// Update the command string pointer to the next separator}
+606             k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a6b0edf09b0e4b4ed48c9213d14d27efa}{nextFieldSeparator}(k); 
+607 
+608             \textcolor{comment}{// Syntax checking}
+609             \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[k])) \{
+610               \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+611               \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+612               k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+613               \textcolor{keywordflow}{break};
+614             \}
+615             \textcolor{comment}{// We expect the next paramter is column expressed in integer format}
+616             value = \hyperlink{_meditech___chip_kit_control_panel_8pde_ad893e606e19944faa6540bba9387370f}{charsToInt}(++k, \hyperlink{_command_processor_8h_a3bf9ddf196d90a4e4639a0c4a086b9c7}{PARM\_INTEGER\_LEN});
+617             \textcolor{keywordflow}{if} (value < \hyperlink{_l_c_d_8h_acea744bc7db589514d98dde1a19a4be6}{LCDCHARS}) \{
+618               \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a2c83bbbe0909f24f241850845b38aa9f}{COMMAND\_OK});
+619               \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a9ad775810b79683631510fd333096c6f}{intValue}[1] = value;
+620             \} \textcolor{comment}{// No errors}
+621             \textcolor{keywordflow}{else} \{
+622               \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af426ad7983bd40dc75491c33d86c32fb}{COMMAND\_OUT\_OF\_RANGE});
+623               \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+624               k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+625               \textcolor{keywordflow}{break};
+626             \} \textcolor{comment}{// Error out of range}
+627             
+628             \textcolor{comment}{// Update the command string pointer to the next separator}
+629             k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a6b0edf09b0e4b4ed48c9213d14d27efa}{nextFieldSeparator}(k); 
+630 
+631             \textcolor{comment}{// Syntax checking}
+632             \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[k])) \{
+633               \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+634               \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+635               k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+636               \textcolor{keywordflow}{break};
+637             \}
+638             \textcolor{comment}{// We expect the next paramter is the data string}
+639             \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{stringValue} = \hyperlink{_meditech___chip_kit_control_panel_8pde_af256eb98be4447dd754239d6c5cf4792}{charsToString}(k);
+640             \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a2c83bbbe0909f24f241850845b38aa9f}{COMMAND\_OK});
+641             \textcolor{comment}{// Display the message string on LCD}
+642             \hyperlink{_meditech___chip_kit_control_panel_8pde_a6144e628c9b27d96d525aac6746e6461}{message}(\hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{stringValue}, \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a9ad775810b79683631510fd333096c6f}{intValue}[1], 
+      \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a9ad775810b79683631510fd333096c6f}{intValue}[0]);
+643             \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+644             \textcolor{keywordflow}{break};
+645 
+646             \textcolor{comment}{// Enable a status on the control panel (mainly a probe setting).}
+647             \textcolor{comment}{// The details of the object to enable are specified in the subcommand}
+648             \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_ab9a73413ff369c86384379fe9464b405}{CMD\_ENABLE}:
+649               \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_ab9a73413ff369c86384379fe9464b405}{CMD\_ENABLE});
+650               \textcolor{comment}{// Search for subcommands}
+651               \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[++k])) \{
+652                 \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+653                 \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+654                 k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+655                 \textcolor{keywordflow}{break};
+656               \} \textcolor{comment}{// Search subcommands}
+657               
+658               \hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}{subcommand}[0] = \hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[++k];
+659               \textcolor{comment}{// Manage the subcommands parameter}
+660               \textcolor{keywordflow}{switch}(\hyperlink{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{cmd}.\hyperlink{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}{subcommand}[0]) \{
+661                 
+662                 \textcolor{comment}{// Enable / disable the stethoscope probe control panel settings}
+663                 \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_adfbfa32f9a07ea8c418302629c5f9e2c}{S\_STETHOSCOPE}:
+664                   \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_adfbfa32f9a07ea8c418302629c5f9e2c}{S\_STETHOSCOPE});
+665                   \textcolor{comment}{// Check for subcommand separator}
+666                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[++k])) \{
+667                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+668                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+669                       k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+670                       \textcolor{keywordflow}{break};
+671                   \} \textcolor{comment}{// check for separator}
+672                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_af1fb1c240965fd8ff8ad7ecf88651a0d}{setStethoscopeStatus}(++k))
+673                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a038fb70f92015d63886723d203d29bef}{COMMAND\_STETHOSCOPE\_PARAMERROR});
+674                   \textcolor{keywordflow}{else}
+675                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a2c83bbbe0909f24f241850845b38aa9f}{COMMAND\_OK});
+676                   \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+677                   k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+678                   \textcolor{keywordflow}{break};
+679                   
+680                 \textcolor{comment}{// Enable / disable the ECG probe control panel settings}
+681                 \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_a303228c055bef09bc6f3af3fca182193}{S\_ECG}:
+682                   \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_a303228c055bef09bc6f3af3fca182193}{S\_ECG});
+683                   \textcolor{comment}{// Check for subcommand separator}
+684                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[++k])) \{
+685                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+686                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+687                       k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+688                       \textcolor{keywordflow}{break};
+689                   \} \textcolor{comment}{// check for separator}
+690                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_affc4e4b28b2554dffef9ef55fc1f23a4}{setECGStatus}(++k))
+691                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_ac0a5b1c0799c37f0a7dddbdd722dedf5}{COMMAND\_ECG\_PARAMERROR});
+692                   \textcolor{keywordflow}{else}
+693                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a2c83bbbe0909f24f241850845b38aa9f}{COMMAND\_OK});
+694                   \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+695                   k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+696                   \textcolor{keywordflow}{break};
+697                 \textcolor{comment}{// Enable / disable the Blood Pressure probe control panel settings}
+698                 \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_a2addd9a5224e4691a4c804672f360f89}{S\_PRESSURE}:
+699                   \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_a2addd9a5224e4691a4c804672f360f89}{S\_PRESSURE});
+700                   \textcolor{comment}{// Check for subcommand separator}
+701                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[++k])) \{
+702                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+703                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+704                       k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+705                       \textcolor{keywordflow}{break};
+706                   \} \textcolor{comment}{// check for separator}
+707                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a962bcf9caf0e8d607a561a6e45c1d4cf}{setPressureStatus}(++k))
+708                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af86405af0862ecb93607c0a57ad09474}{COMMAND\_PRESSURE\_PARAMERROR});
+709                   \textcolor{keywordflow}{else}
+710                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a2c83bbbe0909f24f241850845b38aa9f}{COMMAND\_OK});
+711                   \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+712                   k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+713                   \textcolor{keywordflow}{break};
+714                   
+715                 \textcolor{comment}{// Enable / disable the Body Temperature probe control panel settings}
+716                 \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_a45a3bcfc2052f567c0c9bf1e77e072d9}{S\_BODYTEMP}:
+717                   \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_a45a3bcfc2052f567c0c9bf1e77e072d9}{S\_BODYTEMP});
+718                   \textcolor{comment}{// Check for subcommand separator}
+719                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[++k])) \{
+720                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+721                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+722                       k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+723                       \textcolor{keywordflow}{break};
+724                   \} \textcolor{comment}{// check for separator}
+725                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a40ac0af2d0c4437faa8aebff8336b19b}{setBodyTempStatus}(++k))
+726                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_ac2285159ef8f40b846d94d3827e6cba9}{COMMAND\_BODYTEMP\_PARAMERROR});
+727                   \textcolor{keywordflow}{else}
+728                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a2c83bbbe0909f24f241850845b38aa9f}{COMMAND\_OK});
+729                   \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+730                   k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+731                   \textcolor{keywordflow}{break};
+732                   
+733                 \textcolor{comment}{// Enable / disable the Heart Beat probe control panel settings}
+734                 \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_a101bcad25a341bbe132207b51432de89}{S\_HEARTBEAT}:
+735                   \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_a101bcad25a341bbe132207b51432de89}{S\_HEARTBEAT});
+736                   \textcolor{comment}{// Check for subcommand separator}
+737                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_a5e204e0bba8ab8ee2bde88215bf2ee53}{isFieldSeparator}(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[++k])) \{
+738                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_af1641bf12003024ece5012a639004d5c}{COMMAND\_MISSINGSEPARATOR});
+739                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+740                       k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+741                       \textcolor{keywordflow}{break};
+742                   \} \textcolor{comment}{// check for separator}
+743                   \textcolor{keywordflow}{if} (!\hyperlink{_meditech___chip_kit_control_panel_8pde_aac2c481fecf0a8b7db0babe49a27d1ea}{setHeartBeatStatus}(++k))
+744                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_ada31349806b801e009ce2d2f913094c1}{COMMAND\_HEARTBEAT\_PARAMERROR});
+745                   \textcolor{keywordflow}{else}
+746                       \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a2c83bbbe0909f24f241850845b38aa9f}{COMMAND\_OK});
+747                   \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+748                   k = \hyperlink{_meditech___chip_kit_control_panel_8pde_a4b62bbf3dd6cf7eb7fee557932fd1b7c}{nextCommandSeparator}(k);
+749                   \textcolor{keywordflow}{break};
+750                 \textcolor{comment}{// Subcommand unknown}
+751                 \textcolor{keywordflow}{default}:
+752                     \hyperlink{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{syntaxCheck}(\hyperlink{_parser_errors_8h_a8903cfb5556f03fd11b980119b7baefe}{PARSER\_SUBCOMMAND\_UNKNOWN});
+753                     \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+754                     \textcolor{keywordflow}{break};
+755             \} \textcolor{comment}{// Subcommands for the Enable command}
+756             \textcolor{keywordflow}{break};
+757 
+758             \textcolor{comment}{// Show the global info on the control panel display}
+759             \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_a42bf1fd637b1c921700bf479cc2f8533}{CMD\_INFO}:
+760               \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_a42bf1fd637b1c921700bf479cc2f8533}{CMD\_INFO});
+761               \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+762             \textcolor{keywordflow}{break};
+763 
+764             \textcolor{comment}{// Executes a test cycle of the control panel}
+765             \textcolor{keywordflow}{case} \hyperlink{_command_processor_8h_aa4853b407fdfe89d987756478ea51fef}{CMD\_TEST}:
+766               \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(\hyperlink{_command_processor_8h_aa4853b407fdfe89d987756478ea51fef}{CMD\_TEST});
+767               \hyperlink{_meditech___chip_kit_control_panel_8pde_a4e435af9ec30d668c4cff6a97baa8e5a}{ackMaster}();
+768             \textcolor{keywordflow}{break};
+769             
+770             \textcolor{comment}{// If no command is recognised, do nothing}
+771             \textcolor{keywordflow}{default}:
+772               \textcolor{keywordflow}{break};
+773         \} \textcolor{comment}{// Command processing switch case}
+774         j = \hyperlink{_command_processor_8h_a91c8743332ff637bc271733a535f31e7}{CMD\_CHARLEN};
+775       \} \textcolor{comment}{// Check with the current command character}
+776     \} \textcolor{comment}{// Loop on command characters (syntax checking)}
+777     k++;
+778   \} \textcolor{comment}{// main while loop}
+779   i = 0;
+780 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_ad425a899bc1884bbf9a24d56ba4d6f53}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!readline@{readline}}
+\index{readline@{readline}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{readline}]{\setlength{\rightskip}{0pt plus 5cm}int readline (
+\begin{DoxyParamCaption}
+\item[{int}]{readch, }
+\item[{char $\ast$}]{buffer, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_ad425a899bc1884bbf9a24d56ba4d6f53}
+
+
+Read a full line buffer from serial. 
+
+readch The character read from serial 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The char buffer pointer \\
+\hline
+{\em len} & the las position read in the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1 of the number of read characers on the line (if the line ends) 
+\end{DoxyReturn}
+
+
+Definition at line 419 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+Referenced by check\-Serial().
+
+
+\begin{DoxyCode}
+419                                                 \{
+420   \textcolor{keyword}{static} \textcolor{keywordtype}{int} pos = 0;
+421   \textcolor{keywordtype}{int} rpos;
+422 
+423   \textcolor{keywordflow}{if} (readch > 0) \{
+424     \textcolor{keywordflow}{switch} (readch) \{
+425       \textcolor{keywordflow}{case} \textcolor{charliteral}{'\(\backslash\)n'}: \textcolor{comment}{// Ignore new-lines}
+426         \textcolor{keywordflow}{break};
+427       \textcolor{keywordflow}{case} \textcolor{charliteral}{'\(\backslash\)r'}: \textcolor{comment}{// Return on CR}
+428         rpos = pos;
+429         pos = 0;  \textcolor{comment}{// Reset position index ready for next time}
+430         \textcolor{keywordflow}{return} rpos;
+431       \textcolor{keywordflow}{default}:
+432         \textcolor{keywordflow}{if} (pos < len-1) \{
+433           buffer[pos++] = readch;
+434           buffer[pos] = 0;
+435         \}
+436     \}
+437   \}
+438   \textcolor{comment}{// No end of line has been found, so return -1.}
+439   \textcolor{keywordflow}{return} -1;
+440 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a40ac0af2d0c4437faa8aebff8336b19b}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!set\-Body\-Temp\-Status@{set\-Body\-Temp\-Status}}
+\index{set\-Body\-Temp\-Status@{set\-Body\-Temp\-Status}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{set\-Body\-Temp\-Status}]{\setlength{\rightskip}{0pt plus 5cm}bool set\-Body\-Temp\-Status (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a40ac0af2d0c4437faa8aebff8336b19b}
+
+
+Set the body temperature status flag and initialises the display parameters if needed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000008}{Todo}]Implement this function \end{DoxyRefDesc}
+
+
+Definition at line 1191 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+1191                                       \{
+1192   \textcolor{keywordtype}{int} res = 0;
+1193   String extract = \textcolor{stringliteral}{""};
+1194 
+1195   extract.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar]);
+1196   res = extract.toInt();
+1197 
+1198   \textcolor{keywordflow}{if}(res == 0)
+1199     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+1200   \textcolor{keywordflow}{else}
+1201     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+1202 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_affc4e4b28b2554dffef9ef55fc1f23a4}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!set\-E\-C\-G\-Status@{set\-E\-C\-G\-Status}}
+\index{set\-E\-C\-G\-Status@{set\-E\-C\-G\-Status}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{set\-E\-C\-G\-Status}]{\setlength{\rightskip}{0pt plus 5cm}bool set\-E\-C\-G\-Status (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_affc4e4b28b2554dffef9ef55fc1f23a4}
+
+
+Set the E\-C\-G status flag and initialises the display parameters if needed. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000006}{Todo}]Implement this function \end{DoxyRefDesc}
+
+
+Definition at line 1151 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+1151                                  \{
+1152   \textcolor{keywordtype}{int} res = 0;
+1153   String extract = \textcolor{stringliteral}{""};
+1154   
+1155   extract.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar]);
+1156   res = extract.toInt();
+1157 
+1158   \textcolor{keywordflow}{if}(res == 0)
+1159     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+1160   \textcolor{keywordflow}{else}
+1161     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+1162 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!set\-Fan\-Speed@{set\-Fan\-Speed}}
 \index{set\-Fan\-Speed@{set\-Fan\-Speed}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -429,7 +1733,11 @@ This function sets manually the fan speed based on the internal temperature sens
 \end{DoxyNote}
 The filtered temperature to control the out-\/of-\/range values 
 
+<<<<<<< HEAD
 Definition at line 349 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 362 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -441,6 +1749,7 @@ Referenced by setup(), and test\-Fan\-Speed().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 349                              \{
 350   
 352   \textcolor{keywordtype}{float} filteredTemp;
@@ -459,6 +1768,26 @@ Referenced by setup(), and test\-Fan\-Speed().
 364   
 365   SoftPWMServoPWMWrite(\hyperlink{_globals_8h_aa25a0ac569f39f937b5020cda2687799}{FAN\_SPEED}, pwmSpeed);
 366 \}
+=======
+362                              \{
+363   
+365   \textcolor{keywordtype}{float} filteredTemp;
+366   
+367   \textcolor{comment}{// Check the temperature range}
+368   \textcolor{keywordflow}{if} (temp < \hyperlink{_globals_8h_a2522d2568f63855838c3ecfb44084710}{MIN\_TEMP})
+369     filteredTemp = \hyperlink{_globals_8h_a2522d2568f63855838c3ecfb44084710}{MIN\_TEMP};
+370   \textcolor{keywordflow}{else}
+371     \textcolor{keywordflow}{if} (temp > \hyperlink{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{MAX\_TEMP})
+372       filteredTemp = \hyperlink{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{MAX\_TEMP};
+373       \textcolor{keywordflow}{else}
+374         filteredTemp = temp;
+375   
+376   \textcolor{keywordtype}{int} pwmSpeed = map(temp, \hyperlink{_globals_8h_a2522d2568f63855838c3ecfb44084710}{MIN\_TEMP}, \hyperlink{_globals_8h_aed8ea54a2630aaf2ae3f2bd5fa886959}{MAX\_TEMP}, \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{MIN\_FANSPEED}, 
+      \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED});
+377   
+378   SoftPWMServoPWMWrite(\hyperlink{_globals_8h_aa25a0ac569f39f937b5020cda2687799}{FAN\_SPEED}, pwmSpeed);
+379 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_aac6d40e9f46456f3b2d16f2fe64004cc}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!set\-Fan\-Speed@{set\-Fan\-Speed}}
 \index{set\-Fan\-Speed@{set\-Fan\-Speed}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -473,7 +1802,11 @@ Set the fan speed at the desired P\-W\-M frequency.
 
 The P\-W\-M frequency should be included between the min and max fan speed values. If these values are outside the limits the fan is set to off Fan speed P\-W\-M frequency, initialised to the stop status 
 
+<<<<<<< HEAD
 Definition at line 374 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 387 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -481,6 +1814,7 @@ References F\-A\-N\-\_\-\-S\-P\-E\-E\-D, M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D, 
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 374                           \{
 376   \textcolor{keywordtype}{int} pwmFreq = \hyperlink{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}{STOP\_FAN};
 377   
@@ -494,6 +1828,158 @@ References F\-A\-N\-\_\-\-S\-P\-E\-E\-D, M\-A\-X\-\_\-\-F\-A\-N\-S\-P\-E\-E\-D, 
 385   \textcolor{keywordflow}{return} pwmFreq;
 386   
 387 \}
+=======
+387                           \{
+389   \textcolor{keywordtype}{int} pwmFreq = \hyperlink{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}{STOP\_FAN};
+390   
+391   \textcolor{comment}{// Check if the freq is a correct value}
+392   \textcolor{keywordflow}{if}( (freq >= \hyperlink{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}{STOP\_FAN}) && (freq <= \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED}) ) \{
+393     pwmFreq = freq;
+394   \}
+395   \textcolor{comment}{// Set the current fan speed}
+396   SoftPWMServoPWMWrite(\hyperlink{_globals_8h_aa25a0ac569f39f937b5020cda2687799}{FAN\_SPEED}, pwmFreq);
+397   
+398   \textcolor{keywordflow}{return} pwmFreq;
+399   
+400 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_aac2c481fecf0a8b7db0babe49a27d1ea}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!set\-Heart\-Beat\-Status@{set\-Heart\-Beat\-Status}}
+\index{set\-Heart\-Beat\-Status@{set\-Heart\-Beat\-Status}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{set\-Heart\-Beat\-Status}]{\setlength{\rightskip}{0pt plus 5cm}bool set\-Heart\-Beat\-Status (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_aac2c481fecf0a8b7db0babe49a27d1ea}
+
+
+Set the heart beat status flag and initialises the display parameters if needed. 
+
+The function does not need the number of characters parameters as the status ia boolean single character for the flag
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000009}{Todo}]Implement this function \end{DoxyRefDesc}
+
+
+Definition at line 1214 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+1214                                        \{
+1215   \textcolor{keywordtype}{int} res = 0;
+1216   String extract = \textcolor{stringliteral}{""};
+1217   
+1218   extract.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar]);
+1219   res = extract.toInt();
+1220 
+1221   \textcolor{keywordflow}{if}(res == 0)
+1222     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+1223   \textcolor{keywordflow}{else}
+1224     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+1225 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a962bcf9caf0e8d607a561a6e45c1d4cf}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!set\-Pressure\-Status@{set\-Pressure\-Status}}
+\index{set\-Pressure\-Status@{set\-Pressure\-Status}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{set\-Pressure\-Status}]{\setlength{\rightskip}{0pt plus 5cm}bool set\-Pressure\-Status (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a962bcf9caf0e8d607a561a6e45c1d4cf}
+
+
+Set the bood pressure status flag and initialises the display parameters if needed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000007}{Todo}]Implement this function \end{DoxyRefDesc}
+
+
+Definition at line 1171 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+1171                                       \{
+1172   \textcolor{keywordtype}{int} res = 0;
+1173   String extract = \textcolor{stringliteral}{""};
+1174 
+1175   extract.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar]);
+1176   res = extract.toInt();
+1177 
+1178   \textcolor{keywordflow}{if}(res == 0)
+1179     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+1180   \textcolor{keywordflow}{else}
+1181     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+1182 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_af1fb1c240965fd8ff8ad7ecf88651a0d}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!set\-Stethoscope\-Status@{set\-Stethoscope\-Status}}
+\index{set\-Stethoscope\-Status@{set\-Stethoscope\-Status}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{set\-Stethoscope\-Status}]{\setlength{\rightskip}{0pt plus 5cm}bool set\-Stethoscope\-Status (
+\begin{DoxyParamCaption}
+\item[{int}]{start\-Char}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_af1fb1c240965fd8ff8ad7ecf88651a0d}
+
+
+Set the stethoscope status flag and initialises the display parameters if needed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\-Char} & initial character in the command string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]Implement this function \end{DoxyRefDesc}
+
+
+Definition at line 1132 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References cmd\-Data.
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+1132                                          \{
+1133   \textcolor{keywordtype}{int} res = 0;
+1134   String extract = \textcolor{stringliteral}{""};
+1135 
+1136   extract.concat(\hyperlink{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{cmdData}[startChar]);
+1137   res = extract.toInt();
+1138 
+1139   \textcolor{keywordflow}{if}(res == 0)
+1140     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+1141   \textcolor{keywordflow}{else}
+1142     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+1143 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a4fc01d736fe50cf5b977f755b675f11d}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!setup@{setup}}
 \index{setup@{setup}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -508,6 +1994,7 @@ Initialisation method.
 
 Loaded once at power-\/on the \hyperlink{_meditech___chip_kit_control_panel_8pde_a4fc01d736fe50cf5b977f755b675f11d}{setup()} method presets the parameters of the application and initializes the Chip\-Kit board to its initial conditions. The startup conditions assumes that the Meditech lid is closed. If not, after a couple of seconds the alarm starts immediately. 
 
+<<<<<<< HEAD
 Definition at line 74 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
 
 
@@ -565,6 +2052,63 @@ References Temperature\-::\-Calc\-Temp(), C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\
 119   \textcolor{comment}{// Test only !!!}
 120   \hyperlink{_meditech___chip_kit_control_panel_8pde_ac2215fe61cf27d0fc83fa54cf1db73fc}{steth}.\hyperlink{class_l_c_d_stethoscope_a2641dd844d4070d6f498ba20c04cdfac}{createDisplay}();
 121 \}
+=======
+Definition at line 87 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References Temperature\-::\-Calc\-Temp(), C\-A\-M\-E\-R\-A\-\_\-\-S\-T\-A\-T\-U\-S, E\-C\-G\-\_\-\-S\-T\-A\-T\-U\-S, fan\-Speed\-Regulation(), is\-Lid\-Status\-Changed(), lcd(), L\-C\-D\-C\-H\-A\-R\-S, L\-C\-D\-R\-O\-W\-S, L\-I\-D\-C\-L\-O\-S\-E\-D, L\-I\-D\-S\-T\-A\-T\-U\-S, lid\-Status, S\-E\-R\-I\-A\-L\-\_\-\-S\-P\-E\-E\-D, set\-Fan\-Speed(), show\-Temp(), S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E\-\_\-\-S\-T\-A\-T\-U\-S, S\-T\-O\-P\-\_\-\-F\-A\-N, T\-A\-S\-K\-\_\-\-U\-P\-D\-A\-T\-E\-D\-I\-S\-P\-L\-A\-Y, T\-E\-M\-P\-\_\-\-S\-E\-N\-S\-O\-R, test\-Fan\-Speed(), test\-Status\-L\-E\-D(), update\-Dispaly\-Task\-I\-D, update\-Display(), and welcome().
+
+
+\begin{DoxyCode}
+87              \{
+88   Serial1.begin(\hyperlink{_globals_8h_a4081bc1d938e0d9b2b0941e3a1143498}{SERIAL\_SPEED});
+89 
+90   \textcolor{comment}{// Initializes the Lid status switch pin}
+91   pinMode(\hyperlink{_globals_8h_a9d1e04090b98f20c171c70e566a32e16}{LIDSTATUS}, INPUT);
+92   \hyperlink{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{lidStatus} = \hyperlink{_globals_8h_af04a3919dc1fa7d521c9514be995b43d}{LIDCLOSED};
+93   
+94   pinMode(\hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{ECG\_STATUS}, OUTPUT);
+95   pinMode(\hyperlink{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{STETHOSCOPE\_STATUS}, OUTPUT);
+96   pinMode(\hyperlink{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{CAMERA\_STATUS}, OUTPUT);
+97 
+98   digitalWrite(\hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{ECG\_STATUS}, HIGH);
+99   digitalWrite(\hyperlink{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{STETHOSCOPE\_STATUS}, HIGH);
+100   digitalWrite(\hyperlink{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{CAMERA\_STATUS}, HIGH);
+101 
+102   \textcolor{comment}{// Initializes the LCD library}
+103   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.begin(\hyperlink{_l_c_d_8h_acea744bc7db589514d98dde1a19a4be6}{LCDCHARS}, \hyperlink{_l_c_d_8h_a1b8861bc5ab0412d754e0bd902c73bcf}{LCDROWS});
+104   \textcolor{comment}{// Turn LCD On}
+105   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.display();
+106 
+107   \textcolor{comment}{// Initialisation string}
+108   \hyperlink{_meditech___chip_kit_control_panel_8pde_a236e454e493fc9b262f746305660a2eb}{welcome}();
+109   \textcolor{comment}{// Test the LEDs}
+110   \hyperlink{_meditech___chip_kit_control_panel_8pde_af1a6bbf84a5ea76623bdc49aaf642a28}{testStatusLED}();
+111   \textcolor{comment}{// Read the actual temperature}
+112   \hyperlink{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{internalTemp}.\hyperlink{class_temperature_a909c328fd6235d0e7c8ea110a1fb201d}{CalcTemp}(analogRead(\hyperlink{_temperature_8h_a16433c75f0d3615fe60d59ec8a86834a}{TEMP\_SENSOR}));
+113   \textcolor{comment}{// Shows the actual internal temperature}
+114   \hyperlink{_meditech___chip_kit_control_panel_8pde_a89c0a8283a410b693ebef39173a8f493}{showTemp}();
+115   
+116   \textcolor{comment}{// Start the fan to stopped state}
+117   \hyperlink{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}{setFanSpeed}(\hyperlink{_globals_8h_a1c75f833b458a1118ffc6e8ff1086bd8}{STOP\_FAN});
+118   \textcolor{comment}{// Test LEDs on startup}
+119   \hyperlink{_meditech___chip_kit_control_panel_8pde_af1a6bbf84a5ea76623bdc49aaf642a28}{testStatusLED}();
+120   \textcolor{comment}{// Test the fan variable speed}
+121   \hyperlink{_meditech___chip_kit_control_panel_8pde_a697689ffa626676db9a1abb5e6662762}{testFanSpeed}();
+122   
+123   \textcolor{comment}{// Set and start the timer for lid status}
+124   attachCoreTimerService(\hyperlink{_meditech___chip_kit_control_panel_8pde_a9cb6bd9c7a705cdd913780d7adef7bb4}{isLidStatusChanged});
+125   \textcolor{comment}{// Set and start the timer for fan cooler speed regulation}
+126   attachCoreTimerService(\hyperlink{_meditech___chip_kit_control_panel_8pde_a16768141866f1d78608528f2867aeab4}{fanSpeedRegulation});
+127   
+128   \textcolor{comment}{// Create the display update task.}
+129   \textcolor{comment}{// This task updates automatically only the reserved display}
+130   \textcolor{comment}{// areas, i.e. the temperature monitor and other information.}
+131   \hyperlink{_meditech___chip_kit_control_panel_8pde_a527a89c41abb1d8660b53f5e727e655c}{updateDispalyTaskID} = createTask(\hyperlink{_meditech___chip_kit_control_panel_8pde_a5a7516a22f178c51ec37c6c8167aaf70}{updateDisplay}, 
+      \hyperlink{_globals_8h_ab24200fce9fdcbdd9b76bd40f21cb50e}{TASK\_UPDATEDISPLAY}, TASK\_ENABLE, NULL);
+132 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a89c0a8283a410b693ebef39173a8f493}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!show\-Temp@{show\-Temp}}
 \index{show\-Temp@{show\-Temp}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -579,7 +2123,11 @@ shows the actual internal temperature on the top right corner.
 
 This is a display-\/only method. 
 
+<<<<<<< HEAD
 Definition at line 187 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 200 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -591,11 +2139,106 @@ Referenced by setup(), and temp\-Monitor().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 187                 \{
 188 
 189   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(14, \hyperlink{_l_c_d_8h_af51f2930b0a791ffa528731a5cac5756}{LCDTOPROW});
 190   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd} << \hyperlink{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{internalTemp}.\hyperlink{class_temperature_a3cb76ed5fdb2227d59a6759c1e9938d8}{Celsius}() << \hyperlink{_strings_8h_af9125aadefd37fbb0a941c09f7dca82e}{\_CELSIUS};
 191 \}
+=======
+200                 \{
+201 
+202   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(14, \hyperlink{_l_c_d_8h_af51f2930b0a791ffa528731a5cac5756}{LCDTOPROW});
+203   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd} << \hyperlink{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{internalTemp}.\hyperlink{class_temperature_a3cb76ed5fdb2227d59a6759c1e9938d8}{Celsius}() << \hyperlink{_strings_globals_8h_af9125aadefd37fbb0a941c09f7dca82e}{\_CELSIUS};
+204 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a125eb587e203fa47288d5f3493506628}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!str\-Float@{str\-Float}}
+\index{str\-Float@{str\-Float}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{str\-Float}]{\setlength{\rightskip}{0pt plus 5cm}void str\-Float (
+\begin{DoxyParamCaption}
+\item[{float}]{val, }
+\item[{unsigned int}]{precision}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a125eb587e203fa47288d5f3493506628}
+
+
+Convert a floating value to string with the specified precision. 
+
+As a matter of fact the ouput functions (string, serial, stream library etc.) does not represent in a flexible way the floating point values. This function calculates the right string with the desidred decimal precision sending to serial with the streaming library.
+
+Calculating the decimal value the function add the number of leading zeroes searching for all the decimal places before the first non-\/zero number.
+
+The loop for the leading zeroes grows by a factor 10 between 0 (no leading zeroes needed) and precision (all zeroes, no decimal numbers).
+
+\begin{DoxyNote}{Note}
+Precision is represented by 1 followed by the number of zeroes for the desired number of decimial places. \par
+example\-: str\-Long(3.\-1415, 100) prints 3.\-14 (two decimal places)
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em val} & the floating value to represent \\
+\hline
+{\em precision} & the decimal precision \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1107 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+\begin{DoxyCode}
+1107                                                  \{
+1108     \textcolor{keywordtype}{int} i;
+1109     
+1110     \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} frac;
+1111     \textcolor{keywordflow}{if}(val >= 0)
+1112       frac = (val - int(val)) * precision;
+1113     \textcolor{keywordflow}{else}
+1114       frac = (int(val)- val ) * precision;
+1115 
+1116     Serial1 << int(val) << \textcolor{stringliteral}{"."};
+1117 
+1118     \textcolor{keywordflow}{for} (i = 1; i <= precision; i += i * 10)
+1119         \textcolor{keywordflow}{if} (frac < i)
+1120             Serial1 << \textcolor{stringliteral}{"0"};
+1121 
+1122     Serial1 << frac;
+1123 \}
+\end{DoxyCode}
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!syntax\-Check@{syntax\-Check}}
+\index{syntax\-Check@{syntax\-Check}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{syntax\-Check}]{\setlength{\rightskip}{0pt plus 5cm}void syntax\-Check (
+\begin{DoxyParamCaption}
+\item[{int}]{err\-Code}
+\end{DoxyParamCaption}
+)}}\label{_meditech___chip_kit_control_panel_8pde_a586164a6eff90eab6ba87a6ca123770d}
+
+
+Append the error code to the master response message string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em err\-Code} & the error code from the command \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 983 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+References append\-Response().
+
+
+
+Referenced by parser().
+
+
+\begin{DoxyCode}
+983                               \{
+984   \hyperlink{_meditech___chip_kit_control_panel_8pde_afffcc2cca703b7a4d76c7f2dedd7266d}{appendResponse}(errCode);
+985 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a3428cc5f679f463cc86ff3d48874eedc}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!temp\-Monitor@{temp\-Monitor}}
 \index{temp\-Monitor@{temp\-Monitor}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -610,7 +2253,11 @@ Update the internal temperature from the sensor and update the display.
 
 
 
+<<<<<<< HEAD
 Definition at line 175 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 188 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -622,6 +2269,7 @@ Referenced by update\-Display().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 175                    \{
 176 
 177   \textcolor{comment}{// Read the actual temperature}
@@ -629,6 +2277,15 @@ Referenced by update\-Display().
 179   \hyperlink{_meditech___chip_kit_control_panel_8pde_a89c0a8283a410b693ebef39173a8f493}{showTemp}();
 180 
 181 \}
+=======
+188                    \{
+189 
+190   \textcolor{comment}{// Read the actual temperature}
+191   \hyperlink{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{internalTemp}.\hyperlink{class_temperature_a909c328fd6235d0e7c8ea110a1fb201d}{CalcTemp}(analogRead(\hyperlink{_temperature_8h_a16433c75f0d3615fe60d59ec8a86834a}{TEMP\_SENSOR}));
+192   \hyperlink{_meditech___chip_kit_control_panel_8pde_a89c0a8283a410b693ebef39173a8f493}{showTemp}();
+193 
+194 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a697689ffa626676db9a1abb5e6662762}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!test\-Fan\-Speed@{test\-Fan\-Speed}}
 \index{test\-Fan\-Speed@{test\-Fan\-Speed}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -643,7 +2300,11 @@ Variable fan speed test cycle.
 
 
 
+<<<<<<< HEAD
 Definition at line 325 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 338 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -655,6 +2316,7 @@ Referenced by setup().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 325                     \{
 326  
 327  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{MIN\_FANSPEED}; j <= \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED}; j += 10) \{
@@ -667,6 +2329,20 @@ Referenced by setup().
 334    delay(500);
 335  \} 
 336 \}
+=======
+338                     \{
+339  
+340  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{MIN\_FANSPEED}; j <= \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED}; j += 10) \{
+341    \hyperlink{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}{setFanSpeed}(j);
+342    delay(500);
+343  \} 
+344 
+345  \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = \hyperlink{_globals_8h_ac9351f029741923529816df3678ea765}{MAX\_FANSPEED}; j <= \hyperlink{_globals_8h_a1ba666d06d08bf653b276d2207542cab}{MIN\_FANSPEED}; j -= 10) \{
+346    \hyperlink{_meditech___chip_kit_control_panel_8pde_ac0f1975168c58bd48fc29f8e3004a5a8}{setFanSpeed}(j);
+347    delay(500);
+348  \} 
+349 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_af1a6bbf84a5ea76623bdc49aaf642a28}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!test\-Status\-L\-E\-D@{test\-Status\-L\-E\-D}}
 \index{test\-Status\-L\-E\-D@{test\-Status\-L\-E\-D}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -681,7 +2357,11 @@ Show the status led blinking for a cycle to test that all are working.
 
 
 
+<<<<<<< HEAD
 Definition at line 304 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 317 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -693,6 +2373,7 @@ Referenced by setup().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 304                      \{
 305 
 306   digitalWrite(\hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{ECG\_STATUS}, LOW);
@@ -710,6 +2391,25 @@ Referenced by setup().
 318   delay(200);  
 319 
 320 \}
+=======
+317                      \{
+318 
+319   digitalWrite(\hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{ECG\_STATUS}, LOW);
+320   delay(200);  
+321   digitalWrite(\hyperlink{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{STETHOSCOPE\_STATUS}, LOW);
+322   delay(200);  
+323   digitalWrite(\hyperlink{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{CAMERA\_STATUS}, LOW);
+324   delay(200);  
+325 
+326   digitalWrite(\hyperlink{_globals_8h_a81c971d1ee27ca31e310c80ef260b390}{ECG\_STATUS}, HIGH);
+327   delay(200);  
+328   digitalWrite(\hyperlink{_globals_8h_a8519a074bf27b6dcc876ce549b2f5ea7}{STETHOSCOPE\_STATUS}, HIGH);
+329   delay(200);  
+330   digitalWrite(\hyperlink{_globals_8h_ad0154ccab9906702a495f07dfedd0136}{CAMERA\_STATUS}, HIGH);
+331   delay(200);  
+332 
+333 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a5a7516a22f178c51ec37c6c8167aaf70}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!update\-Display@{update\-Display}}
 \index{update\-Display@{update\-Display}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -725,7 +2425,11 @@ Periodically update the display.
 
 This is a task callback function 
 
+<<<<<<< HEAD
 Definition at line 153 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 161 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -737,9 +2441,15 @@ Referenced by setup().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 153                                         \{
 154  \hyperlink{_meditech___chip_kit_control_panel_8pde_a3428cc5f679f463cc86ff3d48874eedc}{tempMonitor}(); 
 155 \}
+=======
+161                                         \{
+162  \hyperlink{_meditech___chip_kit_control_panel_8pde_a3428cc5f679f463cc86ff3d48874eedc}{tempMonitor}(); 
+163 \}
+>>>>>>> master
 \end{DoxyCode}
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a236e454e493fc9b262f746305660a2eb}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!welcome@{welcome}}
 \index{welcome@{welcome}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -754,7 +2464,11 @@ Welcome message shown at device power-\/on.
 
 
 
+<<<<<<< HEAD
 Definition at line 230 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 243 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -766,6 +2480,7 @@ Referenced by setup().
 
 
 \begin{DoxyCode}
+<<<<<<< HEAD
 230                \{
 231 
 232   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
@@ -784,10 +2499,59 @@ Referenced by setup().
 244   delay(2500);
 245   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
 246 \}
+=======
+243                \{
+244 
+245   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
+246   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, \hyperlink{_l_c_d_8h_af51f2930b0a791ffa528731a5cac5756}{LCDTOPROW});
+247   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd} << \hyperlink{_version_8h_aa9397d85369472e4b76a813648f20e46}{project}();
+248   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, \hyperlink{_l_c_d_8h_a46c173b564806ac8d8db0404f5036671}{LCDBOTTOMROW});
+249   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd} << \hyperlink{_strings_globals_8h_a069a1175d7ba5c8452e30b0213ed01c1}{\_VERSION} << \hyperlink{_strings_globals_8h_abdf1c06d350b875620aa94f29a63526e}{\_SPACING} << \hyperlink{_version_8h_a2a79e63190ab37e5d6dafdd1eef5630f}{version}() << \hyperlink{_strings_globals_8h_abdf1c06d350b875620aa94f29a63526e}{\_SPACING} << 
+      \hyperlink{_strings_globals_8h_aeb54c78fa1d4adc784d583e1ba8a1893}{\_BUILD} << \hyperlink{_strings_globals_8h_abdf1c06d350b875620aa94f29a63526e}{\_SPACING} << \hyperlink{_version_8h_a2adc5cea78bc971f47b8553ecf51b89e}{build}(); 
+250   delay(\hyperlink{_l_c_d_8h_a346f4cb5c01c503eb3f25e291ead40d8}{LCDMESSAGE\_DELAY});
+251   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
+252 
+253   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, 0);
+254   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.print(\hyperlink{_strings_globals_8h_a8191ea68252cd604b51e2e57594251e6}{\_BD});
+255   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.setCursor(0, 1);
+256   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.print(\hyperlink{_strings_globals_8h_a6de9775cdfe8b42b6261313a9d23ff51}{\_MEDITECH});
+257   delay(2500);
+258   \hyperlink{_meditech___chip_kit_control_panel_8pde_ae0b100905fb0ed88dddaafda0aa05379}{lcd}.clear();
+259 \}
+>>>>>>> master
 \end{DoxyCode}
 
 
 \subsection{Variable Documentation}
+<<<<<<< HEAD
+=======
+\hypertarget{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!cmd@{cmd}}
+\index{cmd@{cmd}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{cmd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf command} cmd}}\label{_meditech___chip_kit_control_panel_8pde_a9ec7ba7a86dba057afdae246ca1ac40e}
+
+
+Parser command structure. 
+
+
+
+Definition at line 66 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+\hypertarget{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!cmd\-Data@{cmd\-Data}}
+\index{cmd\-Data@{cmd\-Data}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
+\subsubsection[{cmd\-Data}]{\setlength{\rightskip}{0pt plus 5cm}char cmd\-Data\mbox{[}1024\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}}\label{_meditech___chip_kit_control_panel_8pde_afd31a444e0380e6be247c64cdb1510a9}
+
+
+Unparsed Command String. 
+
+cmd\-Data is the string after syntax checking. The string can contain one or more commands. When the command string is sent to the parser this value contains the command sequence. When the this string is empy all the commands has been processed and the system is ready to receive a new command. 
+
+Definition at line 78 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+
+
+
+Referenced by chars\-To\-Float(), chars\-To\-Long(), chars\-To\-String(), check\-Serial(), next\-Command\-Separator(), next\-Field\-Separator(), parser(), set\-Body\-Temp\-Status(), set\-E\-C\-G\-Status(), set\-Heart\-Beat\-Status(), set\-Pressure\-Status(), and set\-Stethoscope\-Status().
+
+>>>>>>> master
 \hypertarget{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!internal\-Temp@{internal\-Temp}}
 \index{internal\-Temp@{internal\-Temp}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
 \subsubsection[{internal\-Temp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Temperature} internal\-Temp}}\label{_meditech___chip_kit_control_panel_8pde_adcfca3504612462229db71750def77f9}
@@ -797,7 +2561,11 @@ Internal temperature sensor class instance.
 
 
 
+<<<<<<< HEAD
 Definition at line 51 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 52 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 \hypertarget{_meditech___chip_kit_control_panel_8pde_adea51712174a5f82a31231a67e0d4608}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!lid\-Status@{lid\-Status}}
 \index{lid\-Status@{lid\-Status}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -808,7 +2576,11 @@ Current lid status. The variable is declared volatile as it is used by the I\-R\
 
 
 
+<<<<<<< HEAD
 Definition at line 59 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 60 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 
@@ -823,6 +2595,7 @@ Initial potentiometer value.
 
 
 
+<<<<<<< HEAD
 Definition at line 54 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
 
 
@@ -839,6 +2612,9 @@ Stethoscope display template.
 
 
 Referenced by loop(), and setup().
+=======
+Definition at line 55 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 \hypertarget{_meditech___chip_kit_control_panel_8pde_a527a89c41abb1d8660b53f5e727e655c}{\index{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}!update\-Dispaly\-Task\-I\-D@{update\-Dispaly\-Task\-I\-D}}
 \index{update\-Dispaly\-Task\-I\-D@{update\-Dispaly\-Task\-I\-D}!Meditech_ChipKitControlPanel.pde@{Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde}}
@@ -849,7 +2625,11 @@ The update display task id (assigned on setup)
 
 
 
+<<<<<<< HEAD
 Definition at line 62 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+=======
+Definition at line 63 of file Meditech\-\_\-\-Chip\-Kit\-Control\-Panel.\-pde.
+>>>>>>> master
 
 
 

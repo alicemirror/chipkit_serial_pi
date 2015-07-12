@@ -7,6 +7,17 @@
 
 var indexSectionsWithContent =
 {
+<<<<<<< HEAD
+=======
+  0: "_abcdefghiklmnoprstuvw~",
+  1: "lpt",
+  2: "acdglmpstv",
+  3: "abcdefhiklmnoprstuw~",
+  4: "_bcfilmprsu",
+  5: "cfp",
+  6: "_abcdefhiklmprstuv",
+  7: "ht"
+>>>>>>> master
 };
 
 var indexSectionNames =

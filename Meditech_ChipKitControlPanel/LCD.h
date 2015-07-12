@@ -1,0 +1,70 @@
+/**
+  \file LCD.h
+  \brief LCD display Manager include file
+  
+  Methods to manage the LCD output and display features, including some hard-coded strings that should be present,
+  like the welcome message.
+  */
+
+#ifndef __LCD_H__
+#define __LCD_H__
+
+#include <inttypes.h>
+#include <Print.h>
+#include <AlphaLCD.h>
+#include <Streaming.h>
+
+//! Display characters per line
+//! Define this value accordingly with the LCD Hardware datasheet
+#define LCDCHARS 20
+//! Display rows
+#define LCDROWS 2
+//! The top row number of the LCD
+#define LCDTOPROW 0
+//! The bottom row number of the LCD
+#define LCDBOTTOMROW 1
+
+//! Delay after showing an error
+#define LCDERROR_DELAY 5000
+//! Delay after showing a temporary message e.g. the welcome screen
+#define LCDMESSAGE_DELAY 5000
+//! Delay after a clear display call to hardware has been done.
+#define LCDCLEAR_DELAY 50
+
+/**
+ *\brief Manages the Alphanumeric display for program output messages.
+ *
+ * This class implements the \e AlphaLCD class that manages the Alphanumeric LCD display
+ * hardware using three digital pins via a shift-out register.
+ */
+class LCD: public AlphaLCD {
+//variables
+public:
+protected:
+private:
+	AlphaLCD lcd;								///< AlphaLCD class inherited instance
+
+//functions
+public:
+	LCD();
+	~LCD();
+	void enable(bool s);				///< Set the display on or off
+	void blink(bool set);				///< Set blink mode
+	void error(String m);				///< shows an error message
+	void error(String m, int x, int y);		///< shows an error message at specified coordinates
+	void message(String m);				///< shows a string message
+	void message(String m, int x, int y);		///< shows a string message at specified coordinates
+	void clean();								///< clean the LCD screen
+	void dec(int n);							///< shows an integer in decimal format
+	void hex(int n);							///< shows an integer in hexadeciaml format
+	void bin(int n);							///< shows an integer in binary format
+	void oct(int n);							///< shows an integer in octal format
+	void welcome();								///< shows the program welcome message
+protected:
+private:
+	LCD( const LCD &c );
+	LCD& operator=( const LCD &c );
+
+}; //LCD
+
+#endif //__LCD_H__

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['globals_2eh',['Globals.h',['../_globals_8h.html',1,'']]]
+  ['debugstrings_2eh',['DebugStrings.h',['../_debug_strings_8h.html',1,'']]]
 ];

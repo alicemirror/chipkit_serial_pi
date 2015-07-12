@@ -10,6 +10,7 @@
 \item 
 char \hyperlink{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}{subcommand} \mbox{[}1\mbox{]}
 \begin{DoxyCompactList}\small\item\em char subcommand\mbox{[}1\mbox{]} Contains the last parsed subcommand \end{DoxyCompactList}\item 
+<<<<<<< HEAD
 char \hyperlink{structparse_command_ab80399acc713a2d31a48dd2db5c7d0a2}{message} \mbox{[}20\mbox{]}
 \begin{DoxyCompactList}\small\item\em Command associated message string, used by S\-\_\-\-S\-U\-B\-S\-T\-R\-I\-N\-G, C\-M\-D\-\_\-\-W\-R\-I\-T\-E, C\-M\-D\-\_\-\-E\-X\-E\-C. \end{DoxyCompactList}\item 
 long \hyperlink{structparse_command_ad062df88615d7d66ded447dd4ff87bad}{long\-Value}
@@ -22,16 +23,37 @@ int \hyperlink{structparse_command_a5f5c48be92f3aae7c4b1b71ca750298b}{separator}
 \begin{DoxyCompactList}\small\item\em Separator character. \end{DoxyCompactList}\item 
 char \hyperlink{structparse_command_a7cb5165cf18cc63d7eed9fa34be4efd8}{cmd\-Data} \mbox{[}160\mbox{]}
 \begin{DoxyCompactList}\small\item\em Unparsed Command String. \end{DoxyCompactList}\end{DoxyCompactItemize}
+=======
+String \hyperlink{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{message}
+\begin{DoxyCompactList}\small\item\em Command associated message string, used to return messages to the master and sending requests. The string should not be longer than C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N. \end{DoxyCompactList}\item 
+int \hyperlink{structparse_command_a8359e121af4d2f16e054ead0b7844a30}{command\-Length}
+\begin{DoxyCompactList}\small\item\em The number of characters collected by the last lines read buffer from serial. \end{DoxyCompactList}\item 
+String \hyperlink{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{string\-Value}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser. \end{DoxyCompactList}\item 
+long \hyperlink{structparse_command_a10deac33dc255dd8a8b84532bbeb6c42}{long\-Value} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. \end{DoxyCompactList}\item 
+int \hyperlink{structparse_command_a9ad775810b79683631510fd333096c6f}{int\-Value} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. \end{DoxyCompactList}\item 
+float \hyperlink{structparse_command_a475f06e9e3728cc583008ad66dc48329}{float\-Value} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. \end{DoxyCompactList}\item 
+float \hyperlink{structparse_command_aff75594be6413210138456dc4572be52}{boolean\-Value}
+\begin{DoxyCompactList}\small\item\em Returning parameter from the command parser. \end{DoxyCompactList}\end{DoxyCompactItemize}
+>>>>>>> master
 
 
 \subsection{Detailed Description}
 
 
+<<<<<<< HEAD
 Definition at line 53 of file Command\-Processor.\-h.
+=======
+Definition at line 79 of file Command\-Processor.\-h.
+>>>>>>> master
 
 
 
 \subsection{Member Data Documentation}
+<<<<<<< HEAD
 \hypertarget{structparse_command_a7cb5165cf18cc63d7eed9fa34be4efd8}{\index{parse\-Command@{parse\-Command}!cmd\-Data@{cmd\-Data}}
 \index{cmd\-Data@{cmd\-Data}!parseCommand@{parse\-Command}}
 \subsubsection[{cmd\-Data}]{\setlength{\rightskip}{0pt plus 5cm}char parse\-Command\-::cmd\-Data\mbox{[}160\mbox{]}}}\label{structparse_command_a7cb5165cf18cc63d7eed9fa34be4efd8}
@@ -97,6 +119,100 @@ Separator character.
 
 
 Definition at line 64 of file Command\-Processor.\-h.
+=======
+\hypertarget{structparse_command_aff75594be6413210138456dc4572be52}{\index{parse\-Command@{parse\-Command}!boolean\-Value@{boolean\-Value}}
+\index{boolean\-Value@{boolean\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{boolean\-Value}]{\setlength{\rightskip}{0pt plus 5cm}float parse\-Command\-::boolean\-Value}}\label{structparse_command_aff75594be6413210138456dc4572be52}
+
+
+Returning parameter from the command parser. 
+
+
+
+Definition at line 107 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a8359e121af4d2f16e054ead0b7844a30}{\index{parse\-Command@{parse\-Command}!command\-Length@{command\-Length}}
+\index{command\-Length@{command\-Length}!parseCommand@{parse\-Command}}
+\subsubsection[{command\-Length}]{\setlength{\rightskip}{0pt plus 5cm}int parse\-Command\-::command\-Length}}\label{structparse_command_a8359e121af4d2f16e054ead0b7844a30}
+
+
+The number of characters collected by the last lines read buffer from serial. 
+
+
+
+Definition at line 90 of file Command\-Processor.\-h.
+
+
+
+Referenced by check\-Serial(), and parser().
+
+\hypertarget{structparse_command_a475f06e9e3728cc583008ad66dc48329}{\index{parse\-Command@{parse\-Command}!float\-Value@{float\-Value}}
+\index{float\-Value@{float\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{float\-Value}]{\setlength{\rightskip}{0pt plus 5cm}float parse\-Command\-::float\-Value\mbox{[}2\mbox{]}}}\label{structparse_command_a475f06e9e3728cc583008ad66dc48329}
+
+
+Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. 
+
+
+
+Definition at line 105 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a9ad775810b79683631510fd333096c6f}{\index{parse\-Command@{parse\-Command}!int\-Value@{int\-Value}}
+\index{int\-Value@{int\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{int\-Value}]{\setlength{\rightskip}{0pt plus 5cm}int parse\-Command\-::int\-Value\mbox{[}2\mbox{]}}}\label{structparse_command_a9ad775810b79683631510fd333096c6f}
+
+
+Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. 
+
+
+
+Definition at line 101 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{structparse_command_a10deac33dc255dd8a8b84532bbeb6c42}{\index{parse\-Command@{parse\-Command}!long\-Value@{long\-Value}}
+\index{long\-Value@{long\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{long\-Value}]{\setlength{\rightskip}{0pt plus 5cm}long parse\-Command\-::long\-Value\mbox{[}2\mbox{]}}}\label{structparse_command_a10deac33dc255dd8a8b84532bbeb6c42}
+
+
+Returning parameter from the command parser The array number of position is the longer number of type parameters in a command. 
+
+
+
+Definition at line 97 of file Command\-Processor.\-h.
+
+\hypertarget{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}{\index{parse\-Command@{parse\-Command}!message@{message}}
+\index{message@{message}!parseCommand@{parse\-Command}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}String parse\-Command\-::message}}\label{structparse_command_a5d2f84606922f34ad6a8ca5f7d8a59b5}
+
+
+Command associated message string, used to return messages to the master and sending requests. The string should not be longer than C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N. 
+
+
+
+Definition at line 86 of file Command\-Processor.\-h.
+
+
+
+Referenced by ack\-Master(), append\-Response(), and parser().
+
+\hypertarget{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}{\index{parse\-Command@{parse\-Command}!string\-Value@{string\-Value}}
+\index{string\-Value@{string\-Value}!parseCommand@{parse\-Command}}
+\subsubsection[{string\-Value}]{\setlength{\rightskip}{0pt plus 5cm}String parse\-Command\-::string\-Value}}\label{structparse_command_ac5ece0b161e3fae794d08911247c0b1e}
+
+
+Returning parameter from the command parser. 
+
+
+
+Definition at line 93 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+>>>>>>> master
 
 \hypertarget{structparse_command_a10312bf6b72a9315a4fb550458bc3ae9}{\index{parse\-Command@{parse\-Command}!subcommand@{subcommand}}
 \index{subcommand@{subcommand}!parseCommand@{parse\-Command}}
@@ -107,7 +223,15 @@ char subcommand\mbox{[}1\mbox{]} Contains the last parsed subcommand
 
 
 
+<<<<<<< HEAD
 Definition at line 57 of file Command\-Processor.\-h.
+=======
+Definition at line 82 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+>>>>>>> master
 
 
 

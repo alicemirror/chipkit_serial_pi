@@ -14,7 +14,11 @@ struct \hyperlink{structparse_command}{parse\-Command}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
+<<<<<<< HEAD
 \#define \hyperlink{_command_processor_8h_a1eb73c104b484cf18752169509cebfe2}{M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N}~160
+=======
+\#define \hyperlink{_command_processor_8h_a1eb73c104b484cf18752169509cebfe2}{M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N}~1024
+>>>>>>> master
 \begin{DoxyCompactList}\small\item\em The max len of an unparsed command string. \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_a0471f5acd384512926d8baf49f0b2660}{C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N}~20
 \begin{DoxyCompactList}\small\item\em The max len of the message command string. \end{DoxyCompactList}\item 
@@ -26,6 +30,7 @@ struct \hyperlink{structparse_command}{parse\-Command}
 \begin{DoxyCompactList}\small\item\em Separator for subcommands and command parameters. \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_a0f64fd8fb7385169ef53c7d2d49b02cc}{S\-T\-R\-I\-N\-G\-\_\-\-D\-E\-L\-I\-M\-I\-T\-E\-R}~'\char`\"{}'
 \begin{DoxyCompactList}\small\item\em String delimiter. \end{DoxyCompactList}\item 
+<<<<<<< HEAD
 \#define \hyperlink{_command_processor_8h_ac811537f9bf84054de554040481bdf45}{C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S}~\char`\"{}E\-D\-G\-I\-T\-Rpr\char`\"{}
 \begin{DoxyCompactList}\small\item\em All the commands in one string. \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_a91c8743332ff637bc271733a535f31e7}{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N}~12
@@ -33,11 +38,39 @@ struct \hyperlink{structparse_command}{parse\-Command}
 \#define \hyperlink{_command_processor_8h_ab9a73413ff369c86384379fe9464b405}{C\-M\-D\-\_\-\-E\-N\-A\-B\-L\-E}~'E'
 \begin{DoxyCompactList}\small\item\em command\-: Enable/disable a probe \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_a775f86e197716388e422fbb58dca826f}{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}~'p'
+=======
+\#define \hyperlink{_command_processor_8h_a01ff82405086f08d2af53956b5247a30}{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N}~2
+\begin{DoxyCompactList}\small\item\em Fixed field I\-D characters lenght. Should be left zero filled in the form 00. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a3bf9ddf196d90a4e4639a0c4a086b9c7}{P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N}~5
+\begin{DoxyCompactList}\small\item\em Fixed integers characters lenght. Should be left zero filled in the form 00000. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_ab40da0a39802f94a9f893c2c71e4209f}{P\-A\-R\-M\-\_\-\-L\-O\-N\-G\-I\-N\-T\-\_\-\-L\-E\-N}~7
+\begin{DoxyCompactList}\small\item\em Fixed long integers characters lenght. Should be left zero filled in the form 0000000. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a1c250fc72c31cefb9685066b33160748}{P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N}~11
+\begin{DoxyCompactList}\small\item\em Fixed float characters lenght. Should be left zero filled in the form 0000000.\-000. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a1abb7c195d0c34570d725c0b8b554a5e}{P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N}~1
+\begin{DoxyCompactList}\small\item\em Fixed boolean character lenght. Should be left zero filled in the form 0 (or 1) \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_aaa1ac5caef84256eaeb39594e58e096f}{M\-A\-X\-\_\-\-I\-N\-T}~2
+\begin{DoxyCompactList}\small\item\em Max number of integer parameters in a command. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a5535b838abf57fcd6aa71dd632c51bc8}{M\-A\-X\-\_\-\-L\-O\-N\-G}~2
+\begin{DoxyCompactList}\small\item\em Max number of long integer parameters in a command. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_afb31aa2d196755fb259d43a03c18c9d7}{M\-A\-X\-\_\-\-F\-L\-O\-A\-T}~2
+\begin{DoxyCompactList}\small\item\em Max number of float parameters in a command. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a91c8743332ff637bc271733a535f31e7}{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N}~10
+\begin{DoxyCompactList}\small\item\em The lenght of C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S + 1. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_ab9a73413ff369c86384379fe9464b405}{C\-M\-D\-\_\-\-E\-N\-A\-B\-L\-E}~'E'
+\begin{DoxyCompactList}\small\item\em command\-: Enable/disable a probe \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a775f86e197716388e422fbb58dca826f}{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}~'P'
+>>>>>>> master
 \begin{DoxyCompactList}\small\item\em command\-: send \mbox{[}\mbox{[}parameter\mbox{]} value\mbox{]} \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_adc05c302b4af62eff7f5652dafabf7eb}{C\-M\-D\-\_\-\-D\-I\-S\-P\-L\-A\-Y}~'D'
 \begin{DoxyCompactList}\small\item\em command\-: Shows a message on the display \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_ab44ed89a60c5bb25c357ce8c3eee91e1}{C\-M\-D\-\_\-\-G\-O}~'G'
 \begin{DoxyCompactList}\small\item\em command\-: start running the actual pending command \end{DoxyCompactList}\item 
+<<<<<<< HEAD
+=======
+\#define \hyperlink{_command_processor_8h_acd6dc9f192384457eca2de560b24e112}{C\-M\-D\-\_\-\-L\-C\-D\-T\-E\-M\-P\-L\-A\-T\-E}~'L'
+\begin{DoxyCompactList}\small\item\em command\-: Create a \hyperlink{class_l_c_d}{L\-C\-D} template layout \end{DoxyCompactList}\item 
+>>>>>>> master
 \#define \hyperlink{_command_processor_8h_a42bf1fd637b1c921700bf479cc2f8533}{C\-M\-D\-\_\-\-I\-N\-F\-O}~'I'
 \begin{DoxyCompactList}\small\item\em command\-: info \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_aa4853b407fdfe89d987756478ea51fef}{C\-M\-D\-\_\-\-T\-E\-S\-T}~'T'
@@ -46,6 +79,7 @@ struct \hyperlink{structparse_command}{parse\-Command}
 \begin{DoxyCompactList}\small\item\em command\-: request a parameter definition \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_a0a838d0ab7a3cc09b5b9ea002198f36c}{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T}~'R'
 \begin{DoxyCompactList}\small\item\em command\-: request a parameter definition \end{DoxyCompactList}\item 
+<<<<<<< HEAD
 \#define \hyperlink{_command_processor_8h_ad403ec3c993914032780bc08071049fb}{C\-O\-M\-M\-A\-N\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}~\char`\"{}\-::\char`\"{}
 \begin{DoxyCompactList}\small\item\em Error codes definition for parser answers. \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_a2c83bbbe0909f24f241850845b38aa9f}{C\-O\-M\-M\-A\-N\-D\-\_\-\-O\-K}~0
@@ -58,6 +92,24 @@ struct \hyperlink{structparse_command}{parse\-Command}
 \begin{DoxyCompactList}\small\item\em The requested parameter separator was missing. \end{DoxyCompactList}\item 
 \#define \hyperlink{_command_processor_8h_a8903cfb5556f03fd11b980119b7baefe}{P\-A\-R\-S\-E\-R\-\_\-\-S\-U\-B\-C\-O\-M\-M\-A\-N\-D\-\_\-\-U\-N\-K\-N\-O\-W\-N}~6
 \begin{DoxyCompactList}\small\item\em The received subcommand is unknown. \end{DoxyCompactList}\end{DoxyCompactItemize}
+=======
+\#define \hyperlink{_command_processor_8h_adfbfa32f9a07ea8c418302629c5f9e2c}{S\-\_\-\-S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E}~'S'
+\begin{DoxyCompactList}\small\item\em subcommand\-: Enable Stethoscope probe status \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a303228c055bef09bc6f3af3fca182193}{S\-\_\-\-E\-C\-G}~'G'
+\begin{DoxyCompactList}\small\item\em subcommand\-: Enable E\-C\-G probe status \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a2addd9a5224e4691a4c804672f360f89}{S\-\_\-\-P\-R\-E\-S\-S\-U\-R\-E}~'P'
+\begin{DoxyCompactList}\small\item\em subcommand\-: Enable Blood pressure probe status \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a45a3bcfc2052f567c0c9bf1e77e072d9}{S\-\_\-\-B\-O\-D\-Y\-T\-E\-M\-P}~'T'
+\begin{DoxyCompactList}\small\item\em subcommand\-: Enable Body temperature probe status \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a101bcad25a341bbe132207b51432de89}{S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T}~'H'
+\begin{DoxyCompactList}\small\item\em subcommand\-: Enable Heartbeat probe status \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a94db433efaf9f11f691afcd4666d5033}{F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E}~1
+\begin{DoxyCompactList}\small\item\em Enable flag. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a127a418702ab50cf9f7e49e100533ebd}{F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E}~0
+\begin{DoxyCompactList}\small\item\em Disable flag. \end{DoxyCompactList}\item 
+\#define \hyperlink{_command_processor_8h_a446d8db1041da5746439b5655890b3ed}{R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}~\char`\"{}\-:\char`\"{}
+\begin{DoxyCompactList}\small\item\em Command string separator used in the command\-Return() method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+>>>>>>> master
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -73,6 +125,7 @@ Definition in file \hyperlink{_command_processor_8h_source}{Command\-Processor.\
 
 
 \subsection{Macro Definition Documentation}
+<<<<<<< HEAD
 \hypertarget{_command_processor_8h_ac811537f9bf84054de554040481bdf45}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S@{C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S}}
 \index{C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S@{C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S}!CommandProcessor.h@{Command\-Processor.\-h}}
 \subsubsection[{C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S~\char`\"{}E\-D\-G\-I\-T\-Rpr\char`\"{}}}\label{_command_processor_8h_ac811537f9bf84054de554040481bdf45}
@@ -92,13 +145,26 @@ Definition at line 91 of file Command\-Processor.\-h.
 \hypertarget{_command_processor_8h_a91c8743332ff637bc271733a535f31e7}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N@{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N}}
 \index{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N@{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
 \subsubsection[{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N~12}}\label{_command_processor_8h_a91c8743332ff637bc271733a535f31e7}
+=======
+\hypertarget{_command_processor_8h_a91c8743332ff637bc271733a535f31e7}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N@{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N}}
+\index{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N@{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-M\-D\-\_\-\-C\-H\-A\-R\-L\-E\-N~10}}\label{_command_processor_8h_a91c8743332ff637bc271733a535f31e7}
+>>>>>>> master
 
 
 The lenght of C\-M\-D\-\_\-\-C\-H\-A\-R\-A\-C\-T\-E\-R\-S + 1. 
 
 
 
+<<<<<<< HEAD
 Definition at line 94 of file Command\-Processor.\-h.
+=======
+Definition at line 112 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_adc05c302b4af62eff7f5652dafabf7eb}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-D\-I\-S\-P\-L\-A\-Y@{C\-M\-D\-\_\-\-D\-I\-S\-P\-L\-A\-Y}}
 \index{C\-M\-D\-\_\-\-D\-I\-S\-P\-L\-A\-Y@{C\-M\-D\-\_\-\-D\-I\-S\-P\-L\-A\-Y}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -107,6 +173,7 @@ Definition at line 94 of file Command\-Processor.\-h.
 
 command\-: Shows a message on the display 
 
+<<<<<<< HEAD
 description\-: this is a descriptive command only, reflecting the state of a user request from the remote I\-R controller. The row and column values should be integers, zero-\/based, inside the physical limits of the \hyperlink{class_l_c_d}{L\-C\-D} display.\par
  name\-: D \par
 usage\-: D;$<$row(int)$>$;$<$column(int)$>$;$<$string$>$ \par
@@ -115,6 +182,24 @@ example\-: D;1;3;\char`\"{}\-Test\char`\"{} \par
 Display the string \char`\"{}\-Test\char`\"{} at row 1, col 3 
 
 Definition at line 134 of file Command\-Processor.\-h.
+=======
+description\-: this is a descriptive command only, reflecting the state of a user request from the remote I\-R controller. The row and column values should be integers, zero-\/based, inside the physical limits of the \hyperlink{class_l_c_d}{L\-C\-D} display.
+
+\begin{DoxyNote}{Note}
+This command needs less controls than expected because errors like out of bound string lenght, wrong cursor position etc. never occurs using the display templates. Templates include file is the same on both the master and the microcontroller with the difference that the master also includes the strings definition that are sent when a display should be drawn with a template.
+\end{DoxyNote}
+name\-: D \par
+usage\-: D;$<$row(int)$>$;$<$column(int)$>$;$<$string$>$ \par
+direction\-: receive\par
+example\-: D;01;03;Test \par
+
+
+Definition at line 164 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_ab9a73413ff369c86384379fe9464b405}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-E\-N\-A\-B\-L\-E@{C\-M\-D\-\_\-\-E\-N\-A\-B\-L\-E}}
 \index{C\-M\-D\-\_\-\-E\-N\-A\-B\-L\-E@{C\-M\-D\-\_\-\-E\-N\-A\-B\-L\-E}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -127,9 +212,24 @@ description\-: Enable a probe and accept setting parameters or disable the probe
 name\-: E \par
 usage\-: E;$<$subcommand$>$ \par
 direction\-: receive example\-: E;S \par
+<<<<<<< HEAD
 Enable the microphonic stethoscope 
 
 Definition at line 107 of file Command\-Processor.\-h.
+=======
+Enable the microphonic stethoscope
+
+\begin{DoxyNote}{Note}
+The C\-M\-D\-\_\-\-E\-N\-A\-B\-L\-E command only activates the setup bit of the current probe, if a probe has asked to enable. If the enable bit is not set the corresponding display layout on the control panel \hyperlink{class_l_c_d}{L\-C\-D} can't be changed due the probe-\/dependant settings that the probe-\/enabled status involves. The right method to display a probe template is to enable it then send a template command to the control panel with the display layout parameters. If not, only the 
+\end{DoxyNote}
+
+
+Definition at line 131 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_ab44ed89a60c5bb25c357ce8c3eee91e1}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-G\-O@{C\-M\-D\-\_\-\-G\-O}}
 \index{C\-M\-D\-\_\-\-G\-O@{C\-M\-D\-\_\-\-G\-O}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -142,9 +242,17 @@ description\-: confirm a pending action / parameters setting request \par
 name\-: G \par
 usage\-: G \par
 direction\-: receive\par
+<<<<<<< HEAD
 
 
 Definition at line 144 of file Command\-Processor.\-h.
+=======
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]Not yet implemented \end{DoxyRefDesc}
+
+
+Definition at line 175 of file Command\-Processor.\-h.
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_ab8b47ab0f69099ac94b48c767ae0fade}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-H\-E\-A\-D\-E\-R\-L\-E\-N@{C\-M\-D\-\_\-\-H\-E\-A\-D\-E\-R\-L\-E\-N}}
 \index{C\-M\-D\-\_\-\-H\-E\-A\-D\-E\-R\-L\-E\-N@{C\-M\-D\-\_\-\-H\-E\-A\-D\-E\-R\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -155,7 +263,11 @@ The max len of a header/menu string.
 
 
 
+<<<<<<< HEAD
 Definition at line 18 of file Command\-Processor.\-h.
+=======
+Definition at line 19 of file Command\-Processor.\-h.
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_a42bf1fd637b1c921700bf479cc2f8533}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-I\-N\-F\-O@{C\-M\-D\-\_\-\-I\-N\-F\-O}}
 \index{C\-M\-D\-\_\-\-I\-N\-F\-O@{C\-M\-D\-\_\-\-I\-N\-F\-O}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -169,7 +281,36 @@ usage\-: I \par
 direction\-: receive\par
 
 
+<<<<<<< HEAD
 Definition at line 155 of file Command\-Processor.\-h.
+=======
+Definition at line 200 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{_command_processor_8h_acd6dc9f192384457eca2de560b24e112}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-L\-C\-D\-T\-E\-M\-P\-L\-A\-T\-E@{C\-M\-D\-\_\-\-L\-C\-D\-T\-E\-M\-P\-L\-A\-T\-E}}
+\index{C\-M\-D\-\_\-\-L\-C\-D\-T\-E\-M\-P\-L\-A\-T\-E@{C\-M\-D\-\_\-\-L\-C\-D\-T\-E\-M\-P\-L\-A\-T\-E}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{C\-M\-D\-\_\-\-L\-C\-D\-T\-E\-M\-P\-L\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-M\-D\-\_\-\-L\-C\-D\-T\-E\-M\-P\-L\-A\-T\-E~'L'}}\label{_command_processor_8h_acd6dc9f192384457eca2de560b24e112}
+
+
+command\-: Create a \hyperlink{class_l_c_d}{L\-C\-D} template layout 
+
+description\-: string parameters to generate a template layout with a variable number of parameters, depending on the requested template. name\-: L \par
+usage\-: L;$<$\-Template id$>$=\char`\"{}\char`\"{}$>$;\mbox{[}\mbox{[};$<$\-Field string$>$=\char`\"{}\char`\"{}$>$\mbox{]};\mbox{]} \par
+direction\-: receive\par
+ \begin{DoxyNote}{Note}
+If the requested layout template is a probe display template the command has effect only if the probe status bit is set to on (current probe active) 
+\end{DoxyNote}
+
+
+Definition at line 189 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_a0471f5acd384512926d8baf49f0b2660}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N@{C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N}}
 \index{C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N@{C\-M\-D\-\_\-\-M\-S\-G\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -180,11 +321,19 @@ The max len of the message command string.
 
 
 
+<<<<<<< HEAD
 Definition at line 15 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_a775f86e197716388e422fbb58dca826f}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R@{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}}
 \index{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R@{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}!CommandProcessor.h@{Command\-Processor.\-h}}
 \subsubsection[{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R~'p'}}\label{_command_processor_8h_a775f86e197716388e422fbb58dca826f}
+=======
+Definition at line 17 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_a775f86e197716388e422fbb58dca826f}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R@{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}}
+\index{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R@{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-M\-D\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R~'P'}}\label{_command_processor_8h_a775f86e197716388e422fbb58dca826f}
+>>>>>>> master
 
 
 command\-: send \mbox{[}\mbox{[}parameter\mbox{]} value\mbox{]} 
@@ -195,9 +344,17 @@ usage\-: P;$<$parameter$>$;
 
 \par
 direction\-: send example\-: P;G;23 \par
+<<<<<<< HEAD
 Send the stethoscope gain level to the master 
 
 Definition at line 119 of file Command\-Processor.\-h.
+=======
+Send the stethoscope gain level to the master \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]Not yet implemented \end{DoxyRefDesc}
+
+
+Definition at line 144 of file Command\-Processor.\-h.
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_a0a838d0ab7a3cc09b5b9ea002198f36c}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T}}
 \index{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -212,15 +369,31 @@ description\-: request to the master the parameter definition for one of the tem
 name\-: r \par
 usage\-: r;$<$parameter id$>$=\char`\"{}\char`\"{}$>$ \par
 direction\-: send\par
+<<<<<<< HEAD
  description\-: receive from the master the requested value for one of the template fields to show on the display. In most of the cases these are strings managed by the master to save memory space on the board and support the multi-\/language localisation.\par
+=======
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]Should be implemented in the R\-P\-I master before \end{DoxyRefDesc}
+
+
+description\-: receive from the master the requested value for one of the template fields to show on the display. In most of the cases these are strings managed by the master to save memory space on the board and support the multi-\/language localisation.\par
+>>>>>>> master
 name\-: R \par
 usage\-: R;$<$parameter id$>$=\char`\"{}\char`\"{}$>$;
 
 \par
 direction\-: receive\par
+<<<<<<< HEAD
 
 
 Definition at line 192 of file Command\-Processor.\-h.
+=======
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Not yet implemented \end{DoxyRefDesc}
+
+
+Definition at line 239 of file Command\-Processor.\-h.
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_a0a838d0ab7a3cc09b5b9ea002198f36c}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T}}
 \index{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T@{C\-M\-D\-\_\-\-R\-E\-Q\-U\-E\-S\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -235,15 +408,31 @@ description\-: request to the master the parameter definition for one of the tem
 name\-: r \par
 usage\-: r;$<$parameter id$>$=\char`\"{}\char`\"{}$>$ \par
 direction\-: send\par
+<<<<<<< HEAD
  description\-: receive from the master the requested value for one of the template fields to show on the display. In most of the cases these are strings managed by the master to save memory space on the board and support the multi-\/language localisation.\par
+=======
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]Should be implemented in the R\-P\-I master before \end{DoxyRefDesc}
+
+
+description\-: receive from the master the requested value for one of the template fields to show on the display. In most of the cases these are strings managed by the master to save memory space on the board and support the multi-\/language localisation.\par
+>>>>>>> master
 name\-: R \par
 usage\-: R;$<$parameter id$>$=\char`\"{}\char`\"{}$>$;
 
 \par
 direction\-: receive\par
+<<<<<<< HEAD
 
 
 Definition at line 192 of file Command\-Processor.\-h.
+=======
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Not yet implemented \end{DoxyRefDesc}
+
+
+Definition at line 239 of file Command\-Processor.\-h.
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_aa3115116a4036d93c8c91cf7e0f13c70}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}}
 \index{C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{C\-M\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -256,7 +445,15 @@ A single string can include multiple commands with a variable number of paramete
  Example\-: $<$cmd 1$>$$<$cmd 2$>$$<$cmd 3$>$ \par
 
 
+<<<<<<< HEAD
 Definition at line 29 of file Command\-Processor.\-h.
+=======
+Definition at line 30 of file Command\-Processor.\-h.
+
+
+
+Referenced by next\-Command\-Separator(), and parser().
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_aa4853b407fdfe89d987756478ea51fef}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-M\-D\-\_\-\-T\-E\-S\-T@{C\-M\-D\-\_\-\-T\-E\-S\-T}}
 \index{C\-M\-D\-\_\-\-T\-E\-S\-T@{C\-M\-D\-\_\-\-T\-E\-S\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -272,6 +469,7 @@ usage\-: T \par
 direction\-: receive\par
 
 
+<<<<<<< HEAD
 Definition at line 166 of file Command\-Processor.\-h.
 
 \hypertarget{_command_processor_8h_af1641bf12003024ece5012a639004d5c}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!C\-O\-M\-M\-A\-N\-D\-\_\-\-M\-I\-S\-S\-I\-N\-G\-S\-E\-P\-A\-R\-A\-T\-O\-R@{C\-O\-M\-M\-A\-N\-D\-\_\-\-M\-I\-S\-S\-I\-N\-G\-S\-E\-P\-A\-R\-A\-T\-O\-R}}
@@ -361,6 +559,266 @@ The received subcommand is unknown.
 
 
 Definition at line 212 of file Command\-Processor.\-h.
+=======
+Definition at line 211 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{_command_processor_8h_abf632b2ae0f986eeb5e98e5f2a5b1c1e}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!F\-I\-E\-L\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{F\-I\-E\-L\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}}
+\index{F\-I\-E\-L\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{F\-I\-E\-L\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{F\-I\-E\-L\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-I\-E\-L\-D\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R~';'}}\label{_command_processor_8h_abf632b2ae0f986eeb5e98e5f2a5b1c1e}
+
+
+Separator for subcommands and command parameters. 
+
+The single-\/character commands can be followed by a sub-\/command or a series of parameters. Every one of them should be separed by a field separator character. 
+
+Definition at line 39 of file Command\-Processor.\-h.
+
+
+
+Referenced by is\-Field\-Separator(), and next\-Field\-Separator().
+
+\hypertarget{_command_processor_8h_a127a418702ab50cf9f7e49e100533ebd}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E@{F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E}}
+\index{F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E@{F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E~0}}\label{_command_processor_8h_a127a418702ab50cf9f7e49e100533ebd}
+
+
+Disable flag. 
+
+
+
+Definition at line 295 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_a94db433efaf9f11f691afcd4666d5033}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E@{F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E}}
+\index{F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E@{F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E~1}}\label{_command_processor_8h_a94db433efaf9f11f691afcd4666d5033}
+
+
+Enable flag. 
+
+
+
+Definition at line 293 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_a1eb73c104b484cf18752169509cebfe2}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N@{M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N}}
+\index{M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N@{M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-C\-M\-D\-\_\-\-L\-E\-N~1024}}\label{_command_processor_8h_a1eb73c104b484cf18752169509cebfe2}
+
+
+The max len of an unparsed command string. 
+
+
+
+Definition at line 15 of file Command\-Processor.\-h.
+
+
+
+Referenced by chars\-To\-String(), and check\-Serial().
+
+\hypertarget{_command_processor_8h_afb31aa2d196755fb259d43a03c18c9d7}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!M\-A\-X\-\_\-\-F\-L\-O\-A\-T@{M\-A\-X\-\_\-\-F\-L\-O\-A\-T}}
+\index{M\-A\-X\-\_\-\-F\-L\-O\-A\-T@{M\-A\-X\-\_\-\-F\-L\-O\-A\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{M\-A\-X\-\_\-\-F\-L\-O\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-F\-L\-O\-A\-T~2}}\label{_command_processor_8h_afb31aa2d196755fb259d43a03c18c9d7}
+
+
+Max number of float parameters in a command. 
+
+
+
+Definition at line 69 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_aaa1ac5caef84256eaeb39594e58e096f}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!M\-A\-X\-\_\-\-I\-N\-T@{M\-A\-X\-\_\-\-I\-N\-T}}
+\index{M\-A\-X\-\_\-\-I\-N\-T@{M\-A\-X\-\_\-\-I\-N\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{M\-A\-X\-\_\-\-I\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-I\-N\-T~2}}\label{_command_processor_8h_aaa1ac5caef84256eaeb39594e58e096f}
+
+
+Max number of integer parameters in a command. 
+
+
+
+Definition at line 65 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_a5535b838abf57fcd6aa71dd632c51bc8}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!M\-A\-X\-\_\-\-L\-O\-N\-G@{M\-A\-X\-\_\-\-L\-O\-N\-G}}
+\index{M\-A\-X\-\_\-\-L\-O\-N\-G@{M\-A\-X\-\_\-\-L\-O\-N\-G}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{M\-A\-X\-\_\-\-L\-O\-N\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-L\-O\-N\-G~2}}\label{_command_processor_8h_a5535b838abf57fcd6aa71dd632c51bc8}
+
+
+Max number of long integer parameters in a command. 
+
+
+
+Definition at line 67 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_a1abb7c195d0c34570d725c0b8b554a5e}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N}}
+\index{P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-M\-\_\-\-B\-O\-O\-L\-\_\-\-L\-E\-N~1}}\label{_command_processor_8h_a1abb7c195d0c34570d725c0b8b554a5e}
+
+
+Fixed boolean character lenght. Should be left zero filled in the form 0 (or 1) 
+
+
+
+Definition at line 62 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_a01ff82405086f08d2af53956b5247a30}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N}}
+\index{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-M\-\_\-\-F\-I\-E\-L\-D\-I\-D\-\_\-\-L\-E\-N~2}}\label{_command_processor_8h_a01ff82405086f08d2af53956b5247a30}
+
+
+Fixed field I\-D characters lenght. Should be left zero filled in the form 00. 
+
+
+
+Definition at line 46 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{_command_processor_8h_a1c250fc72c31cefb9685066b33160748}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N}}
+\index{P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-M\-\_\-\-F\-L\-O\-A\-T\-\_\-\-L\-E\-N~11}}\label{_command_processor_8h_a1c250fc72c31cefb9685066b33160748}
+
+
+Fixed float characters lenght. Should be left zero filled in the form 0000000.\-000. 
+
+
+
+Definition at line 58 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_a3bf9ddf196d90a4e4639a0c4a086b9c7}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N}}
+\index{P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-M\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-L\-E\-N~5}}\label{_command_processor_8h_a3bf9ddf196d90a4e4639a0c4a086b9c7}
+
+
+Fixed integers characters lenght. Should be left zero filled in the form 00000. 
+
+
+
+Definition at line 50 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{_command_processor_8h_ab40da0a39802f94a9f893c2c71e4209f}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!P\-A\-R\-M\-\_\-\-L\-O\-N\-G\-I\-N\-T\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-L\-O\-N\-G\-I\-N\-T\-\_\-\-L\-E\-N}}
+\index{P\-A\-R\-M\-\_\-\-L\-O\-N\-G\-I\-N\-T\-\_\-\-L\-E\-N@{P\-A\-R\-M\-\_\-\-L\-O\-N\-G\-I\-N\-T\-\_\-\-L\-E\-N}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{P\-A\-R\-M\-\_\-\-L\-O\-N\-G\-I\-N\-T\-\_\-\-L\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-R\-M\-\_\-\-L\-O\-N\-G\-I\-N\-T\-\_\-\-L\-E\-N~7}}\label{_command_processor_8h_ab40da0a39802f94a9f893c2c71e4209f}
+
+
+Fixed long integers characters lenght. Should be left zero filled in the form 0000000. 
+
+
+
+Definition at line 54 of file Command\-Processor.\-h.
+
+\hypertarget{_command_processor_8h_a446d8db1041da5746439b5655890b3ed}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}}
+\index{R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R@{R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-E\-S\-P\-O\-N\-S\-E\-\_\-\-S\-E\-P\-A\-R\-A\-T\-O\-R~\char`\"{}\-:\char`\"{}}}\label{_command_processor_8h_a446d8db1041da5746439b5655890b3ed}
+
+
+Command string separator used in the command\-Return() method. 
+
+
+
+Definition at line 298 of file Command\-Processor.\-h.
+
+
+
+Referenced by append\-Response().
+
+\hypertarget{_command_processor_8h_a45a3bcfc2052f567c0c9bf1e77e072d9}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!S\-\_\-\-B\-O\-D\-Y\-T\-E\-M\-P@{S\-\_\-\-B\-O\-D\-Y\-T\-E\-M\-P}}
+\index{S\-\_\-\-B\-O\-D\-Y\-T\-E\-M\-P@{S\-\_\-\-B\-O\-D\-Y\-T\-E\-M\-P}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{S\-\_\-\-B\-O\-D\-Y\-T\-E\-M\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-B\-O\-D\-Y\-T\-E\-M\-P~'T'}}\label{_command_processor_8h_a45a3bcfc2052f567c0c9bf1e77e072d9}
+
+
+subcommand\-: Enable Body temperature probe status 
+
+description\-: enable or disable the body temperature probe. \par
+usage\-: T (int)status \par
+parameters\-: the status accepted values are F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E and F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: T;001 \par
+
+
+Definition at line 280 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{_command_processor_8h_a303228c055bef09bc6f3af3fca182193}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!S\-\_\-\-E\-C\-G@{S\-\_\-\-E\-C\-G}}
+\index{S\-\_\-\-E\-C\-G@{S\-\_\-\-E\-C\-G}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{S\-\_\-\-E\-C\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-E\-C\-G~'G'}}\label{_command_processor_8h_a303228c055bef09bc6f3af3fca182193}
+
+
+subcommand\-: Enable E\-C\-G probe status 
+
+description\-: enable or disable the E.\-C.\-G. probe. \par
+usage\-: G (int)status \par
+parameters\-: the status accepted values are F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E and F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: G;001 \par
+
+
+Definition at line 260 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{_command_processor_8h_a101bcad25a341bbe132207b51432de89}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T@{S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T}}
+\index{S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T@{S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T~'H'}}\label{_command_processor_8h_a101bcad25a341bbe132207b51432de89}
+
+
+subcommand\-: Enable Heartbeat probe status 
+
+description\-: enable or disable the Heart Beat probe. \par
+usage\-: H (int)status \par
+parameters\-: the status accepted values are F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E and F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: H;001 \par
+
+
+Definition at line 290 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{_command_processor_8h_a2addd9a5224e4691a4c804672f360f89}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!S\-\_\-\-P\-R\-E\-S\-S\-U\-R\-E@{S\-\_\-\-P\-R\-E\-S\-S\-U\-R\-E}}
+\index{S\-\_\-\-P\-R\-E\-S\-S\-U\-R\-E@{S\-\_\-\-P\-R\-E\-S\-S\-U\-R\-E}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{S\-\_\-\-P\-R\-E\-S\-S\-U\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-P\-R\-E\-S\-S\-U\-R\-E~'P'}}\label{_command_processor_8h_a2addd9a5224e4691a4c804672f360f89}
+
+
+subcommand\-: Enable Blood pressure probe status 
+
+description\-: enable or disable the Sphygmomanometer probe. \par
+usage\-: P (int)status \par
+parameters\-: the status accepted values are F\-L\-A\-G\-\_\-\-E\-N\-A\-B\-L\-E and F\-L\-A\-G\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: P;001 \par
+
+
+Definition at line 270 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+
+\hypertarget{_command_processor_8h_adfbfa32f9a07ea8c418302629c5f9e2c}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!S\-\_\-\-S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E@{S\-\_\-\-S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E}}
+\index{S\-\_\-\-S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E@{S\-\_\-\-S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E}!CommandProcessor.h@{Command\-Processor.\-h}}
+\subsubsection[{S\-\_\-\-S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-\_\-\-S\-T\-E\-T\-H\-O\-S\-C\-O\-P\-E~'S'}}\label{_command_processor_8h_adfbfa32f9a07ea8c418302629c5f9e2c}
+
+
+subcommand\-: Enable Stethoscope probe status 
+
+description\-: enable or disable the stethoscope probe. \par
+usage\-: S (int)status \par
+parameters\-: the status accepted values are S\-T\-E\-T\-H\-\_\-\-E\-N\-A\-B\-L\-E and S\-T\-E\-T\-H\-\_\-\-D\-I\-S\-A\-B\-L\-E example\-: S;001 \par
+Enable the stethoscope probe. 
+
+Definition at line 250 of file Command\-Processor.\-h.
+
+
+
+Referenced by parser().
+>>>>>>> master
 
 \hypertarget{_command_processor_8h_a0f64fd8fb7385169ef53c7d2d49b02cc}{\index{Command\-Processor.\-h@{Command\-Processor.\-h}!S\-T\-R\-I\-N\-G\-\_\-\-D\-E\-L\-I\-M\-I\-T\-E\-R@{S\-T\-R\-I\-N\-G\-\_\-\-D\-E\-L\-I\-M\-I\-T\-E\-R}}
 \index{S\-T\-R\-I\-N\-G\-\_\-\-D\-E\-L\-I\-M\-I\-T\-E\-R@{S\-T\-R\-I\-N\-G\-\_\-\-D\-E\-L\-I\-M\-I\-T\-E\-R}!CommandProcessor.h@{Command\-Processor.\-h}}
@@ -371,7 +829,15 @@ String delimiter.
 
 
 
+<<<<<<< HEAD
 Definition at line 41 of file Command\-Processor.\-h.
+=======
+Definition at line 42 of file Command\-Processor.\-h.
+
+
+
+Referenced by chars\-To\-String().
+>>>>>>> master
 
 
 

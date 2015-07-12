@@ -1,11 +1,44 @@
 var NAVTREE =
 [
+<<<<<<< HEAD
   [ "Meditech control panel software", "index.html", ]
+=======
+  [ "Meditech control panel software", "index.html", [
+    [ "How LCD templates works", "lcd_template.html", null ],
+    [ "Temperature conversion formulas", "temp_convert.html", null ],
+    [ "Todo List", "todo.html", null ],
+    [ "Classes", null, [
+      [ "Class List", "annotated.html", "annotated" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
+    ] ],
+    [ "Files", null, [
+      [ "File List", "files.html", "files" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
+    ] ]
+  ] ]
+>>>>>>> master
 ];
 
 var NAVTREEINDEX =
 [
+<<<<<<< HEAD
 "index.html"
+=======
+"_analog_8h.html",
+"class_l_c_d_templates.html#a92a2475558ce15aa8a311c36705788fd"
+>>>>>>> master
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
