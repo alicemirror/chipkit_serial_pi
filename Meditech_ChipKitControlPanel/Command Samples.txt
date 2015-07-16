@@ -1,0 +1,20 @@
+@L;00;"Stethoscope";"Gain";"27"
+@L;01;"B. Pressure";"Wait...";"Min";"90";"Max";"120"
+@L;02;"Heart Beat";"Spot";"110";"Avg.";"107"
+@L;03;"Temperature";"Spot";"36.5";"Avg.";"37"
+@L;04;"E.C.G.";"Status";"running"
+@L;05;"Control Panel";"Test running"
+@E;H;00001
+@I
+@D;00001;00010;"Hello"
+
+*** Forced error conditions ***
+
+@L;01;"B. Pressure";"Wait...";"Min";"90";"Max""120"
+
+@L;01;"B. Pressure";"Wait...";"Min";"90";"Max;"120"
+
+@L;01;"B. Pressure""Wait...";"Min";"90";"Max";"120"
+
+@L;01;B. Pressure";"Wait...";"Min";"90";"Max";"120"
+
