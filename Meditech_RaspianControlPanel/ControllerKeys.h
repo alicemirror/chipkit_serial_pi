@@ -3,6 +3,15 @@
 \brief Definition of the IR controller assigned control keys. This include file
  is derived from the /etc/lirc/lircd.con file.
  
+ This header file defines the key string name as it is included in the lirc code
+ returned when the corresponding button is pressed on the IR controller.
+ To make shorter and faster the code - including the IR controller code identification
+ in a single loop - the key names are assigned to an array whose index correspond
+ to the symbolic numeric ID of every command.
+ The next group of defines contains the command symbolic ID so it is possible to
+ parse the user commands with a simple integer control reducing the string comparisong
+ to a single case in the program.
+ 
  */
 
 #ifndef CONTROLLERKEYS_H
@@ -34,6 +43,39 @@
 #define	KEY_VOLUMEDOWN		"KEY_VOLUMEDOWN"
 #define	KEY_CHANNELUP		"KEY_CHANNELUP"
 #define	KEY_CHANNELDOWN		"KEY_CHANNELDOWN"
+
+#define	CMD_MENU			0
+#define	CMD_POWER			1
+#define	CMD_NUMERIC_0		2
+#define	CMD_NUMERIC_1		3
+#define	CMD_NUMERIC_2		4
+#define	CMD_NUMERIC_3		5
+#define	CMD_NUMERIC_4		6
+#define	CMD_NUMERIC_5		7
+#define	CMD_NUMERIC_6		8
+#define	CMD_NUMERIC_7		9
+#define	CMD_NUMERIC_8		10
+#define	CMD_NUMERIC_9		11
+#define	CMD_UP				12
+#define	CMD_DOWN			13
+#define	CMD_LEFT			14
+#define	CMD_RIGHT			15
+#define	CMD_RED				16
+#define	CMD_GREEN			17
+#define	CMD_YELLOW			18
+#define	CMD_BLUE			19
+#define	CMD_OK				20
+#define	CMD_MUTE			21
+#define	CMD_VOLUMEUP		22
+#define	CMD_VOLUMEDOWN		23
+#define	CMD_CHANNELUP		24
+#define	CMD_CHANNELDOWN		25
+
+//! Number of valid IR keys on the controller. It is also the IR_KEYS array elements.
+#define NUM_KEYS	26
+
+// Function prototypes
+void parseIR(int);
 
 #endif	/* CONTROLLERKEYS_H */
 

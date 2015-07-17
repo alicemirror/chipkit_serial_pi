@@ -28,6 +28,8 @@
 #include "Globals.h"
 #include "ControllerKeys.h"
  
+#define __DEBUG
+
 /**
  \brief main The main entry point of the program
  
@@ -44,8 +46,17 @@ int main(int argc, char *argv[]) {
 	//! The last read code from the IR controller
 	char *code;
 	//! A character pointer. What else?
-	char *c;
- 
+	char *s;
+
+//! Array with all the controller IR keys string name
+//! If a string in the array match with the lirc return code the corresponding array index
+//! is used to execute the associated command.
+	const char *IR_KEYS[NUM_KEYS] = { KEY_MENU, KEY_POWER, KEY_NUMERIC_0, KEY_NUMERIC_1, KEY_NUMERIC_2,
+				KEY_NUMERIC_3, KEY_NUMERIC_4, KEY_NUMERIC_5, KEY_NUMERIC_6,
+				KEY_NUMERIC_7, KEY_NUMERIC_8, KEY_NUMERIC_9, KEY_UP, KEY_DOWN,
+				KEY_LEFT, KEY_RIGHT, KEY_RED, KEY_GREEN, KEY_YELLOW, KEY_BLUE,
+				KEY_OK, KEY_MUTE, KEY_VOLUMEUP, KEY_VOLUMEDOWN, KEY_CHANNELUP, KEY_CHANNELDOWN };
+
 	//Initiate LIRC. Exit on failure
 	if(lirc_init(LIRC_CLIENT, 1) == -1)
 			exit(EXIT_FAILURE);
@@ -54,21 +65,108 @@ int main(int argc, char *argv[]) {
 	if(lirc_readconfig(NULL, &config, NULL) == 0) {
 		// This is virtually our infinite loop. The only exit condition
 		// is when the socket is closed.
-		while(lirc_nextcode(&code)==0) {
-				//If code = NULL, meaning nothing was returned from LIRC socket,
-				//then skip lines below and start while loop again.
-				if(code == NULL) continue;{
-					// Process the IR code read from the controller
-					
-				} // IR code processing
-				// Need to free up code before the next loop
-				free(code);
-		} // infinite reading loop
+		while(lirc_nextcode(&code) == 0) {
+			//If code = NULL, meaning nothing was returned from LIRC socket,
+			//then skip lines below and start while loop again.
+			if(code == NULL) continue;
+
+			// Loop on the IR keys array key names searching if a valid
+			// key has been pressed.
+			for(int i = 0; i < NUM_KEYS; i++) {
+				// Search for a corresponding key
+				if(strstr (code, IR_KEYS[i])){
+#ifdef __DEBUG
+					printf("detect>%s\n", IR_KEYS[i]);
+#endif
+					// Parse the key event
+					parseIR(i);
+					break;
+				} // found the pressed key
+			} // Loop searching the key press.
+		} // IR code processing
+		// Need to free up code before the next loop
+		free(code);
+	} // infinite reading loop
 		//Frees the data structures associated with config.
 		lirc_freeconfig(config);
-	} // Read lirc config
 	// Closes the connection to lircd and does some internal clean-up stuff.
 	lirc_deinit();
 	exit(EXIT_FAILURE); // The /etc/lirc/lircd,conf file does not exist.
+}
+
+/**
+ \brief Parses the infrared key ID and executes the associated command.
+ 
+ This function represent the first level of parsing interfacing the user choice
+ when a recognized command button is pressed on the IR controller with the second
+ parsing level to execute the command, depending on the actual condition of the 
+ system.
+ 
+ \param infraredID The IR command ID
+ */
+void parseIR(int infraredID) {
+#ifdef __DEBUG
+			printf("exec>%i\n", infraredID);
+#endif
+	
+	// Process the ID
+	switch(infraredID) {
+		case CMD_MENU:
+			break;
+		case CMD_POWER:
+			break;
+		case CMD_NUMERIC_0:
+			break;
+		case CMD_NUMERIC_1:
+			break;
+		case CMD_NUMERIC_2:
+			break;
+		case CMD_NUMERIC_3:
+			break;
+		case CMD_NUMERIC_4:
+			break;
+		case CMD_NUMERIC_5:
+			break;
+		case CMD_NUMERIC_6:
+			break;
+		case CMD_NUMERIC_7:
+			break;
+		case CMD_NUMERIC_8:
+			break;
+		case CMD_NUMERIC_9:
+			break;
+		case CMD_UP:
+			break;
+		case CMD_DOWN:
+			break;
+		case CMD_LEFT:
+			break;
+		case CMD_RIGHT:
+			break;
+		case CMD_RED:
+			break;
+		case CMD_GREEN:
+			break;
+		case CMD_YELLOW:
+			break;
+		case CMD_BLUE:
+			break;
+		case CMD_OK:
+			break;
+		case CMD_MUTE:
+			break;
+		case CMD_VOLUMEUP:
+			break;
+		case CMD_VOLUMEDOWN:
+			break;
+		case CMD_CHANNELUP:
+			break;
+		case CMD_CHANNELDOWN:
+			break;
+			
+		default:
+			break;
+	}
+	
 }
  
