@@ -35,7 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/LCDTemplates.o \
+	${OBJECTDIR}/CommandProcessor.o \
+	${OBJECTDIR}/LCDTemplatesMaster.o \
 	${OBJECTDIR}/main.o
 
 
@@ -63,10 +64,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/meditech_raspiancontrolpanel: ${OBJEC
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/meditech_raspiancontrolpanel ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/LCDTemplates.o: LCDTemplates.cpp 
+${OBJECTDIR}/CommandProcessor.o: CommandProcessor.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LCDTemplates.o LCDTemplates.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CommandProcessor.o CommandProcessor.cpp
+
+${OBJECTDIR}/LCDTemplatesMaster.o: LCDTemplatesMaster.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LCDTemplatesMaster.o LCDTemplatesMaster.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

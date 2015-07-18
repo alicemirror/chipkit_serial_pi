@@ -27,6 +27,8 @@
 
 #include "Globals.h"
 #include "ControllerKeys.h"
+#include "LCDTemplatesMaster.h"
+#include "CommandProcessor.h"
  
 #define __DEBUG
 
@@ -58,7 +60,7 @@ int main(int argc, char *argv[]) {
 				KEY_OK, KEY_MUTE, KEY_VOLUMEUP, KEY_VOLUMEDOWN, KEY_CHANNELUP, KEY_CHANNELDOWN };
 
 	//Initiate LIRC. Exit on failure
-	if(lirc_init(LIRC_CLIENT, 1) == -1)
+	if(lirc_init((char *)LIRC_CLIENT, 1) == -1)
 			exit(EXIT_FAILURE);
  
 	//Read the default LIRC config at /etc/lirc/lircd.conf
@@ -105,6 +107,13 @@ int main(int argc, char *argv[]) {
  \param infraredID The IR command ID
  */
 void parseIR(int infraredID) {
+	//! CommandProcessor class instance.
+	CommandProcessor cProc;
+	//! The command string to be sent to the control panel
+	char* command = '\0';
+	//! The command ready to send flag
+	bool toSend = false;
+	
 #ifdef __DEBUG
 			printf("exec>%i\n", infraredID);
 #endif
@@ -112,20 +121,32 @@ void parseIR(int infraredID) {
 	// Process the ID
 	switch(infraredID) {
 		case CMD_MENU:
+			command = cProc.buildCommandDisplayTemplate(TID_DEFAULT);
+			toSend = true;
 			break;
 		case CMD_POWER:
 			break;
 		case CMD_NUMERIC_0:
 			break;
 		case CMD_NUMERIC_1:
+			command = cProc.buildCommandDisplayTemplate(TID_STETHOSCOPE);
+			toSend = true;
 			break;
 		case CMD_NUMERIC_2:
+			command = cProc.buildCommandDisplayTemplate(TID_BLOODPRESS);
+			toSend = true;
 			break;
 		case CMD_NUMERIC_3:
+			command = cProc.buildCommandDisplayTemplate(TID_HEARTBEAT);
+			toSend = true;
 			break;
 		case CMD_NUMERIC_4:
+			command = cProc.buildCommandDisplayTemplate(TID_TEMPERATURE);
+			toSend = true;
 			break;
 		case CMD_NUMERIC_5:
+			command = cProc.buildCommandDisplayTemplate(TID_ECG);
+			toSend = true;
 			break;
 		case CMD_NUMERIC_6:
 			break;
@@ -144,8 +165,12 @@ void parseIR(int infraredID) {
 		case CMD_RIGHT:
 			break;
 		case CMD_RED:
+			command = cProc.buildCommandDisplayTemplate(TID_TEST);
+			toSend = true;
 			break;
 		case CMD_GREEN:
+			command = cProc.buildCommandDisplayTemplate(TID_INFO);
+			toSend = true;
 			break;
 		case CMD_YELLOW:
 			break;
@@ -168,5 +193,11 @@ void parseIR(int infraredID) {
 			break;
 	}
 	
+	// Send the command if needed
+	if(toSend) {
+#ifdef __DEBUG
+		printf("CMD>%s\n", command);
+#endif
+	}
 }
  

@@ -1,53 +1,10 @@
 /**
-  \file LCDTemplates.h
-  \brief LCD display templates
-
-
-  \page lcd_template How LCD templates works
-  To simplify the display of the different conditions a set of predefined templates are defined
-  so it is sufficient to send the IDs and relative strings to create the needed visualisation.
-  This mechanism will also reduce the code size of the program.\n
-  
-  Every template has a symbolic ID and is built by a simple structure where every string to be shown
-  has its own row and columns. Then a single recursive method can be used to generate the visualisation
-  The templates are though as static objects leaving the space, where needed, for the variable data; in this
-  case the template defines only the position on the display but does not define the content.\n
-  
-  Tas the template is an abstraction of the visualisation the strings are not defined statically:\n
-  <b> the template is filled at runtime</b>\n
-  
-  Every template is an array of a set of basic <b>fields</b> defining the parameters where a certain value should
-  be shown. 
-  */
+\file LCDTemplates.h
+\brief LCD display templates
+*/
 
 #ifndef __LCDTEMPLATES_H__
 #define __LCDTEMPLATES_H__
-
-#include "LCD.h"
-
-/**
-  \brief Defines the active probe bit
-  
-  The two-bytes word has the corresponding probe bit
-  when the probe is shown on the LCD display.\n
-  
-  The bit order is the following:\n
-  <ul>
-  <li>0x0001 - STETHOSCOPE_ON</li>
-  <li>0x0002 - BLOODPRESS_ON</li>
-  <li>0x0004 - HEARTBEAT_ON</li>
-  <li>0x0008 - TEMPERATURE_ON</li>
-  <li>0x0010 - ECG_ON</li>
-  <li>0x0020 - Unused</li>
-  <li>0x0040 - Unused</li>
-  <li>0x0080 - Unused</li>
-  <li>0x0100 - Unused</li>
-  <li>0x0200 - Unused</li>
-  <li>0x0400 - Unused</li>
-  <li>0x0800 - Unused</li>
-  </ul>
-  */
-typedef word probeActive;
 
 //! Stethoscope enabled bit
 #define STETHOSCOPE_ON 0x0001
@@ -63,7 +20,7 @@ typedef word probeActive;
 //! Max number of templates
 #define MAX_TEMPLATES 7
 
-//! Largest field array. Corresonds to the largest
+//! Largest field array. Corresponds to the largest
 //! possible template
 #define MAX_FIELDS 6;
 
