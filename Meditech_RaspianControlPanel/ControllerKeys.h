@@ -9,8 +9,10 @@
  in a single loop - the key names are assigned to an array whose index correspond
  to the symbolic numeric ID of every command.
  The next group of defines contains the command symbolic ID so it is possible to
- parse the user commands with a simple integer control reducing the string comparisong
+ parse the user commands with a simple integer control reducing the string comparison
  to a single case in the program.
+ 
+ \note This header file also includes the function prototypes of the main program.
  
  */
 
@@ -76,6 +78,8 @@
 
 // Function prototypes
 void parseIR(int);
+void initFlags(void);
+void setPowerOffStatus(int);
 
 #endif	/* CONTROLLERKEYS_H */
 

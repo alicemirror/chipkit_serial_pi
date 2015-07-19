@@ -14,6 +14,25 @@
  \note In a normal running condition the IR controller is the only interaction point
  of the user with the system, resulting in a semi-automated architecture and a high
  usability level.
+ 
+ The application is essentially built over a main while() loop controlling the IR controller
+ button press. When the lirc interface has been opened correctly without errors, also
+ the serial interface (connecting the control panel board) is opened for the remote communication
+ Both the communication lines (serial and IR) are set to run in non-blocking mode to avoid
+ system hangs and too long delays.
+ The serial interface remain opened granting the communication with the control panel board
+ but the commands are originated from the master. In the meantime, the UART connection is checked
+ every IR cycle to see is there are characters waiting to be received in the queue, further sent
+ to the parser. This grant that the master device is able to answer to calls from
+ the control panel board, i.e. alarm or specific parameters requests.
+ 
+ The architecture can work without changes also when more conditions should be managed
+ in one of the two directions, simply including more accepted command requests in the
+ parser or adding display templates for sending to the control panel board.
+ 
+ \note When a command is recognized as a valid button it is not possible to send more commands
+ (no queueing is supported). As a matter of fact the entire multi-computer Meditech is a
+ parallel state machine that should work in a completely asynchronous way.
 
 */
 
@@ -22,9 +41,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <termios.h>
 #include <lirc/lirc_client.h>
 #include <time.h>
-
 #include "Globals.h"
 #include "ControllerKeys.h"
 #include "LCDTemplatesMaster.h"
@@ -32,10 +53,19 @@
  
 #define __DEBUG
 
+//! UART file stream to manage the serial connection
+int uart0_filestream = -1;
+
+//! Status flags structure
+states controllerStatus;
+
+//! The command string to be sent to the control panel
+char* cmdString = '\0';
+
 /**
  \brief main The main entry point of the program
  
- This program is organized to manage the incoming IR commands, accordingly with
+ This program is organized to manage the incoming IR cmdStrings, accordingly with
  the /etc/lirc/lircd.conf file. Every command is associated to a specific
  action that is launched, mostly through the control panel. For a complete command
  management mechanism ready the Infrared Control commands definition.
@@ -49,6 +79,8 @@ int main(int argc, char *argv[]) {
 	char *code;
 	//! A character pointer. What else?
 	char *s;
+	
+	initFlags();
 
 //! Array with all the controller IR keys string name
 //! If a string in the array match with the lirc return code the corresponding array index
@@ -65,8 +97,37 @@ int main(int argc, char *argv[]) {
  
 	//Read the default LIRC config at /etc/lirc/lircd.conf
 	if(lirc_readconfig(NULL, &config, NULL) == 0) {
+		// Set the lirc status flag
+		controllerStatus.isLircRunning = true;
+		// As lirc is working intialise the serial connection
+		uart0_filestream = open(UART_DEVICE, O_RDWR | O_NOCTTY | O_NDELAY);		//Open in non blocking read/write mode
+		// Check the UART opening status. If a problem occur, the application exits.
+		if(uart0_filestream == -1) {
+			//Frees the data structures associated with config.
+			lirc_freeconfig(config);
+			// Closes the connection to lircd and does some internal clean-up stuff.
+			lirc_deinit();
+			// Set the lirc status flag
+			controllerStatus.isLircRunning = false;
+			exit(EXIT_FAILURE); // The /etc/lirc/lircd,conf file does not exist.
+		} // Problem opening the UART. Exit with error
+		
+		// Configure the UART connection
+		struct termios options;
+		tcgetattr(uart0_filestream, &options);
+		options.c_cflag = B38400 | CS8 | CLOCAL | CREAD;
+		options.c_iflag = IGNPAR;
+		options.c_oflag = 0;
+		options.c_lflag = 0;
+		// Serial buffer is flushed before setting the parameters correctly
+		tcflush(uart0_filestream, TCIFLUSH);
+		tcsetattr(uart0_filestream, TCSANOW, &options);		
+		// Set the UART flag status
+		controllerStatus.isUARTRunning = true;
+		// ====================================================================
 		// This is virtually our infinite loop. The only exit condition
 		// is when the socket is closed.
+		// ====================================================================
 		while(lirc_nextcode(&code) == 0) {
 			//If code = NULL, meaning nothing was returned from LIRC socket,
 			//then skip lines below and start while loop again.
@@ -76,21 +137,24 @@ int main(int argc, char *argv[]) {
 			// key has been pressed.
 			for(int i = 0; i < NUM_KEYS; i++) {
 				// Search for a corresponding key
-				if(strstr (code, IR_KEYS[i])){
+				if(strstr(code, IR_KEYS[i])){
 #ifdef __DEBUG
-					printf("detect>%s\n", IR_KEYS[i]);
+					printf("Lirc detected>%s\n", IR_KEYS[i]);
 #endif
 					// Parse the key event
 					parseIR(i);
-					break;
+					break; // Forces the loop exit.
 				} // found the pressed key
 			} // Loop searching the key press.
 		} // IR code processing
+		// ====================================================================
+		// Lirc controller infinite loop / END
+		// ====================================================================
 		// Need to free up code before the next loop
 		free(code);
 	} // infinite reading loop
-		//Frees the data structures associated with config.
-		lirc_freeconfig(config);
+	//Frees the data structures associated with config.
+	lirc_freeconfig(config);
 	// Closes the connection to lircd and does some internal clean-up stuff.
 	lirc_deinit();
 	exit(EXIT_FAILURE); // The /etc/lirc/lircd,conf file does not exist.
@@ -99,7 +163,7 @@ int main(int argc, char *argv[]) {
 /**
  \brief Parses the infrared key ID and executes the associated command.
  
- This function represent the first level of parsing interfacing the user choice
+ This function is the first level of parsing interfacing the user choice
  when a recognized command button is pressed on the IR controller with the second
  parsing level to execute the command, depending on the actual condition of the 
  system.
@@ -109,95 +173,166 @@ int main(int argc, char *argv[]) {
 void parseIR(int infraredID) {
 	//! CommandProcessor class instance.
 	CommandProcessor cProc;
-	//! The command string to be sent to the control panel
-	char* command = '\0';
-	//! The command ready to send flag
-	bool toSend = false;
-	
-#ifdef __DEBUG
-			printf("exec>%i\n", infraredID);
-#endif
 	
 	// Process the ID
 	switch(infraredID) {
 		case CMD_MENU:
-			command = cProc.buildCommandDisplayTemplate(TID_DEFAULT);
-			toSend = true;
+			cmdString = cProc.buildCommandDisplayTemplate(TID_DEFAULT);
+			controllerStatus.toSend = SERIAL_READY_TO_SEND;
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_POWER:
+			setPowerOffStatus(POWEROFF_REQUEST);
 			break;
 		case CMD_NUMERIC_0:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_1:
-			command = cProc.buildCommandDisplayTemplate(TID_STETHOSCOPE);
-			toSend = true;
+			cmdString = cProc.buildCommandDisplayTemplate(TID_STETHOSCOPE);
+			controllerStatus.toSend = SERIAL_READY_TO_SEND;
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_2:
-			command = cProc.buildCommandDisplayTemplate(TID_BLOODPRESS);
-			toSend = true;
+			cmdString = cProc.buildCommandDisplayTemplate(TID_BLOODPRESS);
+			controllerStatus.toSend = SERIAL_READY_TO_SEND;
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_3:
-			command = cProc.buildCommandDisplayTemplate(TID_HEARTBEAT);
-			toSend = true;
+			cmdString = cProc.buildCommandDisplayTemplate(TID_HEARTBEAT);
+			controllerStatus.toSend = SERIAL_READY_TO_SEND;
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_4:
-			command = cProc.buildCommandDisplayTemplate(TID_TEMPERATURE);
-			toSend = true;
+			cmdString = cProc.buildCommandDisplayTemplate(TID_TEMPERATURE);
+			controllerStatus.toSend = SERIAL_READY_TO_SEND;
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_5:
-			command = cProc.buildCommandDisplayTemplate(TID_ECG);
-			toSend = true;
+			cmdString = cProc.buildCommandDisplayTemplate(TID_ECG);
+			controllerStatus.toSend = SERIAL_READY_TO_SEND;
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_6:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_7:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_8:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_9:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_UP:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_DOWN:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_LEFT:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_RIGHT:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_RED:
-			command = cProc.buildCommandDisplayTemplate(TID_TEST);
-			toSend = true;
+			cmdString = cProc.buildCommandDisplayTemplate(TID_TEST);
+			controllerStatus.toSend = SERIAL_READY_TO_SEND;
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_GREEN:
-			command = cProc.buildCommandDisplayTemplate(TID_INFO);
-			toSend = true;
+			cmdString = cProc.buildCommandDisplayTemplate(TID_INFO);
+			controllerStatus.toSend = SERIAL_READY_TO_SEND;
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_YELLOW:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_BLUE:
+			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_OK:
+			if(controllerStatus.powerOff == POWEROFF_REQUEST)
+				setPowerOffStatus(POWEROFF_CONFIRMED);
+			else
+				setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_MUTE:
+			controllerStatus.powerOff = POWEROFF_NONE;
 			break;
 		case CMD_VOLUMEUP:
+			controllerStatus.powerOff = POWEROFF_NONE;
 			break;
 		case CMD_VOLUMEDOWN:
+			controllerStatus.powerOff = POWEROFF_NONE;
 			break;
 		case CMD_CHANNELUP:
+			controllerStatus.powerOff = POWEROFF_NONE;
 			break;
 		case CMD_CHANNELDOWN:
+			controllerStatus.powerOff = POWEROFF_NONE;
 			break;
 			
 		default:
 			break;
-	}
+	} // Button ID case
 	
 	// Send the command if needed
-	if(toSend) {
-#ifdef __DEBUG
-		printf("CMD>%s\n", command);
-#endif
-	}
+//	if(toSend) {
+//#ifdef __DEBUG
+//		printf("CMD>%s\n", cmdString);
+//#endif
+//		write(uart0_filestream, cmdString, 1024);
+//	}
 }
  
+/**
+ \brief Initializes the status flags to the first run condition.
+ 
+ \todo Manage the isSystemRunning flag status accordingly with the Meditech
+ global status.
+ */
+void initFlags(void) {
+	controllerStatus.activeProbe = PROBE_ACTIVE_NONE;
+	controllerStatus.isLircRunning = false;
+	controllerStatus.isUARTRunning = false;
+	controllerStatus.isSystemRunning = true; // Not yet managed
+	controllerStatus.toSend = SERIAL_IDLE_STATUS;
+	controllerStatus.powerOff = POWEROFF_NONE;
+}
+
+/**
+ \brief Manage the power status of the system
+ 
+ The power off status flag is managed by this separate function as the status change
+ is associated to different events involving the entire Meditech architecture. 
+ If the power off sequence is confirmed then the master system should shutdown the other
+ devices then shutdown itself.
+ 
+ */
+void setPowerOffStatus(int status) {
+	switch(status) {
+		case POWEROFF_NONE:
+			// The power off status is simply reset and no particular action
+			// should be done
+			controllerStatus.powerOff = POWEROFF_NONE;
+			break;
+			
+		case POWEROFF_REQUEST:
+			// The power off request has been armed and should be confirmed.
+			// If no confirmation arrives, the sequence ends with no effect
+			// and the status is reset.
+			controllerStatus.powerOff = POWEROFF_REQUEST;
+			break;
+			
+		case POWEROFF_CONFIRMED:
+			// The power off request has been confirmed and the non-reversible
+			// shutdown process has been started
+			controllerStatus.powerOff = POWEROFF_CONFIRMED;
+#ifdef __DEBUG
+			exit(0); // Application is terminated
+#endif
+			break;
+	} // Power off status cases
+}
