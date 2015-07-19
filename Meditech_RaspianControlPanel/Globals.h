@@ -56,7 +56,7 @@ typedef struct ControllerStatusFlags {
 	 values: SERIAL_IDLE_STATUS, SERIAL_READY_TO_SEND, SERIAL_JUST_SENT, SERIAL_ACTION_BREAK,
 	 SERIAL_RESPONSE_RECEIVED
 	 */
-	int toSend;
+	int serialState;
 	
 	/**
 	 Active probe is the last probe request sent to the control panel that returned 
@@ -86,6 +86,9 @@ typedef struct ControllerStatusFlags {
 	 POWEROFF_NONE, POWEROFF_REQUEST, POWEROFF_CONFIRMED
 	 */
 	int powerOff;
+	
+	//! Last key ID received from LIRC. Used to avoid command key bouncing.
+	int lastKey;
 	
 } states;
 

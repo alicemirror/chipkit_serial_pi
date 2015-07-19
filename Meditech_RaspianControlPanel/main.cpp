@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
 		// Set the lirc status flag
 		controllerStatus.isLircRunning = true;
 		// As lirc is working intialise the serial connection
-		uart0_filestream = open(UART_DEVICE, O_RDWR | O_NOCTTY | O_NDELAY);		//Open in non blocking read/write mode
+		uart0_filestream = open(UART_DEVICE, O_RDWR | O_NOCTTY | O_NDELAY);
 		// Check the UART opening status. If a problem occur, the application exits.
 		if(uart0_filestream == -1) {
 			//Frees the data structures associated with config.
@@ -129,18 +129,21 @@ int main(int argc, char *argv[]) {
 		// is when the socket is closed.
 		// ====================================================================
 		while(lirc_nextcode(&code) == 0) {
-			//If code = NULL, meaning nothing was returned from LIRC socket,
-			//then skip lines below and start while loop again.
+			// Check the serial status
+			manageSerial();
+			
+			// If code = NULL, meaning nothing was returned from LIRC socket,
+			// then skip lines below and start while loop again.
 			if(code == NULL) continue;
-
+			
 			// Loop on the IR keys array key names searching if a valid
 			// key has been pressed.
 			for(int i = 0; i < NUM_KEYS; i++) {
 				// Search for a corresponding key
 				if(strstr(code, IR_KEYS[i])){
-#ifdef __DEBUG
-					printf("Lirc detected>%s\n", IR_KEYS[i]);
-#endif
+//#ifdef __DEBUG
+//					printf("Lirc detected>%s\n", IR_KEYS[i]);
+//#endif
 					// Parse the key event
 					parseIR(i);
 					break; // Forces the loop exit.
@@ -168,6 +171,11 @@ int main(int argc, char *argv[]) {
  parsing level to execute the command, depending on the actual condition of the 
  system.
  
+ \note Some commands should not pressed multiple times so the case is ignored
+ if the same comman has been already pressed. E.g. this is the case of the
+ display templates that should not be required more than one time or the power off
+ button that after pressed further press has no effect.
+ 
  \param infraredID The IR command ID
  */
 void parseIR(int infraredID) {
@@ -177,40 +185,63 @@ void parseIR(int infraredID) {
 	// Process the ID
 	switch(infraredID) {
 		case CMD_MENU:
-			cmdString = cProc.buildCommandDisplayTemplate(TID_DEFAULT);
-			controllerStatus.toSend = SERIAL_READY_TO_SEND;
-			setPowerOffStatus(POWEROFF_NONE);
+			if(infraredID != controllerStatus.lastKey) {
+				cmdString = cProc.buildCommandDisplayTemplate(TID_DEFAULT);
+				setPowerOffStatus(POWEROFF_NONE);
+			}
 			break;
 		case CMD_POWER:
-			setPowerOffStatus(POWEROFF_REQUEST);
+			if(infraredID != controllerStatus.lastKey) {
+				setPowerOffStatus(POWEROFF_REQUEST);
+			}
 			break;
 		case CMD_NUMERIC_0:
 			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_NUMERIC_1:
-			cmdString = cProc.buildCommandDisplayTemplate(TID_STETHOSCOPE);
-			controllerStatus.toSend = SERIAL_READY_TO_SEND;
-			setPowerOffStatus(POWEROFF_NONE);
+			if(infraredID != controllerStatus.lastKey) {
+				cmdString = cProc.buildCommandDisplayTemplate(TID_STETHOSCOPE);
+				controllerStatus.serialState = SERIAL_READY_TO_SEND;
+				setPowerOffStatus(POWEROFF_NONE);
+				// Check the serial status
+				manageSerial();
+			}
 			break;
 		case CMD_NUMERIC_2:
-			cmdString = cProc.buildCommandDisplayTemplate(TID_BLOODPRESS);
-			controllerStatus.toSend = SERIAL_READY_TO_SEND;
-			setPowerOffStatus(POWEROFF_NONE);
+			if(infraredID != controllerStatus.lastKey) {
+				cmdString = cProc.buildCommandDisplayTemplate(TID_BLOODPRESS);
+				controllerStatus.serialState = SERIAL_READY_TO_SEND;
+				setPowerOffStatus(POWEROFF_NONE);
+				// Check the serial status
+				manageSerial();
+			}
 			break;
 		case CMD_NUMERIC_3:
-			cmdString = cProc.buildCommandDisplayTemplate(TID_HEARTBEAT);
-			controllerStatus.toSend = SERIAL_READY_TO_SEND;
-			setPowerOffStatus(POWEROFF_NONE);
+			if(infraredID != controllerStatus.lastKey) {
+				cmdString = cProc.buildCommandDisplayTemplate(TID_HEARTBEAT);
+				controllerStatus.serialState = SERIAL_READY_TO_SEND;
+				setPowerOffStatus(POWEROFF_NONE);
+				// Check the serial status
+				manageSerial();
+			}
 			break;
 		case CMD_NUMERIC_4:
-			cmdString = cProc.buildCommandDisplayTemplate(TID_TEMPERATURE);
-			controllerStatus.toSend = SERIAL_READY_TO_SEND;
-			setPowerOffStatus(POWEROFF_NONE);
+			if(infraredID != controllerStatus.lastKey) {
+				cmdString = cProc.buildCommandDisplayTemplate(TID_TEMPERATURE);
+				controllerStatus.serialState = SERIAL_READY_TO_SEND;
+				setPowerOffStatus(POWEROFF_NONE);
+				// Check the serial status
+				manageSerial();
+			}
 			break;
 		case CMD_NUMERIC_5:
-			cmdString = cProc.buildCommandDisplayTemplate(TID_ECG);
-			controllerStatus.toSend = SERIAL_READY_TO_SEND;
-			setPowerOffStatus(POWEROFF_NONE);
+			if(infraredID != controllerStatus.lastKey) {
+				cmdString = cProc.buildCommandDisplayTemplate(TID_ECG);
+				controllerStatus.serialState = SERIAL_READY_TO_SEND;
+				setPowerOffStatus(POWEROFF_NONE);
+				// Check the serial status
+				manageSerial();
+			}
 			break;
 		case CMD_NUMERIC_6:
 			setPowerOffStatus(POWEROFF_NONE);
@@ -237,14 +268,22 @@ void parseIR(int infraredID) {
 			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_RED:
-			cmdString = cProc.buildCommandDisplayTemplate(TID_TEST);
-			controllerStatus.toSend = SERIAL_READY_TO_SEND;
-			setPowerOffStatus(POWEROFF_NONE);
+			if(infraredID != controllerStatus.lastKey) {
+				cmdString = cProc.buildCommandDisplayTemplate(TID_TEST);
+				controllerStatus.serialState = SERIAL_READY_TO_SEND;
+				setPowerOffStatus(POWEROFF_NONE);
+				// Check the serial status
+				manageSerial();
+			}
 			break;
 		case CMD_GREEN:
-			cmdString = cProc.buildCommandDisplayTemplate(TID_INFO);
-			controllerStatus.toSend = SERIAL_READY_TO_SEND;
-			setPowerOffStatus(POWEROFF_NONE);
+			if(infraredID != controllerStatus.lastKey) {
+				cmdString = cProc.buildCommandDisplayTemplate(TID_INFO);
+				controllerStatus.serialState = SERIAL_READY_TO_SEND;
+				setPowerOffStatus(POWEROFF_NONE);
+				// Check the serial status
+				manageSerial();
+			}
 			break;
 		case CMD_YELLOW:
 			setPowerOffStatus(POWEROFF_NONE);
@@ -253,40 +292,88 @@ void parseIR(int infraredID) {
 			setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_OK:
-			if(controllerStatus.powerOff == POWEROFF_REQUEST)
-				setPowerOffStatus(POWEROFF_CONFIRMED);
-			else
-				setPowerOffStatus(POWEROFF_NONE);
+			if(infraredID != controllerStatus.lastKey) {
+				if(controllerStatus.powerOff == POWEROFF_REQUEST)
+					setPowerOffStatus(POWEROFF_CONFIRMED);
+				else
+					setPowerOffStatus(POWEROFF_NONE);
+			}
 			break;
 		case CMD_MUTE:
-			controllerStatus.powerOff = POWEROFF_NONE;
+				setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_VOLUMEUP:
-			controllerStatus.powerOff = POWEROFF_NONE;
+				setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_VOLUMEDOWN:
-			controllerStatus.powerOff = POWEROFF_NONE;
+				setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_CHANNELUP:
-			controllerStatus.powerOff = POWEROFF_NONE;
+				setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_CHANNELDOWN:
-			controllerStatus.powerOff = POWEROFF_NONE;
+				setPowerOffStatus(POWEROFF_NONE);
 			break;
 			
 		default:
 			break;
 	} // Button ID case
 	
-	// Send the command if needed
-//	if(toSend) {
-//#ifdef __DEBUG
-//		printf("CMD>%s\n", cmdString);
-//#endif
-//		write(uart0_filestream, cmdString, 1024);
-//	}
+	// Update the last key ID
+	controllerStatus.lastKey = infraredID;
 }
+
+/**
+ \brief Manage the serial communication between the master and the control panel
+ board.
  
+ Depending on the serial flag status this function send the waiting command
+ or check for the presence of an expected response from the remote system.
+ 
+ \warning Use this function only when sure that the serial is connected and
+ running as there are no controls on the serial status.
+ */
+void manageSerial(void) {
+	int bytesWritten = 0;
+	char rx_buffer[MAX_CMD_LEN];
+	int rx_length;
+
+	switch(controllerStatus.serialState) {
+		case SERIAL_IDLE_STATUS:
+			// No action is required
+			break;
+			
+		case SERIAL_READY_TO_SEND:
+			// There is a command ready to send in the command string queue
+			bytesWritten = write(uart0_filestream, cmdString, MAX_CMD_LEN);
+			// Change the serial status accordingly to the action
+			controllerStatus.serialState = SERIAL_JUST_SENT;
+			break;
+			
+		case SERIAL_JUST_SENT:
+			// The previous action a command string was sent to the remote board
+			// so check if an answer is arrived.
+			if (uart0_filestream != -1) {
+				rx_length = read(uart0_filestream, (void*)rx_buffer, MAX_CMD_LEN);
+				// Check if there are bytes waiting
+				if (rx_length > 0) {
+					//Bytes received
+					rx_buffer[rx_length] = '\0';
+#ifdef __DEBUG
+					printf("UART>%i bytes : %s\n", rx_length, rx_buffer);
+#endif
+					cmdString = rx_buffer;
+				} // Load the data read
+			} // Check for data on the uart buffer queue			
+			controllerStatus.serialState = SERIAL_IDLE_STATUS;
+			break;
+			
+		default:
+			break;
+	} // Serial status cases
+	
+}
+
 /**
  \brief Initializes the status flags to the first run condition.
  
@@ -298,8 +385,9 @@ void initFlags(void) {
 	controllerStatus.isLircRunning = false;
 	controllerStatus.isUARTRunning = false;
 	controllerStatus.isSystemRunning = true; // Not yet managed
-	controllerStatus.toSend = SERIAL_IDLE_STATUS;
+	controllerStatus.serialState = SERIAL_IDLE_STATUS;
 	controllerStatus.powerOff = POWEROFF_NONE;
+	controllerStatus.lastKey = '\0';
 }
 
 /**
@@ -309,6 +397,8 @@ void initFlags(void) {
  is associated to different events involving the entire Meditech architecture. 
  If the power off sequence is confirmed then the master system should shutdown the other
  devices then shutdown itself.
+ 
+ \todo Implement the full system shutdown sequence on power off request confirmation.
  
  */
 void setPowerOffStatus(int status) {
@@ -332,6 +422,8 @@ void setPowerOffStatus(int status) {
 			controllerStatus.powerOff = POWEROFF_CONFIRMED;
 #ifdef __DEBUG
 			exit(0); // Application is terminated
+#else
+			// Initiae a shutdown sequence
 #endif
 			break;
 	} // Power off status cases

@@ -80,6 +80,7 @@
 void parseIR(int);
 void initFlags(void);
 void setPowerOffStatus(int);
+void manageSerial(void);
 
 #endif	/* CONTROLLERKEYS_H */
 
