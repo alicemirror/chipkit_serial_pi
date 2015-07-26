@@ -33,6 +33,11 @@
  \note When a command is recognized as a valid button it is not possible to send more commands
  (no queueing is supported). As a matter of fact the entire multi-computer Meditech is a
  parallel state machine that should work in a completely asynchronous way.
+ 
+ The program is started on boot but can be launched from the command line with the parameter
+ VOICE_STRINGS In this case instead of starting the controller loop the program generate the
+ audio speech wav message strings used by the system. The TTS (Text-to-speech) uses the 
+ festival speech synthesis system that should be installed and available from the shell.
 
 */
 
@@ -40,16 +45,20 @@
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <sys/types.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <termios.h>
 #include <lirc/lirc_client.h>
 #include <time.h>
+#include <unistd.h>
+#include <string>
+#include <iostream>
 #include "Globals.h"
 #include "ControllerKeys.h"
 #include "LCDTemplatesMaster.h"
 #include "CommandProcessor.h"
+#include "MessageStrings.h"
  
 #define __DEBUG
 
@@ -70,6 +79,9 @@ char* cmdString = '\0';
  action that is launched, mostly through the control panel. For a complete command
  management mechanism ready the Infrared Control commands definition.
  
+ \note Only if the program has no arguments the controller starts else the
+ arguments are checked then the program exits.
+ 
  \todo manage a more complete lirc initialization including an error log file.
  */
 int main(int argc, char *argv[]) {
@@ -79,6 +91,27 @@ int main(int argc, char *argv[]) {
 	char *code;
 	//! A character pointer. What else?
 	char *s;
+	
+	// Check for main parameters
+	if(argc > 1) {
+		// Check for valid arguments
+		if(argc != 2) {
+			printf(MAINEXIT_WRONGNUMPARAM);
+			exit(EXIT_FAILURE); // Wrong number of arguments
+		}
+		
+		// We expect and argument in the format '-x' where 'x' is
+		// the option code
+		if(strstr(argv[1], VOICE_STRINGS) ) {
+			ttsStrings();
+			printf(MAINEXIT_DONE);
+			exit(0);	// ending
+		} // Launch the TTS generation
+		else {
+			printf(MAINEXIT_WRONGPARAM);
+			exit(EXIT_FAILURE); // Wrong argument
+		}
+	} // 
 	
 	initFlags();
 
@@ -141,9 +174,6 @@ int main(int argc, char *argv[]) {
 			for(int i = 0; i < NUM_KEYS; i++) {
 				// Search for a corresponding key
 				if(strstr(code, IR_KEYS[i])){
-//#ifdef __DEBUG
-//					printf("Lirc detected>%s\n", IR_KEYS[i]);
-//#endif
 					// Parse the key event
 					parseIR(i);
 					break; // Forces the loop exit.
@@ -181,17 +211,24 @@ int main(int argc, char *argv[]) {
 void parseIR(int infraredID) {
 	//! CommandProcessor class instance.
 	CommandProcessor cProc;
+	bool remoteSSH_Success;
 	
 	// Process the ID
 	switch(infraredID) {
 		case CMD_MENU:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_SYSTEM_RESTARTED);
+				}
 				cmdString = cProc.buildCommandDisplayTemplate(TID_DEFAULT);
 				setPowerOffStatus(POWEROFF_NONE);
 			}
 			break;
 		case CMD_POWER:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_POWER_OFF);
+				}
 				setPowerOffStatus(POWEROFF_REQUEST);
 			}
 			break;
@@ -200,6 +237,9 @@ void parseIR(int infraredID) {
 			break;
 		case CMD_NUMERIC_1:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_STETHOSCOPE_ON);
+				}
 				cmdString = cProc.buildCommandDisplayTemplate(TID_STETHOSCOPE);
 				controllerStatus.serialState = SERIAL_READY_TO_SEND;
 				setPowerOffStatus(POWEROFF_NONE);
@@ -209,6 +249,9 @@ void parseIR(int infraredID) {
 			break;
 		case CMD_NUMERIC_2:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_BLOOD_PRESSURE_ON);
+				}
 				cmdString = cProc.buildCommandDisplayTemplate(TID_BLOODPRESS);
 				controllerStatus.serialState = SERIAL_READY_TO_SEND;
 				setPowerOffStatus(POWEROFF_NONE);
@@ -218,6 +261,9 @@ void parseIR(int infraredID) {
 			break;
 		case CMD_NUMERIC_3:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_HEATBEAT_ON);
+				}
 				cmdString = cProc.buildCommandDisplayTemplate(TID_HEARTBEAT);
 				controllerStatus.serialState = SERIAL_READY_TO_SEND;
 				setPowerOffStatus(POWEROFF_NONE);
@@ -227,6 +273,9 @@ void parseIR(int infraredID) {
 			break;
 		case CMD_NUMERIC_4:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_TEMPERATURE_ON);
+				}
 				cmdString = cProc.buildCommandDisplayTemplate(TID_TEMPERATURE);
 				controllerStatus.serialState = SERIAL_READY_TO_SEND;
 				setPowerOffStatus(POWEROFF_NONE);
@@ -236,6 +285,9 @@ void parseIR(int infraredID) {
 			break;
 		case CMD_NUMERIC_5:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_ECG_ON);
+				}
 				cmdString = cProc.buildCommandDisplayTemplate(TID_ECG);
 				controllerStatus.serialState = SERIAL_READY_TO_SEND;
 				setPowerOffStatus(POWEROFF_NONE);
@@ -269,6 +321,9 @@ void parseIR(int infraredID) {
 			break;
 		case CMD_RED:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_TESTING);
+				}
 				cmdString = cProc.buildCommandDisplayTemplate(TID_TEST);
 				controllerStatus.serialState = SERIAL_READY_TO_SEND;
 				setPowerOffStatus(POWEROFF_NONE);
@@ -278,6 +333,9 @@ void parseIR(int infraredID) {
 			break;
 		case CMD_GREEN:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_SYSTEM_READY);
+				}
 				cmdString = cProc.buildCommandDisplayTemplate(TID_INFO);
 				controllerStatus.serialState = SERIAL_READY_TO_SEND;
 				setPowerOffStatus(POWEROFF_NONE);
@@ -293,6 +351,9 @@ void parseIR(int infraredID) {
 			break;
 		case CMD_OK:
 			if(infraredID != controllerStatus.lastKey) {
+				if(!controllerStatus.isMuted) {
+					playRemoteMessage(TTS_SHUTDOWN);
+				}
 				if(controllerStatus.powerOff == POWEROFF_REQUEST)
 					setPowerOffStatus(POWEROFF_CONFIRMED);
 				else
@@ -300,6 +361,14 @@ void parseIR(int infraredID) {
 			}
 			break;
 		case CMD_MUTE:
+				if(controllerStatus.isMuted) {
+					playRemoteMessage(TTS_VOICE_ACTIVE);
+					controllerStatus.isMuted = false;
+				}
+				else {
+					playRemoteMessage(TTS_MUTED);
+					controllerStatus.isMuted = true;
+				}
 				setPowerOffStatus(POWEROFF_NONE);
 			break;
 		case CMD_VOLUMEUP:
@@ -388,6 +457,7 @@ void initFlags(void) {
 	controllerStatus.serialState = SERIAL_IDLE_STATUS;
 	controllerStatus.powerOff = POWEROFF_NONE;
 	controllerStatus.lastKey = '\0';
+	controllerStatus.isMuted = false;
 }
 
 /**
@@ -428,3 +498,132 @@ void setPowerOffStatus(int status) {
 			break;
 	} // Power off status cases
 }
+
+/**
+ \brief Convert the program application strings to voice messages
+*/
+void ttsStrings(void) {
+	
+	//! The strings array with the messages
+	const char * MESSAGES[TTS_MAX_MESSAGES] = { 
+		"System restarted to the power-on conditions. ",
+		"Power-off: press the OK button for complete shutdown, any other button to ignore. ",
+		"Power-off confirmed. Shutdown-sequence started. ",
+		"Voice messages are now active. ",
+		"Muted. ",
+		"Microphonic Stethoscope is now disabled. ",
+		"Microphonic Stethoscope is already active.",
+		"Enabled Microphonic Stethoscope. ",
+		"Blood Pressure measurement probe is now disabled. ",
+		"Blood Pressure measurement probe is already active.",
+		"Enabled Blood Pressure measurement probe. ",
+		"Heart Beat measurement probe is now disabled. ",
+		"Heart Beat measurement probe is already active.",
+		"Enabled Heart Beat measurement probe. ",
+		"Body Temperature measurement probe is now disabled. ",
+		"Body Temperature measurement probe is already active.",
+		"Enabled Body Temperature measurement probe. ",
+		"E.C.G. probe is now disabled. ",
+		"E.C.G. probe is already active.",
+		"Enabled E.C.G. probe. ",
+		"Look at the Control Panel display for system information. ",
+		"Started a Control Panel test cycle. ",
+		"Control Panel test cycle ended. ",
+		"Startup completed. System ready. ",
+		"Press OK button to start the probe collecting data. ",
+		"Probe stopped.",
+		"Continuous mode running. Press OK to stop collecting data."
+	};
+
+	printf(TTS_START_PROCESS);
+
+	// Generate the TTS wav files
+	for(int j = 0; j < TTS_MAX_MESSAGES; j++) {
+
+		char fileName[64];
+		char fileTemp[64];
+		char programName[32];
+		char programPath[64];
+		char messageText[1024];
+
+		sprintf(fileName, "%s%d.%s", TTS_FOLDER, j + 1, TTS_FORMAT);
+		sprintf(fileTemp, "%d.tmp", j + 1);
+		sprintf(programName, "%s", TTS_SHELL_COMMAND);
+		sprintf(programPath, "%s", TTS_SHELL_PATH);
+		sprintf(messageText, "%s", MESSAGES[j]);
+
+		char* arg_list[] = {
+			programName,     // argv[0], the name of the program.
+			messageText,
+			fileName,
+			fileTemp,
+			NULL
+		  };
+		
+		// Spawn a child process running the command.  
+		// Ignore the returned child process id.
+		spawn (programPath, arg_list); 
+	}
+}
+
+/**
+ \brief Play a voice message on the remote RPIslave3 with the
+ Cirrus Logic Audio Card.
+ 
+ \note To the Linux side the two computers should be set to share the
+ private / public ssh key to avoid passing user and password during the
+ ssh remote command launch
+ 
+ \param messageID The message ID to play remotely
+*/
+void playRemoteMessage(int messageID) {
+	
+		char sshCall[64];
+		char sshServer[64];
+		char programName[32];
+		char programPath[64];
+
+		sprintf(programName, "%s", SSH_COMMAND);
+		sprintf(programPath, "%s", SSH_PATH);
+		sprintf(sshCall, "%d", messageID + 1);
+
+		char* arg_list[] = {
+			programName,
+			sshCall,
+			NULL
+		  };
+		
+		// Spawn a child process running the command.  
+		// Ignore the returned child process id.
+		spawn (programPath, arg_list); 
+}
+
+/**
+ \brief Spawn a child process running a new program.  
+ 
+ \param program The name of the program to run; the path will be searched for 
+ this program.
+ \param arg_list A NULL-terminated list of character strings to be
+ passed as the program's argument list. 
+ 
+ \return The process id of the spawned process.
+ */
+int spawn (char* program, char** arg_list) {
+  pid_t child_pid;
+
+  // Duplicate the current process.
+  child_pid = fork ();
+  if (child_pid != 0)
+    // This is the parent process ID
+    return child_pid;
+  else {
+    // Now execute the program, searching for it in the path.
+    execvp(program, arg_list);
+	
+    // The execvp function returns only if an error occurs.
+    fprintf (stderr, TTS_SPAWN_ERROR);
+	// Abort the child process and return to the main process
+    abort ();
+  }
+}
+

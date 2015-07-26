@@ -44,6 +44,10 @@
 //! Power-off button : Power-off button has been confirmex. Ending.
 #define POWEROFF_CONFIRMED	2
 
+//! Command code to force the program to generate the TTS voice
+//! strings instead the normal execution.
+#define VOICE_STRINGS "-v"
+
 /**
  \brief Boolean states and flags to take track of the application status.
  Note that some of these status parameters are updated on the database for
@@ -89,6 +93,9 @@ typedef struct ControllerStatusFlags {
 	
 	//! Last key ID received from LIRC. Used to avoid command key bouncing.
 	int lastKey;
+	
+	//! Voice messages status
+	bool isMuted;
 	
 } states;
 

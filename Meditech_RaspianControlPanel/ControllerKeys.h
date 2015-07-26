@@ -81,6 +81,9 @@ void parseIR(int);
 void initFlags(void);
 void setPowerOffStatus(int);
 void manageSerial(void);
+void ttsStrings(void);
+int spawn (char*, char**);
+void playRemoteMessage(int);
 
 #endif	/* CONTROLLERKEYS_H */
 
