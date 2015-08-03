@@ -20,8 +20,8 @@ CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
 CND_ARTIFACT_NAME_Release=meditech_raspiancontrolpanel
 CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/meditech_raspiancontrolpanel
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=meditechraspiancontrolpanel.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/meditechraspiancontrolpanel.tar
+CND_PACKAGE_NAME_Release=meditechraspiancontrolpanel.deb
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/meditechraspiancontrolpanel.deb
 #
 # include compiler specific variables
 #

@@ -62,19 +62,19 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/meditech_raspiancontrolpanel: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/meditech_raspiancontrolpanel ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/meditech_raspiancontrolpanel ${OBJECTFILES} ${LDLIBSOPTIONS} -llirc_client
 
-${OBJECTDIR}/CommandProcessor.o: CommandProcessor.cpp 
+${OBJECTDIR}/CommandProcessor.o: nbproject/Makefile-${CND_CONF}.mk CommandProcessor.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CommandProcessor.o CommandProcessor.cpp
 
-${OBJECTDIR}/LCDTemplatesMaster.o: LCDTemplatesMaster.cpp 
+${OBJECTDIR}/LCDTemplatesMaster.o: nbproject/Makefile-${CND_CONF}.mk LCDTemplatesMaster.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/LCDTemplatesMaster.o LCDTemplatesMaster.cpp
 
-${OBJECTDIR}/main.o: main.cpp 
+${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp

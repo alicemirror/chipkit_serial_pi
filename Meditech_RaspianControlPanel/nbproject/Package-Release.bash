@@ -15,7 +15,7 @@ NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
 OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/meditech_raspiancontrolpanel
 OUTPUT_BASENAME=meditech_raspiancontrolpanel
-PACKAGE_TOP_DIR=meditechraspiancontrolpanel/
+PACKAGE_TOP_DIR=/usr/
 
 # Functions
 function checkReturnCode
@@ -60,16 +60,33 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/meditechraspiancontrolpanel/bin"
+makeDirectory "${NBTMPDIR}//usr/bin"
 copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
-# Generate tar file
+# Create control file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/meditechraspiancontrolpanel.tar
-cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/meditechraspiancontrolpanel.tar *
+CONTROL_FILE=${NBTMPDIR}/DEBIAN/control
+rm -f ${CONTROL_FILE}
+mkdir -p ${NBTMPDIR}/DEBIAN
+
+cd "${TOP}"
+echo 'Package: meditechraspiancontrolpanel' >> ${CONTROL_FILE}
+echo 'Version: 1.0' >> ${CONTROL_FILE}
+echo 'Architecture: i386' >> ${CONTROL_FILE}
+echo 'Maintainer: enrico' >> ${CONTROL_FILE}
+echo 'Description: ...' >> ${CONTROL_FILE}
+
+# Create Debian Package
+cd "${TOP}"
+cd "${NBTMPDIR}/.."
+dpkg-deb  --build ${TMPDIRNAME}
 checkReturnCode
+cd "${TOP}"
+mkdir -p  ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package
+mv ${NBTMPDIR}.deb ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/meditechraspiancontrolpanel.deb
+checkReturnCode
+echo Debian: ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/meditechraspiancontrolpanel.deb
 
 # Cleanup
 cd "${TOP}"

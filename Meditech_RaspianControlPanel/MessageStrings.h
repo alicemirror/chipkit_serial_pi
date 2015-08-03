@@ -17,8 +17,14 @@
 #ifndef MESSAGE_STRINGS_H
 #define	MESSAGE_STRINGS_H
 
-#define SSH_PATH "/home/pi/remote_message.sh"
-#define SSH_COMMAND "remote_message.sh"
+#define SSH_AUDIO_MESSAGE_PATH "/home/pi/remote_message.sh"
+#define SSH_AUDIO_MESSAGE "remote_message.sh"
+
+#define SSH_FOLDER_MOUNT_PATH "/home/pi/remote_mount.sh"
+#define SSH_FOLDER_MOUNT "remote_mount.sh"
+
+#define SSH_FOLDER_UMOUNT_PATH "/home/pi/remote_umount.sh"
+#define SSH_FOLDER_UMOUNT "remote_mount.sh"
 
 //! The audio files folder, under the pi home folder
 #define TTS_FOLDER	"/home/pi/tts_audio_messages/"

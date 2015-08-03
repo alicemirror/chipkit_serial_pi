@@ -84,6 +84,7 @@ void manageSerial(void);
 void ttsStrings(void);
 int spawn (char*, char**);
 void playRemoteMessage(int);
+void remoteMount_Umount(bool);
 
 #endif	/* CONTROLLERKEYS_H */
 

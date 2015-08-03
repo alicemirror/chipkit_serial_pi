@@ -59,8 +59,8 @@
 #include "LCDTemplatesMaster.h"
 #include "CommandProcessor.h"
 #include "MessageStrings.h"
- 
-#define __DEBUG
+
+#undef __DEBUG
 
 //! UART file stream to manage the serial connection
 int uart0_filestream = -1;
@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
 			exit(EXIT_FAILURE); // Wrong number of arguments
 		}
 		
-		// We expect and argument in the format '-x' where 'x' is
+		// We expect an argument in the format '-x' where 'x' is
 		// the option code
 		if(strstr(argv[1], VOICE_STRINGS) ) {
 			ttsStrings();
@@ -157,6 +157,9 @@ int main(int argc, char *argv[]) {
 		tcsetattr(uart0_filestream, TCSANOW, &options);		
 		// Set the UART flag status
 		controllerStatus.isUARTRunning = true;
+		// Mount remotely the audio meesages folder
+		remoteMount_Umount(true);
+
 		// ====================================================================
 		// This is virtually our infinite loop. The only exit condition
 		// is when the socket is closed.
@@ -190,6 +193,7 @@ int main(int argc, char *argv[]) {
 	lirc_freeconfig(config);
 	// Closes the connection to lircd and does some internal clean-up stuff.
 	lirc_deinit();
+	remoteMount_Umount(false);
 	exit(EXIT_FAILURE); // The /etc/lirc/lircd,conf file does not exist.
 }
 
@@ -493,7 +497,11 @@ void setPowerOffStatus(int status) {
 #ifdef __DEBUG
 			exit(0); // Application is terminated
 #else
-			// Initiae a shutdown sequence
+			// Initiate a shutdown sequence
+			// First dismount the remote folder
+			remoteMount_Umount(false);
+			exit(0);
+			//! \todo Shutdown sequence manager
 #endif
 			break;
 	} // Power off status cases
@@ -583,8 +591,8 @@ void playRemoteMessage(int messageID) {
 		char programName[32];
 		char programPath[64];
 
-		sprintf(programName, "%s", SSH_COMMAND);
-		sprintf(programPath, "%s", SSH_PATH);
+		sprintf(programName, "%s", SSH_AUDIO_MESSAGE);
+		sprintf(programPath, "%s", SSH_AUDIO_MESSAGE_PATH);
 		sprintf(sshCall, "%d", messageID + 1);
 
 		char* arg_list[] = {
@@ -596,6 +604,42 @@ void playRemoteMessage(int messageID) {
 		// Spawn a child process running the command.  
 		// Ignore the returned child process id.
 		spawn (programPath, arg_list); 
+}
+
+/**
+ \brief Mount or umount the remote message folder to play audio messages with 
+ the CLAC
+ 
+ \note To the Linux side the two computers should be set to share the
+ private / public ssh key to avoid passing user and password during the
+ ssh remote command launch
+ 
+ \param action Mount remotely the audio message folder if true, else umount it
+*/
+void remoteMount_Umount(bool action) {
+
+	char programName[64];
+	char programPath[64];
+
+	if(action) {
+		// Mount remote folder
+		sprintf(programName, "%s", SSH_FOLDER_MOUNT);
+		sprintf(programPath, "%s", SSH_FOLDER_MOUNT_PATH);
+	}
+	else {
+		// Umount remote folder
+		sprintf(programName, "%s", SSH_FOLDER_UMOUNT);
+		sprintf(programPath, "%s", SSH_FOLDER_UMOUNT_PATH);
+	}
+	
+	char* arg_list[] = {
+		programName,
+		NULL
+	  };
+
+	// Spawn a child process running the command.  
+	// Ignore the returned child process id.
+	spawn (programPath, arg_list); 
 }
 
 /**
